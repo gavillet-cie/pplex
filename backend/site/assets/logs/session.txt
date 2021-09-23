@@ -1,0 +1,1 @@
+2021-09-23 09:44:27	pietro	http://localhost/pplex/backend/admin/login/	Successful login for 'pietro'
