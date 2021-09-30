@@ -1,10 +1,10 @@
 <template lang="pug">
-  .home {{ title }}
+  .home
 </template>
 
 <script>
 export default {
-  async asyncData({ params, $http }) {
+  async asyncData({ params }) {
     const { language } = params
     const data = await fetch(
       `https://api-pplex.gavillet-cie.com${language ? `/${language}` : '/'}`
@@ -13,3 +13,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.home {
+  height: calc(100vh - var(--menu-height));
+}
+</style>

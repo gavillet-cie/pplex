@@ -35,7 +35,6 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxt/http',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -54,9 +53,5 @@ export default {
 
       routes.push(...newRoutes)
     },
-  },
-
-  http: {
-    baseUrl: 'https://api-pplex.gavillet-cie.com',
   },
 }
