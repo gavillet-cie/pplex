@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "This document is in Markdown. An HTML formatted version of this document  can be read at: https://github.com/processwire/processwire/blob/master/README.md",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "node deploy.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ftp-deploy": "^2.4.1"
+  }
+}
