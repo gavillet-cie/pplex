@@ -3,6 +3,11 @@
     slider.home__slider(
       :slides="slides"
     )
+    .home__practice-areas
+      .home__practice-area(
+        v-for="practiceArea in practiceAreas"
+      )
+        h5 {{ practiceArea.title }}
 </template>
 
 <script>
@@ -12,15 +17,27 @@ export default {
   components: { Slider },
   async asyncData({ params }) {
     const { language } = params
-    const data = await fetch(
-      `https://api-pplex.gavillet-cie.com${language ? `/${language}` : '/'}`
-    ).then((res) => res.json())
-    return data
+
+    const [home, { practiceAreas }] = await Promise.all([
+      fetch(
+        `https://api-pplex.gavillet-cie.com${language ? `/${language}` : '/'}`
+      ).then((res) => res.json()),
+      fetch(
+        `https://api-pplex.gavillet-cie.com${
+          language ? `/${language}` : '/domaines-de-pratique/'
+        }`
+      ).then((res) => res.json()),
+    ])
+
+    return {
+      home,
+      practiceAreas,
+    }
   },
 
   computed: {
     slides() {
-      return this.homeSlider || []
+      return this.home?.homeSlider || []
     },
   },
 }
@@ -28,11 +45,21 @@ export default {
 
 <style lang="scss">
 .home {
-  height: calc(100vh - var(--menu-height));
-
   &__slider {
     width: 100%;
-    height: 100%;
+    height: 60vh;
+  }
+
+  &__practice-areas {
+    margin: auto;
+    padding: 10rem 0;
+    max-width: 60rem;
+  }
+
+  &__practice-area {
+    border-bottom: solid 1px black;
+    font-size: 2rem;
+    padding: 1rem 10rem;
   }
 }
 </style>

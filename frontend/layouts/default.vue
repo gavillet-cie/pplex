@@ -23,6 +23,14 @@ export default {
       }
     },
   },
+
+  mounted() {
+    window.addEventListener('scroll', () => {
+      const maxHeight = window.innerHeight * 0.4
+      const delta = maxHeight - window.scrollY
+      this.menuHeight = Math.max(10, (delta / window.innerHeight) * 100)
+    })
+  },
 }
 </script>
 

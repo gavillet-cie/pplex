@@ -15,6 +15,10 @@
 .menu {
   $margin: 10px;
 
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 10;
   height: var(--menu-height);
   display: flex;
   padding-bottom: $margin;
