@@ -52,10 +52,10 @@ $config->useFunctionsAPI = true;
  * Installer: Database Configuration
  * 
  */
-$config->dbHost = 'avla.myd.infomaniak.com';
-$config->dbName = 'avla_pplex';
-$config->dbUser = 'avla_api';
-$config->dbPass = 'ySpYFz4-cP0';
+$config->dbHost = 'localhost';
+$config->dbName = 'pplex';
+$config->dbUser = 'root';
+$config->dbPass = 'root';
 $config->dbPort = '3306';
 
 /**
@@ -112,7 +112,7 @@ $config->installed = 1632390235;
  * Installer: HTTP Hosts Whitelist
  * 
  */
-$config->httpHosts = array('api-pplex.gavillet-cie.com');
+$config->httpHosts = array('localhost');
 
 
 /**
