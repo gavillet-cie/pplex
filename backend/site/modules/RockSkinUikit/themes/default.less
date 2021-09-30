@@ -1,0 +1,180 @@
+// rocktheme variable setup
+@rs-muted-color: darken(@rs-muted, 80%);
+
+@rs-primary: #133860;
+@rs-secondary: #1f1519;
+// general reno variables
+@reno-text-color: @rs-text-color;
+@reno-link-color: contrast(
+  @rs-primary,
+  darken(@rs-primary, 10%),
+  lighten(@rs-primary, 10%)
+);
+@reno-link-hover-color: darken(@reno-link-color, 10%);
+
+@reno-primary-background: @rs-primary;
+@reno-secondary-background: @rs-muted;
+@reno-success-background: #8bccde;
+@reno-success-color: @reno-text-color;
+@reno-warning-background: #ffd15e;
+@reno-warning-color: @reno-text-color;
+@reno-danger-background: #bc283d;
+@reno-danger-color: #fff;
+@reno-alert-background: @rs-muted;
+@reno-alert-color: @reno-text-color;
+@reno-primary-headline-color: @rs-primary;
+@reno-secondary-headline-color: lighten(@reno-primary-headline-color, 10%);
+@reno-notes-background: @rs-secondary;
+@reno-notes-text-color: @rs-secondary-color;
+@reno-table-header-color: @rs-text-color;
+@reno-table-header-current-color: @reno-primary-background;
+
+// masthead
+@reno-dark-background: @rs-primary;
+@reno-masthead-background: @reno-dark-background;
+@reno-masthead-link-color: contrast(
+  @reno-dark-background,
+  lighten(#000, 10%),
+  darken(#fff, 10%)
+);
+@reno-masthead-link-hover-color: lighten(@reno-masthead-link-color, 20%);
+@reno-masthead-link-current-color: lighten(@reno-masthead-link-color, 100%);
+@reno-masthead-icon-color: @reno-masthead-link-color;
+@reno-masthead-search-text-color: @reno-masthead-link-hover-color;
+@reno-masthead-search-background: transparent;
+@reno-masthead-search-border-color: @reno-masthead-link-color;
+@reno-masthead-search-focus-background: lighten(@reno-dark-background, 5%);
+@reno-masthead-search-focus-text-color: @reno-masthead-link-color;
+@reno-masthead-search-focus-border-color: @reno-masthead-search-focus-background;
+@reno-masthead-search-icon-color: @reno-masthead-icon-color;
+
+@reno-dropdown-background: #fff;
+@reno-dropdown-color: @reno-text-color;
+@reno-dropdown-hover-background: @rs-muted;
+@reno-dropdown-border-color: darken(@rs-muted, 20%);
+@reno-dropdown-border: 1px solid @reno-dropdown-border-color;
+@reno-dropdown-nav-icon-color: @reno-text-color;
+
+// inputfields
+@reno-muted-background: @rs-muted;
+@reno-muted-text-color: @rs-muted-color;
+@reno-muted-text-color-alternate: @reno-muted-text-color;
+@reno-inputfield-border: 1px solid @rs-muted;
+@reno-inputfield-input-background: #fff;
+@reno-inputfield-input-border-color: @rs-muted;
+@reno-inputfield-select-background: #fff;
+@reno-inputfield-select-border-color: @rs-muted;
+@reno-form-radio-checked-background: @rs-primary;
+
+@reno-button-text-color: #fff;
+@reno-button-background: @reno-primary-background;
+@reno-button-hover-background: @global-link-color;
+@reno-button-secondary-background: @rs-secondary;
+
+// page list
+@reno-page-list-link-color: @rs-text-color;
+@reno-page-list-link-open-color: lighten(@reno-page-list-link-color, 10%);
+@reno-page-list-icon-color: @reno-page-list-link-color;
+@reno-page-list-link-active-color: lighten(@reno-page-list-link-color, 10%);
+@reno-page-list-link-hover-color: lighten(@reno-page-list-link-color, 10%);
+@reno-page-list-action-link-color: #fff;
+@reno-page-list-action-link-background-color: @rs-secondary;
+@reno-page-list-action-link-hover-color: #fff;
+@reno-page-list-action-link-hover-background-color: lighten(@rs-secondary, 10%);
+
+// offcanvas
+@reno-offcanvas-text-color: @reno-text-color;
+@reno-offcanvas-link-color: @reno-text-color;
+@reno-offcanvas-link-hover-color: @reno-link-color;
+@reno-offcanvas-link-open-color: @reno-link-color;
+@reno-offcanvas-background: @reno-secondary-background;
+@reno-offcanvas-search-background: #fff;
+
+// lang
+@reno-language-tab-background: transparent;
+@reno-language-tab-color: @reno-text-color;
+@reno-language-tab-current-background: @rs-muted;
+@reno-language-tab-current-color: @reno-primary-headline-color;
+@reno-language-tab-hover-background: @reno-muted-background;
+@reno-language-tab-hover-color: @reno-text-color;
+@reno-language-tab-empty-color: @reno-muted-text-color;
+
+// ########## custom css adjustments ##########
+
+// BETTER create custom design or tweak reno theme directly
+
+// make notes grey + secondary accent
+#main .notes {
+  padding: 0 5px;
+  background: lighten(@rs-muted, 5%);
+  border-left: 5px solid @rs-secondary;
+}
+
+// prevent grey secondary inputfield color
+.InputfieldIsSecondary > .InputfieldHeader,
+.InputfieldIsSecondary > .InputfieldContent {
+  background: none;
+}
+
+// tweak secondary buttons
+// ui-button
+.ui-button,
+.ui-button.ui-state-default,
+.ui-button.ui-state-hover {
+  background-color: @rs-primary;
+  background: @rs-primary;
+  color: @rs-primary-color;
+}
+.ui-button.ui-priority-secondary,
+.ui-button.ui-state-default.ui-priority-secondary {
+  background: @rs-muted;
+  color: @rs-muted-color;
+  &:not([data-pw-dropdown]) {
+    border-left: 5px solid @rs-secondary;
+  }
+}
+.ui-button:hover,
+.ui-button.ui-state-hover {
+  background-color: @rs-secondary;
+  color: @rs-secondary-color;
+  &.xui-priority-secondary:not([data-pw-dropdown]) {
+    border-left: 5px solid @rs-secondary;
+  }
+}
+
+// make sure pagelistactions have the correct color
+.PageList {
+  .PageListActions,
+  .PageListerActions,
+  .PageListMoveNote {
+    a,
+    a:hover {
+      color: @rs-secondary-color;
+      font-weight: normal;
+    }
+  }
+}
+
+// tweak placeholder text
+input,
+.uk-input {
+  &::placeholder {
+    color: lighten(black, 70%);
+  }
+}
+
+// image field
+@img-bg: fade(@rs-primary, 30%);
+.gridImage:hover .gridImage__inner {
+  background: @img-bg !important;
+}
+.gridImage.gridImageEditing .gridImage__inner {
+  background: @img-bg !important;
+}
+
+// vex adjustments
+.vex-dialog-button-primary {
+  background: @rs-primary !important;
+}
+
+// #############################################

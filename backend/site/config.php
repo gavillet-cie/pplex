@@ -1,4 +1,6 @@
-<?php namespace ProcessWire;
+<?php
+
+namespace ProcessWire;
 
 /**
  * ProcessWire Configuration File
@@ -22,7 +24,7 @@
  *
  */
 
-if(!defined("PROCESSWIRE")) die();
+if (!defined("PROCESSWIRE")) die();
 
 /*** SITE CONFIG *************************************************************************/
 
@@ -65,7 +67,7 @@ $config->dbPort = '3306';
  * Do not change this value, or user passwords will no longer work.
  * 
  */
-$config->userAuthSalt = 'c2b76776ab09f20554d9eb2d0ad29e5e8b64de0e'; 
+$config->userAuthSalt = 'c2b76776ab09f20554d9eb2d0ad29e5e8b64de0e';
 
 /**
  * Installer: Table Salt (General Purpose) 
@@ -75,7 +77,7 @@ $config->userAuthSalt = 'c2b76776ab09f20554d9eb2d0ad29e5e8b64de0e';
  * this value or it may break internal system comparisons that use it. 
  * 
  */
-$config->tableSalt = 'cc7197fbf6617daf4fc234204cd78755cfaadde1'; 
+$config->tableSalt = 'cc7197fbf6617daf4fc234204cd78755cfaadde1';
 
 /**
  * Installer: File Permission Configuration
@@ -122,4 +124,3 @@ $config->httpHosts = array('localhost');
  * 
  */
 $config->debug = true;
-
