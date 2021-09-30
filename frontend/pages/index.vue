@@ -1,7 +1,13 @@
-<template>
-  <Tutorial/>
+<template lang="pug">
+  .home {{ title }}
 </template>
 
 <script>
-export default {}
+export default {
+  async asyncData({ params, $http }) {
+    const { language } = params
+    const data = await $http.$get(language ? `/${language}` : '/')
+    return data
+  },
+}
 </script>
