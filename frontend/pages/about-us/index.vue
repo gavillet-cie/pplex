@@ -9,7 +9,8 @@
 
       .about-us__keywords
         row-wrapper.about-us__keyword(
-          v-for="keyword in keywords"
+          v-for="(keyword, index) in keywords"
+          :key="index"
           :border="false"
           :padding="false"
         )
