@@ -3,42 +3,63 @@
     slider.home__slider(
       :slides="slides"
     )
-    .home__practice-areas
-      .home__practice-area(
+
+    centered-wrapper.home__practice-areas
+      nuxt-link(
         v-for="practiceArea in practiceAreas"
+        :key="practiceArea.name"
+        :to="getUrl(`/our-practice-areas/${practiceArea.name}`, language)"
       )
-        h5 {{ practiceArea.title }}
+        row-wrapper.home__practice-area(
+        )
+          h5 {{ practiceArea.title }}
+
+    centered-wrapper.home__news
+      nuxt-link(
+        v-for="item in news"
+        :key="item.name"
+        :to="getUrl(`/news/${item.name}`, language)"
+      )
+        row-wrapper.home__news-item
+          h5 {{ item.title }}
 </template>
 
 <script>
+import { get, getUrl } from '../utils/api'
 import Slider from '@/components/Slider'
+import CenteredWrapper from '@/components/CenteredWrapper'
+import RowWrapper from '@/components/RowWrapper'
 
 export default {
-  components: { Slider },
-  async asyncData({ params }) {
+  components: { Slider, CenteredWrapper, RowWrapper },
+
+  async asyncData({ params, store }) {
     const { language } = params
 
-    const [home, { practiceAreas }] = await Promise.all([
-      fetch(
-        `https://api-pplex.gavillet-cie.com${language ? `/${language}` : '/'}`
-      ).then((res) => res.json()),
-      fetch(
-        `https://api-pplex.gavillet-cie.com${
-          language ? `/${language}` : '/domaines-de-pratique/'
-        }`
-      ).then((res) => res.json()),
+    store.commit('setBigMenu', true)
+
+    const [{ homeSlider }, { practiceAreas }, { news }] = await Promise.all([
+      get('/', language),
+      get('our-practice-areas', language),
+      get('news', language),
     ])
 
     return {
-      home,
+      homeSlider,
       practiceAreas,
+      news,
+      language,
     }
   },
 
   computed: {
     slides() {
-      return this.home?.homeSlider || []
+      return this.homeSlider || []
     },
+  },
+
+  methods: {
+    getUrl,
   },
 }
 </script>
@@ -50,16 +71,22 @@ export default {
     height: 60vh;
   }
 
-  &__practice-areas {
-    margin: auto;
-    padding: 10rem 0;
-    max-width: 60rem;
+  &__practice-areas,
+  &__news {
+    padding: 5rem 0;
   }
 
-  &__practice-area {
-    border-bottom: solid 1px black;
+  &__practice-area,
+  &__news-item {
     font-size: 2rem;
-    padding: 1rem 10rem;
+  }
+
+  &__news-item {
+    color: white;
+  }
+
+  &__news {
+    background-color: #15497e;
   }
 }
 </style>

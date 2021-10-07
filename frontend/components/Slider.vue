@@ -51,6 +51,11 @@ export default {
 <style lang="scss">
 .slider {
   position: relative;
+  overflow: hidden;
+  clip: rect(0, 0, 100%, 100%);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
 
   .slider-enter-active,
   .slider-leave-active {
@@ -78,9 +83,9 @@ export default {
 
   &__title {
     color: white;
-    font-size: 3rem;
-    position: absolute;
-    top: 50%;
+    font-size: 6rem;
+    position: fixed;
+    bottom: 33.333%;
     left: 50%;
     transform: translate(-50%, -50%);
   }

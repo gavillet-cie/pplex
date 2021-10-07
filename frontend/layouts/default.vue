@@ -4,55 +4,61 @@
   )
     main-menu
     nuxt
+    main-footer
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import MainMenu from '@/components/MainMenu'
+import MainFooter from '@/components/MainFooter'
+
 export default {
-  components: { MainMenu },
+  components: { MainMenu, MainFooter },
+
   data() {
     return {
-      menuHeight: 40,
+      maxMenuHeight: '40vh',
+      bigMenuHeight: '40vh',
+      menuHeight: '4rem',
     }
   },
 
   computed: {
+    ...mapGetters(['bigMenu']),
     appCssStyle() {
       return {
-        '--menu-height': `${this.menuHeight}vh`,
+        '--menu-height': this.bigMenu ? this.bigMenuHeight : this.menuHeight,
+        'padding-top': this.bigMenu ? this.maxMenuHeight : this.menuHeight,
       }
     },
   },
 
+  watch: {
+    $route: {
+      immediate: true,
+      handler(route) {
+        const { language } = route.params
+        this.$store.commit('setLang', language || '')
+        this.updateMenuHeight()
+      },
+    },
+  },
+
   mounted() {
-    window.addEventListener('scroll', () => {
-      const maxHeight = window.innerHeight * 0.4
-      const delta = maxHeight - window.scrollY
-      this.menuHeight = Math.max(10, (delta / window.innerHeight) * 100)
-    })
+    this.updateMenuHeight()
+    window.addEventListener('scroll', this.updateMenuHeight)
+  },
+
+  methods: {
+    updateMenuHeight() {
+      if (process.client && this.bigMenu) {
+        this.bigMenuHeight = `calc(${this.maxMenuHeight} - ${window.scrollY}px)`
+      }
+    },
   },
 }
 </script>
 
 <style lang="scss">
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin: 0;
-  color: inherit;
-  font-weight: normal;
-  font-size: inherit;
-}
+@import url('../styles/main.scss');
 </style>

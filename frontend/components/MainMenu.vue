@@ -1,6 +1,6 @@
 <template lang="pug">
   nav.menu
-    .menu__logo
+    nuxt-link.menu__logo(:to="getUrl('/', lang)")
       svg(x="0px" y="0px" viewBox="0 0 26.5 27" style="enable-background:new 0 0 26.5 27;" xml:space="preserve")
         path(d="M26.5,16.1c-1.3,4.7-6.1,7.4-10.7,6.1c-3.9-1.1-6.5-4.6-6.4-8.6c-0.1-4.8,3.8-8.8,8.6-8.9c4-0.1,7.5,2.6,8.6,6.4V0H0v27h26.5V16.1z")
     .menu__inner
@@ -11,15 +11,32 @@
       h1.menu__title Python
 </template>
 
+<script>
+import { mapGetters } from 'vuex'
+import { getUrl } from '../utils/api'
+
+export default {
+  computed: {
+    ...mapGetters(['lang']),
+  },
+
+  methods: {
+    getUrl,
+  },
+}
+</script>
+
 <style lang="scss">
 .menu {
-  $margin: 10px;
+  $margin: 5px;
 
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
   height: var(--menu-height);
+  min-height: 4rem;
+  width: 100%;
   display: flex;
   padding-bottom: $margin;
 
