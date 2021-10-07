@@ -13,5 +13,13 @@ echo $apiRenderer->renderJSONFromModel([
       "title" => ["field" => "home_title"],
       "image" => ["field" => "home_image"]
     ]
+  ],
+  "sections" => [
+    "field" => "children",
+    "type" => "nested",
+    "model" => [
+      "name" => ["field" => "name"],
+      "title" => ["field" => "title"]
+    ]
   ]
 ], $page);
