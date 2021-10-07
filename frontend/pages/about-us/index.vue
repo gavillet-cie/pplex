@@ -5,7 +5,7 @@
         :border="false"
         :padding="false"
       )
-        h2 {{ title }}
+        h3 {{ title }}
 
       .about-us__keywords
         row-wrapper.about-us__keyword(
@@ -52,13 +52,13 @@ export default {
   }
 
   &__title {
-    font-size: 4rem;
+    font-size: $sub-title-font-size;
     padding-top: 2rem;
   }
 
   &__keyword,
   &__section-title {
-    font-size: 2rem;
+    font-size: $medium-font-size;
   }
 
   &__keywords {
