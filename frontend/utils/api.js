@@ -2,13 +2,21 @@ export const baseUrl = 'https://api-pplex.gavillet-cie.com'
 
 const cache = new Map()
 
-export const getUrl = (url, lang = '', absolute = false) => {
+export const getUrl = (
+  url,
+  lang = '',
+  absolute = false,
+  trailingSlash = true
+) => {
   return sanitizeUrl(
-    `${absolute ? baseUrl : ''}/${lang ? `/${lang}/${url}` : `/${url}`}`
+    `${absolute ? baseUrl : ''}/${lang ? `/${lang}/${url}` : `/${url}`}`,
+    trailingSlash
   )
 }
 
-export const sanitizeUrl = (url) => {
+export const getImageUrl = (url) => getUrl(url, '', true, false)
+
+export const sanitizeUrl = (url, trailingSlash = true) => {
   const sanitizedUrl = url
     .replace('https://', '***')
     .replace('http://', '**')
@@ -16,7 +24,7 @@ export const sanitizeUrl = (url) => {
     .replace('***', 'https://')
     .replace('**', 'http://')
 
-  return sanitizedUrl[sanitizedUrl.length - 1] === '/'
+  return sanitizedUrl[sanitizedUrl.length - 1] === '/' || !trailingSlash
     ? sanitizedUrl
     : `${sanitizedUrl}/`
 }

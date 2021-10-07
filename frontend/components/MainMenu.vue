@@ -96,7 +96,7 @@ export default {
   }
 
   svg {
-    fill: #15497e;
+    fill: $main-color;
     height: 100%;
   }
 
