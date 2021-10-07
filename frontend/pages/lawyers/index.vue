@@ -5,14 +5,13 @@
       .lawyers__grid
         nuxt-link.lawyers__grid-item(
           v-for="lawyer in lawyers"
-          :key="lawyer.firstName"
+          :key="lawyer.name"
           :to="getUrl(`/lawyers/${lawyer.name}`, lang)"
         )
           img(:src="getImageUrl(lawyer.portrait.url)")
           .lawyers__info
             .lawyers__name
-              span.lawyers__first-name {{ lawyer.firstName }}
-              span.lawyers__last-name {{ lawyer.lastName }}
+              span {{ lawyer.title }}
 
             .lawyers__status
               span {{ lawyer.status }}
@@ -75,11 +74,6 @@ export default {
   &__info {
     padding: $menu-margin 0 2rem 0;
     line-height: 1.3;
-  }
-
-  &__last-name {
-    text-transform: uppercase;
-    margin-left: 0.2rem;
   }
 }
 </style>
