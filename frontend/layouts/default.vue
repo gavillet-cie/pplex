@@ -3,8 +3,8 @@
     :style="appCssStyle"
   )
     main-menu
-    nuxt
-    main-footer
+    nuxt(:style="contentCssStyle")
+    main-footer(:style="contentCssStyle")
 </template>
 
 <script>
@@ -24,11 +24,17 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['bigMenu']),
+    ...mapGetters(['bigMenu', 'showMenu']),
     appCssStyle() {
       return {
         '--menu-height': this.bigMenu ? this.bigMenuHeight : this.menuHeight,
         'padding-top': this.bigMenu ? this.maxMenuHeight : this.menuHeight,
+      }
+    },
+
+    contentCssStyle() {
+      return {
+        opacity: this.showMenu ? 0 : 1,
       }
     },
   },
@@ -39,6 +45,7 @@ export default {
       handler(route) {
         const { language } = route.params
         this.$store.commit('setLang', language || '')
+        this.$store.commit('setShowMenu', false)
         this.updateMenuHeight()
       },
     },

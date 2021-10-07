@@ -1,5 +1,7 @@
 export const baseUrl = 'https://api-pplex.gavillet-cie.com'
 
+const cache = new Map()
+
 export const getUrl = (url, lang = '', absolute = false) => {
   return sanitizeUrl(
     `${absolute ? baseUrl : ''}/${lang ? `/${lang}/${url}` : `/${url}`}`
@@ -19,6 +21,11 @@ export const sanitizeUrl = (url) => {
     : `${sanitizedUrl}/`
 }
 
-export const get = (url, lang = '') => {
-  return fetch(getUrl(url, lang, true)).then((res) => res.json())
+export const get = async (url, lang = '') => {
+  const sanitizedUrl = getUrl(url, lang, true)
+  const cachedRes = cache.get(sanitizedUrl)
+  if (cachedRes) return cachedRes
+  const res = await fetch(sanitizedUrl).then((res) => res.json())
+  cache.set(sanitizedUrl, res)
+  return res
 }
