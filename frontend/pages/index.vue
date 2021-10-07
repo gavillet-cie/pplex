@@ -86,7 +86,7 @@ export default {
   }
 
   &__news {
-    background-color: #15497e;
+    background-color: $main-color;
   }
 }
 </style>
