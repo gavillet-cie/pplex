@@ -6,9 +6,16 @@ echo $apiRenderer->renderJSONFromModel([
   "title" => ["field" => "title"],
   "name" => ["field" => "name"],
   "url" => ["field" => "url"],
-  "method" => ["field" => "about_method"],
-  "confidentiality" => ["field" => "about_confidentiality"],
-  "clientBase" => ["field" => "about_client_base"],
-  "clientService" => ["field" => "about_client_service"],
-  "rankings" => ["field" => "about_rankings"],
+  "keywords" => [
+    "field" => "about_keywords",
+    "type" => "title-array",
+  ],
+  "sections" => [
+    "field" => "about_sections",
+    "type" => "nested",
+    "model" => [
+      "title" => ["field" => "about_section_title"],
+      "description" => ["field" => "about_section_description"]
+    ]
+  ],
 ], $page);

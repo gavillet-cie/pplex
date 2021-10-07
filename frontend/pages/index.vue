@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { get, getUrl } from '../utils/api'
+import { get, getUrl } from '@/utils/api'
 import Slider from '@/components/Slider'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import RowWrapper from '@/components/RowWrapper'
