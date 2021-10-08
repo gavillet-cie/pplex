@@ -52,7 +52,6 @@ export default {
 .slider {
   position: relative;
   overflow: hidden;
-  clip: rect(0, 0, 100%, 100%);
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -73,6 +72,7 @@ export default {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    clip: rect(0, 100vw, 60vh, 0);
 
     img {
       width: 100%;
@@ -82,10 +82,11 @@ export default {
   }
 
   &__title {
+    font-family: $theinhardt;
     color: white;
-    font-size: 6rem;
+    font-size: 10rem;
     position: fixed;
-    bottom: 33.333%;
+    top: 70vh;
     left: 50%;
     transform: translate(-50%, -50%);
   }

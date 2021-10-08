@@ -127,6 +127,7 @@ export default {
   }
 
   &__title {
+    font-family: $theinhardt;
     position: absolute;
     bottom: 0;
     right: 0;

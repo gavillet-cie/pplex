@@ -1,3 +1,13 @@
+@font-face {
+  font-family: Theinhardt-Light;
+  src: url('~/static/fonts/Theinhardt-Extended-Light.woff2');
+}
+
+@font-face {
+  font-family: Rand-Medium;
+  src: url('~/static/fonts/Rand-Medium.woff2');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,7 +15,7 @@
 html,
 body {
   margin: 0;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Rand-Medium, Helvetica, Arial, sans-serif;
 }
 
 h1,
