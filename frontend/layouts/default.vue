@@ -84,4 +84,8 @@ export default {
     padding-top: 4rem !important;
   }
 }
+
+.nuxt-link-active {
+  color: $secondary-color;
+}
 </style>

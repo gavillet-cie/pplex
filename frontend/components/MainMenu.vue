@@ -12,7 +12,11 @@
         .menu__line
         .menu__line
 
-      h1.menu__title Python
+      .menu__blue-panel
+
+      h1.menu__title(
+        v-if="bigMenu"
+      ) PYTHON
 
       .menu__panel(v-if="showMenu")
         h5.menu__panel-title PYTHON
@@ -28,9 +32,12 @@
         .menu__panel-languages
           nuxt-link.menu__panel-language(
             :to="getLangUrl('fr')"
+            :class="getLanguageCssClasses('fr')"
           ) FR
+
           nuxt-link.menu__panel-language(
             :to="getLangUrl('')"
+            :class="getLanguageCssClasses('')"
           ) EN
 
 </template>
@@ -52,7 +59,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['lang', 'showMenu']),
+    ...mapGetters(['lang', 'showMenu', 'bigMenu']),
   },
 
   watch: {
@@ -74,6 +81,11 @@ export default {
         : fullPath
       return getUrl(currentPath, lang)
     },
+    getLanguageCssClasses(lang) {
+      return {
+        'menu--highlight': lang === this.lang,
+      }
+    },
   },
 }
 </script>
@@ -89,6 +101,10 @@ export default {
   width: 100%;
   display: flex;
   padding-bottom: $menu-margin;
+
+  &--highlight {
+    color: $secondary-color;
+  }
 
   &__logo {
     height: 100%;
@@ -113,12 +129,23 @@ export default {
     z-index: 20;
     top: 0;
     right: 0;
-    width: 50px;
-    height: 45px;
+    width: calc(4.5rem - $menu-margin);
+    height: calc(4rem - $menu-margin);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+  }
+
+  &__blue-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 71%;
+    z-index: 5;
+    box-shadow: 20px 10px 10px $main-color;
+    background-color: $main-color;
   }
 
   &__line {
@@ -139,6 +166,8 @@ export default {
 
   &__panel {
     position: absolute;
+    z-index: 6;
+    font-size: $medium-font-size;
     top: 0;
     right: 0;
     background-color: $main-color;
@@ -149,7 +178,8 @@ export default {
     display: flex;
 
     &-title {
-      width: 20%;
+      font-family: $theinhardt;
+      padding-right: 5rem;
       flex: 0 0 auto;
     }
 
@@ -157,6 +187,16 @@ export default {
       display: flex;
       flex-direction: column;
       width: 50%;
+    }
+
+    &-languages {
+      font-size: 1rem;
+    }
+
+    &-language {
+      & + & {
+        margin-left: 0.5rem;
+      }
     }
   }
 }
