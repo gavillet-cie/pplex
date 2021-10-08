@@ -5,16 +5,21 @@
     )
 
     centered-wrapper.home__practice-areas
+      row-wrapper.home__sub-title.home--border-black
+        h5 Nos domaines de pratique
+
       nuxt-link(
         v-for="practiceArea in practiceAreas"
         :key="practiceArea.name"
         :to="getUrl(`/our-practice-areas/${practiceArea.name}`, language)"
       )
-        row-wrapper.home__practice-area(
-        )
+        row-wrapper.home__practice-area
           h5 {{ practiceArea.title }}
 
     centered-wrapper.home__news
+      row-wrapper.home__sub-title.home--border-white
+        h5 Nouvelles récentes
+
       nuxt-link(
         v-for="item in news"
         :key="item.name"
@@ -66,6 +71,14 @@ export default {
 
 <style lang="scss">
 .home {
+  &--border-black {
+    border-color: black;
+  }
+
+  &--border-white {
+    border-color: white;
+  }
+
   &__slider {
     width: 100%;
     height: 60vh;
@@ -78,7 +91,7 @@ export default {
 
   &__practice-area,
   &__news-item {
-    font-size: 2rem;
+    font-size: $medium-font-size;
   }
 
   &__news-item {
@@ -87,6 +100,11 @@ export default {
 
   &__news {
     background-color: $main-color;
+  }
+
+  &__sub-title {
+    font-size: $medium-font-size;
+    color: $secondary-color;
   }
 }
 </style>

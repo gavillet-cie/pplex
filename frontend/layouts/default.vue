@@ -3,7 +3,7 @@
     :style="appCssStyle"
   )
     main-menu
-    nuxt(:style="contentCssStyle")
+    nuxt.app__content(:style="contentCssStyle")
     main-footer(:style="contentCssStyle")
 </template>
 
@@ -70,6 +70,14 @@ export default {
 @import url('../styles/main.scss');
 
 .app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__content {
+    flex: 1 1 auto;
+  }
+
   @media screen and (max-width: 900px) {
     --menu-height: 4rem !important;
 
