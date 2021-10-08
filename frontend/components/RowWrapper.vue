@@ -47,5 +47,15 @@ export default {
       border-color: inherit;
     }
   }
+
+  @media screen and (max-width: 900px) {
+    &__inner {
+      padding: $main-padding;
+
+      #{$r}--padding & {
+        padding: 1rem $main-padding;
+      }
+    }
+  }
 }
 </style>

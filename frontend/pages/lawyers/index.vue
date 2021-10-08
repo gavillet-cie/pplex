@@ -8,7 +8,9 @@
           :key="lawyer.name"
           :to="getUrl(`/lawyers/${lawyer.name}`, lang)"
         )
-          img(:src="getImageUrl(lawyer.portrait.url)")
+          .lawyers__portrait
+            img(:src="getImageUrl(lawyer.portrait.url)")
+
           .lawyers__info
             .lawyers__name
               span {{ lawyer.title }}
@@ -55,25 +57,42 @@ export default {
   &__grid {
     display: flex;
     flex-wrap: wrap;
-    margin: -$menu-margin * 0.5;
+    margin: $menu-margin * 0.5;
 
     &-item {
       flex: 0 0 auto;
       width: 25%;
       padding: $menu-margin * 0.5;
+    }
+  }
 
-      img {
-        width: 100%;
-        height: 17rem;
-        object-fit: cover;
-        object-position: top center;
-      }
+  &__portrait {
+    position: relative;
+    width: 100%;
+    padding-top: 110%;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
     }
   }
 
   &__info {
     padding: $menu-margin 0 2rem 0;
     line-height: 1.3;
+  }
+
+  @media screen and (max-width: 900px) {
+    &__grid {
+      &-item {
+        width: 50%;
+      }
+    }
   }
 }
 </style>

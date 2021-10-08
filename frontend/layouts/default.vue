@@ -68,4 +68,12 @@ export default {
 
 <style lang="scss">
 @import url('../styles/main.scss');
+
+.app {
+  @media screen and (max-width: 900px) {
+    --menu-height: 4rem !important;
+
+    padding-top: 4rem !important;
+  }
+}
 </style>
