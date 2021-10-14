@@ -9,6 +9,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { get } from '@/utils/api'
 import MainMenu from '@/components/MainMenu'
 import MainFooter from '@/components/MainFooter'
 
@@ -23,8 +24,13 @@ export default {
     }
   },
 
+  async fetch() {
+    const { labels } = await get('labels', this.lang)
+    this.$store.commit('setLabels', labels)
+  },
+
   computed: {
-    ...mapGetters(['bigMenu', 'showMenu']),
+    ...mapGetters(['lang', 'bigMenu', 'showMenu']),
     appCssStyle() {
       return {
         '--max-menu-height': this.maxMenuHeight,
@@ -48,6 +54,10 @@ export default {
         this.$store.commit('setLang', language || '')
         this.$store.commit('setShowMenu', false)
         this.updateMenuHeight()
+
+        get('labels', this.lang).then(({ labels }) => {
+          this.$store.commit('setLabels', labels)
+        })
       },
     },
   },

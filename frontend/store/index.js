@@ -2,12 +2,14 @@ export const state = () => ({
   lang: '',
   bigMenu: false,
   showMenu: false,
+  labels: [],
 })
 
 export const getters = {
   lang: (state) => state.lang,
   bigMenu: (state) => state.bigMenu,
   showMenu: (state) => state.showMenu,
+  labels: (state) => state.labels,
 }
 
 export const mutations = {
@@ -21,5 +23,9 @@ export const mutations = {
 
   setShowMenu: (state, showMenu) => {
     state.showMenu = showMenu
+  },
+
+  setLabels: (state, labels) => {
+    state.labels = labels
   },
 }

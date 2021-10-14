@@ -20,6 +20,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { getLabel } from '@/utils/labels'
+
 export default {
   props: {
     placeholder: {
@@ -41,12 +44,17 @@ export default {
   },
 
   computed: {
+    ...mapGetters(['labels']),
     computedOptions() {
-      return [{ label: 'All', name: null }, ...this.options]
+      return [
+        { label: this.getLabel('all', this.labels), name: null },
+        ...this.options,
+      ]
     },
   },
 
   methods: {
+    getLabel,
     getOptionCssClass(option) {
       return {
         'dropdown__option--active': option === this.selectedOption,

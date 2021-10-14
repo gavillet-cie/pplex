@@ -6,7 +6,7 @@
 
     centered-wrapper.home__practice-areas
       row-wrapper.home__sub-title.home--border-black
-        h5 Nos domaines de pratique
+        h5 {{ getLabel('ourPracticeAreas', labels) }}
 
       nuxt-link(
         v-for="practiceArea in practiceAreas"
@@ -28,7 +28,7 @@
 
     centered-wrapper.home__news
       row-wrapper.home__sub-title.home--border-white
-        h5 Nouvelles récentes
+        h5 {{ getLabel('recentNews', labels) }}
 
       nuxt-link(
         v-for="item in news"
@@ -43,8 +43,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { get, getUrl } from '@/utils/api'
 import { showLawyers, filterLawyers } from '@/utils/lawyers'
+import { getLabel } from '@/utils/labels'
 import Slider from '@/components/Slider'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import RowWrapper from '@/components/RowWrapper'
@@ -91,6 +93,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters(['labels']),
     slides() {
       return this.homeSlider || []
     },
@@ -106,6 +109,7 @@ export default {
 
   methods: {
     getUrl,
+    getLabel,
     onFilter(filters) {
       this.filters = filters
     },

@@ -12,7 +12,7 @@
 
       row-wrapper(
         v-if="description"
-        title="Domaine"
+        :title="getLabel('domain', labels)"
       )
         p.lawyer__description(
           v-html="formatText(description)"
@@ -20,7 +20,7 @@
 
       row-wrapper(
         v-if="showEducation"
-        title="Education"
+        :title="getLabel('education', labels)"
       )
         .lawyer__list
           span(
@@ -29,7 +29,7 @@
 
       row-wrapper(
         v-if="showPositionsHeld"
-        title="Positions Held"
+        :title="getLabel('positionsHeld', labels)"
       )
         .lawyer__list
           span(
@@ -38,7 +38,7 @@
 
       row-wrapper(
         v-if="showMemberships"
-        title="Memberships"
+        :title="getLabel('memberships', labels)"
       )
         .lawyer__list
           span(
@@ -47,7 +47,7 @@
 
       row-wrapper(
         v-if="showSelectedPublications"
-        title="Selected Publications"
+        :title="getLabel('selectedPublications', labels)"
       )
         .lawyer__list
           span(
@@ -56,7 +56,7 @@
 
       row-wrapper(
         v-if="showRankings"
-        title="Rankings"
+        :title="getLabel('rankings', labels)"
       )
         .lawyer__list
           .lawyer__ranking(
@@ -67,7 +67,7 @@
 
       row-wrapper(
         v-if="showSpeeches"
-        title="Speeches"
+        :title="getLabel('speeches', labels)"
       )
         .lawyer__list
           span(
@@ -77,7 +77,7 @@
 
       row-wrapper(
         v-if="showCases"
-        title="Cases"
+        :title="getLabel('cases', labels)"
       )
         .lawyer__list
           span(
@@ -95,8 +95,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { get, getImageUrl } from '@/utils/api'
 import { formatText } from '@/utils/text'
+import { getLabel } from '@/utils/labels'
 import Slider from '@/components/Slider'
 import TextSlider from '@/components/TextSlider'
 import CenteredWrapper from '@/components/CenteredWrapper'
@@ -109,11 +111,13 @@ export default {
   async asyncData({ store, params }) {
     const { language, name } = params
     store.commit('setBigMenu', true)
-    const lawyer = await get(`lawyers/${name}`, language)
+    const [lawyer] = await Promise.all([get(`lawyers/${name}`, language)])
+
     return { lawyer, ...lawyer }
   },
 
   computed: {
+    ...mapGetters(['labels']),
     slides() {
       return [
         {
@@ -159,6 +163,7 @@ export default {
   methods: {
     getImageUrl,
     formatText,
+    getLabel,
   },
 }
 </script>

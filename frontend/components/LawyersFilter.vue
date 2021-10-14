@@ -1,21 +1,21 @@
 <template lang="pug">
   .lawyers-filter
-    span.lawyers-filter__title Trouver un avocat
+    span.lawyers-filter__title {{ getLabel('findALawyer', labels) }}
     .lawyers-filter__filters
       dropdown.lawyers-filter__select(
-        placeholder="Domain de pratique"
+        :placeholder="getLabel('practiceArea', labels)"
         :options="practiceAreasOptions"
         @select="onPractiveAreaFilter"
       )
 
       dropdown.lawyers-filter__select(
-        placeholder="Lieu"
+        :placeholder="getLabel('location', labels)"
         :options="locationsOptions"
         @select="onLocationFilter"
       )
 
       input(
-        placeholder="Recherche par nom"
+        :placeholder="getLabel('searchByName', labels)"
         type="text"
         @input="onName"
       )
@@ -23,8 +23,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
 import Dropdown from '@/components/Dropdown'
+import { getLabel } from '@/utils/labels'
 
 export default {
   components: { Dropdown },
@@ -43,13 +45,17 @@ export default {
 
   async fetch() {
     const { language } = this.$route.params
-    const { practiceAreas } = await get('our-practice-areas', language)
-    const { locations } = await get('locations', language)
+    const [{ practiceAreas }, { locations }] = await Promise.all([
+      get('our-practice-areas', language),
+      get('locations', language),
+    ])
+
     this.practiceAreas = practiceAreas
     this.locations = locations
   },
 
   computed: {
+    ...mapGetters(['labels']),
     practiceAreasOptions() {
       return this.practiceAreas?.map((it) => ({
         label: it.title,
@@ -66,6 +72,7 @@ export default {
   },
 
   methods: {
+    getLabel,
     onPractiveAreaFilter(option) {
       this.filters.practiceArea = option.name
       this.$emit('input', this.filters)

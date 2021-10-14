@@ -12,26 +12,36 @@
         | respect de nos principes fondamentaux d’efficacité, de flexibilité,
         | d’indépendance, de haute qualité et de créativité.
 
-      span.main-footer__keep-contact Rester en contact
+      span.main-footer__keep-contact {{ getLabel('keepInTouch', labels) }}
       span.main-footer__linkedin Linkedin
 
     .main-footer__mailing-list
       centered-wrapper
-        h5.main-footer__mailing-list-title Abonnez-vous à nos publications
+        h5.main-footer__mailing-list-title {{ getLabel('subscribePublications', labels) }}
         .main-footer__mailing-list-input
           input(
             placeholder="adresse mail"
           )
-          span Je m’inscris
+          span {{ getLabel('register', labels) }}
 
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { getLabel } from '@/utils/labels'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Logo from '@/components/Logo'
 
 export default {
   components: { CenteredWrapper, Logo },
+
+  computed: {
+    ...mapGetters(['labels']),
+  },
+
+  methods: {
+    getLabel,
+  },
 }
 </script>
 

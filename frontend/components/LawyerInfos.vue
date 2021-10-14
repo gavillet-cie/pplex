@@ -18,7 +18,7 @@
       .lawyer-infos__section(
         v-if="showContact"
       )
-        span.lawyer-infos__section-title Contact
+        span.lawyer-infos__section-title {{ getLabel('contact', labels) }}
         a.lawyer-infos__email(
           v-if="email"
           :href="mailto"
@@ -33,16 +33,17 @@
       .lawyer-infos__section(
         v-if="showPracticeAreas"
       )
-        span.lawyer-infos__section-title Domaines de pratique
+        span.lawyer-infos__section-title {{ getLabel('practiceAreas', labels) }}
         nuxt-link.lawyer-infos__practice-area(
-          v-for="area in practiceAreas"
+          v-for="(area, index) in practiceAreas"
+          :key="index"
           :to="getUrl(`/our-practice-areas/${area.name}`)"
         ) {{ area.title }}
 
       .lawyer-infos__section(
         v-if="showLanguages"
       )
-        span.lawyer-infos__section-title Langues
+        span.lawyer-infos__section-title {{ getLabel('languages', labels) }}
         span.lawyer-infos__language(
           v-for="language in languages"
         ) {{ language }}
@@ -50,19 +51,21 @@
       .lawyer-infos__section(
         v-if="showEntityAndAddress"
       )
-        span.lawyer-infos__section-title Entité & Adresse
+        span.lawyer-infos__section-title {{ getLabel('entityAndAddress', labels) }}
         p.lawyer-infos__entity-address(v-html="formatText(entityAndAddress)")
 
       .lawyer-infos__section(
         v-if="showBarAdmission"
       )
-        span.lawyer-infos__section-title Admission au barreau
+        span.lawyer-infos__section-title {{ getLabel('barAdmission', labels) }}
         p.lawyer-infos__bar-admission(v-html="formatText(barAdmission)")
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { formatText } from '@/utils/text'
 import { getImageUrl, getUrl } from '@/utils/api'
+import { getLabel } from '@/utils/labels'
 
 export default {
   props: {
@@ -123,6 +126,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters(['labels']),
     mailto() {
       return `mailto:${this.email}`
     },
@@ -152,6 +156,7 @@ export default {
     getUrl,
     formatText,
     getImageUrl,
+    getLabel,
   },
 }
 </script>
@@ -173,6 +178,10 @@ export default {
   &__title {
     font-size: $medium-font-size;
     color: black;
+  }
+
+  &__practice-area {
+    color: black !important;
   }
 
   &__section {
