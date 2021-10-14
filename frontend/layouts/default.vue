@@ -17,8 +17,8 @@ export default {
 
   data() {
     return {
-      maxMenuHeight: '40vh',
-      bigMenuHeight: '40vh',
+      maxMenuHeight: '28vh',
+      bigMenuHeight: '28vh',
       menuHeight: '4rem',
     }
   },
@@ -27,6 +27,7 @@ export default {
     ...mapGetters(['bigMenu', 'showMenu']),
     appCssStyle() {
       return {
+        '--max-menu-height': this.maxMenuHeight,
         '--menu-height': this.bigMenu ? this.bigMenuHeight : this.menuHeight,
         'padding-top': this.bigMenu ? this.maxMenuHeight : this.menuHeight,
       }

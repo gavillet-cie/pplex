@@ -78,7 +78,7 @@ export default {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    clip: rect(0, 100vw, 60vh, 0);
+    clip: rect(0, 100vw, calc(100vh - var(--max-menu-height)), 0);
 
     img {
       width: 100%;

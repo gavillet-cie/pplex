@@ -81,7 +81,7 @@ export default {
 
   &__slider {
     width: 100%;
-    height: 60vh;
+    height: calc(100vh - var(--max-menu-height));
   }
 
   &__practice-areas,
