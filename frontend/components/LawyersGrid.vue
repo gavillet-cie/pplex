@@ -2,7 +2,9 @@
   .lawyer-grid
     .lawyer-grid__item(
       v-for="(lawyer, index) in lawyers"
+      ref="lawyers"
       :key="lawyer.name"
+      :name="lawyer.name"
       @click="toggleActiveLawyerIndex(lawyer)"
     )
       .lawyer-grid__item-content
@@ -33,6 +35,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import scrollIntoView from 'smooth-scroll-into-view-if-needed'
 import { getUrl, getImageUrl } from '@/utils/api'
 import { getImageCssStyle } from '@/utils/images'
 import LawyerInfos from '@/components/LawyerInfos'
@@ -64,6 +67,15 @@ export default {
     getImageCssStyle,
     toggleActiveLawyerIndex(lawyer) {
       const index = this.lawyers?.indexOf(lawyer)
+      const element = this.$refs.lawyers.find(
+        (it) => it.getAttribute('name') === lawyer.name
+      )
+
+      scrollIntoView(element, {
+        block: 'start',
+        behavior: 'smooth',
+      })
+
       this.activeLawyerIndex = this.activeLawyerIndex === index ? -1 : index
     },
   },
