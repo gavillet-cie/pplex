@@ -15,7 +15,8 @@
 
   &__line {
     width: 100%;
-    border-top: solid 2px black;
+    border-top: solid 2px;
+    border-color: inherit;
     position: absolute;
     top: 50%;
     left: 50%;

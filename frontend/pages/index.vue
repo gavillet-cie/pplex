@@ -36,7 +36,10 @@
         :to="getUrl(`/news/${item.name}`, language)"
       )
         row-wrapper.home__news-item
-          h5 {{ item.title }}
+          span.home__news-date {{ item.date }}
+          h5.home__news-title {{ item.title }}
+          add-icon.home__news-add
+
 </template>
 
 <script>
@@ -47,6 +50,7 @@ import CenteredWrapper from '@/components/CenteredWrapper'
 import RowWrapper from '@/components/RowWrapper'
 import LawyersGrid from '@/components/LawyersGrid'
 import LawyersFilter from '@/components/LawyersFilter'
+import AddIcon from '@/components/AddIcon'
 
 export default {
   components: {
@@ -55,6 +59,7 @@ export default {
     RowWrapper,
     LawyersGrid,
     LawyersFilter,
+    AddIcon,
   },
 
   async asyncData({ params, store }) {
@@ -148,6 +153,28 @@ export default {
   &__news {
     background-color: $main-color;
     padding: $section-margin-bottom 0;
+
+    &-date {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: 1rem;
+      margin: $menu-margin 0;
+    }
+
+    &-title {
+      line-height: 1;
+    }
+
+    &-add {
+      width: 1rem;
+      height: 1rem;
+      color: white;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: $menu-margin 0;
+    }
   }
 
   &__sub-title {

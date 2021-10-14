@@ -53,7 +53,7 @@ export default {
     width: $padding-h;
 
     #{$r}--padding & {
-      padding: 0.5rem 0;
+      padding: $menu-margin 0;
     }
   }
 
@@ -61,7 +61,7 @@ export default {
     padding: 0 $padding-h;
 
     #{$r}--padding & {
-      padding: 0.5rem $padding-h;
+      padding: $menu-margin $padding-h;
     }
 
     #{$r}--border & {
@@ -75,7 +75,7 @@ export default {
       padding: $main-padding;
 
       #{$r}--padding & {
-        padding: 0.5rem $main-padding;
+        padding: $menu-margin $main-padding;
       }
     }
   }
