@@ -5,18 +5,16 @@
         path(d="M26.5,16.1c-1.3,4.7-6.1,7.4-10.7,6.1c-3.9-1.1-6.5-4.6-6.4-8.6c-0.1-4.8,3.8-8.8,8.6-8.9c4-0.1,7.5,2.6,8.6,6.4V0H0v27h26.5V16.1z")
 
     .menu__inner
+      h1.menu__title(
+        v-if="bigMenu"
+      ) PYTHON
+
       .menu__burger(
         @click="toggleMenu"
       )
         .menu__line
         .menu__line
         .menu__line
-
-      .menu__blue-panel
-
-      h1.menu__title(
-        v-if="bigMenu"
-      ) PYTHON
 
       .menu__panel(v-if="showMenu")
         h5.menu__panel-title PYTHON
@@ -137,17 +135,6 @@ export default {
     cursor: pointer;
   }
 
-  &__blue-panel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 71%;
-    z-index: 5;
-    box-shadow: 20px 10px 10px $main-color;
-    background-color: $main-color;
-  }
-
   &__line {
     width: 100%;
     border-top: solid white;
@@ -155,13 +142,11 @@ export default {
 
   &__title {
     font-family: $theinhardt;
-    position: absolute;
-    bottom: 0;
-    right: 0;
     text-transform: uppercase;
     color: white;
     padding: $menu-margin;
     font-size: 3rem;
+    line-height: 1;
   }
 
   &__panel {

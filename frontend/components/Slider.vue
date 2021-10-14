@@ -88,13 +88,15 @@ export default {
   }
 
   &__title {
-    font-family: $theinhardt;
     color: white;
-    font-size: 10rem;
+    font-size: 6rem;
     position: fixed;
-    top: 70vh;
+    top: 64vh;
     left: 50%;
+    width: 80%;
+    text-align: center;
     transform: translate(-50%, -50%);
+    line-height: 1;
   }
 }
 </style>
