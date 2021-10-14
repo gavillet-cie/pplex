@@ -9,7 +9,10 @@
           :to="getUrl(`/lawyers/${lawyer.name}`, lang)"
         )
           .lawyers__portrait
-            img(:src="getImageUrl(lawyer.portrait.url)")
+            img(
+              :src="getImageUrl(lawyer.portrait.url)"
+              :style="getImageCssStyle(lawyer.portrait)"
+            )
 
           .lawyers__info
             .lawyers__name
@@ -22,6 +25,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { get, getUrl, getImageUrl } from '@/utils/api'
+import { getImageCssStyle } from '@/utils/images'
 import CenteredWrapper from '@/components/CenteredWrapper'
 
 export default {
@@ -41,6 +45,7 @@ export default {
   methods: {
     getUrl,
     getImageUrl,
+    getImageCssStyle,
   },
 }
 </script>

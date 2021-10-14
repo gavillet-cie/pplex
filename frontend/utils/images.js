@@ -1,4 +1,7 @@
-const baseUrl = 'https://api-pplex.gavillet-cie.com'
-export const getImageUrl = (image) => {
-  return `${baseUrl}${image.url}`
+export const getImageCssStyle = (image) => {
+  const x = image?.focus.left || 50
+  const y = image?.focus.top || 50
+  return {
+    objectPosition: `${x}% ${y}%`,
+  }
 }

@@ -2,6 +2,10 @@
   .row-wrapper(
     :class="rowWrapperCssClasses"
   )
+    span.row-wrapper__title(
+      v-if="title"
+    ) {{ title }}
+
     .row-wrapper__inner
       slot
 </template>
@@ -17,6 +21,11 @@ export default {
     padding: {
       type: Boolean,
       default: true,
+    },
+
+    title: {
+      type: String,
+      default: '',
     },
   },
 
@@ -34,12 +43,25 @@ export default {
 <style lang="scss">
 .row-wrapper {
   $r: &;
+  $padding-h: 10rem;
 
-  &__inner {
-    padding: 0 10rem;
+  position: relative;
+
+  &__title {
+    position: absolute;
+    color: $secondary-color;
+    width: $padding-h;
 
     #{$r}--padding & {
-      padding: 1rem 10rem;
+      padding: 1rem 0;
+    }
+  }
+
+  &__inner {
+    padding: 0 $padding-h;
+
+    #{$r}--padding & {
+      padding: 1rem $padding-h;
     }
 
     #{$r}--border & {

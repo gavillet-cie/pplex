@@ -8,6 +8,7 @@ echo $apiRenderer->renderJSONFromModel([
   "url" => ["field" => "url"],
   "firstName" => ["field" => "lawyer_first_name"],
   "lastName" => ["field" => "lawyer_last_name"],
+  "lawyerTitle" => ["field" => "lawyer_title"],
   "portrait" => ["field" => "lawyer_portrait"],
   "email" => ["field" => "lawyer_email"],
   "phone" => ["field" => "lawyer_phone"],
@@ -19,11 +20,12 @@ echo $apiRenderer->renderJSONFromModel([
     "field" => "lawyer_languages",
     "type" => "title-array",
   ],
-  "bar_admission" => ["field" => "lawyer_bar_admission"],
+  "barAdmission" => ["field" => "lawyer_bar_admission"],
   "practiceAreas" => [
     "field" => "lawyer_practice_areas",
     "type" => "title-array",
   ],
+  "description" => ["field" => "lawyer_description"],
   "education" => [
     "field" => "lawyer_education",
     "type" => "title-array",
@@ -38,7 +40,11 @@ echo $apiRenderer->renderJSONFromModel([
   ],
   "rankings" => [
     "field" => "lawyer_rankings",
-    "type" => "title-array",
+    "type" => "nested",
+    "model" => [
+      "year" => ["field" => "lawyer_ranking"],
+      "image" => ["field" => "lawyer_ranking_image"]
+    ]
   ],
   "selectedPublications" => [
     "field" => "lawyer_selected_publications",

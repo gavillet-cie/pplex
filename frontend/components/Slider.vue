@@ -8,11 +8,16 @@
       :key="slideIndex"
     )
       span.slider__title {{ slide.title }}
-      img(:src="getImageUrl(slide.image)")
+      img(
+        :src="getImageUrl(slide.image.url)"
+        :style="getImageCssStyle(slide.image)"
+      )
 </template>
 
 <script>
-import { getImageUrl } from '@/utils/images'
+import { getImageUrl } from '@/utils/api'
+import { getImageCssStyle } from '@/utils/images'
+
 export default {
   props: {
     slides: {
@@ -44,6 +49,7 @@ export default {
 
   methods: {
     getImageUrl,
+    getImageCssStyle,
   },
 }
 </script>
