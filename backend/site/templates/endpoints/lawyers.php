@@ -15,7 +15,22 @@ echo $apiRenderer->renderJSONFromModel([
       "firstName" => ["field" => "lawyer_first_name"],
       "lastName" => ["field" => "lawyer_last_name"],
       "portrait" => ["field" => "lawyer_portrait"],
-      "status" => ["field" => "lawyer_status"]
+      "status" => ["field" => "lawyer_status"],
+      "lawyerTitle" => ["field" => "lawyer_title"],
+      "portrait" => ["field" => "lawyer_portrait"],
+      "email" => ["field" => "lawyer_email"],
+      "phone" => ["field" => "lawyer_phone"],
+      "fax" => ["field" => "lawyer_fax"],
+      "entityAndAddress" => ["field" => "lawyer_entity_and_address"],
+      "languages" => [
+        "field" => "lawyer_languages",
+        "type" => "title-array",
+      ],
+      "barAdmission" => ["field" => "lawyer_bar_admission"],
+      "practiceAreas" => [
+        "field" => "lawyer_practice_areas",
+        "type" => "title-array",
+      ],
     ]
   ]
 ], $page);
