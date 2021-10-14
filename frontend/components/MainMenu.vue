@@ -52,8 +52,17 @@ export default {
   },
 
   async fetch() {
+    const selectedSections = [
+      'about-us',
+      'lawyers',
+      'our-practice-areas',
+      'news',
+      'careers',
+      'contact',
+    ]
+
     const { sections } = await get('/', this.lang)
-    this.sections = sections
+    this.sections = sections.filter((it) => selectedSections.includes(it.name))
   },
 
   computed: {

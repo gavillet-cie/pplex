@@ -9,7 +9,8 @@
 
       .practice-areas__grid
         nuxt-link.practice-areas__item(
-          v-for="area in practiceAreas"
+          v-for="(area, index) in practiceAreas"
+          :key="index"
           :to="getUrl(`/our-practice-areas/${area.name}`)"
         )
           .practice-areas__item-inner

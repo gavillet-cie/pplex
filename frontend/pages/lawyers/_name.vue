@@ -166,6 +166,7 @@ export default {
 <style lang="scss">
 .lawyer {
   position: relative;
+  padding-bottom: $section-margin-bottom;
 
   &__testimonials {
     position: fixed;
