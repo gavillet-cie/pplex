@@ -110,7 +110,6 @@ export default {
     const { language, name } = params
     store.commit('setBigMenu', true)
     const lawyer = await get(`lawyers/${name}`, language)
-    console.log(lawyer)
     return { lawyer, ...lawyer }
   },
 

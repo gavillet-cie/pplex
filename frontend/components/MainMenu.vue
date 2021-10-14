@@ -187,10 +187,18 @@ export default {
       display: flex;
       flex-direction: column;
       width: 50%;
+
+      span {
+        color: white;
+      }
     }
 
     &-languages {
       font-size: 1rem;
+
+      a {
+        color: white;
+      }
     }
 
     &-language {
