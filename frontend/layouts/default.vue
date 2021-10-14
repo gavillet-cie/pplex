@@ -59,7 +59,11 @@ export default {
   methods: {
     updateMenuHeight() {
       if (process.client && this.bigMenu) {
-        this.bigMenuHeight = `calc(${this.maxMenuHeight} - ${window.scrollY}px)`
+        const max = window.innerHeight * 0.4
+        this.bigMenuHeight = `calc(${this.maxMenuHeight} - ${Math.min(
+          max,
+          window.scrollY
+        )}px)`
       }
     },
   },

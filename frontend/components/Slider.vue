@@ -62,12 +62,12 @@ export default {
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
 
-  .slider-enter-active,
-  .slider-leave-active {
+  &-enter-active,
+  &-leave-active {
     transition: all 1s;
   }
-  .slider-enter,
-  .slider-leave-to {
+  &-enter,
+  &-leave-to {
     opacity: 0;
   }
 

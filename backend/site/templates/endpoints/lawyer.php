@@ -58,4 +58,8 @@ echo $apiRenderer->renderJSONFromModel([
     "field" => "lawyer_cases",
     "type" => "title-array",
   ],
+  "testimonials" => [
+    "field" => "lawyer_testimonials",
+    "type" => "title-array",
+  ]
 ], $page);
