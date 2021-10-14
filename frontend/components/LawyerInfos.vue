@@ -34,8 +34,9 @@
         v-if="showPracticeAreas"
       )
         span.lawyer-infos__section-title Domaines de pratique
-        span.lawyer-infos__practice-area(
+        nuxt-link.lawyer-infos__practice-area(
           v-for="area in practiceAreas"
+          :to="getUrl(`/our-practice-areas/${area.name}`)"
         ) {{ area.title }}
 
       .lawyer-infos__section(
@@ -61,7 +62,7 @@
 
 <script>
 import { formatText } from '@/utils/text'
-import { getImageUrl } from '@/utils/api'
+import { getImageUrl, getUrl } from '@/utils/api'
 
 export default {
   props: {
@@ -148,6 +149,7 @@ export default {
   },
 
   methods: {
+    getUrl,
     formatText,
     getImageUrl,
   },
