@@ -36,7 +36,7 @@
         span.lawyer-infos__section-title Domaines de pratique
         span.lawyer-infos__practice-area(
           v-for="area in practiceAreas"
-        ) {{ area }}
+        ) {{ area.title }}
 
       .lawyer-infos__section(
         v-if="showLanguages"
