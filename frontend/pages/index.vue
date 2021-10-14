@@ -16,6 +16,15 @@
         row-wrapper.home__practice-area
           h5 {{ practiceArea.title }}
 
+    centered-wrapper.home__lawyers
+      lawyers-filter(
+        @input="onFilter"
+      )
+      lawyers-grid(
+        v-if="showLawyers"
+        :lawyers="filteredLawyers"
+      )
+
     centered-wrapper.home__news
       row-wrapper.home__sub-title.home--border-white
         h5 Nouvelles récentes
@@ -31,29 +40,47 @@
 
 <script>
 import { get, getUrl } from '@/utils/api'
+import { showLawyers, filterLawyers } from '@/utils/lawyers'
 import Slider from '@/components/Slider'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import RowWrapper from '@/components/RowWrapper'
+import LawyersGrid from '@/components/LawyersGrid'
+import LawyersFilter from '@/components/LawyersFilter'
 
 export default {
-  components: { Slider, CenteredWrapper, RowWrapper },
+  components: {
+    Slider,
+    CenteredWrapper,
+    RowWrapper,
+    LawyersGrid,
+    LawyersFilter,
+  },
 
   async asyncData({ params, store }) {
     const { language } = params
 
     store.commit('setBigMenu', true)
 
-    const [{ homeSlider }, { practiceAreas }, { news }] = await Promise.all([
-      get('/', language),
-      get('our-practice-areas', language),
-      get('news', language),
-    ])
+    const [{ homeSlider }, { practiceAreas }, { news }, { lawyers }] =
+      await Promise.all([
+        get('/', language),
+        get('our-practice-areas', language),
+        get('news', language),
+        get('lawyers', language),
+      ])
 
     return {
       homeSlider,
       practiceAreas,
       news,
       language,
+      lawyers,
+    }
+  },
+
+  data() {
+    return {
+      filters: null,
     }
   },
 
@@ -61,10 +88,21 @@ export default {
     slides() {
       return this.homeSlider || []
     },
+
+    showLawyers() {
+      return showLawyers(this.filters)
+    },
+
+    filteredLawyers() {
+      return filterLawyers(this.lawyers, this.filters)
+    },
   },
 
   methods: {
     getUrl,
+    onFilter(filters) {
+      this.filters = filters
+    },
   },
 }
 </script>
@@ -92,6 +130,7 @@ export default {
   &__practice-area,
   &__news-item {
     font-size: $medium-font-size;
+    color: black;
   }
 
   &__news-item {

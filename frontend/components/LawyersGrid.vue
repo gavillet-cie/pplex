@@ -74,7 +74,7 @@ export default {
 
   display: flex;
   flex-wrap: wrap;
-  margin: $menu-margin * 0.5;
+  margin: -$menu-margin * 0.5;
 
   &__item {
     flex: 0 0 auto;

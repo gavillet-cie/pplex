@@ -14,6 +14,10 @@ echo $apiRenderer->renderJSONFromModel([
       "name" => ["field" => "name"],
       "firstName" => ["field" => "lawyer_first_name"],
       "lastName" => ["field" => "lawyer_last_name"],
+      "location" => [
+        "field" => "lawyer_location",
+        "type" => "simple-reference"
+      ],
       "portrait" => ["field" => "lawyer_portrait"],
       "status" => ["field" => "lawyer_status"],
       "lawyerTitle" => ["field" => "lawyer_title"],
@@ -29,7 +33,11 @@ echo $apiRenderer->renderJSONFromModel([
       "barAdmission" => ["field" => "lawyer_bar_admission"],
       "practiceAreas" => [
         "field" => "lawyer_practice_areas",
-        "type" => "title-array",
+        "type" => "nested",
+        "model" => [
+          "title" => ["field" => "title"],
+          "name" => ["field" => "name"],
+        ]
       ],
     ]
   ]

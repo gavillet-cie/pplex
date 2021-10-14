@@ -94,6 +94,12 @@ a {
   color: $link-color;
 }
 
+input[type='text'] {
+  border: none;
+  background-color: lightgray;
+  padding: 0.5rem;
+}
+
 .nuxt-link-active {
   color: $secondary-color !important;
 }

@@ -6,10 +6,9 @@
     if (isset($field) && isset($field->title)) {
       return [
         "title" => $field->title,
-        "slug" => $field->name
+        "name" => $field->name
       ];
     }
 
     return NULL;
   }
-?>

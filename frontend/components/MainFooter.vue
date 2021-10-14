@@ -77,10 +77,6 @@ export default {
     padding: 1rem 0;
 
     input {
-      border: none;
-      background-color: lightgray;
-      padding: 0.5rem;
-      color: $link-color;
       margin-right: 1rem;
       width: $wrapper-max-width * 0.6;
     }
