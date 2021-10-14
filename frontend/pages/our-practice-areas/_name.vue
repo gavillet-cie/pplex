@@ -13,7 +13,7 @@
         v-if="filteredLawyers.length > 0"
       )
         row-wrapper.practice-area__sub-title {{ subTitle }}
-        lawyers-grid(
+        lawyers-grid.practice-area__lawyers(
           :lawyers="filteredLawyers"
         )
 </template>
@@ -65,11 +65,19 @@ export default {
     font-size: $sub-title-font-size;
     line-height: 1;
     color: $secondary-color;
-    padding: 2rem 0;
+    padding: $section-margin-bottom * 0.5 0;
+  }
+
+  &__description {
+    padding-bottom: $section-margin-bottom;
   }
 
   &__sub-title {
     font-size: $medium-font-size;
+  }
+
+  &__lawyers {
+    margin-top: $menu-margin;
   }
 }
 </style>

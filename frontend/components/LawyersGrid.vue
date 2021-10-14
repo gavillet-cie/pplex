@@ -24,6 +24,7 @@
         :to="getUrl(`/lawyers/${lawyer.name}`, lang)"
         @click.native.stop
       )
+        add-icon.lawyer-grid__infos-add
         lawyer-infos(
           v-bind="lawyer"
           :showPortrait="true"
@@ -35,9 +36,10 @@ import { mapGetters } from 'vuex'
 import { getUrl, getImageUrl } from '@/utils/api'
 import { getImageCssStyle } from '@/utils/images'
 import LawyerInfos from '@/components/LawyerInfos'
+import AddIcon from '@/components/AddIcon'
 
 export default {
-  components: { LawyerInfos },
+  components: { LawyerInfos, AddIcon },
 
   props: {
     lawyers: {
@@ -125,6 +127,15 @@ export default {
     margin-bottom: 1rem;
     position: relative;
     z-index: 5;
+
+    &-add {
+      width: 3rem;
+      height: 3rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.5rem;
+    }
 
     &:hover {
       background-color: rgb(245, 245, 245);

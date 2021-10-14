@@ -20,7 +20,8 @@
       lawyers-filter(
         @input="onFilter"
       )
-      lawyers-grid(
+
+      lawyers-grid.home__lawyers-grid(
         v-if="showLawyers"
         :lawyers="filteredLawyers"
       )
@@ -122,9 +123,8 @@ export default {
     height: calc(100vh - var(--max-menu-height));
   }
 
-  &__practice-areas,
-  &__news {
-    padding: 5rem 0;
+  &__practice-areas {
+    margin: $section-margin-bottom 0;
   }
 
   &__practice-area,
@@ -133,12 +133,21 @@ export default {
     color: black;
   }
 
+  &__lawyers {
+    margin-bottom: $section-margin-bottom;
+  }
+
+  &__lawyers-grid {
+    margin-top: $menu-margin;
+  }
+
   &__news-item {
     color: white;
   }
 
   &__news {
     background-color: $main-color;
+    padding: $section-margin-bottom 0;
   }
 
   &__sub-title {

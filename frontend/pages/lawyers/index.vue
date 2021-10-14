@@ -2,10 +2,12 @@
   .lawyers
     centered-wrapper
       h3.lawyers__sub-title Rencontrez nos avocats
-      lawyers-filter(
+
+      lawyers-filter.lawyers__filters(
         @input="onFilter"
       )
-      lawyers-grid(
+
+      lawyers-grid.lawyers__grid(
         :lawyers="filteredLawyers"
       )
 </template>
@@ -60,7 +62,18 @@ export default {
     text-align: center;
     font-size: 4rem;
     color: $secondary-color;
-    padding: 2rem 0;
+    padding: $section-margin-bottom * 0.5 0;
+  }
+
+  &__filters {
+    position: sticky;
+    top: calc(4rem - $menu-margin);
+    z-index: 10;
+    background-color: white;
+  }
+
+  &__grid {
+    margin-top: $menu-margin;
   }
 }
 </style>
