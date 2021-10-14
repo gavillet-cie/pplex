@@ -2,19 +2,24 @@
   .lawyers
     centered-wrapper
       h3.lawyers__sub-title Rencontrez nos avocats
+      lawyers-filter(
+        @input="onFilter"
+      )
       lawyers-grid(
-        :lawyers="lawyers"
+        :lawyers="filteredLawyers"
       )
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
+import { filterLawyers } from '@/utils/lawyers'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import LawyersGrid from '@/components/LawyersGrid'
+import LawyersFilter from '@/components/LawyersFilter'
 
 export default {
-  components: { CenteredWrapper, LawyersGrid },
+  components: { CenteredWrapper, LawyersGrid, LawyersFilter },
 
   async asyncData({ store, params }) {
     const { language } = params
@@ -26,18 +31,25 @@ export default {
   data() {
     return {
       width: null,
+      filters: null,
     }
   },
 
   computed: {
     ...mapGetters(['lang']),
-    items() {
-      return this.lawyers || []
+    filteredLawyers() {
+      return filterLawyers(this.lawyers, this.filters)
     },
   },
 
   mounted() {
     this.width = window.innerWidth
+  },
+
+  methods: {
+    onFilter(filters) {
+      this.filters = filters
+    },
   },
 }
 </script>
