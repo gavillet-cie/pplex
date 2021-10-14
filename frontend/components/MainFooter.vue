@@ -37,6 +37,8 @@ export default {
 
 <style lang="scss">
 .main-footer {
+  overflow: hidden;
+
   &__content {
     padding: 1rem;
     background-color: $main-color;
