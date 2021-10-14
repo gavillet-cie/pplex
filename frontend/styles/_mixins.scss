@@ -1,0 +1,19 @@
+@import './variables';
+
+@mixin sub-title {
+  font-size: $sub-title-font-size;
+  color: $secondary-color;
+  line-height: 1;
+}
+
+@mixin posts {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -$menu-margin * 0.5;
+  padding: $menu-margin 0;
+}
+
+@mixin post {
+  width: 50%;
+  padding: $menu-margin * 0.5;
+}

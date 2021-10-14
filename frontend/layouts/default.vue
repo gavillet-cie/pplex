@@ -78,6 +78,7 @@ export default {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  line-height: $main-line-height;
 
   &__content {
     flex: 1 1 auto;

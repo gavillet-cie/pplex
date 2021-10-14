@@ -62,7 +62,9 @@ export default {
     ]
 
     const { sections } = await get('/', this.lang)
-    this.sections = sections.filter((it) => selectedSections.includes(it.name))
+    this.sections = [
+      ...sections.filter((it) => selectedSections.includes(it.name)),
+    ]
   },
 
   computed: {
