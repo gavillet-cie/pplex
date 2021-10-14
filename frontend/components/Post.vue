@@ -1,13 +1,22 @@
 <template lang="pug">
   nuxt-link.post(
-    :to="getUrl(`/news/${name}`)"
+    :to="getUrl(`/${mode}/${name}`)"
   )
-    .post__inner
+    .post__inner(
+      v-if="mode === 'news'"
+    )
       h5.post__title {{ title }}
       span.post__infos {{ infos }}
       .post__content(
         v-html="content"
       )
+    .post__inner(
+      v-else
+    )
+      h5.post__title {{ title }}
+      span.post__practice-area Practice area: {{ practiceArea.title }}
+      span.post__date Publication date: {{ getDate(date, lang) }}
+      span.post__authors Author(s): {{ authors }}
 </template>
 
 <script>
@@ -17,6 +26,11 @@ import { getDate } from '@/utils/dates'
 
 export default {
   props: {
+    mode: {
+      type: String,
+      default: 'news',
+    },
+
     title: {
       type: String,
       default: '',
@@ -40,6 +54,11 @@ export default {
     content: {
       type: String,
       default: '',
+    },
+
+    practiceArea: {
+      type: Object,
+      default: () => ({}),
     },
   },
 

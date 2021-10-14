@@ -1,0 +1,57 @@
+<template lang="pug">
+  .publication
+    centered-wrapper
+      .publication__file
+        iframe(
+          :src="getImageUrl(file.url)"
+        )
+</template>
+
+<script>
+import { get, getImageUrl } from '@/utils/api'
+import CenteredWrapper from '@/components/CenteredWrapper'
+import Post from '@/components/Post'
+import RowWrapper from '@/components/RowWrapper'
+
+export default {
+  components: { CenteredWrapper, RowWrapper, Post },
+
+  async asyncData({ store, params }) {
+    const { language, name } = params
+    store.commit('setBigMenu', false)
+    const [publication] = await Promise.all([
+      get(`/publications/${name}`, language),
+    ])
+
+    return {
+      ...publication,
+    }
+  },
+
+  methods: {
+    getImageUrl,
+  },
+}
+</script>
+
+<style lang="scss">
+@import '../../styles/mixins';
+
+.publication {
+  &__file {
+    position: relative;
+    width: 100%;
+    padding-top: 141.42%;
+    margin: $section-margin-bottom 0;
+  }
+
+  iframe {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+</style>

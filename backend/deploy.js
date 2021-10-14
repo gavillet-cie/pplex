@@ -14,7 +14,6 @@ const config = {
   remoteRoot: FTP_ROOT,
   include: [
     "config.php",
-    ".htaccess",
     "templates/*.php",
     "templates/utils/*",
     "templates/utils/*/**",

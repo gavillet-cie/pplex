@@ -93,7 +93,7 @@ ErrorDocument 404 /index.php
 <IfModule mod_headers.c>
   # prevent site from being loaded in an iframe on another site
   # you will need to remove this one if you want to allow external iframes
-  Header always append X-Frame-Options SAMEORIGIN 
+  Header always append X-Frame-Options * 
 
   # To prevent cross site scripting (IE8+ proprietary)
   Header set X-XSS-Protection "1; mode=block"
