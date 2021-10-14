@@ -33,7 +33,7 @@ export default {
 
   async asyncData({ store, params }) {
     const { language } = params
-    store.commit('setBigMenu', false)
+    store.commit('setBigMenu', true)
     const lawyers = await get('lawyers', language)
     return lawyers
   },

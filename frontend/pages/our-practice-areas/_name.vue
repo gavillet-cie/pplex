@@ -23,7 +23,7 @@ export default {
 
   async asyncData({ store, params }) {
     const { language, name } = params
-    store.commit('setBigMenu', false)
+    store.commit('setBigMenu', true)
     const area = await get(`/our-practice-areas/${name}`, language)
     return area
   },
