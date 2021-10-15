@@ -40,16 +40,15 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../styles/mixins';
+
 .practice-areas {
   &__title {
-    font-size: $sub-title-font-size;
-    line-height: 1;
-    color: $secondary-color;
-    padding-top: $section-margin-bottom * 0.5;
+    @include sub-title;
   }
 
   &__description {
-    padding: $section-margin-bottom 0;
+    padding: 0 0 $section-margin-bottom;
   }
 
   &__grid {

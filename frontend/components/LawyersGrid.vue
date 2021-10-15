@@ -1,36 +1,37 @@
 <template lang="pug">
   .lawyer-grid
-    .lawyer-grid__item(
-      v-for="(lawyer, index) in lawyers"
-      ref="lawyers"
-      :key="lawyer.name"
-      :name="lawyer.name"
-      @click="toggleActiveLawyerIndex(lawyer)"
-    )
-      .lawyer-grid__item-content
-        .lawyer-grid__portrait
-          img(
-            :src="getImageUrl(lawyer.portrait.url)"
-            :style="getImageCssStyle(lawyer.portrait)"
-          )
-
-        .lawyer-grid__info
-          .lawyer-grid__name
-            span {{ lawyer.title }}
-
-          .lawyer-grid__status
-            span {{ lawyer.status }}
-
-      nuxt-link.lawyer-grid__infos(
-        v-if="index === activeLawyerIndex"
-        :to="getUrl(`/lawyers/${lawyer.name}`, lang)"
-        @click.native.stop
+    .lawyer-grid__items
+      .lawyer-grid__item(
+        v-for="(lawyer, index) in lawyers"
+        ref="lawyers"
+        :key="lawyer.name"
+        :name="lawyer.name"
+        @click="toggleActiveLawyerIndex(lawyer)"
       )
-        add-icon.lawyer-grid__infos-add
-        lawyer-infos(
-          v-bind="lawyer"
-          :showPortrait="true"
+        .lawyer-grid__item-content
+          .lawyer-grid__portrait
+            img(
+              :src="getImageUrl(lawyer.portrait.url)"
+              :style="getImageCssStyle(lawyer.portrait)"
+            )
+
+          .lawyer-grid__info
+            .lawyer-grid__name
+              span {{ lawyer.title }}
+
+            .lawyer-grid__status
+              span {{ lawyer.status }}
+
+        nuxt-link.lawyer-grid__infos(
+          v-if="index === activeLawyerIndex"
+          :to="getUrl(`/lawyers/${lawyer.name}`, lang)"
+          @click.native.stop
         )
+          add-icon.lawyer-grid__infos-add
+          lawyer-infos(
+            v-bind="lawyer"
+            :showPortrait="true"
+          )
 </template>
 
 <script>
@@ -86,9 +87,11 @@ export default {
 .lawyer-grid {
   $l: &;
 
-  display: flex;
-  flex-wrap: wrap;
-  margin: -$menu-margin * 0.5;
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -$menu-margin * 0.5;
+  }
 
   &__item {
     flex: 0 0 auto;

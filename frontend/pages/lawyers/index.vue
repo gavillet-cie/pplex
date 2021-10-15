@@ -72,7 +72,7 @@ export default {
   }
 
   &__grid {
-    margin-top: $menu-margin * 0.5;
+    margin-top: $menu-margin;
   }
 
   @media screen and (max-width: 900px) {

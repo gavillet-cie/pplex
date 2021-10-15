@@ -37,7 +37,7 @@ export default {
 
   async asyncData({ store, params }) {
     const { language } = params
-    store.commit('setBigMenu', false)
+    store.commit('setBigMenu', true)
     const about = await get('/about-us', language)
     return about
   },
@@ -45,6 +45,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../styles/mixins';
+
 .about-us {
   &__title,
   &__section-title {
@@ -52,8 +54,9 @@ export default {
   }
 
   &__title {
-    font-size: $sub-title-font-size;
-    padding-top: 2rem;
+    @include sub-title;
+
+    text-align: left;
   }
 
   &__keyword,
@@ -62,7 +65,7 @@ export default {
   }
 
   &__keywords {
-    padding: 2rem 0;
+    padding: 0 0 $section-margin-bottom * 0.5;
   }
 }
 </style>

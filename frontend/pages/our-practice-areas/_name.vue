@@ -11,15 +11,14 @@
           v-html="description"
         )
 
-      template(
-        v-if="filteredLawyers.length > 0"
-      )
-        row-wrapper.practice-area__sub-title(
+      row-wrapper
+        .practice-area__lawyers-test(
           v-html="subTitle"
         )
-        lawyers-grid.practice-area__lawyers(
-          :lawyers="filteredLawyers"
-        )
+
+      lawyers-grid.practice-area__lawyers(
+        :lawyers="filteredLawyers"
+      )
 </template>
 
 <script>
@@ -64,19 +63,18 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../styles/mixins';
+
 .practice-area {
   &__title {
-    font-size: $sub-title-font-size;
-    line-height: 1;
-    color: $secondary-color;
-    padding: $section-margin-bottom * 0.5 0;
+    @include sub-title;
   }
 
   &__description {
     padding-bottom: $section-margin-bottom;
   }
 
-  &__sub-title {
+  &__lawyers-test {
     font-size: $medium-font-size;
   }
 
