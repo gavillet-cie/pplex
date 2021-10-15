@@ -14,7 +14,7 @@
           :to="getUrl(`/our-practice-areas/${area.name}`)"
         )
           .practice-areas__item-inner
-            span {{ area.title }}
+            span(v-html="area.title")
 </template>
 
 <script>
