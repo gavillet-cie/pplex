@@ -5,7 +5,7 @@
     tabindex="0"
   )
     .dropdown__value
-      span {{ selectedOption ? selectedOption.label : placeholder }}
+      span(v-html="selectedOption ? selectedOption.label : placeholder")
 
     .dropdown__options(
       v-show="showOptions"
@@ -16,7 +16,7 @@
         :class="getOptionCssClass(option)"
         @click="selectOption(option)"
       )
-        span {{ option.label }}
+        span(v-html="option.label")
 </template>
 
 <script>
