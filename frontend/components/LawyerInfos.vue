@@ -171,6 +171,7 @@ export default {
     padding-right: 0.5rem;
 
     img {
+      display: flex;
       width: 100%;
     }
   }
@@ -196,6 +197,12 @@ export default {
 
     &-title {
       color: $secondary-color;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    &__portrait {
+      display: none;
     }
   }
 }

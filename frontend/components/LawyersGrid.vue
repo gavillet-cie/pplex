@@ -103,8 +103,8 @@ export default {
       &:nth-child(#{$i}) #{$l}__infos {
         $index: ($i - 1) % 4;
 
-        margin-left: -100% * $index;
-        margin-right: -100% * (3 - $index);
+        margin-left: calc(#{-100% * $index} + #{$menu-margin * 0.5});
+        margin-right: calc(#{-100% * (3 - $index)} + #{$menu-margin * 0.5});
       }
     }
   }
@@ -126,7 +126,7 @@ export default {
   }
 
   &__info {
-    padding: $menu-margin 0 2rem 0;
+    padding: $main-padding 0;
     line-height: 1.3;
   }
 
@@ -134,19 +134,19 @@ export default {
     display: block;
     border-top: solid black 2px;
     border-bottom: solid black 2px;
-    padding: $menu-margin * 0.5;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
+    padding: $main-padding 0;
+    margin-bottom: $main-padding - $menu-margin * 0.5;
     position: relative;
     z-index: 5;
 
     &-add {
-      width: 3rem;
-      height: 3rem;
+      width: 2rem;
+      height: 2rem;
       position: absolute;
       top: 0;
       right: 0;
-      padding: 0.5rem;
+      margin-top: $main-padding;
+      color: black;
     }
 
     &:hover {
@@ -155,6 +155,8 @@ export default {
   }
 
   @media screen and (max-width: 900px) {
+    padding: 0 $menu-margin;
+
     &__item {
       width: 50%;
 
@@ -162,8 +164,8 @@ export default {
         &:nth-child(#{$i}) #{$l}__infos {
           $index: ($i - 1) % 2;
 
-          margin-left: -100% * $index;
-          margin-right: -100% * (1 - $index);
+          margin-left: calc(#{-100% * $index} + #{$menu-margin * 0.5});
+          margin-right: calc(#{-100% * (1 - $index)} + #{$menu-margin * 0.5});
         }
       }
     }

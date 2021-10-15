@@ -4,6 +4,7 @@
   font-size: $sub-title-font-size;
   color: $secondary-color;
   line-height: 1;
+  padding: $section-margin-bottom * 0.5 0;
 }
 
 @mixin posts {

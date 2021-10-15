@@ -57,12 +57,11 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../styles/mixins';
+
 .lawyers {
   &__sub-title {
-    text-align: center;
-    font-size: 4rem;
-    color: $secondary-color;
-    padding: $section-margin-bottom * 0.5 0;
+    @include sub-title;
   }
 
   &__filters {
@@ -74,6 +73,12 @@ export default {
 
   &__grid {
     margin-top: $menu-margin;
+  }
+
+  @media screen and (max-width: 900px) {
+    &__filters {
+      padding: 0 $menu-margin;
+    }
   }
 }
 </style>
