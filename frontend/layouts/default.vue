@@ -1,8 +1,9 @@
 <template lang="pug">
   .app(
     :style="appCssStyle"
+    :class="appCssClasses"
   )
-    main-menu
+    main-menu.app__menu
     nuxt.app__content(:style="contentCssStyle")
     main-footer(:style="contentCssStyle")
 </template>
@@ -18,6 +19,7 @@ export default {
 
   data() {
     return {
+      routeIsChanging: false,
       maxMenuHeight: '28vh',
       bigMenuHeight: '28vh',
       menuHeight: '4rem',
@@ -36,6 +38,12 @@ export default {
         '--max-menu-height': this.maxMenuHeight,
         '--menu-height': this.bigMenu ? this.bigMenuHeight : this.menuHeight,
         'padding-top': this.bigMenu ? this.maxMenuHeight : this.menuHeight,
+      }
+    },
+
+    appCssClasses() {
+      return {
+        'app--menu-transition': this.routeIsChanging,
       }
     },
 
@@ -58,6 +66,11 @@ export default {
         get('labels', this.lang).then(({ labels }) => {
           this.$store.commit('setLabels', labels)
         })
+
+        this.routeIsChanging = true
+        setTimeout(() => {
+          this.routeIsChanging = false
+        }, 500)
       },
     },
   },
@@ -84,11 +97,28 @@ export default {
 <style lang="scss">
 @import url('../styles/main.scss');
 
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0 !important;
+}
+
 .app {
+  $a: &;
+
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   line-height: $main-line-height;
+
+  &__menu {
+    #{$a}--menu-transition & {
+      transition: height 0.3s;
+    }
+  }
 
   &__content {
     flex: 1 1 auto;
