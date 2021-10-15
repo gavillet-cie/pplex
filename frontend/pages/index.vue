@@ -6,7 +6,9 @@
 
     centered-wrapper.home__practice-areas
       row-wrapper.home__sub-title.home--border-black
-        h5 {{ getLabel('ourPracticeAreas', labels) }}
+        h5(
+          v-html="getLabel('ourPracticeAreas', labels)"
+        )
 
       nuxt-link(
         v-for="practiceArea in practiceAreas"
@@ -14,7 +16,9 @@
         :to="getUrl(`/our-practice-areas/${practiceArea.name}`, language)"
       )
         row-wrapper.home__practice-area
-          h5 {{ practiceArea.title }}
+          h5(
+            v-html="practiceArea.title"
+          )
 
     centered-wrapper.home__lawyers
       lawyers-filter(

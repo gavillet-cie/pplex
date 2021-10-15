@@ -4,7 +4,9 @@
       row-wrapper(
         :padding="false"
       )
-        h3.practice-area__title {{ title }}
+        h3.practice-area__title(
+          v-html="title"
+        )
         .practice-area__description(
           v-html="description"
         )
@@ -12,7 +14,9 @@
       template(
         v-if="filteredLawyers.length > 0"
       )
-        row-wrapper.practice-area__sub-title {{ subTitle }}
+        row-wrapper.practice-area__sub-title(
+          v-html="subTitle"
+        )
         lawyers-grid.practice-area__lawyers(
           :lawyers="filteredLawyers"
         )
