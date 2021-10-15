@@ -108,7 +108,9 @@ a {
 input[type='text'] {
   border: none;
   background-color: lightgray;
-  padding: 0.5rem;
+  padding: $main-padding;
+  font-size: 1rem;
+  font-family: inherit;
 }
 
 .nuxt-link-active {

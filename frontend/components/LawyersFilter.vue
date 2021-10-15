@@ -96,16 +96,20 @@ export default {
   &__title {
     display: block;
     color: $secondary-color;
-    padding: 0.5rem 0;
+    padding: $main-padding 0;
   }
 
   &__select {
     width: 25%;
     flex: 0 0 auto;
-    padding: 0.5rem 0;
+    padding: $main-padding 0;
     display: block;
     font-size: 1rem;
     color: black;
+
+    & + & {
+      margin-right: $menu-margin * 0.5;
+    }
   }
 
   &__filters {
@@ -115,7 +119,7 @@ export default {
     border-bottom: solid 2px black;
 
     input {
-      flex: 0 0 auto;
+      flex: 1 1 auto;
       width: 50%;
     }
   }
