@@ -21,7 +21,7 @@
 
         .menu__panel-sections
           nuxt-link.menu__panel-section(
-            v-for="section in sections"
+            v-for="section in selectedSections"
             :key="section.name"
             :to="getUrl(`/${section.name}`, lang)"
           )
@@ -52,23 +52,24 @@ export default {
   },
 
   async fetch() {
-    const selectedSections = [
-      'about-us',
-      'lawyers',
-      'our-practice-areas',
-      'news',
-      'careers',
-      'contact',
-    ]
-
     const { sections } = await get('/', this.lang)
-    this.sections = [
-      ...sections.filter((it) => selectedSections.includes(it.name)),
-    ]
+    this.sections = sections
   },
 
   computed: {
     ...mapGetters(['lang', 'showMenu', 'bigMenu']),
+    selectedSections() {
+      const selectedSections = [
+        'about-us',
+        'lawyers',
+        'our-practice-areas',
+        'news',
+        'careers',
+        'contact',
+      ]
+
+      return this.sections.filter((it) => selectedSections.includes(it.name))
+    },
   },
 
   watch: {
