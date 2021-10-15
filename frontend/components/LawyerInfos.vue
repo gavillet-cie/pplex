@@ -36,9 +36,10 @@
         span.lawyer-infos__section-title {{ getLabel('practiceAreas', labels) }}
         nuxt-link.lawyer-infos__practice-area(
           v-for="(area, index) in practiceAreas"
+          v-html="area.title"
           :key="index"
           :to="getUrl(`/our-practice-areas/${area.name}`)"
-        ) {{ area.title }}
+        )
 
       .lawyer-infos__section(
         v-if="showLanguages"
