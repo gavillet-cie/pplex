@@ -204,5 +204,17 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 900px) {
+    &__panel {
+      position: fixed;
+      top: 4rem;
+      right: 0;
+
+      &-title {
+        display: none;
+      }
+    }
+  }
 }
 </style>

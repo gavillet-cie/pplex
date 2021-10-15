@@ -48,6 +48,7 @@ export default {
   position: relative;
 
   &__title {
+    display: block;
     position: absolute;
     color: $secondary-color;
     width: $padding-h;
@@ -71,6 +72,16 @@ export default {
   }
 
   @media screen and (max-width: 900px) {
+    &__title {
+      position: relative;
+      width: 100%;
+      padding: $main-padding $main-padding 0;
+
+      #{$r}--padding & {
+        padding: $main-padding $main-padding 0;
+      }
+    }
+
     &__inner {
       padding: $main-padding;
 

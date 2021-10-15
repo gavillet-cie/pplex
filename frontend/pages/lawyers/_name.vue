@@ -220,5 +220,11 @@ export default {
       margin: auto;
     }
   }
+
+  @media screen and (max-width: 900px) {
+    &__testimonials {
+      padding: $main-padding;
+    }
+  }
 }
 </style>
