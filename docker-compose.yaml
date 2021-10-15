@@ -1,0 +1,12 @@
+services:
+  reverse-proxy:
+    image: reverse-proxy
+    ports:
+      - 80:8080
+    restart: always
+
+  nuxt:
+    depends_on:
+      - reverse-proxy
+    image: nuxt
+    restart: always
