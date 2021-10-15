@@ -126,7 +126,7 @@ export default {
   }
 
   &__info {
-    padding: $main-padding 0;
+    padding: $main-padding 0 $main-padding - $menu-margin * 0.5;
     line-height: 1.3;
   }
 
@@ -134,8 +134,8 @@ export default {
     display: block;
     border-top: solid black 2px;
     border-bottom: solid black 2px;
-    padding: $main-padding 0;
-    margin-bottom: $main-padding - $menu-margin * 0.5;
+    padding: $menu-margin 0;
+    margin-bottom: calc(#{$section-margin-bottom} - #{$menu-margin * 0.5});
     position: relative;
     z-index: 5;
 

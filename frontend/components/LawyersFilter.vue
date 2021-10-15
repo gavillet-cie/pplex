@@ -114,7 +114,7 @@ export default {
 
   &__filters {
     display: flex;
-    padding: 0.2rem 0;
+    padding: $menu-margin 0;
     border-top: solid 2px black;
     border-bottom: solid 2px black;
 
