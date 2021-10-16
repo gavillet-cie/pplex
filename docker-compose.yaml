@@ -2,13 +2,22 @@ version: "2"
 
 services:
   reverse-proxy:
+    build: ./reverse-proxy
     image: reverse-proxy
     ports:
       - 8080:8080
     restart: always
 
   nuxt:
+    build: ./frontend
     depends_on:
       - reverse-proxy
     image: nuxt
+    restart: always
+
+  cms:
+    build: ./backend
+    depends_on:
+      - reverse-proxy
+    image: cms
     restart: always
