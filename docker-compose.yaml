@@ -1,11 +1,11 @@
-version: "2"
+version: "3"
 
 services:
   reverse-proxy:
     build: ./reverse-proxy
     image: reverse-proxy
     ports:
-      - 8080:8080
+      - 7777:8080
     restart: always
 
   nuxt:
@@ -20,4 +20,20 @@ services:
     depends_on:
       - reverse-proxy
     image: cms
+    ports:
+      - 8888:80
     restart: always
+
+  mysql:
+    environment:
+      MYSQL_ROOT_PASSWORD: rootdbpassword
+    depends_on:
+      - reverse-proxy
+    image: mariadb
+    restart: always
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

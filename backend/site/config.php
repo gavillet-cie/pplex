@@ -52,10 +52,10 @@ $config->useFunctionsAPI = true;
  * Installer: Database Configuration
  * 
  */
-$config->dbHost = 'avla.myd.infomaniak.com';
-$config->dbName = 'avla_pplex';
-$config->dbUser = 'avla_api';
-$config->dbPass = 'ySpYFz4-cP0';
+$config->dbHost = 'mysql';
+$config->dbName = 'pplex';
+$config->dbUser = 'root';
+$config->dbPass = 'rootdbpassword';
 $config->dbPort = '3306';
 
 /**

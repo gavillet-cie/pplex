@@ -23,12 +23,9 @@ RUN chmod 600 /usr/local/etc/php/msmtprc \
 RUN rm -fR /var/www/html/*
 
 # Copy ProcessWire core files
-RUN git clone https://github.com/processwire/processwire.git processwire
-RUN ls
-COPY /wire /var/www/html/wire
+COPY wire /var/www/html/wire
 COPY index.php /var/www/html/index.php
 COPY .htaccess /var/www/html/.htaccess
-# RUN rm rf processwire
 
 # Copy site-specific files
 COPY site /var/www/html/site
