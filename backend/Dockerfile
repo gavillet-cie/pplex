@@ -8,8 +8,7 @@ RUN    apt-get update \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
   && docker-php-ext-install gd 
 
-EXPOSE 80
-EXPOSE 443
+EXPOSE 8888
 
 # Add a specific php.ini file
 COPY config/php.ini /usr/local/etc/php/
