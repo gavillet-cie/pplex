@@ -20,5 +20,5 @@ jobs:
         context: ./frontend
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: pplex/client
+        repository: ptrrrr/client
         tags: latest, ${{ github.run_number }}
