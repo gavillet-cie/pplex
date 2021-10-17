@@ -5,7 +5,7 @@ services:
     build: ./reverse-proxy
     image: reverse-proxy
     ports:
-      - 8080:8080
+      - 80:8080
     restart: always
 
   nuxt:
@@ -13,7 +13,7 @@ services:
     depends_on:
       - reverse-proxy
     environment:
-      BASE_URL: "${BASE_URL}"
+      BASE_URL: "http://pplex.gavillet-cie.com"
     image: nuxt
     restart: always
 

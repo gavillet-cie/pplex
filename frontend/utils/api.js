@@ -1,4 +1,5 @@
-export const baseUrl = 'https://api-pplex.gavillet-cie.com'
+export const baseUrl =
+  process.env.BASE_URL || 'https://api-pplex.gavillet-cie.com'
 
 const cache = new Map()
 
