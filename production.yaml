@@ -13,7 +13,8 @@ services:
     depends_on:
       - reverse-proxy
     environment:
-      BASE_URL: "http://pplex.gavillet-cie.com"
+      ROOT_URL: "http://pplex.gavillet-cie.com"
+      BASE_URL: "http://pplex.gavillet-cie.com/api"
     image: nuxt
     restart: always
 

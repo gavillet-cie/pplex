@@ -13,22 +13,25 @@ services:
     depends_on:
       - reverse-proxy
     environment:
-      BASE_URL: "${BASE_URL}"
+      ROOT_URL: "http://localhost:8080"
+      BASE_URL: "http://localhost:8080/api"
     image: nuxt
+    volumes:
+      - ./frontend/utils:/app/utils
+      - ./frontend/pages:/app/pages
+      - ./frontend/styles:/app/styles
+      - ./frontend/layouts:/app/layouts
+      - ./frontend/components:/app/components
     restart: always
 
   cms:
     build: ./backend
-    depends_on:
-      - reverse-proxy
     image: cms
     restart: always
 
   mysql:
     environment:
       MYSQL_ROOT_PASSWORD: rootdbpassword
-    depends_on:
-      - reverse-proxy
     image: mariadb
     restart: always
 

@@ -14,6 +14,11 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  env: {
+    ROOT_URL: process.env.ROOT_URL || 'https://api-pplex.gavillet-cie.com',
+    BASE_URL: process.env.BASE_URL || 'https://api-pplex.gavillet-cie.com',
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 

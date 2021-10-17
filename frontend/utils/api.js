@@ -1,5 +1,9 @@
-export const baseUrl =
-  process.env.BASE_URL || 'https://api-pplex.gavillet-cie.com'
+export const BASE_URL =
+  process.env.VUE_ENV === 'server'
+    ? 'http://cms/api'
+    : process.env.BASE_URL || 'https://api-pplex.gavillet-cie.com'
+
+export const ROOT_URL = process.env.ROOT_URL
 
 const cache = new Map()
 
@@ -7,7 +11,8 @@ export const getUrl = (
   url,
   lang = '',
   absolute = false,
-  trailingSlash = true
+  trailingSlash = true,
+  baseUrl = BASE_URL
 ) => {
   return sanitizeUrl(
     `${absolute ? baseUrl : ''}/${lang ? `/${lang}/${url}` : `/${url}`}`,
@@ -15,7 +20,7 @@ export const getUrl = (
   )
 }
 
-export const getImageUrl = (url) => getUrl(url, '', true, false)
+export const getImageUrl = (url) => getUrl(url, '', true, false, ROOT_URL)
 
 export const sanitizeUrl = (url, trailingSlash = true) => {
   const sanitizedUrl = url
