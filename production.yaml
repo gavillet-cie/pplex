@@ -9,9 +9,7 @@ services:
     restart: always
 
   nuxt:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    build: ./frontend
     depends_on:
       - reverse-proxy
     environment:
