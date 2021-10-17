@@ -22,14 +22,15 @@ RUN chmod 600 /usr/local/etc/php/msmtprc \
 RUN rm -fR /var/www/html/*
 
 # Copy ProcessWire core files
-COPY wire /var/www/html/wire
-COPY index.php /var/www/html/index.php
-COPY .htaccess /var/www/html/.htaccess
+COPY wire /var/www/html/api/wire
+COPY index.php /var/www/html/api/index.php
+COPY .htaccess /var/www/html/api/.htaccess
 
 # Copy site-specific files
-COPY site /var/www/html/site
+COPY site /var/www/html/api/site
 
 # Make www-data the owner of site-specific files
-RUN chown -R www-data:www-data /var/www/html/site
+RUN chown -R www-data:www-data /var/www/html/api/site
+RUN rm /var/www/html/api/site/config-dev.php
 
-VOLUME /var/www/html/site
+VOLUME /var/www/html/api/site
