@@ -27,6 +27,8 @@ services:
   cms:
     build: ./backend
     image: cms
+    volumes:
+      - ./backend/site/assets:/var/www/html/api/site/assets
     restart: always
 
   mysql:

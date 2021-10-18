@@ -16,6 +16,8 @@ services:
 
   cms:
     image: ghcr.io/ptrrr/pplex-api:main
+    volumes:
+      - ./backend/site/assets:/var/www/html/api/site/assets
     depends_on:
       - reverse-proxy
     restart: always
