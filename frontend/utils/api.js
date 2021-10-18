@@ -1,8 +1,5 @@
-console.log(process.env)
-
-export const BASE_URL =
-  process.env.VUE_ENV === 'server' ? 'http://cms/api' : process.env.BASE_URL
-export const ROOT_URL = process.env.ROOT_URL
+import config from '../config'
+const { BASE_URL, ROOT_URL } = config
 
 const cache = new Map()
 
@@ -35,8 +32,6 @@ export const sanitizeUrl = (url, trailingSlash = true) => {
 }
 
 export const get = async (url, lang = '') => {
-  console.log(process.env)
-  console.log(BASE_URL)
   const sanitizedUrl = getUrl(url, lang, true)
   const cachedRes = cache.get(sanitizedUrl)
   if (cachedRes) return cachedRes

@@ -12,9 +12,6 @@ services:
     image: ghcr.io/ptrrr/pplex-client:main
     depends_on:
       - reverse-proxy
-    environment:
-      ROOT_URL: "http://pplex.gavillet-cie.com"
-      BASE_URL: "http://pplex.gavillet-cie.com/api"
     restart: always
 
   cms:

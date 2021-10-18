@@ -14,9 +14,6 @@ services:
       dockerfile: Dockerfile.dev
     depends_on:
       - reverse-proxy
-    environment:
-      ROOT_URL: "http://localhost:8080"
-      BASE_URL: "http://localhost:8080/api"
     image: nuxt
     volumes:
       - ./frontend/utils:/app/utils
@@ -24,6 +21,7 @@ services:
       - ./frontend/styles:/app/styles
       - ./frontend/layouts:/app/layouts
       - ./frontend/components:/app/components
+      - ./frontend/config:/app/config
     restart: always
 
   cms:
