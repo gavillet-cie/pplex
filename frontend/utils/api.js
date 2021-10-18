@@ -1,8 +1,8 @@
 console.log(process.env)
 
-export const BASE_URL = () =>
+export const BASE_URL =
   process.env.VUE_ENV === 'server' ? 'http://cms/api' : process.env.BASE_URL
-export const ROOT_URL = () => process.env.ROOT_URL
+export const ROOT_URL = process.env.ROOT_URL
 
 const cache = new Map()
 
@@ -11,17 +11,15 @@ export const getUrl = (
   lang = '',
   absolute = false,
   trailingSlash = true,
-  baseUrl
+  baseUrl = BASE_URL
 ) => {
   return sanitizeUrl(
-    `${absolute ? baseUrl || BASE_URL() : ''}/${
-      lang ? `/${lang}/${url}` : `/${url}`
-    }`,
+    `${absolute ? baseUrl : ''}/${lang ? `/${lang}/${url}` : `/${url}`}`,
     trailingSlash
   )
 }
 
-export const getImageUrl = (url) => getUrl(url, '', true, false, ROOT_URL())
+export const getImageUrl = (url) => getUrl(url, '', true, false, ROOT_URL)
 
 export const sanitizeUrl = (url, trailingSlash = true) => {
   const sanitizedUrl = url
@@ -37,6 +35,8 @@ export const sanitizeUrl = (url, trailingSlash = true) => {
 }
 
 export const get = async (url, lang = '') => {
+  console.log(process.env)
+  console.log(BASE_URL)
   const sanitizedUrl = getUrl(url, lang, true)
   const cachedRes = cache.get(sanitizedUrl)
   if (cachedRes) return cachedRes
