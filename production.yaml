@@ -25,7 +25,7 @@ services:
 
   mysql:
     environment:
-      MYSQL_ROOT_PASSWORD: rootdbpassword
+      MYSQL_ROOT_PASSWORD: GiBs9EFRrXyNfMmmQ4T7vH
     depends_on:
       - reverse-proxy
     image: mariadb
