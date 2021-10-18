@@ -68,10 +68,23 @@ export default {
     AddIcon,
   },
 
-  async asyncData({ params, store }) {
-    const { language } = params
-
+  asyncData({ store }) {
     store.commit('setBigMenu', true)
+  },
+
+  data() {
+    return {
+      filters: null,
+      homeSlider: [],
+      practiceAreas: [],
+      news: [],
+      language: [],
+      lawyers: [],
+    }
+  },
+
+  async fetch() {
+    const { language } = this.$route.params
 
     const [{ homeSlider }, { practiceAreas }, { news }, { lawyers }] =
       await Promise.all([
@@ -81,19 +94,11 @@ export default {
         get('lawyers', language),
       ])
 
-    return {
-      homeSlider,
-      practiceAreas,
-      news,
-      language,
-      lawyers,
-    }
-  },
-
-  data() {
-    return {
-      filters: null,
-    }
+    this.homeSlider = homeSlider
+    this.practiceAreas = practiceAreas
+    this.news = news
+    this.language = language
+    this.lawyers = lawyers
   },
 
   computed: {
