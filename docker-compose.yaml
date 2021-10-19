@@ -2,7 +2,9 @@ version: "3"
 
 services:
   reverse-proxy:
-    build: ./reverse-proxy
+    build:
+      context: ./reverse-proxy
+      dockerfile: Dockerfile.dev
     image: reverse-proxy
     depends_on:
       - nuxt
