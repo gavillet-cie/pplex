@@ -4,6 +4,10 @@ services:
   reverse-proxy:
     build: ./reverse-proxy
     image: reverse-proxy
+    depends_on:
+      - nuxt
+      - cms
+      - adminer
     ports:
       - 8080:8080
     restart: always
@@ -12,8 +16,6 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.dev
-    depends_on:
-      - reverse-proxy
     image: nuxt
     volumes:
       - ./frontend/utils:/app/utils
@@ -29,6 +31,7 @@ services:
     image: cms
     volumes:
       - ./backend/site/assets:/var/www/html/api/site/assets
+      - ./backend/site/ready.php:/var/www/html/api/site/ready.php
     restart: always
 
   mysql:

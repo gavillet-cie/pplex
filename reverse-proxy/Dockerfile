@@ -1,5 +1,7 @@
-FROM nginx
+FROM fabiocicerchia/nginx-lua
 COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./bin /bin
+RUN chmod +x /bin/purge-cache.sh
 RUN mkdir -p /data/nginx/cache
 
 EXPOSE 8080
