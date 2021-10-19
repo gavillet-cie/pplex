@@ -7,7 +7,7 @@ RUN mkdir -p /data/nginx/cache
 RUN mkdir -p /etc/cron.d
 
 ARG CERTBOT_EMAIL=info@domain.com
-ARG DOMAIN_LIST=pplex.gavillet-cie.com
+ARG DOMAIN_LIST=pplex-beta.gavillet-cie.com
 
 RUN apk add python3 python3-dev py3-pip build-base libressl-dev musl-dev libffi-dev rust cargo
 RUN pip3 install pip --upgrade

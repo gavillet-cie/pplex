@@ -7,12 +7,14 @@ services:
       network: host
       args:
         - CERTBOT_EMAIL=pietro@gavillet-cie.com
-        - DOMAIN_LIST=pplex.gavillet-cie.com
+        - DOMAIN_LIST=pplex-beta.gavillet-cie.com
     image: ghcr.io/ptrrr/pplex-proxy:main
     ports:
       - 80:8080
       - 443:443
     restart: always
+    volumes:
+      - ./reverse-proxy/certs:/etc/letsencrypt
 
   nuxt:
     image: ghcr.io/ptrrr/pplex-client:main
