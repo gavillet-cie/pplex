@@ -4,6 +4,7 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./bin /bin
 RUN chmod +x /bin/purge-cache.sh
 RUN mkdir -p /data/nginx/cache
+RUN mkdir -p /etc/cron.d
 
 ARG CERTBOT_EMAIL=info@domain.com
 ARG DOMAIN_LIST=pplex.gavillet-cie.com
