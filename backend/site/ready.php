@@ -6,7 +6,7 @@ $this->addHookAfter('Pages::saveReady', function (HookEvent $event) {
   }
 
   $http = new WireHttp();
-  $response = $http->get("http://reverse-proxy:8080/api/purge-cache");
+  $response = $http->get("https://reverse-proxy:443/api/purge-cache");
   if ($response !== false) {
     $this->message("Nginx cache cleared!");
   } else {
