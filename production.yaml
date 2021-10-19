@@ -14,7 +14,7 @@ services:
       - 443:443
     restart: always
     volumes:
-      - ./reverse-proxy/certs:/etc/letsencrypt
+      - letsencrypt:/etc/letsencrypt
 
   nuxt:
     image: ghcr.io/ptrrr/pplex-client:main
@@ -41,3 +41,6 @@ services:
   adminer:
     image: adminer
     restart: always
+
+volumes:
+  letsencrypt:
