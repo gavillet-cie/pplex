@@ -52,10 +52,10 @@ $config->useFunctionsAPI = true;
  * Installer: Database Configuration
  * 
  */
-$config->dbHost = 'localhost';
+$config->dbHost = 'mysql';
 $config->dbName = 'pplex';
 $config->dbUser = 'root';
-$config->dbPass = 'root';
+$config->dbPass = 'rootdbpassword';
 $config->dbPort = '3306';
 
 /**

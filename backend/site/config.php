@@ -55,7 +55,7 @@ $config->useFunctionsAPI = true;
 $config->dbHost = 'mysql';
 $config->dbName = 'pplex';
 $config->dbUser = 'root';
-$config->dbPass = 'rootdbpassword';
+$config->dbPass = 'GiBs9EFRrXyNfMmmQ4T7vH';
 $config->dbPort = '3306';
 
 /**

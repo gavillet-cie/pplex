@@ -1,0 +1,35 @@
+FROM php:5.6-apache
+
+RUN    apt-get update \
+  && apt-get install -y git libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev zziplib-bin msmtp\
+  && a2enmod rewrite \
+  && a2enmod ssl \
+  && docker-php-ext-install mysqli pdo_mysql iconv mcrypt zip \
+  && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+  && docker-php-ext-install gd 
+
+EXPOSE 8888
+
+# Add a specific php.ini file
+COPY config/php.ini /usr/local/etc/php/
+
+# Configure the mail sent utility msmtp (http://msmtp.sourceforge.net) and make it readable only by www-data
+COPY config/msmtprc /usr/local/etc/php/
+RUN chmod 600 /usr/local/etc/php/msmtprc \
+  && chown www-data:www-data /usr/local/etc/php/msmtprc
+
+# Remove all default site files in /var/www/html
+RUN rm -fR /var/www/html/*
+
+# Copy ProcessWire core files
+COPY wire /var/www/html/api/wire
+COPY index.php /var/www/html/api/index.php
+COPY .htaccess /var/www/html/api/.htaccess
+
+# Copy site-specific files
+COPY site /var/www/html/api/site
+
+# Make www-data the owner of site-specific files
+RUN chown -R www-data:www-data /var/www/html/api/site
+
+VOLUME /var/www/html/api/site

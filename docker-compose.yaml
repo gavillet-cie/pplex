@@ -27,7 +27,9 @@ services:
     restart: always
 
   cms:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
     image: cms
     volumes:
       - ./backend/site/assets:/var/www/html/api/site/assets
