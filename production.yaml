@@ -2,6 +2,11 @@ version: "3.4"
 
 services:
   reverse-proxy:
+    depends_on:
+      - nuxt
+      - cms
+      - adminer
+      - mysql
     build:
       context: ./reverse-proxy
       network: host
@@ -18,23 +23,17 @@ services:
 
   nuxt:
     image: ghcr.io/ptrrr/pplex-client:main
-    depends_on:
-      - reverse-proxy
     restart: always
 
   cms:
     image: ghcr.io/ptrrr/pplex-api:main
     volumes:
       - ./backend/site/assets:/var/www/html/api/site/assets
-    depends_on:
-      - reverse-proxy
     restart: always
 
   mysql:
     environment:
       MYSQL_ROOT_PASSWORD: GiBs9EFRrXyNfMmmQ4T7vH
-    depends_on:
-      - reverse-proxy
     image: mariadb
     restart: always
 
