@@ -34,7 +34,7 @@ export default {
 
   computed: {
     currentSlides() {
-      return [this.slides[this.slideIndex]]
+      return [this.slides[this.slideIndex]].filter((it) => it)
     },
   },
 

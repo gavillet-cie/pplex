@@ -33,11 +33,13 @@ export const sanitizeUrl = (url, trailingSlash = true) => {
 
 export const get = async (url, lang = '') => {
   const sanitizedUrl = getUrl(url, lang, true)
-  const cachedRes = cache.get(sanitizedUrl)
-  if (cachedRes) return cachedRes
-  const res = await fetch(sanitizedUrl, {
-    cache: 'no-cache',
-  }).then((res) => res.json())
+
+  if (process.env.VUE_ENV !== 'server') {
+    const cachedRes = cache.get(sanitizedUrl)
+    if (cachedRes) return cachedRes
+  }
+
+  const res = await fetch(sanitizedUrl).then((res) => res.json())
   cache.set(sanitizedUrl, res)
   return res
 }
