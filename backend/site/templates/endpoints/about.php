@@ -6,6 +6,16 @@ echo $apiRenderer->renderJSONFromModel([
   "title" => ["field" => "title"],
   "name" => ["field" => "name"],
   "url" => ["field" => "url"],
+  "description" => ["field" => "about_description"],
+  "swisslex" => ["field" => "about_swisslex"],
+  "rankings" => [
+    "field" => "about_rankings",
+    "type" => "nested",
+    "model" => [
+      "title" => ["field" => "about_ranking"],
+      "image" => ["field" => "about_ranking_image"]
+    ]
+  ],
   "keywords" => [
     "field" => "about_keywords",
     "type" => "title-array",
