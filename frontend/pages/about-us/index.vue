@@ -8,16 +8,16 @@
 
       locations
 
-      .about-us__keywords {{ keywords.join(', ') }}
+    //-   .about-us__keywords {{ keywords.join(', ') }}
 
-    centered-wrapper(
-      v-for="section in sections"
-      :key="section.title"
-    )
-      span.about-us__section-title {{ section.title }}
+    //- centered-wrapper(
+    //-   v-for="section in sections"
+    //-   :key="section.title"
+    //- )
+    //-   span.about-us__section-title {{ section.title }}
 
-      row-wrapper
-        div(v-html="section.description")
+    //-   row-wrapper
+    //-     div(v-html="section.description")
 </template>
 
 <script>
