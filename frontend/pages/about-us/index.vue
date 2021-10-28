@@ -2,7 +2,11 @@
   .about-us
     centered-wrapper
       .about-us__title
-        h3 {{ title }}
+        h3(
+          v-html="title"
+        )
+
+      locations
 
       .about-us__keywords {{ keywords.join(', ') }}
 
@@ -20,9 +24,10 @@
 import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import RowWrapper from '@/components/RowWrapper'
+import Locations from '@/components/Locations'
 
 export default {
-  component: { CenteredWrapper, RowWrapper },
+  component: { CenteredWrapper, RowWrapper, Locations },
 
   async asyncData({ store, params }) {
     const { language } = params
