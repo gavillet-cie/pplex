@@ -16,29 +16,29 @@ services:
     ports:
       - 80:8080
       - 443:443
-    restart: always
+    restart: on-failure
     volumes:
       - letsencrypt:/etc/letsencrypt
 
   nuxt:
     image: ghcr.io/ptrrr/pplex-client:main
-    restart: always
+    restart: on-failure
 
   cms:
     image: ghcr.io/ptrrr/pplex-api:main
     volumes:
       - ./backend/site/assets:/var/www/html/api/site/assets
-    restart: always
+    restart: on-failure
 
   mysql:
     environment:
       MYSQL_ROOT_PASSWORD: GiBs9EFRrXyNfMmmQ4T7vH
     image: mariadb
-    restart: always
+    restart: on-failure
 
   adminer:
     image: adminer
-    restart: always
+    restart: on-failure
 
 volumes:
   letsencrypt:
