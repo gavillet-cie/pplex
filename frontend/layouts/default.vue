@@ -135,6 +135,10 @@ a {
   color: $link-color;
 }
 
+a:hover {
+  color: black;
+}
+
 input[type='text'] {
   border: none;
   background-color: lightgray;

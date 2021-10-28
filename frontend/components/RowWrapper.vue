@@ -64,11 +64,6 @@ export default {
     #{$r}--padding & {
       padding: $menu-margin $padding-h;
     }
-
-    #{$r}--border & {
-      border-bottom: solid 2px;
-      border-color: inherit;
-    }
   }
 
   @media screen and (max-width: 900px) {

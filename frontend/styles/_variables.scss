@@ -1,6 +1,6 @@
 $main-color: #4d7494;
-$secondary-color: #1dff00;
-$link-color: #707070;
+$secondary-color: #4d7494;
+$link-color: #b9b9b9;
 $wrapper-max-width: 60rem;
 $main-padding: 10px;
 $menu-margin: 5px;
@@ -10,3 +10,7 @@ $medium-font-size: 2rem;
 $theinhardt: Theinhardt-Light, Helvetica, Arial, sans-serif;
 $rand: Rand-Medium, Helvetica, Arial, sans-serif;
 $section-margin-bottom: 4rem;
+$border-width: 2px;
+$border-color: black;
+$border-style: solid;
+$border: $border-style $border-color $border-width;

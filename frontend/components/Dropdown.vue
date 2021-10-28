@@ -71,7 +71,7 @@ export default {
 
     selectOption(option) {
       this.selectedOption = option
-      this.$emit('select', option)
+      this.$emit('selected', option)
     },
   },
 }
@@ -84,6 +84,10 @@ export default {
   user-select: none;
 
   &__value {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
     span {
       display: block;
       width: 100%;

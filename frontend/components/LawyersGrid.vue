@@ -151,10 +151,6 @@ export default {
       margin-top: $main-padding;
       color: black;
     }
-
-    &:hover {
-      background-color: rgb(245, 245, 245);
-    }
   }
 
   @media screen and (max-width: 900px) {

@@ -8,13 +8,14 @@
         .practice-areas__description(v-html="description")
 
       .practice-areas__grid
-        nuxt-link.practice-areas__item(
-          v-for="(area, index) in practiceAreas"
-          :key="index"
-          :to="getUrl(`/our-practice-areas/${area.name}`)"
-        )
-          .practice-areas__item-inner
-            span(v-html="area.title")
+        .practice-areas__grid-inner
+          nuxt-link.practice-areas__item(
+            v-for="(area, index) in practiceAreas"
+            :key="index"
+            :to="getUrl(`/our-practice-areas/${area.name}`)"
+          )
+            .practice-areas__item-inner
+              span(v-html="area.title")
 </template>
 
 <script>
@@ -47,42 +48,32 @@ export default {
     @include sub-title;
   }
 
-  &__description {
-    padding: 0 0 $section-margin-bottom;
+  &__grid {
+    padding: $section-margin-bottom 0;
+    overflow: hidden;
   }
 
-  &__grid {
+  &__grid-inner {
     display: flex;
     flex-wrap: wrap;
-    margin: -$menu-margin * 0.5;
-    margin-top: $section-margin-bottom;
-    padding-bottom: $section-margin-bottom;
+    margin: -$menu-margin;
   }
 
   &__item {
     width: 25%;
-    height: 5rem;
-    padding: $menu-margin * 0.5;
+    height: 5rem * $main-line-height + 1rem;
+    padding: $menu-margin;
   }
 
   &__item-inner {
+    border-top: $border;
     width: 100%;
     height: 100%;
     position: relative;
-    background-color: $main-color;
 
     span {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      text-align: center;
-      color: white;
-    }
-
-    &:hover {
-      background-color: $link-color;
+      display: block;
+      padding: 1rem 0;
     }
   }
 }
