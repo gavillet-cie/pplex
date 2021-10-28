@@ -5,13 +5,10 @@
         :is="item.url ? 'nuxt-link' : 'div'"
         :to="item.url"
       )
-        .list__item-date(
-          v-if="item.date"
-        ) {{ getDate(item.date, lang) }}
+        .list__item-label(
+          v-if="item.label"
+        ) {{ item.label }}
         .list__item-content
-          //- .list__item-content-title(
-          //-   v-if="item.title"
-          //- ) {{ item.title }}
           .list__item-content-text(
             v-if="item.text"
             v-html="item.text"
@@ -22,7 +19,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import AddIcon from '@/components/AddIcon'
-import { getDate } from '@/utils/dates'
 export default {
   components: { AddIcon },
 
@@ -35,10 +31,6 @@ export default {
 
   computed: {
     ...mapGetters(['lang']),
-  },
-
-  methods: {
-    getDate,
   },
 }
 </script>
@@ -57,7 +49,7 @@ export default {
       border-top: solid 2px;
     }
 
-    &-date {
+    &-label {
       width: 10rem;
       flex: 0 0 auto;
       color: $main-color;
@@ -107,7 +99,7 @@ export default {
         padding: 1rem;
       }
 
-      &-date {
+      &-label {
         margin-bottom: 1rem;
       }
 

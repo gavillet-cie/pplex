@@ -19,6 +19,7 @@
 import { mapGetters } from 'vuex'
 import { get, getUrl } from '@/utils/api'
 import { getLabel } from '@/utils/labels'
+import { getDate } from '@/utils/dates'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Post from '@/components/Post'
 import RowWrapper from '@/components/RowWrapper'
@@ -48,7 +49,7 @@ export default {
       return this.news.map((it) => ({
         title: it.title,
         text: it.content,
-        date: it.date,
+        label: getDate(it.date),
         url: getUrl(`news/${it.name}`, this.lang),
       }))
     },

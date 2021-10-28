@@ -13,6 +13,10 @@
         a.locations__email(
           :href="`mailto:${item.email}`"
         ) {{ item.email }}
+        a.locations__google(
+          target="_blank"
+          :href="item.googleMap"
+        ) {{ getLabel('lookAtTheMap', labels) }}
 
       img.locations__icon(
         src="~/static/location-icon.svg"
@@ -24,6 +28,7 @@
 import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
 import { formatText } from '@/utils/text'
+import { getLabel } from '@/utils/labels'
 
 export default {
   data() {
@@ -33,17 +38,17 @@ export default {
   },
 
   async fetch() {
-    // this.$store.commit('setBigMenu', true)
     const contact = await get('/contact', this.lang)
     this.locations = contact.locations
   },
 
   computed: {
-    ...mapGetters(['lang']),
+    ...mapGetters(['lang', 'labels']),
   },
 
   methods: {
     formatText,
+    getLabel,
   },
 }
 </script>
@@ -69,6 +74,10 @@ export default {
   &__icon {
     width: 1rem;
     align-self: flex-start;
+  }
+
+  a {
+    display: block;
   }
 }
 </style>
