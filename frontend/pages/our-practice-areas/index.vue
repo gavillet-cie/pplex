@@ -1,11 +1,8 @@
 <template lang="pug">
   .practice-areas
     centered-wrapper
-      row-wrapper(
-        :padding="false"
-      )
-        h3.practice-areas__title {{ title }}
-        .practice-areas__description(v-html="description")
+      h3.practice-areas__title {{ title }}
+      .practice-areas__description(v-html="description")
 
       .practice-areas__grid
         .practice-areas__grid-inner
@@ -46,6 +43,10 @@ export default {
 .practice-areas {
   &__title {
     @include sub-title;
+  }
+
+  &__description {
+    @include row-padding;
   }
 
   &__grid {

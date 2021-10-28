@@ -1,12 +1,11 @@
 <template lang="pug">
   .new
     centered-wrapper
-      row-wrapper
-        .new__title
-          h2 {{ title }}
+      .new__title
+        h2 {{ title }}
 
-        .new__info
-          span {{ info }}
+      .new__info
+        span {{ info }}
 
       row-wrapper
         .new__content(
@@ -51,6 +50,10 @@ export default {
 .new {
   &__title {
     @include sub-title;
+  }
+
+  &__info {
+    @include row-padding;
   }
 
   &__content {

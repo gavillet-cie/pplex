@@ -43,15 +43,19 @@ export default {
 <style lang="scss">
 .row-wrapper {
   $r: &;
-  $padding-h: 10rem;
 
   position: relative;
+  padding-bottom: $main-padding * 2;
+
+  & + & {
+    border-top: $border;
+  }
 
   &__title {
     display: block;
     position: absolute;
     color: $secondary-color;
-    width: $padding-h;
+    width: $padding-row;
 
     #{$r}--padding & {
       padding: $menu-margin 0;
@@ -59,10 +63,10 @@ export default {
   }
 
   &__inner {
-    padding: 0 $padding-h;
+    padding: 0 $padding-row;
 
     #{$r}--padding & {
-      padding: $menu-margin $padding-h;
+      padding: $menu-margin $padding-row;
     }
   }
 

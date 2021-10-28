@@ -1,8 +1,7 @@
 <template lang="pug">
   .news
     centered-wrapper
-      row-wrapper
-        h2.news__sub-title {{ title }}
+      h2.news__sub-title {{ title }}
 
       filters(
         placeholder="Search"

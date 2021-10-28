@@ -1,27 +1,16 @@
 <template lang="pug">
   .about-us
     centered-wrapper
-      row-wrapper.about-us__title(
-        :border="false"
-        :padding="false"
-      )
+      .about-us__title
         h3 {{ title }}
 
-      .about-us__keywords
-        row-wrapper.about-us__keyword(
-          v-for="(keyword, index) in keywords"
-          :key="index"
-          :border="false"
-          :padding="false"
-        )
-          span {{ keyword }}
+      .about-us__keywords {{ keywords.join(', ') }}
 
     centered-wrapper(
       v-for="section in sections"
       :key="section.title"
     )
-      row-wrapper
-        span.about-us__section-title {{ section.title }}
+      span.about-us__section-title {{ section.title }}
 
       row-wrapper
         div(v-html="section.description")
@@ -59,13 +48,16 @@ export default {
     text-align: left;
   }
 
-  &__keyword,
   &__section-title {
-    font-size: $medium-font-size;
+    @include section-title;
+    @include row-padding;
   }
 
   &__keywords {
-    padding: 0 0 $section-margin-bottom * 0.5;
+    @include row-padding;
+
+    font-size: $medium-font-size;
+    padding-bottom: $section-margin-bottom * 0.5;
   }
 }
 </style>

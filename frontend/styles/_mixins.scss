@@ -4,8 +4,22 @@
   font-size: $sub-title-font-size;
   color: $secondary-color;
   line-height: 1;
-  padding: $section-margin-bottom * 0.5 0;
-  text-align: center;
+  padding: $section-margin-bottom * 0.5 $padding-row;
+}
+
+@mixin section-title {
+  display: block;
+  font-size: $medium-font-size;
+  color: $secondary-color;
+  line-height: 1;
+  padding: $main-padding 0;
+  border-top: $border;
+  border-bottom: $border;
+}
+
+@mixin row-padding {
+  padding-left: $padding-row;
+  padding-right: $padding-row;
 }
 
 @mixin posts {

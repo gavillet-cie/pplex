@@ -1,20 +1,16 @@
 <template lang="pug">
   .practice-area
     centered-wrapper
-      row-wrapper(
-        :padding="false"
+      h3.practice-area__title(
+        v-html="title"
       )
-        h3.practice-area__title(
-          v-html="title"
-        )
-        .practice-area__description(
-          v-html="description"
-        )
+      .practice-area__description(
+        v-html="description"
+      )
 
-      row-wrapper
-        .practice-area__lawyers-test(
-          v-html="subTitle"
-        )
+      .practice-area__lawyers-sub-title(
+        v-html="subTitle"
+      )
 
       lawyers-grid.practice-area__lawyers(
         :lawyers="filteredLawyers"
@@ -71,11 +67,14 @@ export default {
   }
 
   &__description {
+    @include row-padding;
+
     padding-bottom: $section-margin-bottom;
   }
 
-  &__lawyers-test {
-    font-size: $medium-font-size;
+  &__lawyers-sub-title {
+    @include section-title;
+    @include row-padding;
   }
 
   &__lawyers {
