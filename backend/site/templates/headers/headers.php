@@ -12,3 +12,5 @@ header_remove('Pragma');
 header_remove('pragma');
 header_remove('cache-control');
 header_remove('Cache-Control');
+header_remove('Set-Cookie');
+header_remove('set-cookie');
