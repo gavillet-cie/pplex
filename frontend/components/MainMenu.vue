@@ -36,7 +36,7 @@
             v-for="section in selectedSections"
             :key="section.name"
             :to="getUrl(`/${section.name}`, lang)"
-            @click.native="toggleMenu"
+            @click.native="hideMenu"
           )
             span(
               v-html="section.title"
@@ -88,6 +88,11 @@ export default {
     toggleMenu() {
       this.$store.commit('setShowMenu', !this.showMenu)
     },
+
+    hideMenu() {
+      this.$store.commit('setShowMenu', false)
+    },
+
     getLangUrl(lang) {
       const { fullPath, params } = this.$route
       const currentPath = params.language
