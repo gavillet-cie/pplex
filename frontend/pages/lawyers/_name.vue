@@ -96,32 +96,52 @@
           :slides="testimonials"
         )
 
+      template(
+        v-if="newsItems.length > 0"
+      )
+        .lawyer__news-title News
+        list.lawyer__news(
+          :items="newsItems"
+        )
+
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import { get, getImageUrl } from '@/utils/api'
+import { get, getImageUrl, getUrl } from '@/utils/api'
 import { formatText } from '@/utils/text'
 import { getLabel } from '@/utils/labels'
+import { getDate } from '@/utils/dates'
 import Slider from '@/components/Slider'
 import TextSlider from '@/components/TextSlider'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import RowWrapper from '@/components/RowWrapper'
 import LawyerInfos from '@/components/LawyerInfos'
+import List from '@/components/List'
 
 export default {
-  components: { CenteredWrapper, LawyerInfos, RowWrapper, Slider, TextSlider },
+  components: {
+    CenteredWrapper,
+    LawyerInfos,
+    RowWrapper,
+    Slider,
+    TextSlider,
+    List,
+  },
 
   async asyncData({ store, params }) {
     const { language, name } = params
     store.commit('setBigMenu', true)
-    const [lawyer] = await Promise.all([get(`lawyers/${name}`, language)])
+    const [lawyer, news] = await Promise.all([
+      get(`lawyers/${name}`, language),
+      get(`news`, language),
+    ])
 
-    return { lawyer, ...lawyer }
+    return { lawyer, ...news, ...lawyer }
   },
 
   computed: {
-    ...mapGetters(['labels']),
+    ...mapGetters(['labels', 'lang']),
     lawyerSlides() {
       return this.slides?.length > 0
         ? this.slides.map((it) => ({
@@ -134,6 +154,16 @@ export default {
               image: this.portrait,
             },
           ]
+    },
+
+    newsItems() {
+      return this.news
+        .filter((it) => it.author.find((author) => author.name === this.name))
+        .map((it) => ({
+          text: it.content,
+          label: getDate(it.date, this.lang),
+          url: getUrl(`/news/${it.name}`),
+        }))
     },
 
     showEducation() {
@@ -178,6 +208,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../styles/mixins';
+
 .lawyer {
   position: relative;
   padding-bottom: $section-margin-bottom;
@@ -216,6 +248,14 @@ export default {
       height: 10rem;
       display: block;
     }
+  }
+
+  &__news-title {
+    @include sub-title;
+  }
+
+  &__news {
+    border-top: $border;
   }
 
   @media screen and (max-width: 1300px) {
