@@ -10,6 +10,7 @@ echo $apiRenderer->renderJSONFromModel([
   "lastName" => ["field" => "lawyer_last_name"],
   "lawyerTitle" => ["field" => "lawyer_title"],
   "portrait" => ["field" => "lawyer_portrait"],
+  "landscapePortrait" => ["field" => "lawyer_landscape_portrait"],
   "email" => ["field" => "lawyer_email"],
   "phone" => ["field" => "lawyer_phone"],
   "fax" => ["field" => "lawyer_fax"],

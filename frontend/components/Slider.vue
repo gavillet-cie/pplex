@@ -2,6 +2,7 @@
   transition-group.slider(
     tag="div"
     name="slider"
+    @click.native="onClick"
   )
     .slider__slide(
       v-for="slide in currentSlides"
@@ -40,22 +41,31 @@ export default {
 
   mounted() {
     setInterval(() => {
-      this.slideIndex++
-      if (this.slideIndex > this.slides.length - 1) {
-        this.slideIndex = 0
-      }
+      this.nextSlide()
     }, 5000)
   },
 
   methods: {
     getImageUrl,
     getImageCssStyle,
+
+    nextSlide() {
+      this.slideIndex++
+      if (this.slideIndex > this.slides.length - 1) {
+        this.slideIndex = 0
+      }
+    },
+
+    onClick() {
+      this.nextSlide()
+    },
   },
 }
 </script>
 
 <style lang="scss">
 .slider {
+  user-select: none;
   position: relative;
   overflow: hidden;
   -webkit-backface-visibility: hidden;
