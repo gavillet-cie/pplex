@@ -1,7 +1,7 @@
 <template lang="pug">
   .lawyer
     slider.lawyer__slider(
-      :slides="slides"
+      :slides="lawyerSlides"
     )
 
     centered-wrapper
@@ -122,13 +122,18 @@ export default {
 
   computed: {
     ...mapGetters(['labels']),
-    slides() {
-      return [
-        {
-          title: '',
-          image: this.portrait,
-        },
-      ]
+    lawyerSlides() {
+      return this.slides?.length > 0
+        ? this.slides.map((it) => ({
+            title: '',
+            image: it,
+          }))
+        : [
+            {
+              title: '',
+              image: this.portrait,
+            },
+          ]
     },
 
     showEducation() {
