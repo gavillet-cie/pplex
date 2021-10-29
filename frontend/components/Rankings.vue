@@ -32,7 +32,7 @@ export default {
 .rankings {
   &__item {
     display: flex;
-    height: 15rem;
+    min-height: 15rem;
     padding: $main-padding 0;
     color: $main-color;
 
@@ -49,11 +49,25 @@ export default {
       display: flex;
       flex: 1 1 auto;
       width: 50%;
+      flex-wrap: wrap;
     }
 
     &-image {
       & + & {
         margin-left: $main-padding;
+      }
+
+      height: 15rem;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    &__item {
+      flex-direction: column;
+      height: auto;
+
+      &-images {
+        width: 100%;
       }
     }
   }

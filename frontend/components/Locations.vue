@@ -56,6 +56,7 @@ export default {
 <style lang="scss">
 .locations {
   &__item {
+    position: relative;
     display: flex;
     padding: $main-padding 0;
 
@@ -81,6 +82,18 @@ export default {
 
   a {
     display: block;
+  }
+
+  @media screen and(max-width: 900px) {
+    &__item {
+      flex-direction: column;
+    }
+
+    &__icon {
+      position: absolute;
+      top: $main-padding;
+      right: 0;
+    }
   }
 }
 </style>
