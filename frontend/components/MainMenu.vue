@@ -36,6 +36,7 @@
             v-for="section in selectedSections"
             :key="section.name"
             :to="getUrl(`/${section.name}`, lang)"
+            @click.native="toggleMenu"
           )
             span(
               v-html="section.title"
@@ -160,14 +161,16 @@ export default {
     font-family: $theinhardt;
     text-transform: uppercase;
     color: white;
-    padding: $menu-margin;
-    font-size: $menu-height - 1rem;
+    padding: $main-padding;
+    font-size: calc(#{$menu-height} - #{$main-padding} * 2);
     width: 100%;
     flex: 1 1 auto;
-    line-height: 1;
+    line-height: 0.95;
   }
 
   &__languages {
+    position: relative;
+    z-index: 10;
     display: flex;
     font-size: 1rem;
     align-items: center;
@@ -205,7 +208,9 @@ export default {
     &-title {
       font-family: $theinhardt;
       padding-right: 5rem;
+      font-size: calc(#{$menu-height} - #{$main-padding} * 2);
       flex: 0 0 auto;
+      line-height: 0.95;
     }
 
     &-sections {

@@ -89,7 +89,7 @@ export default {
   methods: {
     getLabel,
     onFilter(filters) {
-      console.log(filters)
+      // console.log(filters)
     },
   },
 }
