@@ -6,18 +6,22 @@
           v-html="title"
         )
 
-      locations
+      .about-us__description(
+        v-html="description"
+      )
 
-    //-   .about-us__keywords {{ keywords.join(', ') }}
+      .about-us__section-title Swisslex
+      .about-us__swisslex(
+        v-html="swisslex"
+      )
 
-    //- centered-wrapper(
-    //-   v-for="section in sections"
-    //-   :key="section.title"
-    //- )
-    //-   span.about-us__section-title {{ section.title }}
+      .about-us__section-title Nos bureaux
+      locations.about-us__locations
 
-    //-   row-wrapper
-    //-     div(v-html="section.description")
+      .about-us__section-title Classements
+      rankings.about-us__rankings(
+        :rankings="rankings"
+      )
 </template>
 
 <script>
@@ -25,9 +29,10 @@ import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import RowWrapper from '@/components/RowWrapper'
 import Locations from '@/components/Locations'
+import Rankings from '@/components/Rankings'
 
 export default {
-  component: { CenteredWrapper, RowWrapper, Locations },
+  component: { CenteredWrapper, RowWrapper, Locations, Rankings },
 
   async asyncData({ store, params }) {
     const { language } = params
@@ -58,11 +63,15 @@ export default {
     @include row-padding;
   }
 
-  &__keywords {
+  &__description,
+  &__swisslex {
     @include row-padding;
+    @include big-text-padding;
+  }
 
-    font-size: $medium-font-size;
-    padding-bottom: $section-margin-bottom * 0.5;
+  &__locations,
+  &__rankings {
+    margin-bottom: $section-margin-bottom;
   }
 }
 </style>

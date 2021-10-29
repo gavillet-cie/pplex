@@ -8,4 +8,7 @@
   header('Access-Control-Allow-Credentials: true');
   header('Access-Control-Allow-Methods: POST, PUT, GET, DELETE, OPTIONS', true);
   header('Access-Control-Allow-Headers: Content-Type', true);
-?>
+  header_remove('Pragma');
+  header_remove('pragma');
+  header_remove('cache-control');
+  header_remove('Cache-Control');

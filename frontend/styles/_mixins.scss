@@ -17,9 +17,24 @@
   border-bottom: $border;
 }
 
+@mixin text-padding {
+  padding-top: $main-padding;
+  padding-bottom: $main-padding * 2;
+}
+
+@mixin big-text-padding {
+  padding-top: $main-padding;
+  padding-bottom: $section-margin-bottom;
+}
+
 @mixin row-padding {
   padding-left: $padding-row;
   padding-right: $padding-row;
+
+  @media screen and (max-width: 900px) {
+    padding-left: $main-padding;
+    padding-right: $main-padding;
+  }
 }
 
 @mixin posts {

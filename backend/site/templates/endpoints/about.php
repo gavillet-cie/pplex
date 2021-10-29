@@ -12,8 +12,8 @@ echo $apiRenderer->renderJSONFromModel([
     "field" => "about_rankings",
     "type" => "nested",
     "model" => [
-      "title" => ["field" => "about_ranking"],
-      "image" => ["field" => "about_ranking_image"]
+      "year" => ["field" => "about_ranking_year"],
+      "images" => ["field" => "about_ranking_images"]
     ]
   ],
   "keywords" => [

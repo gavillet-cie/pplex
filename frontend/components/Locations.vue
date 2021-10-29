@@ -56,9 +56,12 @@ export default {
 <style lang="scss">
 .locations {
   &__item {
-    border-top: $border;
     display: flex;
     padding: $main-padding 0;
+
+    & + & {
+      border-top: $border;
+    }
   }
 
   &__name {

@@ -49,8 +49,8 @@ echo $apiRenderer->renderJSONFromModel([
     "field" => "lawyer_rankings",
     "type" => "nested",
     "model" => [
-      "year" => ["field" => "lawyer_ranking"],
-      "image" => ["field" => "lawyer_ranking_image"]
+      "year" => ["field" => "lawyer_ranking_year"],
+      "images" => ["field" => "lawyer_ranking_images"]
     ]
   ],
   "selectedPublications" => [
