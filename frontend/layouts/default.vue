@@ -136,7 +136,7 @@ a {
 }
 
 a:hover {
-  color: black;
+  text-decoration: underline;
 }
 
 input[type='text'] {
@@ -148,6 +148,6 @@ input[type='text'] {
 }
 
 .nuxt-link-active {
-  color: $secondary-color !important;
+  color: $link-color;
 }
 </style>

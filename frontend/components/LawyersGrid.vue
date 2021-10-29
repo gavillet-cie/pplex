@@ -142,6 +142,10 @@ export default {
     position: relative;
     z-index: 5;
 
+    &:hover {
+      text-decoration: none;
+    }
+
     &-add {
       width: 2rem;
       height: 2rem;

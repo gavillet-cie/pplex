@@ -9,6 +9,18 @@
         v-if="bigMenu"
       ) PYTHON
 
+
+      .menu__languages
+        nuxt-link.menu__language(
+          :to="getLangUrl('fr')"
+          :class="getLanguageCssClasses('fr')"
+        ) FR
+
+        nuxt-link.menu__language(
+          :to="getLangUrl('')"
+          :class="getLanguageCssClasses('')"
+        ) EN
+
       .menu__burger(
         @click="toggleMenu"
       )
@@ -28,17 +40,6 @@
             span(
               v-html="section.title"
             )
-
-        .menu__panel-languages
-          nuxt-link.menu__panel-language(
-            :to="getLangUrl('fr')"
-            :class="getLanguageCssClasses('fr')"
-          ) FR
-
-          nuxt-link.menu__panel-language(
-            :to="getLangUrl('')"
-            :class="getLanguageCssClasses('')"
-          ) EN
 
 </template>
 
@@ -115,7 +116,7 @@ export default {
   padding-bottom: $menu-margin;
 
   &--highlight {
-    color: $secondary-color;
+    color: $link-color !important;
   }
 
   &__logo {
@@ -129,6 +130,7 @@ export default {
   }
 
   &__inner {
+    display: flex;
     position: relative;
     background-color: $main-color;
     flex: 1 1 auto;
@@ -137,12 +139,12 @@ export default {
 
   &__burger {
     padding: $main-padding;
-    position: absolute;
     z-index: 20;
     top: 0;
     right: 0;
     width: calc(4.5rem - $menu-margin);
     height: calc(4rem - $menu-margin);
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -160,7 +162,30 @@ export default {
     color: white;
     padding: $menu-margin;
     font-size: 3rem;
+    width: 100%;
+    flex: 1 1 auto;
     line-height: 1;
+  }
+
+  &__languages {
+    display: flex;
+    font-size: 1rem;
+    align-items: center;
+    width: max-content;
+    flex: 0 0 auto;
+    margin-right: 1rem;
+
+    a {
+      color: white;
+    }
+  }
+
+  &__language {
+    display: block;
+
+    & + & {
+      margin-left: 0.5rem;
+    }
   }
 
   &__panel {
@@ -186,24 +211,10 @@ export default {
       display: flex;
       flex-direction: column;
       width: 50%;
-
-      span {
-        color: white;
-      }
     }
 
-    &-languages {
-      font-size: 1rem;
-
-      a {
-        color: white;
-      }
-    }
-
-    &-language {
-      & + & {
-        margin-left: 0.5rem;
-      }
+    &-section {
+      color: white;
     }
   }
 
