@@ -25,7 +25,9 @@
             :key="section.name"
             :to="getUrl(`/${section.name}`, lang)"
           )
-            span {{ section.title }}
+            span(
+              v-html="section.title"
+            )
 
         .menu__panel-languages
           nuxt-link.menu__panel-language(
