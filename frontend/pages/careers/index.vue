@@ -57,9 +57,7 @@ export default {
 
   &__description {
     @include row-padding;
-
-    padding-top: $main-padding;
-    padding-bottom: $main-padding * 2;
+    @include text-padding;
   }
 
   &__vacancies {

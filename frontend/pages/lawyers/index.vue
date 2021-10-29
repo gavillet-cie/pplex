@@ -74,11 +74,5 @@ export default {
   &__grid {
     margin-top: $menu-margin;
   }
-
-  @media screen and (max-width: 900px) {
-    &__filters {
-      padding: 0 $menu-margin;
-    }
-  }
 }
 </style>

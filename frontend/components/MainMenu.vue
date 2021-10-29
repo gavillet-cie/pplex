@@ -216,6 +216,10 @@ export default {
       &-title {
         display: none;
       }
+
+      &-sections {
+        width: 100%;
+      }
     }
   }
 }

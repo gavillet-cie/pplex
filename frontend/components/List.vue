@@ -36,6 +36,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/mixins';
+
 .list {
   &__item {
     $i: &;
@@ -43,6 +45,7 @@ export default {
     &-inner {
       padding: 1rem 0;
       display: flex;
+      @include text-padding;
     }
 
     & + & {
@@ -96,11 +99,10 @@ export default {
       &-inner {
         position: relative;
         flex-direction: column;
-        padding: 1rem;
       }
 
       &-label {
-        margin-bottom: 1rem;
+        margin-bottom: $main-padding;
       }
 
       &-content {
@@ -109,8 +111,8 @@ export default {
 
       &-icon {
         position: absolute;
-        top: 1rem;
-        right: 1rem;
+        top: $main-padding;
+        right: 0;
       }
     }
   }

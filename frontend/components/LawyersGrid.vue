@@ -154,8 +154,6 @@ export default {
   }
 
   @media screen and (max-width: 900px) {
-    padding: 0 $menu-margin;
-
     &__item {
       width: 50%;
 

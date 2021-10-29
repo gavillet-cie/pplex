@@ -77,5 +77,11 @@ export default {
       padding: 1rem 0;
     }
   }
+
+  @media screen and (max-width: 900px) {
+    &__item {
+      width: 50%;
+    }
+  }
 }
 </style>

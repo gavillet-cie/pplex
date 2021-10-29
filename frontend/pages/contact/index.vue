@@ -2,7 +2,7 @@
   .contact
     centered-wrapper
       .contact__title {{ title }}
-      locations
+      locations.contact__locations
 </template>
 
 <script>
@@ -29,6 +29,10 @@ export default {
 .contact {
   &__title {
     @include sub-title;
+  }
+
+  &__locations {
+    border-top: $border;
   }
 }
 </style>

@@ -5,6 +5,11 @@
   color: $secondary-color;
   line-height: 1;
   padding: $section-margin-bottom * 0.5 $padding-row;
+
+  @media screen and (max-width: 900px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 @mixin section-title {
@@ -32,8 +37,8 @@
   padding-right: $padding-row;
 
   @media screen and (max-width: 900px) {
-    padding-left: $main-padding;
-    padding-right: $main-padding;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
