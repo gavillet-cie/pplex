@@ -74,10 +74,10 @@ export default {
     &__title {
       position: relative;
       width: 100%;
-      padding: $main-padding $main-padding 0;
+      padding: $main-padding 0;
 
       #{$r}--padding & {
-        padding: $main-padding $main-padding 0;
+        padding: $main-padding 0 0;
       }
     }
 
@@ -85,7 +85,7 @@ export default {
       padding: $main-padding;
 
       #{$r}--padding & {
-        padding: $menu-margin $main-padding;
+        padding: $menu-margin 0;
       }
     }
   }

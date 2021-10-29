@@ -264,15 +264,8 @@ export default {
       top: unset;
       left: unset;
       width: 100%;
-      padding: 0 10rem;
       height: 25vh;
       margin: auto;
-    }
-  }
-
-  @media screen and (max-width: 900px) {
-    &__testimonials {
-      padding: $main-padding;
     }
   }
 }

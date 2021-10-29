@@ -64,7 +64,7 @@ export default {
     width: 100%;
     height: min-content;
     color: $secondary-color;
-    padding: $main-padding;
+    padding: 0;
   }
 }
 </style>
