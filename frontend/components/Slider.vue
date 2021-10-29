@@ -108,5 +108,22 @@ export default {
     transform: translate(-50%, -50%);
     line-height: 1;
   }
+
+  @media screen and (max-width: 900px) {
+    &__title {
+      color: white;
+      font-size: 6rem;
+      position: fixed;
+      top: calc(50vh + var(--menu-height));
+      left: 50%;
+      width: 80%;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      line-height: 1;
+    }
+    &__slide {
+      clip: rect(0, 100vw, calc(100vh - var(--menu-height)), 0);
+    }
+  }
 }
 </style>

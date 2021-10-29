@@ -194,5 +194,12 @@ export default {
     font-size: $medium-font-size;
     color: $secondary-color;
   }
+
+  @media screen and (max-width: 900px) {
+    &__slider {
+      width: 100%;
+      height: calc(100vh - var(--menu-height));
+    }
+  }
 }
 </style>

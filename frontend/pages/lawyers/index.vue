@@ -66,7 +66,7 @@ export default {
 
   &__filters {
     position: sticky;
-    top: calc(4rem - $menu-margin);
+    top: calc($menu-height - $menu-margin);
     z-index: 10;
     background-color: white;
   }

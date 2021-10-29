@@ -22,7 +22,7 @@ export default {
       routeIsChanging: false,
       maxMenuHeight: '28vh',
       bigMenuHeight: '28vh',
-      menuHeight: '4rem',
+      menuHeight: '3rem',
     }
   },
 
@@ -125,9 +125,9 @@ export default {
   }
 
   @media screen and (max-width: 900px) {
-    --menu-height: 4rem !important;
+    --menu-height: #{$menu-height} !important;
 
-    padding-top: 4rem !important;
+    padding-top: #{$menu-height} !important;
   }
 }
 

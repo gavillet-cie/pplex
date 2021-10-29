@@ -110,7 +110,7 @@ export default {
   left: 0;
   z-index: 10;
   height: var(--menu-height);
-  min-height: 4rem;
+  min-height: $menu-height;
   width: 100%;
   display: flex;
   padding-bottom: $menu-margin;
@@ -142,8 +142,8 @@ export default {
     z-index: 20;
     top: 0;
     right: 0;
-    width: calc(4.5rem - $menu-margin);
-    height: calc(4rem - $menu-margin);
+    width: calc($menu-height + 0.5rem - $menu-margin);
+    height: calc($menu-height - $menu-margin);
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
@@ -161,7 +161,7 @@ export default {
     text-transform: uppercase;
     color: white;
     padding: $menu-margin;
-    font-size: 3rem;
+    font-size: $menu-height - 1rem;
     width: 100%;
     flex: 1 1 auto;
     line-height: 1;
@@ -174,6 +174,7 @@ export default {
     width: max-content;
     flex: 0 0 auto;
     margin-right: 1rem;
+    height: calc($menu-height - $menu-margin);
 
     a {
       color: white;
@@ -221,7 +222,7 @@ export default {
   @media screen and (max-width: 900px) {
     &__panel {
       position: fixed;
-      top: 4rem;
+      top: $menu-height;
       right: 0;
 
       &-title {
