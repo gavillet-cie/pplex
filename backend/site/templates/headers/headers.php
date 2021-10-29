@@ -4,7 +4,7 @@ require_once $config->paths->templates . '/api/rest.php';
 $JSONheader = Rest\Header::mimeType('json');
 header($JSONheader);
 header('Strict-Transport-Security: max-age=0;', true);
-header('Access-Control-Allow-Origin: https://pplex.gavillet-cie.com', true);
+header('Access-Control-Allow-Origin: *', true);
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: GET', true);
 header('Access-Control-Allow-Headers: Content-Type', true);
