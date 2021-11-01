@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { decode } from 'html-entities'
 import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Post from '@/components/Post'
@@ -29,6 +30,12 @@ export default {
     const [publications] = await Promise.all([get(`/publications`, language)])
     return {
       ...publications,
+    }
+  },
+
+  head() {
+    return {
+      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 }

@@ -107,6 +107,7 @@
 </template>
 
 <script>
+import { decode } from 'html-entities'
 import { mapGetters } from 'vuex'
 import { get, getImageUrl, getUrl } from '@/utils/api'
 import { formatText } from '@/utils/text'
@@ -138,6 +139,12 @@ export default {
     ])
 
     return { lawyer, ...news, ...lawyer }
+  },
+
+  head() {
+    return {
+      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
+    }
   },
 
   computed: {

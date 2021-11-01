@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { decode } from 'html-entities'
 import Locations from '@/components/Locations'
 import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
@@ -19,6 +20,12 @@ export default {
     store.commit('setBigMenu', true)
     const contact = await get('/contact', language)
     return contact
+  },
+
+  head() {
+    return {
+      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
+    }
   },
 }
 </script>

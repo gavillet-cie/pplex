@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { decode } from 'html-entities'
 import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
 import { filterLawyers } from '@/utils/lawyers'
@@ -38,6 +39,12 @@ export default {
     return {
       ...area,
       lawyers,
+    }
+  },
+
+  head() {
+    return {
+      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 

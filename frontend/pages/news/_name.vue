@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import { decode } from 'html-entities'
 import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
 import { getDate } from '@/utils/dates'
@@ -29,6 +30,12 @@ export default {
     store.commit('setBigMenu', true)
     const post = await get(`/news/${name}`, language)
     return post
+  },
+
+  head() {
+    return {
+      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
+    }
   },
 
   computed: {

@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { decode } from 'html-entities'
 import { get, getImageUrl } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Post from '@/components/Post'
@@ -25,6 +26,12 @@ export default {
 
     return {
       ...publication,
+    }
+  },
+
+  head() {
+    return {
+      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 

@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { decode } from 'html-entities'
 import Locations from '@/components/Locations'
 import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
@@ -30,7 +31,7 @@ export default {
 
   head() {
     return {
-      title: `${this.title} - PYTHON`,
+      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 

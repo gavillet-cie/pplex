@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { decode } from 'html-entities'
 import { get, getUrl } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import RowWrapper from '@/components/RowWrapper'
@@ -29,6 +30,12 @@ export default {
     store.commit('setBigMenu', true)
     const res = await get('/our-practice-areas', language)
     return res
+  },
+
+  head() {
+    return {
+      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
+    }
   },
 
   methods: {

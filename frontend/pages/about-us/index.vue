@@ -26,6 +26,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { decode } from 'html-entities'
 import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import RowWrapper from '@/components/RowWrapper'
@@ -41,6 +42,12 @@ export default {
     store.commit('setBigMenu', true)
     const about = await get('/about-us', language)
     return about
+  },
+
+  head() {
+    return {
+      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
+    }
   },
 
   computed: {

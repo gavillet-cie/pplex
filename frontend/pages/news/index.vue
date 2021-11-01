@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { decode } from 'html-entities'
 import { mapGetters } from 'vuex'
 import { get, getUrl } from '@/utils/api'
 import { getLabel } from '@/utils/labels'
@@ -46,6 +47,12 @@ export default {
   data() {
     return {
       filters: {},
+    }
+  },
+
+  head() {
+    return {
+      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 
