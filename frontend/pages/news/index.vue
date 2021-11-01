@@ -4,9 +4,9 @@
       h2.news__sub-title {{ title }}
 
       filters(
-        placeholder="Search"
+        :placeholder="getLabel('search', labels)"
         :title="getLabel('searchNews', labels)"
-        :filters="filters"
+        :filters="filterOptions"
         @input="onFilter"
       )
 
@@ -43,28 +43,58 @@ export default {
     }
   },
 
+  data() {
+    return {
+      filters: {},
+    }
+  },
+
   computed: {
     ...mapGetters(['lang', 'labels']),
     newsItems() {
-      return this.news.map((it) => ({
-        title: it.title,
-        text: it.content,
-        label: getDate(it.date),
-        url: getUrl(`news/${it.name}`, this.lang),
-      }))
+      const { textInput, datePicker, practiceAreas } = this.filters
+
+      return this.news
+        .filter((news) => {
+          const includesName =
+            news.title.toLowerCase().includes(textInput?.toLowerCase()) ||
+            news.content.toLowerCase().includes(textInput?.toLowerCase())
+
+          const date = new Date(news.date)
+          const isSameDate =
+            date.getFullYear() === datePicker?.getFullYear() &&
+            date.getMonth() === datePicker?.getMonth() &&
+            date.getDate() === datePicker?.getDate()
+
+          const includesPracticeArea = news.practiceAreas
+            ?.map((it) => it.name)
+            .includes(practiceAreas)
+
+          return (
+            (!textInput || includesName) &&
+            (!datePicker || isSameDate) &&
+            (!practiceAreas || includesPracticeArea)
+          )
+        })
+        .map((it) => ({
+          title: it.title,
+          text: it.content,
+          label: getDate(it.date),
+          url: getUrl(`news/${it.name}`, this.lang),
+        }))
     },
 
-    filters() {
+    filterOptions() {
       return [
         {
-          id: 'date-picker',
+          id: 'datePicker',
           component: 'date-picker',
           placeholder: getLabel('date', this.labels),
           width: '20%',
           flex: true,
         },
         {
-          id: 'practice-areas',
+          id: 'practiceAreas',
           component: 'dropdown',
           placeholder: getLabel('practiceAreas', this.labels),
           options: this.practiceAreas.map((it) => ({
@@ -75,7 +105,7 @@ export default {
           flex: true,
         },
         {
-          id: 'text-input',
+          id: 'textInput',
           component: 'input',
           type: 'text',
           placeholder: getLabel('search', this.labels),
@@ -89,7 +119,14 @@ export default {
   methods: {
     getLabel,
     onFilter(filters) {
-      // console.log(filters)
+      const { datePicker, practiceAreas, textInput } = filters
+      const inputValue = textInput?.target?.value
+
+      this.filters = {
+        textInput: inputValue,
+        practiceAreas: practiceAreas?.name,
+        datePicker,
+      }
     },
   },
 }

@@ -14,6 +14,7 @@ echo $apiRenderer->renderJSONFromModel([
       "name" => ["field" => "name"],
       "url" => ["field" => "url"],
       "date" => ["field" => "post_date"],
+      "practiceAreas" => ["field" => "post_practice_area"],
       "author" => [
         "field" => "post_author",
         "type" => "nested",
