@@ -5,13 +5,13 @@
       dropdown.lawyers-filter__select(
         :placeholder="getLabel('practiceArea', labels)"
         :options="practiceAreasOptions"
-        @select="onPractiveAreaFilter"
+        @selected="onPractiveAreaFilter"
       )
 
       dropdown.lawyers-filter__select(
         :placeholder="getLabel('location', labels)"
         :options="locationsOptions"
-        @select="onLocationFilter"
+        @selected="onLocationFilter"
       )
 
       input(
