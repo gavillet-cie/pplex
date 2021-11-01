@@ -46,6 +46,10 @@ export default {
       padding: 1rem 0;
       display: flex;
       @include text-padding;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
 
     & + & {
