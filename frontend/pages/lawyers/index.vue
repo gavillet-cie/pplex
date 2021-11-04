@@ -114,8 +114,6 @@ export default {
       const practiceArea = filters.practiceArea?.name
       const location = filters.location?.name
 
-      console.log(location)
-
       this.filters = {
         name,
         practiceArea,

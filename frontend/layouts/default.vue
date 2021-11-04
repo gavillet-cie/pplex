@@ -22,7 +22,8 @@ export default {
       routeIsChanging: false,
       maxMenuHeight: '35vh',
       bigMenuHeight: '35vh',
-      menuHeight: '5rem',
+      menuHeight: '3rem',
+      disableTransitions: false,
     }
   },
 
@@ -44,6 +45,7 @@ export default {
     appCssClasses() {
       return {
         'app--menu-transition': this.routeIsChanging,
+        'app--disable-transitions': this.disableTransitions,
       }
     },
 
@@ -73,11 +75,31 @@ export default {
         }, 500)
       },
     },
+
+    showMenu(showMenu) {
+      if (process.client) {
+        if (showMenu) {
+          document.body.style.overflow = 'hidden'
+        } else {
+          document.body.style.overflow = null
+        }
+      }
+    },
   },
 
   mounted() {
     this.updateMenuHeight()
-    window.addEventListener('scroll', this.updateMenuHeight)
+
+    let disableTransitionTimeout = null
+
+    window.addEventListener('scroll', () => {
+      this.disableTransitions = true
+      clearTimeout(disableTransitionTimeout)
+      disableTransitionTimeout = setTimeout(() => {
+        this.disableTransitions = false
+      }, 100)
+      this.updateMenuHeight()
+    })
   },
 
   methods: {
@@ -113,6 +135,10 @@ export default {
   flex-direction: column;
   min-height: 100vh;
   line-height: $main-line-height;
+
+  &--disable-transitions * {
+    transition: none !important;
+  }
 
   &__menu {
     #{$a}--menu-transition & {
