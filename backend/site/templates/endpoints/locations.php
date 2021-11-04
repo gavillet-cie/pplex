@@ -12,6 +12,10 @@ echo $apiRenderer->renderJSONFromModel([
     "model" => [
       "title" => ["field" => "title"],
       "name" => ["field" => "name"],
+      "address" => ["field" => "locationt_address"],
+      "phone" => ["field" => "locationt_phone"],
+      "email" => ["field" => "locationt_email"],
+      "googleMap" => ["field" => "locationt_google_map"]
     ]
   ]
 ], $page);

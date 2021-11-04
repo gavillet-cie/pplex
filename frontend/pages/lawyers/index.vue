@@ -1,7 +1,7 @@
 <template lang="pug">
   .lawyers
     centered-wrapper
-      h3.lawyers__sub-title Rencontrez nos avocats
+      h3.lawyers__sub-title {{ title }}
 
       lawyers-filter.lawyers__filters(
         @input="onFilter"

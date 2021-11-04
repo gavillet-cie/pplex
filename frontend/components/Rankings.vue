@@ -58,6 +58,9 @@ export default {
       }
 
       height: 15rem;
+      max-width: 20rem;
+      object-fit: contain;
+      object-position: 0 0;
     }
   }
 
