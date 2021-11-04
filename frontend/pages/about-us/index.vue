@@ -1,24 +1,32 @@
 <template lang="pug">
   .about-us
     centered-wrapper
-      .about-us__title
+      row.about-us__title
         h3(
           v-html="title"
         )
 
-      .about-us__description(
-        v-html="description"
-      )
+      row
+        .about-us__description(
+          v-html="description"
+        )
 
-      .about-us__section-title Swisslex
-      .about-us__swisslex(
-        v-html="swisslex"
-      )
+      row.about-us__section-title
+        span Swisslex
 
-      .about-us__section-title {{ getLabel('ourOffices', labels) }}
+      row
+        .about-us__swisslex(
+          v-html="swisslex"
+        )
+
+      row.about-us__section-title
+        span {{ getLabel('ourOffices', labels) }}
+
       locations.about-us__locations
 
-      .about-us__section-title {{ getLabel('rankings', labels) }}
+      row.about-us__section-title
+        span {{ getLabel('rankings', labels) }}
+
       rankings.about-us__rankings(
         :rankings="rankings"
       )
@@ -29,13 +37,13 @@ import { mapGetters } from 'vuex'
 import { decode } from 'html-entities'
 import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
-import RowWrapper from '@/components/RowWrapper'
+import Row from '@/components/Row'
 import Locations from '@/components/Locations'
 import Rankings from '@/components/Rankings'
 import { getLabel } from '@/utils/labels'
 
 export default {
-  component: { CenteredWrapper, RowWrapper, Locations, Rankings },
+  component: { CenteredWrapper, Row, Locations, Rankings },
 
   async asyncData({ store, params }) {
     const { language } = params
@@ -77,12 +85,10 @@ export default {
 
   &__section-title {
     @include section-title;
-    @include row-padding;
   }
 
   &__description,
   &__swisslex {
-    @include row-padding;
     @include big-text-padding;
   }
 

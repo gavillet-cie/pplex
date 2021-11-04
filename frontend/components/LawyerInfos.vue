@@ -171,6 +171,7 @@ export default {
 <style lang="scss">
 .lawyer-infos {
   display: flex;
+  font-size: $small-font-size;
 
   &__portrait {
     width: 25%;

@@ -1,8 +1,11 @@
 <template lang="pug">
   .practice-areas
     centered-wrapper
-      h3.practice-areas__title {{ title }}
-      .practice-areas__description(v-html="description")
+      row.practice-areas__title
+        h3 {{ title }}
+
+      row
+        .practice-areas__description(v-html="description")
 
       .practice-areas__grid
         .practice-areas__grid-inner
@@ -19,10 +22,10 @@
 import { decode } from 'html-entities'
 import { get, getUrl } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
-import RowWrapper from '@/components/RowWrapper'
+import Row from '@/components/Row'
 
 export default {
-  components: { CenteredWrapper, RowWrapper },
+  components: { CenteredWrapper, Row },
 
   async asyncData({ params, store }) {
     const { language } = params
@@ -52,10 +55,6 @@ export default {
     @include sub-title;
   }
 
-  &__description {
-    @include row-padding;
-  }
-
   &__grid {
     padding: $section-margin-bottom 0;
     overflow: hidden;
@@ -69,7 +68,7 @@ export default {
 
   &__item {
     width: 25%;
-    height: 5rem * $main-line-height + 1rem;
+    height: 7rem * $main-line-height + 1rem;
     padding: $menu-margin;
   }
 
@@ -78,10 +77,15 @@ export default {
     width: 100%;
     height: 100%;
     position: relative;
+    padding: $menu-margin $menu-margin * 2;
+
+    &:hover {
+      border-top: $border-width $border-style $main-color;
+      background-color: $main-color;
+    }
 
     span {
       display: block;
-      padding: 1rem 0;
     }
   }
 

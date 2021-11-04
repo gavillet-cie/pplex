@@ -1,8 +1,8 @@
 <template lang="pug">
   .publications
     centered-wrapper
-      row-wrapper
-        h2.publications__sub-title {{ title }}
+      row.publications__sub-title
+        h2 {{ title }}
 
       .publications__posts
         post.publications__post(
@@ -19,10 +19,10 @@ import { decode } from 'html-entities'
 import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Post from '@/components/Post'
-import RowWrapper from '@/components/RowWrapper'
+import Row from '@/components/Row'
 
 export default {
-  components: { CenteredWrapper, RowWrapper, Post },
+  components: { CenteredWrapper, Row, Post },
 
   async asyncData({ store, params }) {
     const { language } = params

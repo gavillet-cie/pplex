@@ -144,7 +144,7 @@ export default {
   }
 
   &__burger {
-    padding: $main-padding;
+    padding: 1.2rem 0.8rem;
     z-index: 20;
     top: 0;
     right: 0;
@@ -178,10 +178,10 @@ export default {
     z-index: 10;
     display: flex;
     font-size: 1rem;
-    align-items: center;
+    padding: 1rem 0;
     width: max-content;
     flex: 0 0 auto;
-    margin-right: 1rem;
+    margin-right: 6rem;
     height: calc($menu-height - $menu-margin);
 
     a {
@@ -222,10 +222,14 @@ export default {
       display: flex;
       flex-direction: column;
       width: 50%;
+      // TODO
+      margin-left: 7rem;
     }
 
     &-section {
       color: white;
+      font-size: $medium-font-size;
+      line-height: 1;
     }
   }
 

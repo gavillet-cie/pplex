@@ -1,19 +1,21 @@
 <template lang="pug">
   .practice-area
     centered-wrapper
-      h3.practice-area__title(
-        v-html="title"
-      )
-      .practice-area__description(
-        v-html="description"
-      )
+      row.practice-area__title
+        h3(
+          v-html="title"
+        )
+
+      row
+        .practice-area__description(
+          v-html="description"
+        )
 
       template(
         v-if="filteredLawyers.length > 0"
       )
-        .practice-area__lawyers-sub-title(
-          v-html="lawyerSubTitle"
-        )
+        row.practice-area__lawyers-sub-title
+          span {{ lawyerSubTitle }}
 
         lawyers-grid.practice-area__lawyers(
           :lawyers="filteredLawyers"
@@ -26,11 +28,11 @@ import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
 import { filterLawyers } from '@/utils/lawyers'
 import CenteredWrapper from '@/components/CenteredWrapper'
-import RowWrapper from '@/components/RowWrapper'
+import Row from '@/components/Row'
 import LawyersGrid from '@/components/LawyersGrid'
 
 export default {
-  components: { CenteredWrapper, RowWrapper, LawyersGrid },
+  components: { CenteredWrapper, Row, LawyersGrid },
 
   async asyncData({ store, params }) {
     const { language, name } = params
@@ -74,14 +76,11 @@ export default {
   }
 
   &__description {
-    @include row-padding;
-
     padding-bottom: $section-margin-bottom;
   }
 
   &__lawyers-sub-title {
     @include section-title;
-    @include row-padding;
   }
 
   &__lawyers {

@@ -89,6 +89,7 @@ export default {
     height: 100%;
 
     span {
+      font-size: $default-font-size;
       display: block;
       width: 100%;
       white-space: nowrap;
@@ -106,6 +107,8 @@ export default {
   }
 
   &__option {
+    font-size: $default-font-size;
+
     &--active,
     &:hover {
       background-color: lightgray;

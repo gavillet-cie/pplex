@@ -10,10 +10,9 @@ import { decode } from 'html-entities'
 import Locations from '@/components/Locations'
 import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
-import RowWrapper from '@/components/RowWrapper'
 
 export default {
-  components: { Locations, CenteredWrapper, RowWrapper },
+  components: { Locations, CenteredWrapper },
 
   async asyncData({ store, params }) {
     const { language } = params

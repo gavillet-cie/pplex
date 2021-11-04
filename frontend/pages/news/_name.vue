@@ -1,13 +1,13 @@
 <template lang="pug">
   .new
     centered-wrapper
-      .new__title
-        h2 {{ title }}
+      row.new__title
+        h3 {{ title }}
 
-      .new__info
+      row.new__info
         span {{ info }}
 
-      row-wrapper
+      row
         .new__content(
           v-html="content"
         )
@@ -20,10 +20,10 @@ import { get } from '@/utils/api'
 import { getDate } from '@/utils/dates'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Post from '@/components/Post'
-import RowWrapper from '@/components/RowWrapper'
+import Row from '@/components/Row'
 
 export default {
-  components: { CenteredWrapper, RowWrapper, Post },
+  components: { CenteredWrapper, Row, Post },
 
   async asyncData({ store, params }) {
     const { language, name } = params
@@ -57,10 +57,6 @@ export default {
 .new {
   &__title {
     @include sub-title;
-  }
-
-  &__info {
-    @include row-padding;
   }
 
   &__content {

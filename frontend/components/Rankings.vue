@@ -1,9 +1,10 @@
 <template lang="pug">
   .rankings
-    .rankings__item(
+    row.rankings__item(
       v-for="item in rankings"
+      :label="item.year"
+      :noPadding="true"
     )
-      .rankings__item-year {{ item.year }}
       .rankings__item-images
         img.rankings__item-image(
           v-for="image in item.images"
@@ -13,8 +14,10 @@
 
 <script>
 import { getImageUrl } from '@/utils/api'
+import Row from '@/components/Row'
 
 export default {
+  components: { Row },
   props: {
     rankings: {
       type: Array,
@@ -29,12 +32,14 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/mixins';
+
 .rankings {
   &__item {
     display: flex;
-    min-height: 15rem;
-    padding: $main-padding 0;
+    min-height: 10rem;
     color: $main-color;
+    @include v-main-padding;
 
     & + & {
       border-top: $border;
@@ -57,8 +62,8 @@ export default {
         margin-left: $main-padding;
       }
 
-      height: 15rem;
-      max-width: 20rem;
+      height: 10rem;
+      max-width: 15rem;
       object-fit: contain;
       object-position: 0 0;
     }
@@ -66,9 +71,6 @@ export default {
 
   @media screen and (max-width: 900px) {
     &__item {
-      flex-direction: column;
-      height: auto;
-
       &-images {
         width: 100%;
       }

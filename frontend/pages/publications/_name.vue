@@ -12,10 +12,9 @@ import { decode } from 'html-entities'
 import { get, getImageUrl } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Post from '@/components/Post'
-import RowWrapper from '@/components/RowWrapper'
 
 export default {
-  components: { CenteredWrapper, RowWrapper, Post },
+  components: { CenteredWrapper, Post },
 
   async asyncData({ store, params }) {
     const { language, name } = params

@@ -20,9 +20,9 @@ export default {
   data() {
     return {
       routeIsChanging: false,
-      maxMenuHeight: '28vh',
-      bigMenuHeight: '28vh',
-      menuHeight: '3rem',
+      maxMenuHeight: '35vh',
+      bigMenuHeight: '35vh',
+      menuHeight: '5rem',
     }
   },
 
@@ -136,18 +136,35 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  color: $link-color;
 }
 
 input[type='text'] {
   border: none;
-  background-color: lightgray;
-  padding: $main-padding;
-  font-size: 1rem;
+  display: block;
+  background-color: $link-color;
+  padding-left: $main-padding;
+  padding-right: $main-padding;
+  outline: none;
+  height: 100%;
+  font-size: inherit;
   font-family: inherit;
 }
 
 .nuxt-link-active {
   color: $link-color;
+}
+
+.vdp-datepicker {
+  background-color: $link-color;
+}
+
+.vdp-datepicker > div {
+  min-height: $default-font-size * $main-line-height;
+}
+
+.vdp-datepicker > div > input {
+  padding: 0;
+  min-height: $default-font-size * $main-line-height;
 }
 </style>

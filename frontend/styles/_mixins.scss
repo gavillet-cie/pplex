@@ -1,10 +1,12 @@
 @import './variables';
 
 @mixin sub-title {
+  width: 100%;
   font-size: $sub-title-font-size;
   color: $secondary-color;
   line-height: 1;
-  padding: $section-margin-bottom * 0.5 $padding-row;
+  padding-top: $section-margin-bottom * 0.5;
+  padding-bottom: $section-margin-bottom * 0.5;
 
   @media screen and (max-width: 900px) {
     padding-left: 0;
@@ -17,9 +19,14 @@
   font-size: $medium-font-size;
   color: $secondary-color;
   line-height: 1;
-  padding: $main-padding 0;
   border-top: $border;
   border-bottom: $border;
+  @include v-main-padding;
+}
+
+@mixin v-main-padding {
+  padding-top: $main-padding;
+  padding-bottom: $main-padding;
 }
 
 @mixin text-padding {
@@ -30,16 +37,6 @@
 @mixin big-text-padding {
   padding-top: $main-padding;
   padding-bottom: $section-margin-bottom;
-}
-
-@mixin row-padding {
-  padding-left: $padding-row;
-  padding-right: $padding-row;
-
-  @media screen and (max-width: 900px) {
-    padding-left: 0;
-    padding-right: 0;
-  }
 }
 
 @mixin posts {

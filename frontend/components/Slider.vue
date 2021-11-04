@@ -88,7 +88,7 @@ export default {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    clip: rect(0, 100vw, calc(100vh - var(--max-menu-height)), 0);
+    clip: rect(0, 100vw, calc(100vh - 5rem), 0);
 
     img {
       width: 100%;
@@ -99,9 +99,9 @@ export default {
 
   &__title {
     color: white;
-    font-size: 6rem;
+    font-size: 8rem;
     position: fixed;
-    top: 64vh;
+    top: 66.5vh;
     left: 50%;
     width: 80%;
     text-align: center;

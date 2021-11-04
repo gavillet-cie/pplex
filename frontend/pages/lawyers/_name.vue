@@ -5,58 +5,64 @@
     )
 
     centered-wrapper
-      row-wrapper
+      row.lawyer__row
         lawyer-infos(
           v-bind="lawyer"
         )
 
-      row-wrapper(
+      row.lawyer__row(
         v-if="description"
-        :title="getLabel('domain', labels)"
+        :label="getLabel('domain', labels)"
+        :noPadding="true"
       )
         p.lawyer__description(
           v-html="formatText(description)"
         )
 
-      row-wrapper(
+      row.lawyer__row(
         v-if="showEducation"
-        :title="getLabel('education', labels)"
+        :label="getLabel('education', labels)"
+        :noPadding="true"
       )
         .lawyer__list
           span(
             v-for="item in education"
           ) {{ item }}
 
-      row-wrapper(
+      row.lawyer__row(
         v-if="showPositionsHeld"
-        :title="getLabel('positionsHeld', labels)"
+        :label="getLabel('positionsHeld', labels)"
+        :noPadding="true"
       )
         .lawyer__list
           span(
             v-for="position in positionsHeld"
           ) {{ position }}
 
-      row-wrapper(
+      row.lawyer__row(
         v-if="showMemberships"
-        :title="getLabel('memberships', labels)"
+        :label="getLabel('memberships', labels)"
+        :noPadding="true"
       )
         .lawyer__list
           span(
             v-for="membership in memberships"
           ) {{ membership }}
 
-      row-wrapper(
+      row.lawyer__row(
         v-if="showSelectedPublications"
-        :title="getLabel('selectedPublications', labels)"
+        :label="getLabel('selectedPublications', labels)"
+        :noPadding="true"
       )
         .lawyer__list
           span(
             v-for="publication in selectedPublications"
           ) {{ publication }}
 
-      row-wrapper(
+      row.lawyer__row(
         v-if="showRankings"
-        :title="getLabel('rankings', labels)"
+        :label="getLabel('rankings', labels)"
+        :noPadding="true"
       )
         .lawyer__list
           .lawyer__ranking(
@@ -69,9 +75,10 @@
                 :src="getImageUrl(image.url)"
               )
 
-      row-wrapper(
+      row.lawyer__row(
         v-if="showSpeeches"
-        :title="getLabel('speeches', labels)"
+        :label="getLabel('speeches', labels)"
+        :noPadding="true"
       )
         .lawyer__list
           span(
@@ -79,9 +86,10 @@
             v-html="formatText(speech)"
           )
 
-      row-wrapper(
+      row.lawyer__row(
         v-if="showCases"
-        :title="getLabel('cases', labels)"
+        :label="getLabel('cases', labels)"
+        :noPadding="true"
       )
         .lawyer__list
           span(
@@ -99,7 +107,9 @@
       template(
         v-if="newsItems.length > 0"
       )
-        .lawyer__news-title News
+        row.lawyer__news-title
+          span News
+
         list.lawyer__news(
           :items="newsItems"
         )
@@ -116,7 +126,7 @@ import { getDate } from '@/utils/dates'
 import Slider from '@/components/Slider'
 import TextSlider from '@/components/TextSlider'
 import CenteredWrapper from '@/components/CenteredWrapper'
-import RowWrapper from '@/components/RowWrapper'
+import Row from '@/components/Row'
 import LawyerInfos from '@/components/LawyerInfos'
 import List from '@/components/List'
 
@@ -124,7 +134,7 @@ export default {
   components: {
     CenteredWrapper,
     LawyerInfos,
-    RowWrapper,
+    Row,
     Slider,
     TextSlider,
     List,
@@ -230,6 +240,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
   }
 
   &__slider {
@@ -237,16 +248,34 @@ export default {
     height: 60vh;
   }
 
+  &__row {
+    @include v-main-padding;
+
+    & + & {
+      border-top: $border;
+    }
+  }
+
   &__list {
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     span {
-      display: block;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-bottom: $border;
+      @include v-main-padding;
     }
 
-    span + span {
-      margin-top: 0.5rem;
+    span:first-child {
+      padding-top: 0;
+    }
+
+    span:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
     }
   }
 

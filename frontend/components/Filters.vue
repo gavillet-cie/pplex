@@ -66,6 +66,8 @@ export default {
 
 <style lang="scss">
 .filters {
+  font-size: $default-font-size;
+
   &__title {
     display: block;
     color: $secondary-color;
@@ -76,7 +78,6 @@ export default {
     width: 25%;
     flex: 0 0 auto;
     display: block;
-    font-size: 1rem;
     color: black;
 
     & + & {
@@ -86,14 +87,16 @@ export default {
 
   &__items {
     display: flex;
-    padding: $menu-margin 0;
-    border-top: solid 2px black;
-    border-bottom: solid 2px black;
+    border-top: $border;
+    border-bottom: $border;
   }
 
   &__item {
+    display: block;
+    padding: $main-padding 0;
+
     & + & {
-      margin-left: 1rem;
+      margin-left: $main-padding;
     }
 
     input {

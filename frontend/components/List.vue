@@ -1,26 +1,30 @@
 <template lang="pug">
   ul.list
-    li.list__item(v-for="item in items")
-      .list__item-inner(
+    row.list__item(
+      v-for="item in items"
+      :label="item.label"
+      :noPadding="true"
+    )
+      li.list__item-inner(
         :is="item.url ? 'nuxt-link' : 'div'"
         :to="item.url"
       )
-        .list__item-label(
-          v-if="item.label"
-        ) {{ item.label }}
         .list__item-content
           .list__item-content-text(
             v-if="item.text"
             v-html="item.text"
           )
+
         add-icon.list__item-icon
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import AddIcon from '@/components/AddIcon'
+import Row from '@/components/Row'
+
 export default {
-  components: { AddIcon },
+  components: { AddIcon, Row },
 
   props: {
     items: {
@@ -41,11 +45,10 @@ export default {
 .list {
   &__item {
     $i: &;
+    @include text-padding;
 
     &-inner {
-      padding: 1rem 0;
       display: flex;
-      @include text-padding;
 
       &:hover {
         text-decoration: none;
@@ -53,7 +56,7 @@ export default {
     }
 
     & + & {
-      border-top: solid 2px;
+      border-top: $border;
     }
 
     &-label {

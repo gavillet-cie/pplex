@@ -1,9 +1,10 @@
 <template lang="pug">
   .locations
-    .locations__item(
+    row.locations__item(
       v-for="item in locations"
+      :label="item.city"
+      :noPadding="true"
     )
-      .locations__name {{ item.city }}
       .locations__content
         .locations__address(
           v-html="formatText(getAddress(item))"
@@ -29,8 +30,10 @@ import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
 import { formatText } from '@/utils/text'
 import { getLabel } from '@/utils/labels'
+import Row from '@/components/Row'
 
 export default {
+  components: { Row },
   data() {
     return {
       locations: [],
@@ -62,11 +65,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/mixins';
+
 .locations {
   &__item {
     position: relative;
     display: flex;
-    padding: $main-padding 0;
+    @include v-main-padding;
 
     & + & {
       border-top: $border;
@@ -93,10 +98,6 @@ export default {
   }
 
   @media screen and(max-width: 900px) {
-    &__item {
-      flex-direction: column;
-    }
-
     &__icon {
       position: absolute;
       top: $main-padding;

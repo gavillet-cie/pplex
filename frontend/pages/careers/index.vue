@@ -1,10 +1,13 @@
 <template lang="pug">
   .careers
     centered-wrapper
-      .careers__title {{ title }}
-      .careers__description(
-        v-html="description"
-      )
+      row
+        h3.careers__title {{ title }}
+
+      row
+        .careers__description(
+          v-html="description"
+        )
 
       list.careers__vacancies(
         :items="vacancyItems"
@@ -16,11 +19,11 @@ import { decode } from 'html-entities'
 import Locations from '@/components/Locations'
 import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
-import RowWrapper from '@/components/RowWrapper'
+import Row from '@/components/Row'
 import List from '@/components/List'
 
 export default {
-  components: { Locations, CenteredWrapper, RowWrapper, List },
+  components: { Locations, CenteredWrapper, Row, List },
 
   async asyncData({ store, params }) {
     const { language } = params
@@ -57,7 +60,6 @@ export default {
   }
 
   &__description {
-    @include row-padding;
     @include text-padding;
   }
 

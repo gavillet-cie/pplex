@@ -1,7 +1,10 @@
 <template lang="pug">
   .news
     centered-wrapper
-      h2.news__sub-title {{ title }}
+      row.news__sub-title(
+        :noPadding="true"
+      )
+        h3 {{ title }}
 
       filters(
         :placeholder="getLabel('search', labels)"
@@ -23,12 +26,11 @@ import { getLabel } from '@/utils/labels'
 import { getDate } from '@/utils/dates'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Post from '@/components/Post'
-import RowWrapper from '@/components/RowWrapper'
 import List from '@/components/List'
 import Filters from '@/components/Filters'
 
 export default {
-  components: { CenteredWrapper, RowWrapper, Post, List, Filters },
+  components: { CenteredWrapper, Post, List, Filters },
 
   async asyncData({ store, params }) {
     const { language } = params
