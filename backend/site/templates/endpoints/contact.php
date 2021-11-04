@@ -1,5 +1,6 @@
 <?php
 require_once $config->paths->templates . "/api/APIRenderer.php";
+require_once $config->paths->templates . '/endpoints/shared/location.php';
 
 $apiRenderer = new APIRenderer();
 echo $apiRenderer->renderJSONFromModel([
@@ -9,13 +10,6 @@ echo $apiRenderer->renderJSONFromModel([
   "locations" => [
     "field" => "children",
     "type" => "nested",
-    "model" => [
-      "title" => ["field" => "title"],
-      "name" => ["field" => "name"],
-      "address" => ["field" => "location_address"],
-      "phone" => ["field" => "location_phone"],
-      "email" => ["field" => "location_email"],
-      "googleMap" => ["field" => "location_google_map"]
-    ]
+    "model" => $locationModel
   ]
 ], $page);

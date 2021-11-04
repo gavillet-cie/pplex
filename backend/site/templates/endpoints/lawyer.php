@@ -1,5 +1,6 @@
 <?php
 require_once $config->paths->templates . "/api/APIRenderer.php";
+require_once $config->paths->templates . '/endpoints/shared/location.php';
 
 $apiRenderer = new APIRenderer();
 echo $apiRenderer->renderJSONFromModel([
@@ -14,19 +15,11 @@ echo $apiRenderer->renderJSONFromModel([
   "email" => ["field" => "lawyer_email"],
   "phone" => ["field" => "lawyer_phone"],
   "fax" => ["field" => "lawyer_fax"],
-  "entityAndAddress" => ["field" => "lawyer_entity_and_address"],
   "status" => ["field" => "lawyer_status"],
-  "location" => [
-    "field" => "lawyer_location",
+  "locations" => [
+    "field" => "lawyer_locations",
     "type" => "nested",
-    "model" => [
-      "title" => ["field" => "title"],
-      "name" => ["field" => "name"],
-      "address" => ["field" => "location_address"],
-      "phone" => ["field" => "location_phone"],
-      "email" => ["field" => "location_email"],
-      "googleMap" => ["field" => "location_google_map"]
-    ]
+    "model" => $locationModel
   ],
   "languages" => [
     "field" => "lawyer_languages",

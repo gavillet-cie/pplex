@@ -53,7 +53,7 @@
         v-if="showEntityAndAddress"
       )
         span.lawyer-infos__section-title {{ getLabel('entityAndAddress', labels) }}
-        p.lawyer-infos__entity-address(v-html="formatText(location.title)")
+        p.lawyer-infos__entity-address(v-html="formatText(entityAndAddress)")
 
       .lawyer-infos__section(
         v-if="showBarAdmission"
@@ -105,9 +105,9 @@ export default {
       default: () => [],
     },
 
-    location: {
-      type: Object,
-      default: () => ({}),
+    locations: {
+      type: Array,
+      default: () => [],
     },
 
     barAdmission: {
@@ -145,7 +145,13 @@ export default {
     },
 
     showEntityAndAddress() {
-      return this.location
+      return this.locations && this.locations.length > 0
+    },
+
+    entityAndAddress() {
+      return `Python | Avocats
+        ${this.locations.map((it) => `${it.city}, ${it.address}`).join('\n')}
+      `
     },
 
     showBarAdmission() {

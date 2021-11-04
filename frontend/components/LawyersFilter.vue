@@ -47,7 +47,7 @@ export default {
     const { language } = this.$route.params
     const [{ practiceAreas }, { locations }] = await Promise.all([
       get('our-practice-areas', language),
-      get('locations', language),
+      get('contact', language),
     ])
 
     this.practiceAreas = practiceAreas

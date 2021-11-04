@@ -112,7 +112,7 @@ $config->installed = 1632390235;
  * Installer: HTTP Hosts Whitelist
  * 
  */
-$config->httpHosts = array('localhost');
+$config->httpHosts = array('localhost:8080');
 
 
 /**

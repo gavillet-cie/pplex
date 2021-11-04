@@ -8,7 +8,7 @@ export const filterLawyers = (lawyers, filters) => {
       .map((it) => it.name)
       .includes(filters?.practiceArea)
 
-    const includesLocation = lawyer.location.name === filters?.location
+    const includesLocation = lawyer?.location?.name === filters?.location
 
     return (
       (!filters?.name || includesName) &&

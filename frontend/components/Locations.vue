@@ -3,10 +3,10 @@
     .locations__item(
       v-for="item in locations"
     )
-      .locations__name {{ item.location }}
+      .locations__name {{ item.city }}
       .locations__content
         .locations__address(
-          v-html="formatText(item.address)"
+          v-html="formatText(getAddress(item))"
         )
         br
         .locations__phone {{ item.phone }}
@@ -49,6 +49,14 @@ export default {
   methods: {
     formatText,
     getLabel,
+
+    getAddress(item) {
+      return `${item.address}${
+        item.additionalAddress ? `\n${item.additionalAddress}` : ''
+      }
+        ${item.zipCode} ${item.city}
+      `
+    },
   },
 }
 </script>
