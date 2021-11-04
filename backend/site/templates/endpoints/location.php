@@ -6,8 +6,8 @@ echo $apiRenderer->renderJSONFromModel([
   "title" => ["field" => "title"],
   "name" => ["field" => "name"],
   "url" => ["field" => "url"],
-  "address" => ["field" => "locationt_address"],
-  "phone" => ["field" => "locationt_phone"],
-  "email" => ["field" => "locationt_email"],
-  "googleMap" => ["field" => "locationt_google_map"]
+  "address" => ["field" => "location_address"],
+  "phone" => ["field" => "location_phone"],
+  "email" => ["field" => "location_email"],
+  "googleMap" => ["field" => "location_google_map"]
 ], $page);
