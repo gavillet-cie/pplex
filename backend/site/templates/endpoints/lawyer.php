@@ -18,7 +18,15 @@ echo $apiRenderer->renderJSONFromModel([
   "status" => ["field" => "lawyer_status"],
   "location" => [
     "field" => "lawyer_location",
-    "type" => "simple-reference"
+    "type" => "nested",
+    "model" => [
+      "title" => ["field" => "title"],
+      "name" => ["field" => "name"],
+      "address" => ["field" => "location_address"],
+      "phone" => ["field" => "location_phone"],
+      "email" => ["field" => "location_email"],
+      "googleMap" => ["field" => "location_google_map"]
+    ]
   ],
   "languages" => [
     "field" => "lawyer_languages",

@@ -53,7 +53,7 @@
         v-if="showEntityAndAddress"
       )
         span.lawyer-infos__section-title {{ getLabel('entityAndAddress', labels) }}
-        p.lawyer-infos__entity-address(v-html="formatText(entityAndAddress)")
+        p.lawyer-infos__entity-address(v-html="formatText(location.title)")
 
       .lawyer-infos__section(
         v-if="showBarAdmission"
@@ -105,9 +105,9 @@ export default {
       default: () => [],
     },
 
-    entityAndAddress: {
-      type: String,
-      default: '',
+    location: {
+      type: Object,
+      default: () => ({}),
     },
 
     barAdmission: {
@@ -145,7 +145,7 @@ export default {
     },
 
     showEntityAndAddress() {
-      return this.entityAndAddress
+      return this.location
     },
 
     showBarAdmission() {
