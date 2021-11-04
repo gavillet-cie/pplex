@@ -16,6 +16,8 @@ export const getUrl = (
   )
 }
 
+export const getApiUrl = (url) => getUrl(url, '', true, false, config.BASE_URL)
+
 export const getImageUrl = (url) => getUrl(url, '', true, false, ROOT_URL)
 
 export const sanitizeUrl = (url, trailingSlash = true) => {

@@ -15,6 +15,12 @@
           v-if="lawyerTitle"
         ) {{ lawyerTitle }}
 
+        client-only
+          a.lawyer-infos__vcard(
+            :href="getApiUrl(`/vcard/${name}`)"
+            download
+          ) VCard
+
       .lawyer-infos__section(
         v-if="showContact"
       )
@@ -65,11 +71,16 @@
 <script>
 import { mapGetters } from 'vuex'
 import { formatText } from '@/utils/text'
-import { getImageUrl, getUrl } from '@/utils/api'
+import { getImageUrl, getUrl, getApiUrl } from '@/utils/api'
 import { getLabel } from '@/utils/labels'
 
 export default {
   props: {
+    name: {
+      type: String,
+      default: '',
+    },
+
     title: {
       type: String,
       default: '',
@@ -161,6 +172,7 @@ export default {
 
   methods: {
     getUrl,
+    getApiUrl,
     formatText,
     getImageUrl,
     getLabel,
@@ -172,6 +184,10 @@ export default {
 .lawyer-infos {
   display: flex;
   font-size: $small-font-size;
+
+  &__vcard {
+    font-size: $default-font-size;
+  }
 
   &__portrait {
     width: 25%;
