@@ -45,7 +45,8 @@ export default {
     appCssClasses() {
       return {
         'app--menu-transition': this.routeIsChanging,
-        'app--disable-transitions': this.disableTransitions,
+        'app--disable-transitions':
+          this.disableTransitions && !this.routeIsChanging,
       }
     },
 
