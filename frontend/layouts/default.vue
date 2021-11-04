@@ -24,6 +24,7 @@ export default {
       bigMenuHeight: '35vh',
       menuHeight: '3rem',
       disableTransitions: false,
+      percent: 0,
     }
   },
 
@@ -38,6 +39,7 @@ export default {
       return {
         '--max-menu-height': this.maxMenuHeight,
         '--menu-height': this.bigMenu ? this.bigMenuHeight : this.menuHeight,
+        '--scroll-percent': this.percent,
         'padding-top': this.bigMenu ? this.maxMenuHeight : this.menuHeight,
       }
     },
@@ -111,6 +113,9 @@ export default {
           max,
           window.scrollY
         )}px)`
+
+        this.percent =
+          window.scrollY / (document.body.clientHeight - window.innerHeight)
       }
     },
   },

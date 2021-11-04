@@ -101,7 +101,7 @@ export default {
     color: white;
     font-size: 8rem;
     position: fixed;
-    top: 66.5vh;
+    top: calc(50vh + ((1 - var(--scroll-percent)) * 16.5vh));
     left: 50%;
     width: 80%;
     text-align: center;
