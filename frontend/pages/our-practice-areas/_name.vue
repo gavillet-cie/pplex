@@ -8,13 +8,16 @@
         v-html="description"
       )
 
-      .practice-area__lawyers-sub-title(
-        v-html="subTitle"
+      template(
+        v-if="filteredLawyers.length > 0"
       )
+        .practice-area__lawyers-sub-title(
+          v-html="lawyerSubTitle"
+        )
 
-      lawyers-grid.practice-area__lawyers(
-        :lawyers="filteredLawyers"
-      )
+        lawyers-grid.practice-area__lawyers(
+          :lawyers="filteredLawyers"
+        )
 </template>
 
 <script>
@@ -50,9 +53,6 @@ export default {
 
   computed: {
     ...mapGetters(['lang']),
-    subTitle() {
-      return `Nos avocats spécialisés en ${this.title.toLowerCase()}`
-    },
 
     filteredLawyers() {
       return filterLawyers(this.lawyers, {
