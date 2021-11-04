@@ -4,8 +4,8 @@
     :class="appCssClasses"
   )
     main-menu.app__menu
-    nuxt.app__content(:style="contentCssStyle")
-    main-footer(:style="contentCssStyle")
+    nuxt.app__content
+    main-footer.app__footer
 </template>
 
 <script>
@@ -49,12 +49,7 @@ export default {
         'app--menu-transition': this.routeIsChanging,
         'app--disable-transitions':
           this.disableTransitions && !this.routeIsChanging,
-      }
-    },
-
-    contentCssStyle() {
-      return {
-        opacity: this.showMenu ? 0 : 1,
+        'app--hide-content': this.showMenu,
       }
     },
   },
@@ -75,7 +70,7 @@ export default {
         this.routeIsChanging = true
         setTimeout(() => {
           this.routeIsChanging = false
-        }, 500)
+        }, 1000)
       },
     },
 
@@ -154,6 +149,16 @@ export default {
 
   &__content {
     flex: 1 1 auto;
+  }
+
+  &__content,
+  &__footer {
+    transition: opacity $animation-duration $animation-duration;
+
+    #{$a}--hide-content & {
+      opacity: 0;
+      transition: opacity $animation-duration 0s;
+    }
   }
 
   @media screen and (max-width: 900px) {
