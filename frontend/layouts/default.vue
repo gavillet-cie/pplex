@@ -98,6 +98,14 @@ export default {
       }, 100)
       this.updateMenuHeight()
     })
+
+    window.addEventListener('resize', () => {
+      this.disableTransitions = true
+      clearTimeout(disableTransitionTimeout)
+      disableTransitionTimeout = setTimeout(() => {
+        this.disableTransitions = false
+      }, 100)
+    })
   },
 
   methods: {
