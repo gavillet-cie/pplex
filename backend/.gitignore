@@ -1,3 +1,8 @@
-/site/assets
+/site/assets/backups
+/site/assets/cache
+/site/assets/files
+/site/assets/logs
+/site/assets/sessions
+/site/assets/sessions
 .env
 /node_modules
