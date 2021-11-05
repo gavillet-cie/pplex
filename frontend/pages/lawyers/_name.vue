@@ -241,7 +241,7 @@ export default {
     position: fixed;
     top: max(20vh, var(--menu-height));
     left: 0;
-    height: 60vh;
+    height: calc(100vh - var(--max-menu-height, 35vh));
     width: 20%;
     display: flex;
     justify-content: center;
@@ -251,7 +251,7 @@ export default {
 
   &__slider {
     width: 100%;
-    height: 60vh;
+    height: calc(100vh - var(--max-menu-height, 35vh));
   }
 
   &__row {
