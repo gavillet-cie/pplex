@@ -209,7 +209,8 @@ input[type='text'] {
 }
 
 .vdp-datepicker > div > input {
-  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
   min-height: $default-font-size * $main-line-height;
 }
 </style>
