@@ -1,9 +1,7 @@
 <template lang="pug">
   .news
     centered-wrapper
-      row.news__sub-title(
-        :noPadding="true"
-      )
+      row.news__sub-title
         h3 {{ formatRawText(title) }}
 
       filters(

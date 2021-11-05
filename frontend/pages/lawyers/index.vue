@@ -1,9 +1,7 @@
 <template lang="pug">
   .lawyers
     centered-wrapper
-      row.lawyers__sub-title(
-        :noPadding="true"
-      )
+      row.lawyers__sub-title
         h3 {{ title }}
 
       filters(

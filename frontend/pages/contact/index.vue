@@ -1,7 +1,8 @@
 <template lang="pug">
   .contact
     centered-wrapper
-      .contact__title {{ formatRawText(title) }}
+      row.contact__title
+        h3 {{ formatRawText(title) }}
       locations.contact__locations
 </template>
 
@@ -9,10 +10,11 @@
 import Locations from '@/components/Locations'
 import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
+import Row from '@/components/Row'
 import { formatRawText, formatHtmlText } from '@/utils/text'
 
 export default {
-  components: { Locations, CenteredWrapper },
+  components: { Locations, CenteredWrapper, Row },
 
   async asyncData({ store, params }) {
     const { language } = params

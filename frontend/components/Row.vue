@@ -81,6 +81,7 @@ export default {
 
     &__label {
       display: block;
+      width: 100%;
       padding-bottom: $main-padding;
     }
   }

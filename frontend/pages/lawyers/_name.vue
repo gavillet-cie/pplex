@@ -4,7 +4,9 @@
       :slides="lawyerSlides"
     )
 
-    centered-wrapper
+    centered-wrapper(
+      :marginLeft="marginLeft"
+    )
       row.lawyer__row
         lawyer-infos(
           v-bind="lawyer"
@@ -173,6 +175,10 @@ export default {
           ]
     },
 
+    marginLeft() {
+      return this.testimonials?.length > 0 ? '20%' : null
+    },
+
     newsItems() {
       return this.news
         .filter((it) => it.author.find((author) => author.name === this.name))
@@ -236,7 +242,7 @@ export default {
     top: max(20vh, var(--menu-height));
     left: 0;
     height: 60vh;
-    width: calc((100% - #{$wrapper-max-width}) / 2);
+    width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
