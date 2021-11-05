@@ -156,8 +156,15 @@ export default {
     flex: 1 1 auto;
     margin-right: 6rem;
     padding: $main-padding 0;
-    line-height: 0.8;
+    line-height: 2rem;
+    margin-top: -7px;
     width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
 
     #{$m}--small & {
       opacity: 1;
