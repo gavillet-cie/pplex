@@ -4,7 +4,7 @@
       row.news__sub-title(
         :noPadding="true"
       )
-        h3 {{ title }}
+        h3 {{ formatRawText(title) }}
 
       filters(
         :placeholder="getLabel('search', labels)"
@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import { decode } from 'html-entities'
 import { mapGetters } from 'vuex'
 import { get, getUrl } from '@/utils/api'
+import { formatRawText, formatHtmlText } from '@/utils/text'
 import { getLabel } from '@/utils/labels'
 import { getDate } from '@/utils/dates'
 import CenteredWrapper from '@/components/CenteredWrapper'
@@ -54,7 +54,7 @@ export default {
 
   head() {
     return {
-      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
+      title: this.title ? `${formatRawText(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 
@@ -86,8 +86,8 @@ export default {
           )
         })
         .map((it) => ({
-          title: it.title,
-          text: it.content,
+          title: formatRawText(it.title),
+          text: formatHtmlText(it.content),
           label: getDate(it.date),
           url: getUrl(`news/${it.name}`, this.lang),
         }))
@@ -127,6 +127,8 @@ export default {
 
   methods: {
     getLabel,
+    formatRawText,
+    formatHtmlText,
     onFilter(filters) {
       const { datePicker, practiceAreas, textInput } = filters
       const inputValue = textInput?.target?.value

@@ -5,12 +5,14 @@
     .row__inner
       span.row__label(
         v-if="label"
-      ) {{ label }}
+      ) {{ formatRawText(label) }}
 
       slot
 </template>
 
 <script>
+import { formatRawText, formatHtmlText } from '@/utils/text'
+
 export default {
   props: {
     label: {
@@ -31,6 +33,11 @@ export default {
         'row--no-padding': this.noPadding,
       }
     },
+  },
+
+  methods: {
+    formatRawText,
+    formatHtmlText,
   },
 }
 </script>

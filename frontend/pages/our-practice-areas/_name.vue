@@ -2,20 +2,18 @@
   .practice-area
     centered-wrapper
       row.practice-area__title
-        h3(
-          v-html="title"
-        )
+        h3 {{ formatRawText(title) }}
 
       row
         .practice-area__description(
-          v-html="description"
+          v-html="formatHtmlText(description)"
         )
 
       template(
         v-if="filteredLawyers.length > 0"
       )
         row.practice-area__lawyers-sub-title
-          span {{ lawyerSubTitle }}
+          span {{ formatRawText(lawyerSubTitle) }}
 
         lawyers-grid.practice-area__lawyers(
           :lawyers="filteredLawyers"
@@ -23,9 +21,9 @@
 </template>
 
 <script>
-import { decode } from 'html-entities'
 import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
+import { formatRawText, formatHtmlText } from '@/utils/text'
 import { filterLawyers } from '@/utils/lawyers'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Row from '@/components/Row'
@@ -49,7 +47,7 @@ export default {
 
   head() {
     return {
-      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
+      title: this.title ? `${formatRawText(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 
@@ -64,6 +62,8 @@ export default {
       })
     },
   },
+
+  methods: { formatHtmlText, formatRawText },
 }
 </script>
 

@@ -59,18 +59,18 @@
         v-if="showEntityAndAddress"
       )
         span.lawyer-infos__section-title {{ getLabel('entityAndAddress', labels) }}
-        p.lawyer-infos__entity-address(v-html="formatText(entityAndAddress)")
+        p.lawyer-infos__entity-address(v-html="formatRawText(entityAndAddress)")
 
       .lawyer-infos__section(
         v-if="showBarAdmission"
       )
         span.lawyer-infos__section-title {{ getLabel('barAdmission', labels) }}
-        p.lawyer-infos__bar-admission(v-html="formatText(barAdmission)")
+        p.lawyer-infos__bar-admission(v-html="formatRawText(barAdmission)")
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import { formatText } from '@/utils/text'
+import { formatRawText } from '@/utils/text'
 import { getImageUrl, getUrl, getApiUrl } from '@/utils/api'
 import { getLabel } from '@/utils/labels'
 
@@ -173,7 +173,7 @@ export default {
   methods: {
     getUrl,
     getApiUrl,
-    formatText,
+    formatRawText,
     getImageUrl,
     getLabel,
   },

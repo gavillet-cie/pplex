@@ -8,7 +8,7 @@
       v-for="slide in currentSlides"
       :key="slideIndex"
     )
-      span.slider__title {{ slide.title }}
+      span.slider__title {{ formatRawText(slide.title) }}
       img(
         :src="getImageUrl(slide.image.url)"
         :style="getImageCssStyle(slide.image)"
@@ -18,6 +18,7 @@
 <script>
 import { getImageUrl } from '@/utils/api'
 import { getImageCssStyle } from '@/utils/images'
+import { formatRawText, formatHtmlText } from '@/utils/text'
 
 export default {
   props: {
@@ -48,6 +49,8 @@ export default {
   methods: {
     getImageUrl,
     getImageCssStyle,
+    formatRawText,
+    formatHtmlText,
 
     nextSlide() {
       this.slideIndex++

@@ -2,18 +2,20 @@
   .locations
     row.locations__item(
       v-for="item in locations"
-      :label="item.city"
+      :label="formatRawText(item.city)"
       :noPadding="true"
     )
       .locations__content
         .locations__address(
-          v-html="formatText(getAddress(item))"
+          v-html="formatRawText(getAddress(item))"
         )
         br
         .locations__phone {{ item.phone }}
+
         a.locations__email(
           :href="`mailto:${item.email}`"
         ) {{ item.email }}
+
         a.locations__google(
           target="_blank"
           :href="item.googleMap"
@@ -28,7 +30,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
-import { formatText } from '@/utils/text'
+import { formatRawText } from '@/utils/text'
 import { getLabel } from '@/utils/labels'
 import Row from '@/components/Row'
 
@@ -50,7 +52,7 @@ export default {
   },
 
   methods: {
-    formatText,
+    formatRawText,
     getLabel,
 
     getAddress(item) {

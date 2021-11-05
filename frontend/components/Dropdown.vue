@@ -5,7 +5,7 @@
     tabindex="0"
   )
     .dropdown__value
-      span(v-html="selectedOption ? selectedOption.label : placeholder")
+      span {{ formatRawText(selectedOption ? selectedOption.label : placeholder) }}
 
     .dropdown__options(
       v-show="showOptions"
@@ -16,12 +16,13 @@
         :class="getOptionCssClass(option)"
         @click="selectOption(option)"
       )
-        span(v-html="option.label")
+        span {{ formatRawText(option.label) }}
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import { getLabel } from '@/utils/labels'
+import { formatRawText, formatHtmlText } from '@/utils/text'
 
 export default {
   props: {
@@ -55,6 +56,8 @@ export default {
 
   methods: {
     getLabel,
+    formatRawText,
+    formatHtmlText,
     getOptionCssClass(option) {
       return {
         'dropdown__option--active': option === this.selectedOption,

@@ -41,15 +41,14 @@
             :to="getUrl(`/${section.name}`, lang)"
             @click.native="hideMenu"
           )
-            span(
-              v-html="section.title"
-            )
+            span {{ formatRawText(section.title) }}
 
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import { get, getUrl } from '../utils/api'
+import { formatRawText } from '../utils/text'
 
 export default {
   data() {
@@ -94,6 +93,7 @@ export default {
 
   methods: {
     getUrl,
+    formatRawText,
     toggleMenu() {
       this.$store.commit('setShowMenu', !this.showMenu)
     },

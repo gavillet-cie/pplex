@@ -2,7 +2,7 @@
   ul.list
     row.list__item(
       v-for="item in items"
-      :label="item.label"
+      :label="formatRawText(item.label)"
       :noPadding="true"
     )
       li.list__item-inner(
@@ -12,7 +12,7 @@
         .list__item-content
           .list__item-content-text(
             v-if="item.text"
-            v-html="item.text"
+            v-html="formatHtmlText(item.text)"
           )
 
         add-icon.list__item-icon
@@ -20,6 +20,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { formatRawText, formatHtmlText } from '@/utils/text'
 import AddIcon from '@/components/AddIcon'
 import Row from '@/components/Row'
 
@@ -35,6 +36,11 @@ export default {
 
   computed: {
     ...mapGetters(['lang']),
+  },
+
+  methods: {
+    formatRawText,
+    formatHtmlText,
   },
 }
 </script>

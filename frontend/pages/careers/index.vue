@@ -2,11 +2,11 @@
   .careers
     centered-wrapper
       row
-        h3.careers__title {{ title }}
+        h3.careers__title {{ formatRawText(title) }}
 
       row
         .careers__description(
-          v-html="description"
+          v-html="formatHtmlText(description)"
         )
 
       list.careers__vacancies(
@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import { decode } from 'html-entities'
 import Locations from '@/components/Locations'
 import { get } from '@/utils/api'
+import { formatRawText, formatHtmlText } from '@/utils/text'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Row from '@/components/Row'
 import List from '@/components/List'
@@ -34,17 +34,22 @@ export default {
 
   head() {
     return {
-      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
+      title: this.title ? `${formatRawText(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 
   computed: {
     vacancyItems() {
       return this.currentVacancies.map((it) => ({
-        label: it.title,
-        text: it.description,
+        label: formatRawText(it.title),
+        text: formatRawText(it.description),
       }))
     },
+  },
+
+  methods: {
+    formatHtmlText,
+    formatRawText,
   },
 }
 </script>

@@ -1,6 +1,6 @@
 <template lang="pug">
   .filters
-    span.filters__title {{ title }}
+    span.filters__title {{ formatRawText(title) }}
     .filters__items
       client-only
         .filters__item(
@@ -18,6 +18,7 @@
 <script>
 import Dropdown from '@/components/Dropdown'
 import { getLabel } from '@/utils/labels'
+import { formatRawText, formatHtmlText } from '@/utils/text'
 
 export default {
   components: { Dropdown },
@@ -49,6 +50,8 @@ export default {
 
   methods: {
     getLabel,
+    formatRawText,
+    formatHtmlText,
     onSelect(dropdown, value) {
       this.values[dropdown.id] = value
       this.$emit('input', this.values)

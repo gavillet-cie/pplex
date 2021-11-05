@@ -122,7 +122,7 @@ export default {
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.3s;
+  transition: opacity 0.1s;
 }
 .page-enter,
 .page-leave-to {
@@ -143,7 +143,7 @@ export default {
 
   &__menu {
     #{$a}--menu-transition & {
-      transition: height 0.3s;
+      transition: height $animation-duration;
     }
   }
 

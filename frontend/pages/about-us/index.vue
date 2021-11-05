@@ -2,13 +2,11 @@
   .about-us
     centered-wrapper
       row.about-us__title
-        h3(
-          v-html="title"
-        )
+        h3 {{ formatRawText(title) }}
 
       row
         .about-us__description(
-          v-html="description"
+          v-html="formatHtmlText(description)"
         )
 
       row.about-us__section-title
@@ -16,7 +14,7 @@
 
       row
         .about-us__swisslex(
-          v-html="swisslex"
+          v-html="formatHtmlText(swisslex)"
         )
 
       row.about-us__section-title
@@ -34,8 +32,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { decode } from 'html-entities'
 import { get } from '@/utils/api'
+import { formatRawText, formatHtmlText } from '@/utils/text'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Row from '@/components/Row'
 import Locations from '@/components/Locations'
@@ -54,7 +52,7 @@ export default {
 
   head() {
     return {
-      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
+      title: this.title ? `${formatRawText(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 
@@ -64,6 +62,8 @@ export default {
 
   methods: {
     getLabel,
+    formatRawText,
+    formatHtmlText,
   },
 }
 </script>

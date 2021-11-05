@@ -2,10 +2,12 @@
   .practice-areas
     centered-wrapper
       row.practice-areas__title
-        h3 {{ title }}
+        h3 {{ formatRawText(title) }}
 
       row
-        .practice-areas__description(v-html="description")
+        .practice-areas__description(
+          v-html="formatHtmlText(description)"
+        )
 
       .practice-areas__grid
         .practice-areas__grid-inner
@@ -15,12 +17,13 @@
             :to="getUrl(`/our-practice-areas/${area.name}`)"
           )
             .practice-areas__item-inner
-              span(v-html="area.title")
+              span {{ formatRawText(area.title) }}
 </template>
 
 <script>
 import { decode } from 'html-entities'
 import { get, getUrl } from '@/utils/api'
+import { formatRawText, formatHtmlText } from '@/utils/text'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Row from '@/components/Row'
 
@@ -43,6 +46,8 @@ export default {
 
   methods: {
     getUrl,
+    formatRawText,
+    formatHtmlText,
   },
 }
 </script>

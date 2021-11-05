@@ -7,10 +7,12 @@
       v-for="slide in currentSlides"
       :key="slideIndex"
     )
-      div(v-html="slide")
+      div(v-html="formatHtmlText(slide)")
 </template>
 
 <script>
+import { formatRawText, formatHtmlText } from '@/utils/text'
+
 export default {
   props: {
     slides: {
@@ -38,6 +40,11 @@ export default {
         this.slideIndex = 0
       }
     }, 5000)
+  },
+
+  methods: {
+    formatRawText,
+    formatHtmlText,
   },
 }
 </script>

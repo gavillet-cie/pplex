@@ -16,7 +16,7 @@
         :noPadding="true"
       )
         p.lawyer__description(
-          v-html="formatText(description)"
+          v-html="formatRawText(description)"
         )
 
       row.lawyer__row(
@@ -27,7 +27,7 @@
         .lawyer__list
           span(
             v-for="item in education"
-          ) {{ item }}
+          ) {{ formatRawText(item) }}
 
       row.lawyer__row(
         v-if="showPositionsHeld"
@@ -37,7 +37,7 @@
         .lawyer__list
           span(
             v-for="position in positionsHeld"
-          ) {{ position }}
+          ) {{ formatRawText(position) }}
 
       row.lawyer__row(
         v-if="showMemberships"
@@ -47,7 +47,7 @@
         .lawyer__list
           span(
             v-for="membership in memberships"
-          ) {{ membership }}
+          ) {{ formatRawText(membership) }}
 
       row.lawyer__row(
         v-if="showSelectedPublications"
@@ -57,7 +57,7 @@
         .lawyer__list
           span(
             v-for="publication in selectedPublications"
-          ) {{ publication }}
+          ) {{ formatRawText(publication) }}
 
       row.lawyer__row(
         v-if="showRankings"
@@ -83,7 +83,7 @@
         .lawyer__list
           span(
             v-for="speech in speeches"
-            v-html="formatText(speech)"
+            v-html="formatRawText(speech)"
           )
 
       row.lawyer__row(
@@ -94,7 +94,7 @@
         .lawyer__list
           span(
             v-for="caseItem in cases"
-            v-html="formatText(caseItem)"
+            v-html="formatRawText(caseItem)"
           )
 
       .lawyer__testimonials(
@@ -120,7 +120,7 @@
 import { decode } from 'html-entities'
 import { mapGetters } from 'vuex'
 import { get, getImageUrl, getUrl } from '@/utils/api'
-import { formatText } from '@/utils/text'
+import { formatRawText, formatHtmlText } from '@/utils/text'
 import { getLabel } from '@/utils/labels'
 import { getDate } from '@/utils/dates'
 import Slider from '@/components/Slider'
@@ -177,7 +177,7 @@ export default {
       return this.news
         .filter((it) => it.author.find((author) => author.name === this.name))
         .map((it) => ({
-          text: it.content,
+          text: formatHtmlText(it.content),
           label: getDate(it.date, this.lang),
           url: getUrl(`/news/${it.name}`),
         }))
@@ -218,7 +218,7 @@ export default {
 
   methods: {
     getImageUrl,
-    formatText,
+    formatRawText,
     getLabel,
   },
 }

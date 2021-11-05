@@ -1,15 +1,15 @@
 <template lang="pug">
   .contact
     centered-wrapper
-      .contact__title {{ title }}
+      .contact__title {{ formatRawText(title) }}
       locations.contact__locations
 </template>
 
 <script>
-import { decode } from 'html-entities'
 import Locations from '@/components/Locations'
 import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
+import { formatRawText, formatHtmlText } from '@/utils/text'
 
 export default {
   components: { Locations, CenteredWrapper },
@@ -23,8 +23,13 @@ export default {
 
   head() {
     return {
-      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
+      title: this.title ? `${formatRawText(this.title)} - PYTHON` : 'PYTHON',
     }
+  },
+
+  methods: {
+    formatRawText,
+    formatHtmlText,
   },
 }
 </script>
