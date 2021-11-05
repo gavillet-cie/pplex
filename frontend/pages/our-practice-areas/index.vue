@@ -14,14 +14,14 @@
           nuxt-link.practice-areas__item(
             v-for="(area, index) in practiceAreas"
             :key="index"
-            :to="getUrl(`/our-practice-areas/${area.name}`)"
+            :to="getUrl(`/our-practice-areas/${area.name}`, lang)"
           )
             .practice-areas__item-inner
               span {{ formatRawText(area.title) }}
 </template>
 
 <script>
-import { decode } from 'html-entities'
+import { mapGetters } from 'vuex'
 import { get, getUrl } from '@/utils/api'
 import { formatRawText, formatHtmlText } from '@/utils/text'
 import CenteredWrapper from '@/components/CenteredWrapper'
@@ -40,8 +40,12 @@ export default {
 
   head() {
     return {
-      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
+      title: this.title ? `${formatRawText(this.title)} - PYTHON` : 'PYTHON',
     }
+  },
+
+  computed: {
+    ...mapGetters(['lang']),
   },
 
   methods: {

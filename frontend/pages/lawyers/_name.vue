@@ -185,7 +185,7 @@ export default {
         .map((it) => ({
           text: formatHtmlText(it.content),
           label: getDate(it.date, this.lang),
-          url: getUrl(`/news/${it.name}`),
+          url: getUrl(`/news/${it.name}`, this.lang),
         }))
     },
 

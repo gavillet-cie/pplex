@@ -44,7 +44,7 @@
           v-for="(area, index) in practiceAreas"
           v-html="area.title"
           :key="index"
-          :to="getUrl(`/our-practice-areas/${area.name}`)"
+          :to="getUrl(`/our-practice-areas/${area.name}`, lang)"
         )
 
       .lawyer-infos__section(
@@ -138,7 +138,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['labels']),
+    ...mapGetters(['labels', 'lang']),
     mailto() {
       return `mailto:${this.email}`
     },
