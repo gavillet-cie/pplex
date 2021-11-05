@@ -1,4 +1,6 @@
-<?php namespace ProcessWire;
+<?php
+
+namespace ProcessWire;
 
 /**
  * Admin template just loads the admin application controller, 
@@ -12,5 +14,7 @@
  * 
  */
 
+$config->styles->append($config->urls->templates . "admin.css");
+
 /** @var Config $config */
-require($config->paths->core . "admin.php"); 
+require($config->paths->core . "admin.php");

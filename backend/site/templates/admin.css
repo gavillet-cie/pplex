@@ -1,0 +1,97 @@
+body {
+  --main-color: #1c2836;
+  --black: #303030;
+  --white: white;
+  --grey: #cecece;
+}
+
+#pw-masthead {
+  background-color: var(--main-color);
+}
+
+.PageList .PageListItem > a.PageListPage i {
+  color: var(--black);
+}
+
+.PageList .PageListItemOpen > a.PageListPage,
+.PageList .PageListItemOpen.PageListItemHover > a.PageListPage,
+.PageList .PageListItemOpen > a.PageListPage:hover,
+.PageList .PageListItemOpen.PageListItemHover > a.PageListPage:hover,
+.PageList .PageListItem > a.PageListPage:hover,
+.PageList .PageListItem.PageListItemHover > a.PageListPage,
+.PageList .PageListItem > a.PageListPage {
+  color: var(--black);
+}
+
+.PageList .PageListActions a,
+.PageList .PageListerActions a,
+.PageList .PageListMoveNote a {
+  background-color: var(--black);
+}
+
+.PageList .PageListActions a:hover,
+.PageList .PageListerActions a:hover,
+.PageList .PageListMoveNote a:hover {
+  background-color: var(--grey);
+}
+
+.uk-tab > * > a {
+  color: var(--black);
+}
+
+.uk-tab > * > a:hover {
+  color: var(--grey);
+}
+
+.Inputfields
+  .InputfieldRepeater
+  .InputfieldContent
+  .InputfieldRepeaterItem
+  > .InputfieldHeader {
+  background-color: var(--main-color);
+  outline-color: var(--main-color);
+}
+
+.ui-button,
+.ui-button.ui-state-default,
+.ui-button.ui-state-hover {
+  background-color: var(--main-color);
+}
+
+.InputfieldFileUpload .InputMask.ui-button,
+.InputfieldImageUpload .InputMask.ui-button:hover {
+  background-color: var(--main-color);
+}
+
+#pw-masthead .uk-navbar-nav > li i,
+#pw-masthead .uk-navbar-nav > li > a i {
+  color: var(--white);
+}
+
+.pw-logo {
+  width: 40px;
+  height: 100%;
+}
+
+a,
+.uk-link {
+  color: var(--black);
+}
+
+a:hover,
+.uk-link:hover {
+  color: var(--grey);
+}
+
+html.AdminThemeUikit.headCompact body:not(.modal) .pw-logo {
+  margin: 0;
+}
+
+html.AdminThemeUikit.headCompact body.id-23 .pw-logo {
+  margin-top: -23px;
+}
+
+html.AdminThemeUikit.headCompact body:not(.modal) #pw-masthead .uk-navbar a {
+  display: flex;
+  align-items: center;
+}
