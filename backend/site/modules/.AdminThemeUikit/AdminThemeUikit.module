@@ -46,7 +46,7 @@ class AdminThemeUikit extends AdminThemeFramework implements Module, Configurabl
 	 * Default logo image file (relative to this dir)
 	 * 
 	 */
-	const logo = 'uikit/custom/images/pw-mark.png';
+	const logo = 'uikit/custom/images/pplex-logo.svg';
 
 	/**
 	 * sidenavType: primary navigation on left sidebar

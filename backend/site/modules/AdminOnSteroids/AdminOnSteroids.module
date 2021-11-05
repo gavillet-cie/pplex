@@ -515,7 +515,7 @@ class AdminOnSteroids extends WireData implements Module, ConfigurableModule
                 $markup = $event->return;
 
                 if ($this->adminTheme === 'AdminThemeUikit') {
-                    $markup = str_replace($this->wire('config')->urls->adminTemplates . 'uikit/custom/images/pw-mark.png', $this->BrandingLogo, $markup);
+                    $markup = str_replace($this->wire('config')->urls->adminTemplates . 'uikit/custom/images/pplex-logo.svg', $this->BrandingLogo, $markup);
                 } elseif ($this->adminTheme === 'AdminThemeDefault') {
                     $markup = str_replace($this->wire('config')->urls->adminTemplates . 'styles/images/logo.png', $this->BrandingLogo, $markup);
                 } elseif ($this->adminTheme === 'AdminThemeReno') {

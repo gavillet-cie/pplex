@@ -37,6 +37,7 @@ services:
     image: cms
     volumes:
       - ./backend/site/assets:/var/www/html/api/site/assets
+      - ./backend/site/modules:/var/www/html/api/site/modules
       - ./backend/site/ready.php:/var/www/html/api/site/ready.php
       - ./backend/site/templates:/var/www/html/api/site/templates
     restart: always
