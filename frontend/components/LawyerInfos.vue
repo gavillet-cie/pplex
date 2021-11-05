@@ -19,11 +19,13 @@
         nuxt-link.lawyer-infos__profile(
           v-if="reduceInfo"
           :to="getUrl(`/lawyers/${name}`, lang)"
+          @click.native.stop
         ) Profil complet
 
         client-only
           a.lawyer-infos__vcard(
             :href="getApiUrl(`/vcard/${name}`)"
+            @click.stop
             download
           ) VCard
 
@@ -34,10 +36,13 @@
         a.lawyer-infos__email(
           v-if="email"
           :href="mailto"
+          @click.stop
         ) {{ email }}
+
         span.lawyer-infos__phone(
           v-if="phone"
         ) {{ phone }}
+
         span.lawyer-infos__fax(
           v-if="fax"
         ) {{ fax }}
