@@ -106,13 +106,14 @@ $config->defaultAdminTheme = 'AdminThemeUikit';
  * 
  */
 $config->installed = 1632390235;
+$config->urls->admin = "/";
 
 
 /**
  * Installer: HTTP Hosts Whitelist
  * 
  */
-$config->httpHosts = array('localhost:8080');
+$config->httpHosts = array('pplex-beta.gavillet-cie.com');
 
 
 /**

@@ -39,15 +39,19 @@ export default {
   components: { CenteredWrapper, Row, LawyersGrid, Slider },
 
   async asyncData({ store, params }) {
-    const { language, name } = params
-    store.commit('setBigMenu', true)
-    const [area, { lawyers }] = await Promise.all([
-      get(`/our-practice-areas/${name}`, language),
-      get(`/lawyers`, language),
-    ])
-    return {
-      ...area,
-      lawyers,
+    try {
+      const { language, name } = params
+      store.commit('setBigMenu', true)
+      const [area, { lawyers }] = await Promise.all([
+        get(`/our-practice-areas/${name}`, language),
+        get(`/lawyers`, language),
+      ])
+      return {
+        ...area,
+        lawyers,
+      }
+    } catch (error) {
+      store.commit('setError', error)
     }
   },
 

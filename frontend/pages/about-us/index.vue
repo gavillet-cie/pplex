@@ -50,10 +50,14 @@ export default {
   component: { CenteredWrapper, Row, Locations, Rankings, Slider },
 
   async asyncData({ store, params }) {
-    const { language } = params
-    store.commit('setBigMenu', true)
-    const about = await get('/about-us', language)
-    return about
+    try {
+      const { language } = params
+      store.commit('setBigMenu', true)
+      const about = await get('/about-us', language)
+      return about
+    } catch (error) {
+      store.commit('setError', error)
+    }
   },
 
   head() {

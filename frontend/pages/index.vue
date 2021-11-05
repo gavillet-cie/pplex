@@ -40,21 +40,25 @@ export default {
   },
 
   async fetch() {
-    const { language } = this.$route.params
+    try {
+      const { language } = this.$route.params
 
-    const [{ homeSlider }, { practiceAreas }, { news }, { lawyers }] =
-      await Promise.all([
-        get('/', language),
-        get('our-practice-areas', language),
-        get('news', language),
-        get('lawyers', language),
-      ])
+      const [{ homeSlider }, { practiceAreas }, { news }, { lawyers }] =
+        await Promise.all([
+          get('/', language),
+          get('our-practice-areas', language),
+          get('news', language),
+          get('lawyers', language),
+        ])
 
-    this.homeSlider = homeSlider
-    this.practiceAreas = practiceAreas
-    this.news = news
-    this.language = language
-    this.lawyers = lawyers
+      this.homeSlider = homeSlider
+      this.practiceAreas = practiceAreas
+      this.news = news
+      this.language = language
+      this.lawyers = lawyers
+    } catch (error) {
+      this.$store.commit('setError', error)
+    }
   },
 
   computed: {

@@ -23,10 +23,14 @@ export default {
   components: { Locations, CenteredWrapper, Row, Slider },
 
   async asyncData({ store, params }) {
-    const { language } = params
-    store.commit('setBigMenu', true)
-    const contact = await get('/contact', language)
-    return contact
+    try {
+      const { language } = params
+      store.commit('setBigMenu', true)
+      const contact = await get('/contact', language)
+      return contact
+    } catch (error) {
+      store.commit('setError', error)
+    }
   },
 
   head() {

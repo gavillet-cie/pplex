@@ -143,14 +143,18 @@ export default {
   },
 
   async asyncData({ store, params }) {
-    const { language, name } = params
-    store.commit('setBigMenu', true)
-    const [lawyer, news] = await Promise.all([
-      get(`lawyers/${name}`, language),
-      get(`news`, language),
-    ])
+    try {
+      const { language, name } = params
+      store.commit('setBigMenu', true)
+      const [lawyer, news] = await Promise.all([
+        get(`lawyers/${name}`, language),
+        get(`news`, language),
+      ])
 
-    return { lawyer, ...news, ...lawyer }
+      return { lawyer, ...news, ...lawyer }
+    } catch (error) {
+      store.commit('setError', true)
+    }
   },
 
   head() {
@@ -167,12 +171,14 @@ export default {
             title: '',
             image: it,
           }))
-        : [
+        : this.portrait
+        ? [
             {
               title: '',
               image: this.portrait,
             },
           ]
+        : []
     },
 
     marginLeft() {
@@ -180,13 +186,17 @@ export default {
     },
 
     newsItems() {
-      return this.news
-        .filter((it) => it.author.find((author) => author.name === this.name))
-        .map((it) => ({
-          text: formatHtmlText(it.content),
-          label: getDate(it.date, this.lang),
-          url: getUrl(`/news/${it.name}`, this.lang),
-        }))
+      return (
+        this.news
+          ?.filter((it) =>
+            it.author.find((author) => author.name === this.name)
+          )
+          .map((it) => ({
+            text: formatHtmlText(it.content),
+            label: getDate(it.date, this.lang),
+            url: getUrl(`/news/${it.name}`, this.lang),
+          })) || []
+      )
     },
 
     showEducation() {

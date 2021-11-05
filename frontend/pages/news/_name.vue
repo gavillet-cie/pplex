@@ -32,10 +32,14 @@ export default {
   components: { CenteredWrapper, Row, Post, Slider },
 
   async asyncData({ store, params }) {
-    const { language, name } = params
-    store.commit('setBigMenu', true)
-    const post = await get(`/news/${name}`, language)
-    return post
+    try {
+      const { language, name } = params
+      store.commit('setBigMenu', true)
+      const post = await get(`/news/${name}`, language)
+      return post
+    } catch (error) {
+      store.commit('setError', error)
+    }
   },
 
   head() {

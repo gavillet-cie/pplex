@@ -28,6 +28,7 @@ services:
       - ./frontend/config:/app/config
       - ./frontend/static:/app/static
       - ./frontend/store:/app/store
+      - ./frontend/nuxt.config.js:/app/nuxt.config.js
     restart: always
 
   cms:
@@ -40,6 +41,7 @@ services:
       - ./backend/site/modules:/var/www/html/api/site/modules
       - ./backend/site/ready.php:/var/www/html/api/site/ready.php
       - ./backend/site/templates:/var/www/html/api/site/templates
+      - ./backend/site/config-dev.php:/var/www/html/api/site/config-dev.php
     restart: always
 
   mysql:

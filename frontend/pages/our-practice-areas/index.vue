@@ -37,11 +37,15 @@ export default {
   components: { CenteredWrapper, Row, Slider },
 
   async asyncData({ params, store }) {
-    const { language } = params
+    try {
+      const { language } = params
 
-    store.commit('setBigMenu', true)
-    const res = await get('/our-practice-areas', language)
-    return res
+      store.commit('setBigMenu', true)
+      const res = await get('/our-practice-areas', language)
+      return res
+    } catch (error) {
+      store.commit('setError', error)
+    }
   },
 
   head() {

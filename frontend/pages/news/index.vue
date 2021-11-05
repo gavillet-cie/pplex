@@ -37,16 +37,20 @@ export default {
   components: { CenteredWrapper, Post, List, Filters, Slider },
 
   async asyncData({ store, params }) {
-    const { language } = params
-    store.commit('setBigMenu', true)
-    const [news, practiceAreas] = await Promise.all([
-      get(`/news`, language),
-      get('/our-practice-areas', language),
-    ])
+    try {
+      const { language } = params
+      store.commit('setBigMenu', true)
+      const [news, practiceAreas] = await Promise.all([
+        get(`/news`, language),
+        get('/our-practice-areas', language),
+      ])
 
-    return {
-      ...practiceAreas,
-      ...news,
+      return {
+        ...practiceAreas,
+        ...news,
+      }
+    } catch (error) {
+      store.commit('setError', error)
     }
   },
 

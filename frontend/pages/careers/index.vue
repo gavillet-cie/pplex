@@ -32,10 +32,14 @@ export default {
   components: { Locations, CenteredWrapper, Row, List, Slider },
 
   async asyncData({ store, params }) {
-    const { language } = params
-    store.commit('setBigMenu', true)
-    const careers = await get('/careers', language)
-    return careers
+    try {
+      const { language } = params
+      store.commit('setBigMenu', true)
+      const careers = await get('/careers', language)
+      return careers
+    } catch (error) {
+      store.commit('setError', error)
+    }
   },
 
   head() {

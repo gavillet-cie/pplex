@@ -1,11 +1,16 @@
 <template lang="pug">
   .app(
+    v-if="!error"
     :style="appCssStyle"
     :class="appCssClasses"
   )
     main-menu.app__menu
     nuxt.app__content
     main-footer.app__footer
+  error(
+    v-else
+  )
+
 </template>
 
 <script>
@@ -13,13 +18,14 @@ import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
 import MainMenu from '@/components/MainMenu'
 import MainFooter from '@/components/MainFooter'
+import Error from '@/components/Error'
 
 const baseFontSize = 16
 const maxMenuHeight = 0.35
 const menuHeight = 3 * baseFontSize
 
 export default {
-  components: { MainMenu, MainFooter },
+  components: { MainMenu, MainFooter, Error },
 
   data() {
     return {
@@ -33,12 +39,16 @@ export default {
   },
 
   async fetch() {
-    const { labels } = await get('labels', this.lang)
-    this.$store.commit('setLabels', labels)
+    try {
+      const { labels } = await get('labels', this.lang)
+      this.$store.commit('setLabels', labels)
+    } catch (error) {
+      this.$store.commit('setError', error)
+    }
   },
 
   computed: {
-    ...mapGetters(['lang', 'bigMenu', 'showMenu']),
+    ...mapGetters(['lang', 'bigMenu', 'showMenu', 'error']),
     appCssStyle() {
       return {
         '--max-menu-height': this.maxMenuHeight,
@@ -67,9 +77,13 @@ export default {
         this.$store.commit('setShowMenu', false)
         this.updateMenuHeight()
 
-        get('labels', this.lang).then(({ labels }) => {
-          this.$store.commit('setLabels', labels)
-        })
+        get('labels', this.lang)
+          .then(({ labels }) => {
+            this.$store.commit('setLabels', labels)
+          })
+          .catch((error) => {
+            this.$store.commit('setError', error)
+          })
 
         this.routeIsChanging = true
         this.$store.commit('setPageTitle', '')
@@ -186,6 +200,18 @@ export default {
     --menu-height: #{$menu-height} !important;
 
     padding-top: #{$menu-height} !important;
+  }
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  img {
+    height: 40px;
   }
 }
 

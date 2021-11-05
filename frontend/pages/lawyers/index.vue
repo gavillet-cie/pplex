@@ -37,18 +37,22 @@ export default {
   components: { CenteredWrapper, LawyersGrid, Row, Filters, Slider },
 
   async asyncData({ store, params }) {
-    const { language } = params
-    store.commit('setBigMenu', true)
-    const [lawyers, { practiceAreas }, { locations }] = await Promise.all([
-      get('lawyers', language),
-      get('our-practice-areas', language),
-      get('contact', language),
-    ])
+    try {
+      const { language } = params
+      store.commit('setBigMenu', true)
+      const [lawyers, { practiceAreas }, { locations }] = await Promise.all([
+        get('lawyers', language),
+        get('our-practice-areas', language),
+        get('contact', language),
+      ])
 
-    return {
-      practiceAreas,
-      locations,
-      ...lawyers,
+      return {
+        practiceAreas,
+        locations,
+        ...lawyers,
+      }
+    } catch (error) {
+      store.commit('setError', error)
     }
   },
 
