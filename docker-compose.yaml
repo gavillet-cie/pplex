@@ -27,6 +27,7 @@ services:
       - ./frontend/components:/app/components
       - ./frontend/config:/app/config
       - ./frontend/static:/app/static
+      - ./frontend/store:/app/store
     restart: always
 
   cms:

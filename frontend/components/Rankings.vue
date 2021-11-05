@@ -1,7 +1,8 @@
 <template lang="pug">
   .rankings
     row.rankings__item(
-      v-for="item in rankings"
+      v-for="(item, index) in rankings"
+      :key="index"
       :label="item.year"
       :noPadding="true"
     )

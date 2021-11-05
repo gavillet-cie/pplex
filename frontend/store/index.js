@@ -2,7 +2,9 @@ export const state = () => ({
   lang: '',
   bigMenu: false,
   showMenu: false,
+  menuState: false,
   labels: [],
+  pageTitle: '',
 })
 
 export const getters = {
@@ -10,6 +12,8 @@ export const getters = {
   bigMenu: (state) => state.bigMenu,
   showMenu: (state) => state.showMenu,
   labels: (state) => state.labels,
+  isMenuSmall: (state) => !state.bigMenu || state.menuState,
+  pageTitle: (state) => state.pageTitle,
 }
 
 export const mutations = {
@@ -27,5 +31,13 @@ export const mutations = {
 
   setLabels: (state, labels) => {
     state.labels = labels
+  },
+
+  setMenuState: (state, menuState) => {
+    state.menuState = menuState
+  },
+
+  setPageTitle: (state, pageTitle) => {
+    state.pageTitle = pageTitle
   },
 }

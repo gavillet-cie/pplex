@@ -14,6 +14,9 @@
           src="~/static/LOGO_PYTHON.svg"
         )
 
+      h5.menu__page(
+        v-if="pageTitle"
+      ) {{ formatRawText(pageTitle) }}
 
       .menu__languages
         nuxt-link.menu__language(
@@ -64,7 +67,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['lang', 'showMenu', 'bigMenu']),
+    ...mapGetters(['lang', 'showMenu', 'bigMenu', 'isMenuSmall', 'pageTitle']),
     selectedSections() {
       const selectedSections = [
         'about-us',
@@ -81,6 +84,8 @@ export default {
     menuCssClasses() {
       return {
         'menu--open': this.showMenu,
+        'menu--small': this.isMenuSmall,
+        'menu--title': this.pageTitle,
       }
     },
   },
@@ -110,6 +115,7 @@ export default {
         : fullPath
       return getUrl(currentPath, lang)
     },
+
     getLanguageCssClasses(lang) {
       return {
         'menu--highlight': lang === this.lang,
@@ -140,6 +146,26 @@ export default {
   &__logo {
     height: 100%;
     flex: 0 0 auto;
+  }
+
+  &__page {
+    color: white;
+    opacity: 0;
+    position: relative;
+    z-index: 7;
+    flex: 1 1 auto;
+    margin-right: 6rem;
+    padding: $main-padding 0;
+    line-height: 0.8;
+    width: 100%;
+
+    #{$m}--small & {
+      opacity: 1;
+    }
+
+    #{$m}--open & {
+      display: none;
+    }
   }
 
   svg {
@@ -218,6 +244,10 @@ export default {
       transition: height $animation-duration 0s;
     }
 
+    #{$m}--small#{$m}--title & {
+      width: 30rem;
+    }
+
     img {
       height: 100%;
       max-height: $max-menu-font-size;
@@ -230,8 +260,8 @@ export default {
     position: relative;
     z-index: 7;
     display: flex;
-    font-size: 1rem;
     padding: $main-padding 0;
+    font-size: $small-font-size;
     width: max-content;
     flex: 0 0 auto;
     line-height: 0.7;
@@ -297,6 +327,24 @@ export default {
   }
 
   @media screen and (max-width: 900px) {
+    &__page {
+      display: none;
+
+      #{$m}--small & {
+        display: none;
+      }
+    }
+
+    &__title {
+      #{$m}--small#{$m}--title & {
+        width: unset;
+      }
+    }
+
+    &__languages {
+      margin-right: 2rem;
+    }
+
     &__panel {
       position: fixed;
       top: $menu-height;

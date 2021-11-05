@@ -14,15 +14,19 @@ import { get } from '@/utils/api'
 import MainMenu from '@/components/MainMenu'
 import MainFooter from '@/components/MainFooter'
 
+const baseFontSize = 16
+const maxMenuHeight = 0.35
+const menuHeight = 3 * baseFontSize
+
 export default {
   components: { MainMenu, MainFooter },
 
   data() {
     return {
       routeIsChanging: false,
-      maxMenuHeight: '35vh',
-      bigMenuHeight: '35vh',
-      menuHeight: '3rem',
+      maxMenuHeight: `${maxMenuHeight * 100}vh`,
+      bigMenuHeight: `${maxMenuHeight * 100}vh`,
+      menuHeight: `${menuHeight}px`,
       disableTransitions: false,
       percent: 0,
     }
@@ -68,8 +72,12 @@ export default {
         })
 
         this.routeIsChanging = true
+        this.$store.commit('setPageTitle', '')
         setTimeout(() => {
           this.routeIsChanging = false
+          get(route.path).then((res) => {
+            this.$store.commit('setPageTitle', res.title)
+          })
         }, 1000)
       },
     },
@@ -111,6 +119,11 @@ export default {
   methods: {
     updateMenuHeight() {
       if (process.client && this.bigMenu) {
+        const isSmall =
+          window.innerHeight * maxMenuHeight - menuHeight - window.scrollY <= 0
+
+        this.$store.commit('setMenuState', isSmall)
+
         const max = window.innerHeight * 0.4
         this.bigMenuHeight = `calc(${this.maxMenuHeight} - ${Math.min(
           max,

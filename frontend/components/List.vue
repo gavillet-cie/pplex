@@ -1,7 +1,8 @@
 <template lang="pug">
   ul.list
     row.list__item(
-      v-for="item in items"
+      v-for="(item, index) in items"
+      :key="index"
       :label="formatRawText(item.label)"
       :noPadding="true"
     )

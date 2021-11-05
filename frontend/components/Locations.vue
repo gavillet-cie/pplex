@@ -1,7 +1,8 @@
 <template lang="pug">
   .locations
     row.locations__item(
-      v-for="item in locations"
+      v-for="(item, index) in locations"
+      :key="index"
       :label="formatRawText(item.city)"
       :noPadding="true"
     )
