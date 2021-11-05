@@ -15,6 +15,12 @@
           v-if="lawyerTitle"
         ) {{ lawyerTitle }}
 
+      .lawyer-infos__links.lawyer-infos__section
+        nuxt-link.lawyer-infos__profile(
+          v-if="reduceInfo"
+          :to="getUrl(`/lawyers/${name}`, lang)"
+        ) Profil complet
+
         client-only
           a.lawyer-infos__vcard(
             :href="getApiUrl(`/vcard/${name}`)"
@@ -37,7 +43,7 @@
         ) {{ fax }}
 
       .lawyer-infos__section(
-        v-if="showPracticeAreas"
+        v-if="showPracticeAreas && !reduceInfo"
       )
         span.lawyer-infos__section-title {{ getLabel('practiceAreas', labels) }}
         nuxt-link.lawyer-infos__practice-area(
@@ -51,18 +57,16 @@
         v-if="showLanguages"
       )
         span.lawyer-infos__section-title {{ getLabel('languages', labels) }}
-        span.lawyer-infos__language(
-          v-for="language in languages"
-        ) {{ language }}
+        span.lawyer-infos__language {{ languages.map(formatRawText).join(', ') }}
 
       .lawyer-infos__section(
-        v-if="showEntityAndAddress"
+        v-if="showEntityAndAddress && !reduceInfo"
       )
         span.lawyer-infos__section-title {{ getLabel('entityAndAddress', labels) }}
         p.lawyer-infos__entity-address(v-html="formatRawText(entityAndAddress)")
 
       .lawyer-infos__section(
-        v-if="showBarAdmission"
+        v-if="showBarAdmission && !reduceInfo"
       )
         span.lawyer-infos__section-title {{ getLabel('barAdmission', labels) }}
         p.lawyer-infos__bar-admission(v-html="formatRawText(barAdmission)")
@@ -135,6 +139,11 @@ export default {
       type: Boolean,
       default: false,
     },
+
+    reduceInfo: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   computed: {
@@ -185,8 +194,10 @@ export default {
   display: flex;
   font-size: $small-font-size;
 
-  &__vcard {
+  &__links {
     font-size: $default-font-size;
+    display: flex;
+    flex-direction: column;
   }
 
   &__portrait {

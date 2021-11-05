@@ -22,15 +22,15 @@
             .lawyer-grid__status
               span {{ lawyer.status }}
 
-        nuxt-link.lawyer-grid__infos(
+        .lawyer-grid__infos(
           v-if="index === activeLawyerIndex"
-          :to="getUrl(`/lawyers/${lawyer.name}`, lang)"
           @click.native.stop
         )
           add-icon.lawyer-grid__infos-add
           lawyer-infos(
             v-bind="lawyer"
             :showPortrait="true"
+            :reduceInfo="true"
           )
 </template>
 
