@@ -156,6 +156,7 @@ export default {
   }
 
   &__burger {
+    position: relative;
     padding: $main-padding $main-padding;
     z-index: 20;
     top: 0;
@@ -170,6 +171,26 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
+
+    #{$m}--open & {
+      div {
+        display: none;
+      }
+
+      div:first-child,
+      div:last-child {
+        display: block;
+        position: absolute;
+        width: 65%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+
+      div:last-child {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+    }
   }
 
   &__line {
