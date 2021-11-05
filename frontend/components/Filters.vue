@@ -106,5 +106,20 @@ export default {
       width: 100%;
     }
   }
+
+  @media screen and (max-width: 900px) {
+    &__items {
+      flex-direction: column;
+    }
+
+    &__item {
+      width: 100% !important;
+
+      & + & {
+        margin-left: 0;
+        border-top: $border;
+      }
+    }
+  }
 }
 </style>
