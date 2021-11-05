@@ -34,14 +34,15 @@
         .menu__line
 
       .menu__panel
-        .menu__panel-sections
-          nuxt-link.menu__panel-section(
-            v-for="section in selectedSections"
-            :key="section.name"
-            :to="getUrl(`/${section.name}`, lang)"
-            @click.native="hideMenu"
-          )
-            span {{ formatRawText(section.title) }}
+        .menu__panel-inner
+          .menu__panel-sections
+            nuxt-link.menu__panel-section(
+              v-for="section in selectedSections"
+              :key="section.name"
+              :to="getUrl(`/${section.name}`, lang)"
+              @click.native="hideMenu"
+            )
+              span {{ formatRawText(section.title) }}
 
 </template>
 
@@ -242,10 +243,13 @@ export default {
     background-color: $main-color;
     width: 100%;
     height: 100%;
-    padding: $main-padding;
-    padding-left: 25%;
     color: white;
     transition: height $animation-duration $animation-duration;
+
+    &-inner {
+      padding: $main-padding;
+      padding-left: 25%;
+    }
 
     #{$m}--open & {
       pointer-events: initial;
@@ -276,7 +280,17 @@ export default {
       position: fixed;
       top: $menu-height;
       right: 0;
-      padding-left: $main-padding;
+      height: 0;
+      overflow: hidden;
+
+      &-inner {
+        padding-left: $main-padding;
+      }
+
+      #{$m}--open & {
+        height: calc(100vh - #{$menu-height});
+        transition: height $animation-duration 0s;
+      }
 
       &-sections {
         width: 100%;
