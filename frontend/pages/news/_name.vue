@@ -1,5 +1,10 @@
 <template lang="pug">
   .new
+    slider.about-us__slider(
+      v-if="slideOptions && slideOptions.length > 0"
+      :slides="slideOptions"
+    )
+
     centered-wrapper
       row.new__title
         h3 {{ title }}
@@ -21,9 +26,10 @@ import { getDate } from '@/utils/dates'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Post from '@/components/Post'
 import Row from '@/components/Row'
+import Slider from '@/components/Slider'
 
 export default {
-  components: { CenteredWrapper, Row, Post },
+  components: { CenteredWrapper, Row, Post, Slider },
 
   async asyncData({ store, params }) {
     const { language, name } = params
@@ -46,6 +52,10 @@ export default {
 
     info() {
       return `${getDate(this.date, this.lang)}, posted by ${this.authors}`
+    },
+
+    slideOptions() {
+      return this.slides?.map((it) => ({ image: it })) || []
     },
   },
 }

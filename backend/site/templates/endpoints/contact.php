@@ -7,6 +7,7 @@ echo $apiRenderer->renderJSONFromModel([
   "title" => ["field" => "title"],
   "name" => ["field" => "name"],
   "url" => ["field" => "url"],
+  "slides" => ["field" => "slides"],
   "locations" => [
     "field" => "children",
     "type" => "nested",

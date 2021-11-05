@@ -1,5 +1,10 @@
 <template lang="pug">
   .careers
+    slider.about-us__slider(
+      v-if="slideOptions && slideOptions.length > 0"
+      :slides="slideOptions"
+    )
+
     centered-wrapper
       row
         h3.careers__title {{ formatRawText(title) }}
@@ -21,9 +26,10 @@ import { formatRawText, formatHtmlText } from '@/utils/text'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Row from '@/components/Row'
 import List from '@/components/List'
+import Slider from '@/components/Slider'
 
 export default {
-  components: { Locations, CenteredWrapper, Row, List },
+  components: { Locations, CenteredWrapper, Row, List, Slider },
 
   async asyncData({ store, params }) {
     const { language } = params
@@ -44,6 +50,10 @@ export default {
         label: formatRawText(it.title),
         text: formatRawText(it.description),
       }))
+    },
+
+    slideOptions() {
+      return this.slides?.map((it) => ({ image: it }))
     },
   },
 

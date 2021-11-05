@@ -1,5 +1,10 @@
 <template lang="pug">
   .practice-areas
+    slider.about-us__slider(
+      v-if="slideOptions && slideOptions.length > 0"
+      :slides="slideOptions"
+    )
+
     centered-wrapper
       row.practice-areas__title
         h3 {{ formatRawText(title) }}
@@ -26,9 +31,10 @@ import { get, getUrl } from '@/utils/api'
 import { formatRawText, formatHtmlText } from '@/utils/text'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Row from '@/components/Row'
+import Slider from '@/components/Slider'
 
 export default {
-  components: { CenteredWrapper, Row },
+  components: { CenteredWrapper, Row, Slider },
 
   async asyncData({ params, store }) {
     const { language } = params
@@ -46,6 +52,10 @@ export default {
 
   computed: {
     ...mapGetters(['lang']),
+
+    slideOptions() {
+      return this.slides?.map((it) => ({ image: it }))
+    },
   },
 
   methods: {

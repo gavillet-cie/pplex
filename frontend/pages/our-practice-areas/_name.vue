@@ -1,5 +1,10 @@
 <template lang="pug">
   .practice-area
+    slider.about-us__slider(
+      v-if="slideOptions && slideOptions.length > 0"
+      :slides="slideOptions"
+    )
+
     centered-wrapper
       row.practice-area__title
         h3 {{ formatRawText(title) }}
@@ -28,9 +33,10 @@ import { filterLawyers } from '@/utils/lawyers'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Row from '@/components/Row'
 import LawyersGrid from '@/components/LawyersGrid'
+import Slider from '@/components/Slider'
 
 export default {
-  components: { CenteredWrapper, Row, LawyersGrid },
+  components: { CenteredWrapper, Row, LawyersGrid, Slider },
 
   async asyncData({ store, params }) {
     const { language, name } = params
@@ -60,6 +66,10 @@ export default {
         location: null,
         practiceArea: this.name,
       })
+    },
+
+    slideOptions() {
+      return this.slides?.map((it) => ({ image: it }))
     },
   },
 

@@ -1,5 +1,10 @@
 <template lang="pug">
   .news
+    slider.about-us__slider(
+      v-if="slideOptions && slideOptions.length > 0"
+      :slides="slideOptions"
+    )
+
     centered-wrapper
       row.news__sub-title
         h3 {{ formatRawText(title) }}
@@ -26,9 +31,10 @@ import CenteredWrapper from '@/components/CenteredWrapper'
 import Post from '@/components/Post'
 import List from '@/components/List'
 import Filters from '@/components/Filters'
+import Slider from '@/components/Slider'
 
 export default {
-  components: { CenteredWrapper, Post, List, Filters },
+  components: { CenteredWrapper, Post, List, Filters, Slider },
 
   async asyncData({ store, params }) {
     const { language } = params
@@ -120,6 +126,10 @@ export default {
           flex: false,
         },
       ]
+    },
+
+    slideOptions() {
+      return this.slides?.map((it) => ({ image: it }))
     },
   },
 

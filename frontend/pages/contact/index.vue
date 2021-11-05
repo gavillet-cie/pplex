@@ -1,5 +1,10 @@
 <template lang="pug">
   .contact
+    slider.about-us__slider(
+      v-if="slideOptions && slideOptions.length > 0"
+      :slides="slideOptions"
+    )
+
     centered-wrapper
       row.contact__title
         h3 {{ formatRawText(title) }}
@@ -12,9 +17,10 @@ import { get } from '@/utils/api'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Row from '@/components/Row'
 import { formatRawText, formatHtmlText } from '@/utils/text'
+import Slider from '@/components/Slider'
 
 export default {
-  components: { Locations, CenteredWrapper, Row },
+  components: { Locations, CenteredWrapper, Row, Slider },
 
   async asyncData({ store, params }) {
     const { language } = params
@@ -27,6 +33,12 @@ export default {
     return {
       title: this.title ? `${formatRawText(this.title)} - PYTHON` : 'PYTHON',
     }
+  },
+
+  computed: {
+    slideOptions() {
+      return this.slides?.map((it) => ({ image: it }))
+    },
   },
 
   methods: {

@@ -1,5 +1,10 @@
 <template lang="pug">
   .lawyers
+    slider.about-us__slider(
+      v-if="slideOptions && slideOptions.length > 0"
+      :slides="slideOptions"
+    )
+
     centered-wrapper
       row.lawyers__sub-title
         h3 {{ title }}
@@ -26,9 +31,10 @@ import CenteredWrapper from '@/components/CenteredWrapper'
 import Row from '@/components/Row'
 import LawyersGrid from '@/components/LawyersGrid'
 import Filters from '@/components/Filters'
+import Slider from '@/components/Slider'
 
 export default {
-  components: { CenteredWrapper, LawyersGrid, Row, Filters },
+  components: { CenteredWrapper, LawyersGrid, Row, Filters, Slider },
 
   async asyncData({ store, params }) {
     const { language } = params
@@ -98,6 +104,10 @@ export default {
           flex: false,
         },
       ]
+    },
+
+    slideOptions() {
+      return this.slides?.map((it) => ({ image: it }))
     },
   },
 

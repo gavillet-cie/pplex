@@ -1,5 +1,10 @@
 <template lang="pug">
   .about-us
+    slider.about-us__slider(
+      v-if="slideOptions && slideOptions.length > 0"
+      :slides="slideOptions"
+    )
+
     centered-wrapper
       row.about-us__title
         h3 {{ formatRawText(title) }}
@@ -38,10 +43,11 @@ import CenteredWrapper from '@/components/CenteredWrapper'
 import Row from '@/components/Row'
 import Locations from '@/components/Locations'
 import Rankings from '@/components/Rankings'
+import Slider from '@/components/Slider'
 import { getLabel } from '@/utils/labels'
 
 export default {
-  component: { CenteredWrapper, Row, Locations, Rankings },
+  component: { CenteredWrapper, Row, Locations, Rankings, Slider },
 
   async asyncData({ store, params }) {
     const { language } = params
@@ -58,6 +64,9 @@ export default {
 
   computed: {
     ...mapGetters(['lang', 'labels']),
+    slideOptions() {
+      return this.slides?.map((it) => ({ image: it }))
+    },
   },
 
   methods: {
@@ -75,6 +84,12 @@ export default {
   &__title,
   &__section-title {
     color: $secondary-color;
+  }
+
+  &__slider {
+    height: calc(
+      100vh - var(--max-menu-height) - #{$section-margin-bottom} - #{$sub-title-font-size}
+    );
   }
 
   &__title {
