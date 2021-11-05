@@ -4,7 +4,7 @@
       row.lawyers__sub-title
         h3 {{ title }}
 
-      filters(
+      filters.lawyers__filters(
         :placeholder="getLabel('search', labels)"
         :title="getLabel('findALawyer', labels)"
         :filters="filterOptions"

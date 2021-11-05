@@ -4,7 +4,7 @@
       row.news__sub-title
         h3 {{ formatRawText(title) }}
 
-      filters(
+      filters.news__filters(
         :placeholder="getLabel('search', labels)"
         :title="getLabel('searchNews', labels)"
         :filters="filterOptions"
@@ -152,6 +152,13 @@ export default {
   &__list {
     margin-top: 2rem;
     border-top: $border;
+  }
+
+  &__filters {
+    position: sticky;
+    top: calc($menu-height - $menu-margin);
+    z-index: 10;
+    background-color: white;
   }
 }
 </style>
