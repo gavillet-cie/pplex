@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Error from '@/components/error.vue'
+import Error from '@/components/ErrorComponent.vue'
 export default {
   components: { Error },
 

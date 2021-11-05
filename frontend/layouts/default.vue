@@ -18,7 +18,7 @@ import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
 import MainMenu from '@/components/MainMenu'
 import MainFooter from '@/components/MainFooter'
-import Error from '@/components/Error'
+import Error from '@/components/ErrorComponent'
 
 const baseFontSize = 16
 const maxMenuHeight = 0.35
