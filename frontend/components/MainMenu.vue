@@ -2,9 +2,12 @@
   nav.menu(
     :class="menuCssClasses"
   )
-    nuxt-link.menu__logo(:to="getUrl('/', lang)")
-      svg(x="0px" y="0px" viewBox="0 0 26.5 27" style="enable-background:new 0 0 26.5 27;" xml:space="preserve")
-        path(d="M26.5,16.1c-1.3,4.7-6.1,7.4-10.7,6.1c-3.9-1.1-6.5-4.6-6.4-8.6c-0.1-4.8,3.8-8.8,8.6-8.9c4-0.1,7.5,2.6,8.6,6.4V0H0v27h26.5V16.1z")
+    nuxt-link.menu__logo(
+      :to="getUrl('/', lang)"
+    )
+      img(
+        src="~/static/pplex-logo-blue.svg"
+      )
 
     .menu__inner
       .menu__title(
@@ -146,6 +149,11 @@ export default {
   &__logo {
     height: 100%;
     flex: 0 0 auto;
+
+    img {
+      fill: $main-color;
+      height: 100%;
+    }
   }
 
   &__page {
@@ -173,11 +181,6 @@ export default {
     #{$m}--open & {
       display: none;
     }
-  }
-
-  svg {
-    fill: $main-color;
-    height: 100%;
   }
 
   &__inner {
