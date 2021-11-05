@@ -121,5 +121,11 @@ export default {
       width: 50%;
     }
   }
+
+  @media screen and (max-width: 500px) {
+    &__item {
+      width: 100%;
+    }
+  }
 }
 </style>
