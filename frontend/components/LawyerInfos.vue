@@ -20,7 +20,7 @@
           v-if="reduceInfo"
           :to="getUrl(`/lawyers/${name}`, lang)"
           @click.native.stop
-        ) Profil complet
+        ) {{ getLabel('seeProfile', labels, 'See Profile') }}
 
         client-only
           a.lawyer-infos__vcard(
