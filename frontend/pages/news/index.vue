@@ -1,6 +1,6 @@
 <template lang="pug">
   .news
-    slider.about-us__slider(
+    slider.news__slider(
       v-if="slideOptions && slideOptions.length > 0"
       :slides="slideOptions"
     )
@@ -155,6 +155,10 @@ export default {
 @import '../../styles/mixins';
 
 .news {
+  &__slider {
+    @include header-slider;
+  }
+
   &__sub-title {
     @include sub-title;
   }

@@ -87,9 +87,7 @@ export default {
   }
 
   &__slider {
-    height: calc(
-      100vh - var(--max-menu-height) - #{$section-margin-bottom} - #{$sub-title-font-size}
-    );
+    @include header-slider;
   }
 
   &__title {

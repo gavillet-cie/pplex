@@ -24,6 +24,12 @@
   @include v-main-padding;
 }
 
+@mixin header-slider {
+  height: calc(
+    100vh - var(--max-menu-height) - #{$section-margin-bottom} - #{$sub-title-font-size}
+  );
+}
+
 @mixin v-main-padding {
   padding-top: $main-padding;
   padding-bottom: $main-padding;

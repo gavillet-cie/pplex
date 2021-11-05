@@ -1,6 +1,6 @@
 <template lang="pug">
   .practice-areas
-    slider.about-us__slider(
+    slider.practice-areas__slider(
       v-if="slideOptions && slideOptions.length > 0"
       :slides="slideOptions"
     )
@@ -70,6 +70,10 @@ export default {
 @import '../../styles/mixins';
 
 .practice-areas {
+  &__slider {
+    @include header-slider;
+  }
+
   &__title {
     @include sub-title;
   }

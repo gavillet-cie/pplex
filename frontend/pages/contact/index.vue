@@ -1,6 +1,6 @@
 <template lang="pug">
   .contact
-    slider.about-us__slider(
+    slider.contact__slider(
       v-if="slideOptions && slideOptions.length > 0"
       :slides="slideOptions"
     )
@@ -52,6 +52,10 @@ export default {
 @import '../../styles/mixins';
 
 .contact {
+  &__slider {
+    @include header-slider;
+  }
+
   &__title {
     @include sub-title;
   }

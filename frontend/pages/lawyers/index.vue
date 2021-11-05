@@ -1,6 +1,6 @@
 <template lang="pug">
   .lawyers
-    slider.about-us__slider(
+    slider.lawyers__slider(
       v-if="slideOptions && slideOptions.length > 0"
       :slides="slideOptions"
     )
@@ -136,6 +136,10 @@ export default {
 @import '../../styles/mixins';
 
 .lawyers {
+  &__slider {
+    @include header-slider;
+  }
+
   &__sub-title {
     @include sub-title;
   }

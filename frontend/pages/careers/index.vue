@@ -1,6 +1,6 @@
 <template lang="pug">
   .careers
-    slider.about-us__slider(
+    slider.careers__slider(
       v-if="slideOptions && slideOptions.length > 0"
       :slides="slideOptions"
     )
@@ -68,6 +68,10 @@ export default {
 @import '../../styles/mixins';
 
 .careers {
+  &__slider {
+    @include header-slider;
+  }
+
   &__title {
     @include sub-title;
 

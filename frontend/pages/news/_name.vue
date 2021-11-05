@@ -1,6 +1,6 @@
 <template lang="pug">
   .new
-    slider.about-us__slider(
+    slider.new__slider(
       v-if="slideOptions && slideOptions.length > 0"
       :slides="slideOptions"
     )
@@ -65,6 +65,10 @@ export default {
 @import '../../styles/mixins';
 
 .new {
+  &__slider {
+    @include header-slider;
+  }
+
   &__title {
     @include sub-title;
   }
