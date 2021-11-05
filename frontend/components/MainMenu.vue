@@ -162,7 +162,6 @@ export default {
     position: relative;
     z-index: 7;
     flex: 1 1 auto;
-    margin-right: 6rem;
     padding: $main-padding 0;
     line-height: 2rem;
     margin-top: -7px;
