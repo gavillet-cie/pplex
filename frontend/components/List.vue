@@ -110,8 +110,9 @@ export default {
 
   @media screen and (max-width: 900px) {
     &__item {
+      position: relative;
+
       &-inner {
-        position: relative;
         flex-direction: column;
       }
 
