@@ -6,6 +6,7 @@
         ref="lawyers"
         :key="lawyer.name"
         :name="lawyer.name"
+        :class="getItemCssClasses(lawyer)"
         @click="toggleActiveLawyerIndex(lawyer)"
       )
         .lawyer-grid__item-content
@@ -77,6 +78,13 @@ export default {
 
       this.activeLawyerIndex = this.activeLawyerIndex === index ? -1 : index
     },
+    getItemCssClasses(lawyer) {
+      const index = this.lawyers?.indexOf(lawyer)
+      return {
+        'lawyer-grid--faded':
+          this.activeLawyerIndex > -1 && index !== this.activeLawyerIndex,
+      }
+    },
   },
 }
 </script>
@@ -84,6 +92,10 @@ export default {
 <style lang="scss">
 .lawyer-grid {
   $l: &;
+
+  &--faded {
+    opacity: 0.5;
+  }
 
   &__items {
     display: flex;
@@ -95,6 +107,7 @@ export default {
     flex: 0 0 auto;
     width: 25%;
     cursor: pointer;
+    transition: opacity $animation-duration !important;
 
     &-content {
       padding: $menu-margin * 0.5;
