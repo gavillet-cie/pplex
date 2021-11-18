@@ -280,6 +280,10 @@ export default {
     a {
       color: white;
     }
+
+    a:hover {
+      color: $link-color;
+    }
   }
 
   &__language {
@@ -332,6 +336,11 @@ export default {
         opacity: 1;
         transition: opacity $animation-duration $animation-duration;
       }
+    }
+
+    a:hover {
+      color: $link-color;
+      text-decoration: none;
     }
   }
 

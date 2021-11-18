@@ -26,7 +26,6 @@
           v-if="index === activeLawyerIndex"
           @click.native.stop
         )
-          add-icon.lawyer-grid__infos-add
           lawyer-infos(
             v-bind="lawyer"
             :showPortrait="true"
@@ -40,10 +39,9 @@ import scrollIntoView from 'smooth-scroll-into-view-if-needed'
 import { getUrl, getImageUrl } from '@/utils/api'
 import { getImageCssStyle } from '@/utils/images'
 import LawyerInfos from '@/components/LawyerInfos'
-import AddIcon from '@/components/AddIcon'
 
 export default {
-  components: { LawyerInfos, AddIcon },
+  components: { LawyerInfos },
 
   props: {
     lawyers: {
@@ -131,7 +129,7 @@ export default {
   &__info {
     padding: $main-padding 0 $main-padding - $menu-margin * 0.5;
     line-height: 1.3;
-    font-size: $default-font-size;
+    font-size: $small-font-size;
   }
 
   &__infos {
@@ -145,16 +143,6 @@ export default {
 
     &:hover {
       text-decoration: none;
-    }
-
-    &-add {
-      width: 2rem;
-      height: 2rem;
-      position: absolute;
-      top: 0;
-      right: 0;
-      margin-top: $main-padding;
-      color: black;
     }
   }
 

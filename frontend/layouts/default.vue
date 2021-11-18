@@ -215,11 +215,23 @@ export default {
   }
 }
 
-a {
-  color: $link-color;
+.link {
+  &:hover {
+    color: $main-color;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0.1rem;
+      left: 0;
+      width: 100%;
+      border-bottom: $border;
+      border-color: $main-color;
+    }
+  }
 }
 
-a:hover {
+a {
   color: $link-color;
 }
 

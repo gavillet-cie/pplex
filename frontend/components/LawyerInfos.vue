@@ -16,14 +16,14 @@
         ) {{ lawyerTitle }}
 
       .lawyer-infos__links.lawyer-infos__section
-        nuxt-link.lawyer-infos__profile(
+        nuxt-link.link.lawyer-infos__profile(
           v-if="reduceInfo"
           :to="getUrl(`/lawyers/${name}`, lang)"
           @click.native.stop
         ) {{ getLabel('seeProfile', labels, 'See Profile') }}
 
         client-only
-          a.lawyer-infos__vcard(
+          a.link.lawyer-infos__vcard(
             :href="getApiUrl(`/vcard/${name}`)"
             @click.stop
             download
@@ -33,7 +33,7 @@
         v-if="showContact"
       )
         span.lawyer-infos__section-title {{ getLabel('contact', labels) }}
-        a.lawyer-infos__email(
+        a.link.lawyer-infos__email(
           v-if="email"
           :href="mailto"
           @click.stop
@@ -203,6 +203,7 @@ export default {
     font-size: $default-font-size;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
   }
 
   &__portrait {
@@ -228,6 +229,7 @@ export default {
   &__section {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     color: black;
 
     & + & {

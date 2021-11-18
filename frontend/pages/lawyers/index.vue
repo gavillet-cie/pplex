@@ -104,7 +104,7 @@ export default {
           component: 'input',
           type: 'text',
           placeholder: getLabel('searchByName', this.labels),
-          width: '50%',
+          width: 'calc(50% - 2.5px)',
           flex: false,
         },
       ]
