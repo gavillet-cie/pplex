@@ -14,6 +14,16 @@
   -webkit-font-smoothing: antialiased;
 }
 
+html {
+  font-size: 16px;
+}
+
+@media screen and (max-width: 900px) {
+  html {
+    font-size: 12px;
+  }
+}
+
 html,
 body {
   margin: 0;

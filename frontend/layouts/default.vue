@@ -238,7 +238,7 @@ a {
 input[type='text'] {
   border: none;
   display: block;
-  background-color: $link-color;
+  background-color: rgb(235, 235, 235);
   padding-left: $main-padding;
   padding-right: $main-padding;
   outline: none;
@@ -252,7 +252,42 @@ input[type='text'] {
 }
 
 .vdp-datepicker {
-  background-color: $link-color;
+  background-color: white;
+
+  input {
+    background-color: white;
+    color: black;
+
+    &::placeholder {
+      color: black;
+      opacity: 1;
+    }
+  }
+}
+
+.vdp-datepicker__calendar {
+  bottom: 0;
+  transform: translate(0, 100%);
+  border-color: black !important;
+}
+
+.vdp-datepicker__calendar .cell:hover {
+  border-color: transparent !important;
+  background-color: $main-color !important;
+  color: white !important;
+
+  & > * {
+    color: white !important;
+    border-color: white;
+  }
+}
+
+.vdp-datepicker__calendar header .prev:hover,
+.vdp-datepicker__calendar header .next:hover,
+.vdp-datepicker__calendar header .day__month_btn:hover {
+  border-color: transparent !important;
+  background-color: $main-color !important;
+  color: white !important;
 }
 
 .vdp-datepicker > div {

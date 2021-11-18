@@ -115,9 +115,9 @@ export default {
   @media screen and (max-width: 900px) {
     &__title {
       color: white;
-      font-size: $sub-title-font-size;
+      font-size: $medium-font-size;
       position: fixed;
-      top: calc(50vh + var(--menu-height));
+      top: calc(50vh + ((1 - var(--scroll-percent)) * 16.5vh));
       left: 50%;
       width: 80%;
       text-align: center;

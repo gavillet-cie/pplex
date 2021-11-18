@@ -109,6 +109,7 @@ export default {
     &:hover {
       border-top: $border-width $border-style $main-color;
       background-color: $main-color;
+      color: white;
     }
 
     span {

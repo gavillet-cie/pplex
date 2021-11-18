@@ -104,17 +104,28 @@ export default {
   &__options {
     position: absolute;
     top: 100%;
-    width: 100%;
+    width: 200%;
     background-color: white;
     z-index: 10;
   }
 
   &__option {
     font-size: $default-font-size;
+    border-top: $border;
+    padding: $menu-margin 0;
+    color: $link-color;
+    line-height: 1.2;
 
     &--active,
     &:hover {
-      background-color: lightgray;
+      position: relative;
+      z-index: 10;
+      background-color: $main-color;
+      color: white;
+      padding-left: $menu-margin;
+      border-bottom: $border;
+      border-color: $main-color;
+      margin-bottom: -$border-width;
     }
   }
 }

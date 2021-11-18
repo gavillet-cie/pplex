@@ -141,9 +141,14 @@ export default {
   width: 100%;
   display: flex;
   padding-bottom: $menu-margin;
+  transition: height 0.3s;
 
   &--highlight {
     color: $link-color !important;
+  }
+
+  &--open {
+    height: 20rem;
   }
 
   &__logo {
@@ -200,7 +205,7 @@ export default {
       min(var(--menu-height), #{$max-menu-font-size}),
       #{$menu-height}
     );
-    height: calc(#{$max-menu-font-size * 0.4} + #{$main-padding * 2});
+    height: 40px;
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
@@ -249,11 +254,12 @@ export default {
     transition: height $animation-duration $animation-duration;
 
     #{$m}--open & {
-      height: calc(#{$max-menu-font-size * 0.4} + #{$main-padding * 2});
+      height: calc(#{$max-menu-font-size} - #{$menu-margin});
       transition: height $animation-duration 0s;
     }
 
     #{$m}--small#{$m}--title & {
+      height: calc(#{$max-menu-font-size} - #{$menu-margin});
       width: 30rem;
     }
 
@@ -345,6 +351,16 @@ export default {
   }
 
   @media screen and (max-width: 900px) {
+    padding-bottom: $menu-margin * 0.5;
+
+    &__inner {
+      margin-left: $menu-margin * 0.5;
+    }
+
+    &--open {
+      height: var(--menu-height);
+    }
+
     &__page {
       display: none;
 
@@ -354,6 +370,10 @@ export default {
     }
 
     &__title {
+      #{$m}--open & {
+        height: calc(#{$max-menu-font-size} - #{$menu-margin * 0.5});
+      }
+
       #{$m}--small#{$m}--title & {
         width: unset;
       }

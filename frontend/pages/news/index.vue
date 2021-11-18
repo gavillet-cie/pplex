@@ -104,13 +104,6 @@ export default {
     filterOptions() {
       return [
         {
-          id: 'datePicker',
-          component: 'date-picker',
-          placeholder: getLabel('date', this.labels),
-          width: '20%',
-          flex: true,
-        },
-        {
           id: 'practiceAreas',
           component: 'dropdown',
           placeholder: getLabel('practiceAreas', this.labels),
@@ -119,6 +112,13 @@ export default {
             name: it.name,
           })),
           width: '30%',
+          flex: true,
+        },
+        {
+          id: 'datePicker',
+          component: 'date-picker',
+          placeholder: getLabel('date', this.labels),
+          width: '20%',
           flex: true,
         },
         {
@@ -168,7 +168,7 @@ export default {
   }
 
   &__list {
-    margin-top: 2rem;
+    margin-top: calc(1.35rem * 1.2 + 10px);
     border-top: $border;
   }
 

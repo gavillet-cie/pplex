@@ -127,7 +127,7 @@ export default {
   }
 
   &__info {
-    padding: $main-padding 0 $main-padding - $menu-margin * 0.5;
+    padding: #{$main-padding * 0.5} 0 #{$main-padding * 1.2};
     line-height: 1.3;
     font-size: $small-font-size;
   }
