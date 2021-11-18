@@ -43,7 +43,8 @@
         .menu__panel-inner
           .menu__panel-sections
             nuxt-link.menu__panel-section(
-              v-for="section in selectedSections"
+              v-for="(section, index) in selectedSections"
+              v-show="showSection(index)"
               :key="section.name"
               :to="getUrl(`/${section.name}`, lang)"
               @click.native="hideMenu"
@@ -61,6 +62,9 @@ export default {
   data() {
     return {
       sections: [],
+      index: -1,
+      animationInterval: null,
+      animationTimeout: null,
     }
   },
 
@@ -98,6 +102,29 @@ export default {
       const { sections } = await get('/', this.lang)
       this.sections = sections
     },
+
+    showMenu(show) {
+      clearInterval(this.animationInterval)
+      clearTimeout(this.animationTimeout)
+
+      if (show) {
+        this.animationTimeout = setTimeout(() => {
+          this.animationInterval = setInterval(() => {
+            this.index += 1
+            if (this.index >= this.sections.length) {
+              clearInterval(this.animationInterval)
+            }
+          }, 20)
+        }, 300)
+      } else {
+        this.animationInterval = setInterval(() => {
+          this.index--
+          if (this.index <= -1) {
+            clearInterval(this.animationInterval)
+          }
+        }, 20)
+      }
+    },
   },
 
   methods: {
@@ -123,6 +150,10 @@ export default {
       return {
         'menu--highlight': lang === this.lang,
       }
+    },
+
+    showSection(index) {
+      return index <= this.index
     },
   },
 }
@@ -180,10 +211,12 @@ export default {
 
     #{$m}--small & {
       opacity: 1;
+      transition-delay: 0.5s;
     }
 
     #{$m}--open & {
-      display: none;
+      opacity: 0;
+      transition-delay: 0s;
     }
   }
 
@@ -335,13 +368,6 @@ export default {
       color: white;
       font-size: $medium-font-size;
       line-height: 1;
-      opacity: 0;
-      transition: opacity $animation-duration 0s;
-
-      #{$m}--open & {
-        opacity: 1;
-        transition: opacity $animation-duration $animation-duration;
-      }
     }
 
     a:hover {
