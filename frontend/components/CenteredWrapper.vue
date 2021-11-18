@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss">
 .centered-wrapper {
-  padding: 0 $menu-margin;
+  padding: 0 $main-padding;
 
   &__inner {
     max-width: $wrapper-max-width;

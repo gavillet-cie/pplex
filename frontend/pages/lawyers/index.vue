@@ -158,5 +158,11 @@ export default {
   &__grid {
     margin-top: $menu-margin;
   }
+
+  @media screen and (max-width: 900px) {
+    &__filters {
+      top: calc($menu-height - $menu-margin * 0.5);
+    }
+  }
 }
 </style>

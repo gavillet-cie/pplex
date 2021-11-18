@@ -205,7 +205,7 @@ export default {
       min(var(--menu-height), #{$max-menu-font-size}),
       #{$menu-height}
     );
-    height: 40px;
+    height: 44px;
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
@@ -381,6 +381,7 @@ export default {
 
     &__languages {
       margin-right: 2rem;
+      font-size: $base-font-size;
     }
 
     &__panel {
