@@ -104,7 +104,7 @@ export default {
   &__options {
     position: absolute;
     top: 100%;
-    width: 200%;
+    width: calc(200% - $menu-margin);
     background-color: white;
     z-index: 10;
   }
@@ -126,6 +126,12 @@ export default {
       border-bottom: $border;
       border-color: $main-color;
       margin-bottom: -$border-width;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    &__options {
+      width: 100%;
     }
   }
 }

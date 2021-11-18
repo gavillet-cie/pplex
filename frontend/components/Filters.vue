@@ -99,7 +99,7 @@ export default {
     padding: $main-padding 0;
 
     & + & {
-      margin-left: $main-padding;
+      padding-right: $main-padding;
     }
 
     input {

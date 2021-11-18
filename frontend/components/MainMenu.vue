@@ -376,6 +376,7 @@ export default {
 
       #{$m}--small#{$m}--title & {
         width: unset;
+        height: calc(#{$max-menu-font-size} - #{$menu-margin * 0.5});
       }
     }
 
