@@ -7,11 +7,10 @@
     .dropdown__value
       span {{ formatRawText(selectedOption ? selectedOption.label : placeholder) }}
 
-    .dropdown__options(
-      v-show="showOptions"
-    )
+    .dropdown__options
       .dropdown__option(
         v-for="(option, index) in computedOptions"
+        v-show="showOption(index)"
         :key="index"
         :class="getOptionCssClass(option)"
         @click="selectOption(option)"
@@ -41,6 +40,8 @@ export default {
     return {
       selectedOption: null,
       showOptions: false,
+      index: -1,
+      animationInterval: null,
     }
   },
 
@@ -51,6 +52,18 @@ export default {
         { label: this.getLabel('all', this.labels), name: null },
         ...this.options,
       ]
+    },
+  },
+
+  watch: {
+    showOptions(show) {
+      clearInterval(this.animationInterval)
+      this.animationInterval = setInterval(() => {
+        this.index += show ? 1 : -1
+        if (this.index >= this.computedOptions.length || this.index <= -1) {
+          clearInterval(this.animationInterval)
+        }
+      }, 20)
     },
   },
 
@@ -75,6 +88,10 @@ export default {
     selectOption(option) {
       this.selectedOption = option
       this.$emit('selected', option)
+    },
+
+    showOption(index) {
+      return index <= this.index
     },
   },
 }
