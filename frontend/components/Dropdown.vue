@@ -146,6 +146,10 @@ export default {
       border-color: $main-color;
       margin-bottom: -$border-width;
     }
+
+    &:last-child {
+      border-bottom: $border;
+    }
   }
 
   @media screen and (max-width: 900px) {
