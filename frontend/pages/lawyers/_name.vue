@@ -344,6 +344,13 @@ export default {
       height: 20rem;
       margin: auto;
       padding: 0;
+      padding-left: $padding-row;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    &__testimonials {
+      padding: 0;
     }
   }
 }
