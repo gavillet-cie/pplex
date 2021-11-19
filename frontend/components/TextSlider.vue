@@ -72,6 +72,11 @@ export default {
     height: min-content;
     color: $secondary-color;
     padding: 0;
+    line-clamp: 20;
+    display: -webkit-box;
+    -webkit-line-clamp: 20;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 </style>
