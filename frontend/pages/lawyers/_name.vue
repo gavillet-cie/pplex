@@ -70,7 +70,7 @@
           .lawyer__ranking(
             v-for="ranking in rankings"
           )
-            span {{ ranking.year }}
+            span.lawyer__ranking-year {{ ranking.year }}
             .lawyer__ranking-images
               img.lawyer__ranking-image(
                 v-for="image in ranking.images"
@@ -273,12 +273,18 @@ export default {
   }
 
   &__ranking {
-    & > span {
-      display: block;
-      border: none;
-      @include v-main-padding;
+    $r: &;
 
-      padding-top: 0;
+    &-year {
+      display: block;
+      @include v-main-padding;
+    }
+
+    &:first-child {
+      #{$r}-year {
+        border-top: none;
+        padding-top: 0;
+      }
     }
 
     &-images {
@@ -286,11 +292,12 @@ export default {
       flex-wrap: wrap;
 
       img {
-        height: 10rem;
+        height: 8rem;
         display: block;
-        max-width: 20rem;
+        max-width: 15rem;
         object-fit: contain;
         object-position: top;
+        margin-right: 1rem;
       }
     }
   }

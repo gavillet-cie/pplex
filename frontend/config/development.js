@@ -6,7 +6,7 @@ export default {
   // ROOT_URL: 'http://localhost:8080',
   BASE_URL:
     process.env.VUE_ENV === 'server'
-      ? 'http://cms/api'
+      ? 'https://pplex-beta.gavillet-cie.com/api'
       : 'https://pplex-beta.gavillet-cie.com/api',
 
   ROOT_URL: 'https://pplex-beta.gavillet-cie.com',
