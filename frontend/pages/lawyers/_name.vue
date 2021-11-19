@@ -290,6 +290,7 @@ export default {
     &-images {
       display: flex;
       flex-wrap: wrap;
+      margin-top: -$menu-margin;
 
       img {
         height: 8rem;
@@ -297,6 +298,7 @@ export default {
         max-width: 15rem;
         object-fit: contain;
         object-position: top;
+        margin-top: $menu-margin;
         margin-right: $menu-margin;
       }
     }

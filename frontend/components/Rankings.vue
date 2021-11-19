@@ -56,14 +56,13 @@ export default {
       flex: 1 1 auto;
       width: 50%;
       flex-wrap: wrap;
+      margin-top: -$menu-margin;
     }
 
     &-image {
-      & + & {
-        margin-left: $main-padding;
-      }
-
-      height: 10rem;
+      margin-top: $menu-margin;
+      margin-right: $menu-margin;
+      height: 8rem;
       max-width: 15rem;
       object-fit: contain;
       object-position: 0 0;
