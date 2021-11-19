@@ -3,7 +3,8 @@
     .lawyer-infos__portrait(
       v-if="showPortrait"
     )
-      img(:src="getImageUrl(portrait.url)")
+      .lawyer-infos__portrait-inner
+        img(:src="getImageUrl(portrait.url)")
 
     .lawyer-infos__sections
       .lawyer-infos__section
@@ -210,9 +211,21 @@ export default {
     width: 25%;
     padding-right: 0.5rem;
 
+    &-inner {
+      position: relative;
+      width: 100%;
+      padding-top: 120%;
+    }
+
     img {
+      position: absolute;
+      top: 0;
+      left: 0;
       display: flex;
       width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
     }
   }
 
