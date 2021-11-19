@@ -77,6 +77,11 @@ export default {
     -webkit-line-clamp: 20;
     -webkit-box-orient: vertical;
     overflow: hidden;
+
+    & * {
+      font-style: initial;
+      font-weight: normal;
+    }
   }
 
   @media screen and (max-width: 900px) {
