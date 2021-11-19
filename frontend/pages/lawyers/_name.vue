@@ -272,12 +272,35 @@ export default {
     }
   }
 
+  &__ranking {
+    & > span {
+      display: block;
+      border: none;
+      @include v-main-padding;
+
+      padding-top: 0;
+    }
+
+    &-images {
+      display: flex;
+      flex-wrap: wrap;
+
+      img {
+        height: 10rem;
+        display: block;
+        max-width: 20rem;
+        object-fit: contain;
+        object-position: top;
+      }
+    }
+  }
+
   &__list {
     display: flex;
     flex-direction: column;
     width: 100%;
 
-    span {
+    & > span {
       position: relative;
       display: flex;
       flex-direction: column;
@@ -285,20 +308,13 @@ export default {
       @include v-main-padding;
     }
 
-    span:first-child {
+    & > span:first-child {
       padding-top: 0;
     }
 
-    span:last-child {
+    & > span:last-child {
       border-bottom: none;
       padding-bottom: 0;
-    }
-  }
-
-  &__ranking {
-    img {
-      height: 10rem;
-      display: block;
     }
   }
 
