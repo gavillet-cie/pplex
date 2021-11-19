@@ -339,8 +339,9 @@ export default {
       top: unset;
       left: unset;
       width: 100%;
-      height: 25vh;
+      height: 20rem;
       margin: auto;
+      padding: 0;
     }
   }
 }

@@ -78,5 +78,12 @@ export default {
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  @media screen and (max-width: 900px) {
+    &__slide {
+      line-clamp: 8;
+      -webkit-line-clamp: 8;
+    }
+  }
 }
 </style>
