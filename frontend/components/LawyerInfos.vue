@@ -4,7 +4,10 @@
       v-if="showPortrait"
     )
       .lawyer-infos__portrait-inner
-        img(:src="getImageUrl(portrait.url)")
+        img(
+          :src="getImageUrl(portrait.url)"
+          :style="getImageCssStyle(portrait)"
+        )
 
     .lawyer-infos__sections
       .lawyer-infos__section
@@ -82,6 +85,7 @@
 import { mapGetters } from 'vuex'
 import { formatRawText } from '@/utils/text'
 import { getImageUrl, getUrl, getApiUrl } from '@/utils/api'
+import { getImageCssStyle } from '@/utils/images'
 import { getLabel } from '@/utils/labels'
 
 export default {
@@ -191,6 +195,7 @@ export default {
     formatRawText,
     getImageUrl,
     getLabel,
+    getImageCssStyle,
   },
 }
 </script>
@@ -209,12 +214,12 @@ export default {
 
   &__portrait {
     width: 25%;
-    padding-right: 0.5rem;
+    padding-right: $menu-margin * 0.75;
 
     &-inner {
       position: relative;
       width: 100%;
-      padding-top: 120%;
+      padding-top: 110%;
     }
 
     img {
@@ -237,6 +242,10 @@ export default {
 
   &__practice-area {
     color: black !important;
+  }
+
+  &__sections {
+    padding-left: $menu-margin * 0.5;
   }
 
   &__section {
