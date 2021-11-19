@@ -297,7 +297,7 @@ export default {
         max-width: 15rem;
         object-fit: contain;
         object-position: top;
-        margin-right: 1rem;
+        margin-right: $menu-margin;
       }
     }
   }
