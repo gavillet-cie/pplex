@@ -124,6 +124,8 @@ export default {
     width: calc(200% - $menu-margin);
     background-color: white;
     z-index: 10;
+    max-height: 40vh;
+    overflow: auto;
   }
 
   &__option {
