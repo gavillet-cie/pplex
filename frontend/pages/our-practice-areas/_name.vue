@@ -46,18 +46,14 @@ export default {
         get(`/our-practice-areas/${name}`, language),
         get(`/lawyers`, language),
       ])
+      store.commit('setTitle', area.title)
+      store.commit('setPageDescription', area.description)
       return {
         ...area,
         lawyers,
       }
     } catch (error) {
       store.commit('setError', error)
-    }
-  },
-
-  head() {
-    return {
-      title: this.title ? `${formatRawText(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 

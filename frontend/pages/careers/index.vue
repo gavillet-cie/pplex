@@ -38,15 +38,11 @@ export default {
       const { language } = params
       store.commit('setBigMenu', true)
       const careers = await get('/careers', language)
+      store.commit('setTitle', careers.title)
+      store.commit('setPageDescription', careers.description)
       return careers
     } catch (error) {
       store.commit('setError', error)
-    }
-  },
-
-  head() {
-    return {
-      title: this.title ? `${formatRawText(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 

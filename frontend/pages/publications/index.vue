@@ -12,7 +12,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { decode } from 'html-entities'
+import { decodeText } from '../../utils/text'
 import { get, getApiUrl } from '@/utils/api'
 import { getDate } from '@/utils/dates'
 import CenteredWrapper from '@/components/CenteredWrapper'
@@ -26,14 +26,10 @@ export default {
     const { language } = params
     store.commit('setBigMenu', true)
     const [publications] = await Promise.all([get(`/publications`, language)])
+    store.commit('setTitle', decodeText(publications.title))
+    store.commit('setPageDescription', publications.pageDescription)
     return {
       ...publications,
-    }
-  },
-
-  head() {
-    return {
-      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 

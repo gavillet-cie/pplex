@@ -7,7 +7,7 @@ WORKDIR /app
 
 # update and install dependency
 RUN apk update && apk upgrade
-RUN apk add python make g++
+RUN apk add python3 make g++
 
 # copy the app, note .dockerignore
 COPY . .

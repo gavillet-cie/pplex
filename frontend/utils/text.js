@@ -1,4 +1,9 @@
 import { decode } from 'html-entities'
+import { convert } from 'html-to-text'
+
+export const decodeText = (text) => {
+  return text ? convert(decode(text)) : ''
+}
 
 export const formatRawText = (text) => {
   const find = "'"

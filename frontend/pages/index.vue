@@ -24,7 +24,11 @@ export default {
     AddIcon,
   },
 
-  asyncData({ store }) {
+  async asyncData({ store, params }) {
+    const { language } = params
+    const home = await get(`/`, language)
+    store.commit('setTitle', null)
+    store.commit('setPageDescription', home.pageDescription)
     store.commit('setBigMenu', true)
   },
 

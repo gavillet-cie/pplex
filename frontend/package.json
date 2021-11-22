@@ -26,6 +26,7 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.15.1",
     "html-entities": "^2.3.2",
+    "html-to-text": "^8.1.0",
     "nuxt": "^2.15.7",
     "punycode": "^2.1.1",
     "smooth-scroll-into-view-if-needed": "^1.1.32",

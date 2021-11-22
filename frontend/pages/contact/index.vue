@@ -27,15 +27,11 @@ export default {
       const { language } = params
       store.commit('setBigMenu', true)
       const contact = await get('/contact', language)
+      store.commit('setTitle', contact.title)
+      store.commit('setPageDescription', contact.pageDescription)
       return contact
     } catch (error) {
       store.commit('setError', error)
-    }
-  },
-
-  head() {
-    return {
-      title: this.title ? `${formatRawText(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 

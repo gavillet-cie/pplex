@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { decode } from 'html-entities'
 import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
 import { filterLawyers } from '@/utils/lawyers'
@@ -45,6 +44,8 @@ export default {
         get('our-practice-areas', language),
         get('contact', language),
       ])
+      store.commit('setTitle', lawyers.title)
+      store.commit('setPageDescription', lawyers.pageDescription)
 
       return {
         practiceAreas,
@@ -60,12 +61,6 @@ export default {
     return {
       width: null,
       filters: null,
-    }
-  },
-
-  head() {
-    return {
-      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 

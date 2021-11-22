@@ -6,6 +6,8 @@ export const state = () => ({
   labels: [],
   pageTitle: '',
   error: false,
+  pageDescription: '',
+  title: '',
 })
 
 export const getters = {
@@ -16,6 +18,8 @@ export const getters = {
   isMenuSmall: (state) => !state.bigMenu || state.menuState,
   pageTitle: (state) => state.pageTitle,
   error: (state) => state.error,
+  pageDescription: (state) => state.pageDescription,
+  title: (state) => state.title,
 }
 
 export const mutations = {
@@ -45,5 +49,13 @@ export const mutations = {
 
   setError: (state, error) => {
     state.error = error
+  },
+
+  setTitle: (state, title) => {
+    state.title = title
+  },
+
+  setPageDescription: (state, pageDescription) => {
+    state.pageDescription = pageDescription
   },
 }

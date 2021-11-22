@@ -120,7 +120,6 @@
 </template>
 
 <script>
-import { decode } from 'html-entities'
 import { mapGetters } from 'vuex'
 import { get, getImageUrl, getUrl } from '@/utils/api'
 import { formatRawText, formatHtmlText } from '@/utils/text'
@@ -151,16 +150,12 @@ export default {
         get(`lawyers/${name}`, language),
         get(`news`, language),
       ])
+      store.commit('setTitle', lawyer.title)
+      store.commit('setPageDescription', lawyer.description)
 
       return { lawyer, ...news, ...lawyer }
     } catch (error) {
       store.commit('setError', true)
-    }
-  },
-
-  head() {
-    return {
-      title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 

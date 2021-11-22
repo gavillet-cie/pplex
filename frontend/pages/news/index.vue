@@ -44,6 +44,8 @@ export default {
         get(`/news`, language),
         get('/our-practice-areas', language),
       ])
+      store.commit('setTitle', news.title)
+      store.commit('setPageDescription', news.pageDescription)
 
       return {
         ...practiceAreas,
@@ -57,12 +59,6 @@ export default {
   data() {
     return {
       filters: {},
-    }
-  },
-
-  head() {
-    return {
-      title: this.title ? `${formatRawText(this.title)} - PYTHON` : 'PYTHON',
     }
   },
 

@@ -16,6 +16,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import config from '../config'
+import { decodeText } from '../utils/text'
 import { get, sanitizeUrl } from '@/utils/api'
 import MainMenu from '@/components/MainMenu'
 import MainFooter from '@/components/MainFooter'
@@ -52,19 +53,19 @@ export default {
 
   head() {
     return {
-      title: this.title || 'PYTHON',
+      title: decodeText(`${this.title} - PYTHON`) || 'PYTHON',
       meta: [
         {
           name: 'description',
-          content: this.pageDescription || '',
+          content: decodeText(this.pageDescription) || '',
         },
         {
           property: 'og:title',
-          content: this.title || 'PYTHON',
+          content: decodeText(`${this.title} - PYTHON`) || 'PYTHON',
         },
         {
           property: 'og:description',
-          content: this.pageDescription || '',
+          content: decodeText(this.pageDescription) || '',
         },
         {
           property: 'og:url',
