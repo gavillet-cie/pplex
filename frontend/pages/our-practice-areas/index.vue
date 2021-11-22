@@ -43,7 +43,7 @@ export default {
       store.commit('setBigMenu', true)
       const res = await get('/our-practice-areas', language)
       store.commit('setTitle', res.title)
-      store.commit('setPageDescription', res.pageDescription)
+      store.commit('setPageDescription', res.description)
       return res
     } catch (error) {
       store.commit('setError', error)
