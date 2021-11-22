@@ -263,7 +263,7 @@ export default {
   }
 
   &__row {
-    @include v-main-padding;
+    @include text-padding;
 
     & + & {
       border-top: $border;
