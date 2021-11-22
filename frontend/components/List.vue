@@ -3,7 +3,7 @@
     :class="listCssClasses"
   )
     row.list__item(
-      v-for="(item, index) in items"
+      v-for="(item, index) in filteredItems"
       :key="index"
       :label="formatRawText(item.label)"
       :noPadding="true"
@@ -48,6 +48,10 @@ export default {
       return {
         'list--hide-add': !this.addIcon,
       }
+    },
+
+    filteredItems() {
+      return (this.items || []).filter((it) => it.text)
     },
   },
 
