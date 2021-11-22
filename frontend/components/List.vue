@@ -1,5 +1,7 @@
 <template lang="pug">
-  ul.list
+  ul.list(
+    :class="listCssClasses"
+  )
     row.list__item(
       v-for="(item, index) in items"
       :key="index"
@@ -33,10 +35,20 @@ export default {
       type: Array,
       default: () => [],
     },
+
+    addIcon: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   computed: {
     ...mapGetters(['lang']),
+    listCssClasses() {
+      return {
+        'list--hide-add': !this.addIcon,
+      }
+    },
   },
 
   methods: {
@@ -50,6 +62,8 @@ export default {
 @import '../styles/mixins';
 
 .list {
+  $l: &;
+
   &__item {
     $i: &;
     @include text-padding;
@@ -78,6 +92,10 @@ export default {
       width: 100%;
       flex: 1 1 auto;
       padding-right: 1rem;
+
+      #{$l}--hide-add & {
+        padding-right: 0;
+      }
     }
 
     &-content-title {
@@ -105,6 +123,10 @@ export default {
       width: 1.5rem;
       height: 1.5rem;
       flex: 0 0 auto;
+
+      #{$l}--hide-add & {
+        display: none;
+      }
     }
   }
 

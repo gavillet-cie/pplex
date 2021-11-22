@@ -16,6 +16,7 @@
 
       list.careers__vacancies(
         :items="vacancyItems"
+        :addIcon="false"
       )
 </template>
 
