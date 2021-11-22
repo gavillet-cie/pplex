@@ -80,5 +80,9 @@ export default {
   &__content {
     padding: $section-margin-bottom 0;
   }
+
+  &__info {
+    font-size: $small-font-size;
+  }
 }
 </style>
