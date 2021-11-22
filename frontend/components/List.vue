@@ -81,6 +81,7 @@ export default {
     &-inner {
       display: flex;
       width: 100%;
+      cursor: pointer;
 
       &:hover {
         text-decoration: none;
@@ -127,6 +128,19 @@ export default {
 
       p {
         display: contents;
+      }
+
+      & * {
+        pointer-events: none;
+        color: black !important;
+
+        &:hover {
+          color: black !important;
+
+          &::after {
+            display: none;
+          }
+        }
       }
     }
 
