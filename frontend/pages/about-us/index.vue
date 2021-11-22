@@ -14,13 +14,16 @@
           v-html="formatHtmlText(description)"
         )
 
-      row.about-us__section-title
-        span Swisslex
+      template(
+        v-for="section in sections"
+      )
+        row.about-us__section-title
+          span {{ formatRawText(section.title) }}
 
-      row
-        .about-us__swisslex(
-          v-html="formatHtmlText(swisslex)"
-        )
+        row
+          .about-us__section-content(
+            v-html="formatHtmlText(section.description)"
+          )
 
       row.about-us__section-title
         span {{ getLabel('ourOffices', labels) }}
@@ -105,7 +108,7 @@ export default {
   }
 
   &__description,
-  &__swisslex {
+  &__section-content {
     @include big-text-padding;
   }
 
