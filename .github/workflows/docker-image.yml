@@ -8,9 +8,9 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  FRONTEND_NAME: PTRRR/pplex-client
-  BACKEND_NAME: PTRRR/pplex-api
-  PROXY_NAME: PTRRR/pplex-proxy
+  FRONTEND_NAME: gavillet-cie/pplex-client
+  BACKEND_NAME: gavillet-cie/pplex-api
+  PROXY_NAME: gavillet-cie/pplex-proxy
 
 jobs:
   build-and-push-client:
