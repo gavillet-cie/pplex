@@ -25,7 +25,7 @@
 
         .lawyer-grid__infos(
           v-if="index === activeLawyerIndex"
-          @click.native.stop
+          @click.stop
         )
           lawyer-infos(
             v-bind="lawyer"

@@ -3,7 +3,10 @@
     .lawyer-infos__portrait(
       v-if="showPortrait"
     )
-      .lawyer-infos__portrait-inner
+      nuxt-link.lawyer-infos__portrait-inner(
+        :to="getUrl(`/lawyers/${name}`, lang)"
+        @click.native.stop
+      )
         img(
           :src="getImageUrl(portrait.url)"
           :style="getImageCssStyle(portrait)"
@@ -217,6 +220,8 @@ export default {
     padding-right: $menu-margin * 0.75;
 
     &-inner {
+      cursor: pointer;
+      display: block;
       position: relative;
       width: 100%;
       padding-top: 110%;
