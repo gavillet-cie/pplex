@@ -59,8 +59,15 @@ body {
 }
 
 .InputfieldFileUpload .InputMask.ui-button,
-.InputfieldImageUpload .InputMask.ui-button:hover {
+.InputfieldImageUpload .InputMask.ui-button:hover,
+.pw-content li.ui-state-default,
+.pw-content li.ui-state-hover,
+.InputfieldFileList > li > .InputfieldItemHeader,
+.InputfieldFileList > li > .InputfieldItemHeader:hover {
   background-color: var(--main-color);
+  outline-color: var(--main-color);
+  border-color: var(--main-color);
+  color: var(--white);
 }
 
 #pw-masthead .uk-navbar-nav > li i,
