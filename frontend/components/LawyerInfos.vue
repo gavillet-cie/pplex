@@ -45,11 +45,11 @@
 
         span.lawyer-infos__phone(
           v-if="phone"
-        ) {{ phone }}
+        ) {{ getLabel('phonePrefix', labels, 'T') }} {{ phone }}
 
         span.lawyer-infos__fax(
           v-if="fax"
-        ) {{ fax }}
+        ) F {{ fax }}
 
       .lawyer-infos__section(
         v-if="showPracticeAreas && !reduceInfo"
