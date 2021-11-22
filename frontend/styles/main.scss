@@ -55,25 +55,14 @@ h3,
 h4,
 h5,
 a,
-p {
+p,
+strong,
+em {
   margin: 0;
   color: inherit;
   font-weight: normal;
   font-size: inherit;
   text-decoration: inherit;
-}
-
-strong {
-  font-family: Rand-Heavy, Helvetica, Arial, sans-serif;
-}
-
-strong > em,
-em > strong {
-  font-family: Rand-Heavy-Italic, Helvetica, Arial, sans-serif;
-}
-
-em {
-  font-family: Rand-Medium-Italic, Helvetica, Arial, sans-serif;
 }
 
 ul {

@@ -248,6 +248,21 @@ input[type='text'] {
   font-family: inherit;
 }
 
+strong {
+  font-family: Rand-Medium, Helvetica, Arial, sans-serif;
+  color: $main-color;
+}
+
+em {
+  font-family: Rand-Medium-Italic, Helvetica, Arial, sans-serif;
+}
+
+strong > em,
+em > strong {
+  font-family: Rand-Medium-Italic, Helvetica, Arial, sans-serif;
+  color: $main-color;
+}
+
 .nuxt-link-active {
   color: $link-color;
 }

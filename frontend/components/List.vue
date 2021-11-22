@@ -39,6 +39,11 @@ export default {
       type: Boolean,
       default: true,
     },
+
+    expand: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   computed: {
@@ -46,6 +51,7 @@ export default {
     listCssClasses() {
       return {
         'list--hide-add': !this.addIcon,
+        'list--expand': this.expand,
       }
     },
 
@@ -123,25 +129,25 @@ export default {
       overflow: hidden;
       color: black;
 
+      #{$l}--expand & {
+        display: block;
+      }
+
       #{$i}-content-title + & {
         margin-top: 1rem;
       }
 
       p {
         display: contents;
+
+        #{$l}--expand & {
+          display: initial;
+        }
       }
 
-      & * {
+      a {
+        color: black;
         pointer-events: none;
-        color: black !important;
-
-        &:hover {
-          color: black !important;
-
-          &::after {
-            display: none;
-          }
-        }
       }
     }
 
