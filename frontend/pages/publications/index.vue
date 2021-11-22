@@ -4,19 +4,17 @@
       row.publications__sub-title
         h2 {{ title }}
 
-      .publications__posts
-        post.publications__post(
-          v-for="(item, index) in publications"
-          v-bind="item"
-          mode="publications"
-          :key="index"
-        )
+      list.publications__list(
+        :items="computedPublications"
+      )
 
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { decode } from 'html-entities'
-import { get } from '@/utils/api'
+import { get, getApiUrl } from '@/utils/api'
+import { getDate } from '@/utils/dates'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Post from '@/components/Post'
 import Row from '@/components/Row'
@@ -37,6 +35,18 @@ export default {
     return {
       title: this.title ? `${decode(this.title)} - PYTHON` : 'PYTHON',
     }
+  },
+
+  computed: {
+    ...mapGetters(['lang']),
+    computedPublications() {
+      return (this.publications || []).map((it) => ({
+        label: getDate(it.date, this.lang),
+        text: it.title,
+        url: getApiUrl(it.file.url),
+        external: true,
+      }))
+    },
   },
 }
 </script>

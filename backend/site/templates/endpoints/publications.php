@@ -13,11 +13,14 @@ echo $apiRenderer->renderJSONFromModel([
       "title" => ["field" => "title"],
       "name" => ["field" => "name"],
       "url" => ["field" => "url"],
-      "file" => ["field" => "publication_file"],
       "date" => ["field" => "publication_date"],
-      "practiceArea" => [
-        "field" => "publication_practice_area",
-        "type" => "simple-reference"
+      "practiceAreas" => [
+        "field" => "publication_practice_areas",
+        "type" => "nested",
+        "model" => [
+          "title" => ["field" => "title"],
+          "name" => ["field" => "name"]
+        ]
       ],
       "author" => [
         "field" => "publication_author",
@@ -27,8 +30,9 @@ echo $apiRenderer->renderJSONFromModel([
           "name" => ["field" => "name"],
           "firstName" => ["field" => "lawyer_first_name"],
           "lastName" => ["field" => "lawyer_last_name"],
-        ]
-      ]
+        ],
+      ],
+      "file" => ["field" => "publication_file"]
     ]
   ]
 ], $page);

@@ -9,8 +9,7 @@
       :noPadding="true"
     )
       li.list__item-inner(
-        :is="item.url ? 'nuxt-link' : 'div'"
-        :to="item.url"
+        v-bind="getItemAttributes(item)"
       )
         .list__item-content
           .list__item-content-text(
@@ -58,6 +57,13 @@ export default {
   methods: {
     formatRawText,
     formatHtmlText,
+    getItemAttributes(item) {
+      return {
+        is: item?.url ? (item?.external ? 'a' : 'nuxt-link') : 'div',
+        to: item?.url && !item?.external ? item.url : null,
+        href: item?.url && item?.external ? item.url : null,
+      }
+    },
   },
 }
 </script>
@@ -74,6 +80,7 @@ export default {
 
     &-inner {
       display: flex;
+      width: 100%;
 
       &:hover {
         text-decoration: none;
