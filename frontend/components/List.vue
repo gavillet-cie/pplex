@@ -62,6 +62,7 @@ export default {
         is: item?.url ? (item?.external ? 'a' : 'nuxt-link') : 'div',
         to: item?.url && !item?.external ? item.url : null,
         href: item?.url && item?.external ? item.url : null,
+        target: item?.external ? '_blank' : null,
       }
     },
   },
