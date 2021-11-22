@@ -1,6 +1,7 @@
 <template lang="pug">
   .lawyer
     slider.lawyer__slider(
+      v-if="showSlides"
       :slides="lawyerSlides"
     )
 
@@ -171,14 +172,11 @@ export default {
             title: '',
             image: it,
           }))
-        : this.portrait
-        ? [
-            {
-              title: '',
-              image: this.portrait,
-            },
-          ]
         : []
+    },
+
+    showSlides() {
+      return this.lawyerSlides.length > 0
     },
 
     marginLeft() {
