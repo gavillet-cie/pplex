@@ -21,11 +21,11 @@ services:
       - letsencrypt:/etc/letsencrypt
 
   nuxt:
-    image: ghcr.io/ptrrr/pplex-client:main
+    image: ghcr.io/gavillet-cie/pplex-client:main
     restart: on-failure
 
   cms:
-    image: ghcr.io/ptrrr/pplex-api:main
+    image: ghcr.io/gavillet-cie/pplex-api:main
     volumes:
       - ./backend/site/assets:/var/www/html/api/site/assets
     restart: on-failure
