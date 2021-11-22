@@ -51,7 +51,7 @@ export default {
   computed: {
     ...mapGetters(['lang']),
     authors() {
-      return this.author?.map((it) => it.title).join(', ')
+      return this.author?.map((it) => it.title).join(', ') || 'PYTHON'
     },
 
     info() {
