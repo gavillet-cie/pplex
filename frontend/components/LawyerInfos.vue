@@ -10,6 +10,7 @@
         img(
           :src="getImageUrl(portrait.url)"
           :style="getImageCssStyle(portrait)"
+          :alt="portrait.description || ''"
         )
 
     .lawyer-infos__sections

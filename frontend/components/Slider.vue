@@ -12,6 +12,7 @@
       img(
         :src="getImageUrl(slide.image.url)"
         :style="getImageCssStyle(slide.image)"
+        :alt="slide.description || ''"
       )
 </template>
 

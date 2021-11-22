@@ -7,6 +7,7 @@
     )
       img(
         src="~/static/pplex-logo-blue.svg"
+        alt="logo"
       )
 
     .menu__inner
@@ -15,6 +16,7 @@
       )
         img(
           src="~/static/LOGO_PYTHON.svg"
+          alt="logo"
         )
 
       h5.menu__page(
