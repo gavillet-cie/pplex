@@ -15,10 +15,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { get } from '@/utils/api'
+import config from '../config'
+import { get, sanitizeUrl } from '@/utils/api'
 import MainMenu from '@/components/MainMenu'
 import MainFooter from '@/components/MainFooter'
 import Error from '@/components/ErrorComponent'
+
+const { ROOT_URL } = config
 
 const baseFontSize = 16
 const maxMenuHeight = 0.35
@@ -47,8 +50,47 @@ export default {
     }
   },
 
+  head() {
+    return {
+      title: this.title || 'PYTHON',
+      meta: [
+        {
+          name: 'description',
+          content: this.pageDescription || '',
+        },
+        {
+          property: 'og:title',
+          content: this.title || 'PYTHON',
+        },
+        {
+          property: 'og:description',
+          content: this.pageDescription || '',
+        },
+        {
+          property: 'og:url',
+          content: sanitizeUrl(`${ROOT_URL}/${this.$route.path}`),
+        },
+        {
+          property: 'og:site_name',
+          content: 'PYTHON',
+        },
+        {
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+      ],
+    }
+  },
+
   computed: {
-    ...mapGetters(['lang', 'bigMenu', 'showMenu', 'error']),
+    ...mapGetters([
+      'lang',
+      'bigMenu',
+      'showMenu',
+      'error',
+      'title',
+      'pageDescription',
+    ]),
     appCssStyle() {
       return {
         '--max-menu-height': this.maxMenuHeight,

@@ -98,6 +98,11 @@ export default {
       default: '',
     },
 
+    entity: {
+      type: String,
+      default: '',
+    },
+
     title: {
       type: String,
       default: '',
@@ -182,7 +187,7 @@ export default {
     },
 
     entityAndAddress() {
-      return `Python | Avocats
+      return `${this.entity || 'Python | Avocats'}
         ${this.locations.map((it) => `${it.city}, ${it.address}`).join('\n')}
       `
     },

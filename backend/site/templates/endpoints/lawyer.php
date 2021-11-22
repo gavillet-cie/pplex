@@ -16,6 +16,7 @@ echo $apiRenderer->renderJSONFromModel([
   "phone" => ["field" => "lawyer_phone"],
   "fax" => ["field" => "lawyer_fax"],
   "status" => ["field" => "lawyer_status"],
+  "entity" => ["field" => "lawyer_entity"],
   "locations" => [
     "field" => "lawyer_locations",
     "type" => "nested",

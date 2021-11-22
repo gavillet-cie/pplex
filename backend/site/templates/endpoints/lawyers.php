@@ -23,6 +23,7 @@ echo $apiRenderer->renderJSONFromModel([
       ],
       "portrait" => ["field" => "lawyer_portrait"],
       "status" => ["field" => "lawyer_status"],
+      "entity" => ["field" => "lawyer_entity"],
       "lawyerTitle" => ["field" => "lawyer_title"],
       "portrait" => ["field" => "lawyer_portrait"],
       "email" => ["field" => "lawyer_email"],
