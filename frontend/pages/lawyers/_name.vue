@@ -172,6 +172,13 @@ export default {
             title: '',
             image: it,
           }))
+        : this.portrait
+        ? [
+            {
+              title: '',
+              image: this.portrait,
+            },
+          ]
         : []
     },
 

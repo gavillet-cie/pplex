@@ -13,7 +13,7 @@ $this->addHookAfter('Pages::saveReady', function (HookEvent $event) {
   }
 
   if ($page->template == "lawyer") {
-    $page->title = $page->lawyer_first_name . ' ' . strtoupper($page->lawyer_last_name);
+    $page->title = $page->lawyer_first_name . ' ' . $page->lawyer_last_name;
   }
 
   $http = new WireHttp();
