@@ -217,6 +217,7 @@ export default {
 
 a {
   color: $link-color;
+  cursor: pointer;
 }
 
 .link,

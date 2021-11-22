@@ -88,7 +88,6 @@ export default {
     &-inner {
       display: flex;
       width: 100%;
-      cursor: pointer;
 
       &:hover {
         text-decoration: none;
