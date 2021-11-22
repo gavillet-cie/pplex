@@ -194,7 +194,7 @@ export default {
       return (
         this.news
           ?.filter((it) =>
-            it.author.find((author) => author.name === this.name)
+            it.author?.find((author) => author.name === this.name)
           )
           .map((it) => ({
             text: formatHtmlText(it.content),
