@@ -1,12 +1,17 @@
-FROM php:5.6-apache
+FROM php:7.1-apache
 
 RUN    apt-get update \
-  && apt-get install -y git libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng-dev zziplib-bin msmtp\
+  && apt-get install -y git libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libwebp-dev libpng-dev zziplib-bin msmtp\
   && a2enmod rewrite \
   && a2enmod ssl \
   && docker-php-ext-install mysqli pdo_mysql iconv mcrypt zip \
-  && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-  && docker-php-ext-install gd 
+  && docker-php-ext-configure gd --with-gd \
+  --with-webp-dir \
+  --with-jpeg-dir \
+  --with-png-dir \
+  --with-zlib-dir \
+  --with-freetype-dir \
+  && docker-php-ext-install gd
 
 EXPOSE 8888
 
