@@ -215,7 +215,12 @@ export default {
   }
 }
 
-.link {
+a {
+  color: $link-color;
+}
+
+.link,
+p > a {
   &:hover {
     color: $main-color;
     position: relative;
@@ -229,10 +234,6 @@ export default {
       border-color: $main-color;
     }
   }
-}
-
-a {
-  color: $link-color;
 }
 
 input[type='text'] {

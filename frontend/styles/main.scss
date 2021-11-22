@@ -8,6 +8,21 @@
   src: url('~/static/fonts/Rand-Medium.woff2');
 }
 
+@font-face {
+  font-family: Rand-Medium-Italic;
+  src: url('~/static/fonts/Rand-Medium-Italic.woff2');
+}
+
+@font-face {
+  font-family: Rand-Heavy;
+  src: url('~/static/fonts/Rand-Heavy.woff2');
+}
+
+@font-face {
+  font-family: Rand-Heavy-Italic;
+  src: url('~/static/fonts/Rand-Heavy-Italic.woff2');
+}
+
 * {
   box-sizing: border-box;
   -moz-osx-font-smoothing: grayscale;
@@ -46,6 +61,19 @@ p {
   font-weight: normal;
   font-size: inherit;
   text-decoration: inherit;
+}
+
+strong {
+  font-family: Rand-Heavy, Helvetica, Arial, sans-serif;
+}
+
+strong > em,
+em > strong {
+  font-family: Rand-Heavy-Italic, Helvetica, Arial, sans-serif;
+}
+
+em {
+  font-family: Rand-Medium-Italic, Helvetica, Arial, sans-serif;
 }
 
 ul {
