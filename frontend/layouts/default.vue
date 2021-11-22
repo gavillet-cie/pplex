@@ -53,7 +53,7 @@ export default {
 
   head() {
     return {
-      title: decodeText(`${this.title} - PYTHON`) || 'PYTHON',
+      title: this.title ? decodeText(`${this.title} - PYTHON`) : 'PYTHON',
       meta: [
         {
           name: 'description',
