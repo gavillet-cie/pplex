@@ -42,6 +42,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
+    ['cookie-universal-nuxt', { alias: 'cookiz' }],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -59,6 +60,7 @@ export default {
   },
 
   router: {
+    middleware: 'languageRedirect',
     extendRoutes(routes, resolve) {
       const newRoutes = routes.map((route) => ({
         ...route,

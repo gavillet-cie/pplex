@@ -2,6 +2,7 @@ import config from '../config'
 const { BASE_URL, ROOT_URL } = config
 
 const cache = new Map()
+export const defaultLang = 'en'
 
 export const getUrl = (
   url,
@@ -11,7 +12,9 @@ export const getUrl = (
   baseUrl = BASE_URL
 ) => {
   return sanitizeUrl(
-    `${absolute ? baseUrl : ''}/${lang ? `/${lang}/${url}` : `/${url}`}`,
+    `${absolute ? baseUrl : ''}/${
+      lang && lang !== defaultLang ? `/${lang}/${url}` : `/${url}`
+    }`,
     trailingSlash
   )
 }
