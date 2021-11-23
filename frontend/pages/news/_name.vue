@@ -1,5 +1,7 @@
 <template lang="pug">
-  .new
+  .new(
+    :class="newCssClasses"
+  )
     slider.new__slider(
       v-if="slideOptions && slideOptions.length > 0"
       :slides="slideOptions"
@@ -21,6 +23,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { get } from '@/utils/api'
+import { decodeText } from '@/utils/text'
 import { getDate } from '@/utils/dates'
 import CenteredWrapper from '@/components/CenteredWrapper'
 import Post from '@/components/Post'
@@ -56,6 +59,12 @@ export default {
     slideOptions() {
       return this.slides?.map((it) => ({ image: it })) || []
     },
+
+    newCssClasses() {
+      return {
+        'new--minify-title': decodeText(this.title).length > 34,
+      }
+    },
   },
 }
 </script>
@@ -64,12 +73,18 @@ export default {
 @import '../../styles/mixins';
 
 .new {
+  $n: &;
+
   &__slider {
     @include header-slider;
   }
 
   &__title {
     @include sub-title;
+
+    #{$n}--minify-title & {
+      font-size: $medium-font-size;
+    }
   }
 
   &__content {
