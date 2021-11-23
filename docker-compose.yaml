@@ -28,6 +28,7 @@ services:
       - ./frontend/config:/app/config
       - ./frontend/static:/app/static
       - ./frontend/store:/app/store
+      - ./frontend/middleware:/app/middleware
       - ./frontend/nuxt.config.js:/app/nuxt.config.js
     restart: always
 
