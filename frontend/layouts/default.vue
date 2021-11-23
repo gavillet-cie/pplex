@@ -114,10 +114,15 @@ export default {
   watch: {
     $route: {
       immediate: true,
-      handler(route) {
+      handler(route, lastRoute) {
         const { language } = route.params
+        const lastLang = lastRoute?.params?.language
         this.$store.commit('setLang', language || '')
-        this.$store.commit('setShowMenu', false)
+
+        if (lastLang === language) {
+          this.$store.commit('setShowMenu', false)
+        }
+
         this.updateMenuHeight()
 
         get('labels', this.lang)
