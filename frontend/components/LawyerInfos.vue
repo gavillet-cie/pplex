@@ -248,7 +248,7 @@ export default {
   &__name,
   &__title {
     font-size: $medium-font-size;
-    color: black;
+    color: $main-color;
   }
 
   &__practice-area {

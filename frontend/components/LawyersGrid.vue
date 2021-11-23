@@ -98,6 +98,10 @@ export default {
     opacity: 0.5;
   }
 
+  &__name {
+    color: $main-color;
+  }
+
   &__items {
     display: flex;
     flex-wrap: wrap;

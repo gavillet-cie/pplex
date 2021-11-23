@@ -1,16 +1,12 @@
 <?php
 function getImageFields($image)
 {
-  $resizedImage = $image->height(1800);
-  $placeholder = $resizedImage->height(30);
-  $gallery = $resizedImage->height(300);
+  $resizedImage = $image->height > 1800 ? $image->height(1800) : $image;
 
   return [
     "name" => $resizedImage->name,
     "description" => $resizedImage->description,
     "url" => $resizedImage->url,
-    "placeholder" => $placeholder->url,
-    "gallery" => $gallery->url,
     "width" => $resizedImage->width,
     "height" => $resizedImage->height,
     "extention" => $resizedImage->ext,
