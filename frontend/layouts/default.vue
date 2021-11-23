@@ -61,7 +61,7 @@ export default {
         },
         {
           property: 'og:title',
-          content: decodeText(`${this.title} - PYTHON`) || 'PYTHON',
+          content: this.title ? decodeText(`${this.title} - PYTHON`) : 'PYTHON',
         },
         {
           property: 'og:description',
