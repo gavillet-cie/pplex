@@ -42,6 +42,7 @@ export default {
   padding: 3rem;
 
   &__icon {
+    height: 2rem;
     & + & {
       margin-left: 2rem;
     }

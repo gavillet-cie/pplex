@@ -23,3 +23,6 @@ $menu-height: 49px;
 $max-menu-font-size: 49px;
 $menu-min-font-size: calc(#{$menu-height} - #{$main-padding} * 2);
 $animation-duration: 0.3s;
+$footer-padding: 3rem;
+$footer-icon-height: 2rem;
+$footer-height: $footer-padding * 2 + $footer-icon-height;

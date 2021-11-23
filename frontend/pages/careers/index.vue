@@ -70,6 +70,8 @@ export default {
 @import '../../styles/mixins';
 
 .careers {
+  padding-bottom: $footer-height;
+
   &__slider {
     @include header-slider;
   }

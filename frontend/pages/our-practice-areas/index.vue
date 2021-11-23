@@ -70,6 +70,8 @@ export default {
 @import '../../styles/mixins';
 
 .practice-areas {
+  padding-bottom: $footer-height;
+
   &__slider {
     @include header-slider;
   }
@@ -79,7 +81,7 @@ export default {
   }
 
   &__grid {
-    padding: $section-margin-bottom 0;
+    padding: $section-margin-bottom 0 0;
     overflow: hidden;
   }
 

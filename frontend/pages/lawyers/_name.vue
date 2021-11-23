@@ -245,7 +245,7 @@ export default {
 
 .lawyer {
   position: relative;
-  padding-bottom: $section-margin-bottom;
+  padding-bottom: $footer-height;
 
   &__testimonials {
     position: fixed;

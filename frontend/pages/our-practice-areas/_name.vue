@@ -81,6 +81,8 @@ export default {
 @import '../../styles/mixins';
 
 .practice-area {
+  padding-bottom: $footer-height;
+
   &__slider {
     @include header-slider;
   }

@@ -75,6 +75,8 @@ export default {
 .new {
   $n: &;
 
+  padding-bottom: $footer-height;
+
   &__slider {
     @include header-slider;
   }
@@ -88,7 +90,7 @@ export default {
   }
 
   &__content {
-    padding: $section-margin-bottom 0;
+    padding: $section-margin-bottom 0 0;
   }
 
   &__info {

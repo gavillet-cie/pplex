@@ -155,6 +155,8 @@ export default {
 @import '../../styles/mixins';
 
 .news {
+  padding-bottom: $footer-height;
+
   &__slider {
     @include header-slider;
   }

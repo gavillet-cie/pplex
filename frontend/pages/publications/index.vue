@@ -51,6 +51,8 @@ export default {
 @import '../../styles/mixins';
 
 .publications {
+  padding-bottom: $footer-height;
+
   &__sub-title {
     @include sub-title;
   }

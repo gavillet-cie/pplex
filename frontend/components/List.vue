@@ -85,6 +85,10 @@ export default {
     $i: &;
     @include text-padding;
 
+    &:last-child {
+      padding-bottom: $main-padding;
+    }
+
     &-inner {
       display: flex;
       width: 100%;

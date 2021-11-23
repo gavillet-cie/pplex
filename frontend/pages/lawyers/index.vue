@@ -135,6 +135,8 @@ export default {
 @import '../../styles/mixins';
 
 .lawyers {
+  padding-bottom: $footer-height;
+
   &__slider {
     @include header-slider;
   }

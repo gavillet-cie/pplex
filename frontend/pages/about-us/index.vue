@@ -84,6 +84,8 @@ export default {
 @import '../../styles/mixins';
 
 .about-us {
+  padding-bottom: $footer-height;
+
   &__title,
   &__section-title {
     color: $secondary-color;
@@ -108,8 +110,7 @@ export default {
     @include big-text-padding;
   }
 
-  &__locations,
-  &__rankings {
+  &__locations {
     margin-bottom: $section-margin-bottom;
   }
 }
