@@ -18,8 +18,8 @@
         :label="getLabel('domain', labels)"
         :noPadding="true"
       )
-        p.lawyer__description(
-          v-html="formatRawText(description)"
+        .lawyer__description(
+          v-html="formatHtmlText(description)"
         )
 
       row.lawyer__row(
@@ -28,9 +28,10 @@
         :noPadding="true"
       )
         .lawyer__list
-          span(
+          div(
             v-for="item in education"
-          ) {{ formatRawText(item) }}
+            v-html="formatHtmlText(item)"
+          )
 
       row.lawyer__row(
         v-if="showPositionsHeld"
@@ -38,9 +39,10 @@
         :noPadding="true"
       )
         .lawyer__list
-          span(
+          div(
             v-for="position in positionsHeld"
-          ) {{ formatRawText(position) }}
+            v-html="formatHtmlText(position)"
+          )
 
       row.lawyer__row(
         v-if="showMemberships"
@@ -48,9 +50,10 @@
         :noPadding="true"
       )
         .lawyer__list
-          span(
+          div(
             v-for="membership in memberships"
-          ) {{ formatRawText(membership) }}
+            v-html="formatHtmlText(membership)"
+          )
 
       row.lawyer__row(
         v-if="showSelectedPublications"
@@ -58,9 +61,10 @@
         :noPadding="true"
       )
         .lawyer__list
-          span(
+          div(
             v-for="publication in selectedPublications"
-          ) {{ formatRawText(publication) }}
+            v-html="formatHtmlText(publication)"
+          )
 
       row.lawyer__row(
         v-if="showRankings"
@@ -84,9 +88,9 @@
         :noPadding="true"
       )
         .lawyer__list
-          span(
+          div(
             v-for="speech in speeches"
-            v-html="formatRawText(speech)"
+            v-html="formatHtmlText(speech)"
           )
 
       row.lawyer__row(
@@ -95,9 +99,9 @@
         :noPadding="true"
       )
         .lawyer__list
-          span(
+          div(
             v-for="caseItem in cases"
-            v-html="formatRawText(caseItem)"
+            v-html="formatHtmlText(caseItem)"
           )
 
       .lawyer__testimonials(
@@ -235,6 +239,7 @@ export default {
   methods: {
     getImageUrl,
     formatRawText,
+    formatHtmlText,
     getLabel,
   },
 }
@@ -278,12 +283,13 @@ export default {
     &-year {
       display: block;
       @include v-main-padding;
+
+      padding-top: 0;
     }
 
     &:first-child {
       #{$r}-year {
         border-top: none;
-        padding-top: 0;
       }
     }
 
@@ -309,6 +315,7 @@ export default {
     flex-direction: column;
     width: 100%;
 
+    & > div,
     & > span {
       position: relative;
       display: flex;
@@ -317,10 +324,12 @@ export default {
       @include v-main-padding;
     }
 
+    & > div:first-child,
     & > span:first-child {
       padding-top: 0;
     }
 
+    & > div:last-child,
     & > span:last-child {
       border-bottom: none;
       padding-bottom: 0;
