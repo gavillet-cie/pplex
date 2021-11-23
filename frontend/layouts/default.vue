@@ -268,6 +268,8 @@ p > a {
   &:hover {
     color: $main-color;
     position: relative;
+    cursor: pointer;
+
     &::after {
       content: '';
       position: absolute;

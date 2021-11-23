@@ -13,11 +13,11 @@
         br
         .locations__phone {{ item.phone }}
 
-        a.locations__email(
+        a.link.locations__email(
           :href="`mailto:${item.email}`"
         ) {{ item.email }}
-
-        a.locations__google(
+        br
+        a.link.locations__google(
           target="_blank"
           :href="item.googleMap"
         ) {{ getLabel('lookAtTheMap', labels) }}
@@ -94,10 +94,6 @@ export default {
   &__icon {
     width: 1rem;
     align-self: flex-start;
-  }
-
-  a {
-    display: block;
   }
 
   @media screen and(max-width: 900px) {
