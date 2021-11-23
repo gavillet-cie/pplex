@@ -1,16 +1,16 @@
 <?php
 function getImageFields($image)
 {
-  $resizedImage = $image->height(1080);
+  $resizedImage = $image->height(1800);
   $placeholder = $resizedImage->height(30);
   $gallery = $resizedImage->height(300);
 
   return [
     "name" => $resizedImage->name,
     "description" => $resizedImage->description,
-    "url" => $image->webp->url,
-    "placeholder" => $placeholder->webp->url,
-    "gallery" => $gallery->webp->url,
+    "url" => $resizedImage->url,
+    "placeholder" => $placeholder->url,
+    "gallery" => $gallery->url,
     "width" => $resizedImage->width,
     "height" => $resizedImage->height,
     "extention" => $resizedImage->ext,
