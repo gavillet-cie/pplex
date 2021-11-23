@@ -77,7 +77,7 @@ export default {
           component: 'dropdown',
           placeholder: getLabel('practiceArea', this.labels),
           width: '25%',
-          options: this.practiceAreas?.map((it) => ({
+          options: (this.practiceAreas || []).map((it) => ({
             label: it.title,
             name: it.name,
           })),
@@ -87,7 +87,7 @@ export default {
           id: 'location',
           component: 'dropdown',
           placeholder: getLabel('location', this.labels),
-          options: this.locations?.map((it) => ({
+          options: (this.locations || []).map((it) => ({
             label: it.city,
             name: it.name,
           })),
@@ -106,7 +106,7 @@ export default {
     },
 
     slideOptions() {
-      return this.slides?.map((it) => ({ image: it }))
+      return (this.slides || []).map((it) => ({ image: it }))
     },
   },
 

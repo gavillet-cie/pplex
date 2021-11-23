@@ -4,11 +4,11 @@ export const filterLawyers = (lawyers, filters) => {
       .toLowerCase()
       .includes(filters?.name?.toLowerCase())
 
-    const includesPracticeArea = lawyer.practiceAreas
+    const includesPracticeArea = (lawyer?.practiceAreas || [])
       .map((it) => it.name)
       .includes(filters?.practiceArea)
 
-    const includesLocation = lawyer?.locations?.find(
+    const includesLocation = (lawyer?.locations || []).find(
       (location) => location.name === filters?.location
     )
 
