@@ -12,7 +12,7 @@
         .lawyer-grid__item-content
           .lawyer-grid__portrait
             img(
-              :src="getImageUrl(lawyer.portrait.url)"
+              :src="getImageUrl(getPortraitUrl(lawyer))"
               :style="getImageCssStyle(lawyer.portrait)"
               :alt="lawyer.description || ''"
             )
@@ -66,6 +66,9 @@ export default {
     getImageUrl,
     getUrl,
     getImageCssStyle,
+    getPortraitUrl(lawyer) {
+      return lawyer?.portrait?.url
+    },
     toggleActiveLawyerIndex(lawyer) {
       const index = this.lawyers?.indexOf(lawyer)
       const element = this.$refs.lawyers.find(
