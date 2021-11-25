@@ -104,14 +104,18 @@ export default {
     position: relative;
     padding: $menu-margin $menu-margin * 2;
 
+    span {
+      display: block;
+      color: $main-color;
+    }
+
     &:hover {
       border-top: $border-width $border-style $main-color;
       background-color: $main-color;
-      color: white;
-    }
 
-    span {
-      display: block;
+      span {
+        color: white;
+      }
     }
   }
 
