@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Create Release Folder
-      run: rsync -arv --exclude='*' . ./release
+      run: rsync -a --exclude='*' . ./release
     - name: Switch to Release Folder
       run: |
         cd release
