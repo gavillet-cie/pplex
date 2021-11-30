@@ -19,7 +19,7 @@ sudo docker run --rm --volumes-from pplex_cms_1 -v ~/backup:/backup ubuntu bash 
 ```
 // Download assets
 
-scp -r -i jenisch.pem ubuntu@195.15.240.248:home/ubuntu/backup ./backup
+scp -r -i jenisch.pem ubuntu@195.15.240.248:/home/ubuntu/backup ./backup
 ```
 
 Upload
