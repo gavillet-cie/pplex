@@ -9,13 +9,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Create Release Folder
-      run: rsync -a --exclude='*' . ./release
-    - name: Switch to Release Folder
-      run: |
-        cd release
-        ls -la
+      run: rsync -a --exclude 'frontend' --exclude 'node_modules' --exclude='backend' . release
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.ZIP_TOKEN }}
-        REPO_OWNER: ptrrr
+        SOURCE: /release
