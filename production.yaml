@@ -7,9 +7,7 @@ services:
       - cms
       - adminer
       - mysql
-    build:
-      context: ./reverse-proxy
-      network: host
+    image: ghcr.io/gavillet-cie/pplex-client:main
     ports:
       - 80:8080
       - 443:443
