@@ -60,7 +60,9 @@ sudo apt install python-certbot-apache
 ```
 // Stop running processec on port 80
 
-sudo kill -9 `sudo lsof -t -i:80`
+sudo apt-get install psmisc
+sudo fuser 80/tcp
+sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
 ```
 ```
 certbot certonly --standalone --agree-tos -m "info@domain.com" -n -d pplexbeta.gavillet-cie.com,www.pplexbeta.gavillet-cie.com

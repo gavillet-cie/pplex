@@ -7,7 +7,7 @@ services:
       - cms
       - adminer
       - mysql
-    image: ghcr.io/gavillet-cie/pplex-client:main
+    image: ghcr.io/gavillet-cie/pplex-proxy:main
     ports:
       - 80:8080
       - 443:443
