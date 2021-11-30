@@ -6,14 +6,9 @@ RUN chmod +x /bin/purge-cache.sh
 RUN mkdir -p /data/nginx/cache
 RUN mkdir -p /etc/cron.d
 
-ARG CERTBOT_EMAIL=info@domain.com
-ARG DOMAIN_LIST=pplex-beta.gavillet-cie.com
-ARG GENERATE_CERT
-
 RUN apk add python3 python3-dev py3-pip build-base libressl-dev musl-dev libffi-dev rust cargo
 RUN pip3 install pip --upgrade
 RUN pip3 install certbot-nginx
-RUN if [[ -z "$GENERATE_CERT" ]] ; then echo No certificate generated ; else certbot certonly --standalone --agree-tos -m "${CERTBOT_EMAIL}" -n -d ${DOMAIN_LIST} ; fi
 RUN rm -rf /var/lib/apt/lists/* \
   && echo "PATH=$PATH" > /etc/cron.d/certbot-renew  \
   && echo "@monthly certbot renew --nginx >> /var/log/cron.log 2>&1" >>/etc/cron.d/certbot-renew \
