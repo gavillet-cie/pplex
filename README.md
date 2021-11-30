@@ -14,7 +14,7 @@ sudo docker-compose -f production.yaml stop cms
 ```
 // Backup cms assets
 
-sudo docker run --rm --volumes-from pplex_cms_1 -v ~/backup:/backup ubuntu bash -c "cd /var/www/html/api/site/assets && tar cvf /backup/assetstar ."
+sudo docker run --rm --volumes-from pplex_cms_1 -v ~/backup:/backup ubuntu bash -c "cd /var/www/html/api/site/assets && tar cvf /backup/assets.tar ."
 ```
 ```
 // Download assets
