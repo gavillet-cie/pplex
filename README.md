@@ -4,11 +4,10 @@ Backup volume
 --- 
 
 ```
-// Stop running container
-
-```
 ssh -i jenisch.pem ubuntu@195.15.240.248
 ```
+```
+// Stop running container
 
 sudo docker-compose -f production.yaml stop cms
 ```
