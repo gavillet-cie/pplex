@@ -1,5 +1,10 @@
 Ubuntu 18.04 LTS
 
+Update certificate in nginx
+---
+
+Ask for domain name
+
 Backup volume
 --- 
 
@@ -65,13 +70,15 @@ sudo fuser 80/tcp
 sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
 ```
 ```
-sudo certbot certonly --standalone --agree-tos --cert-path /etc/letsencrypt/live/pplex.ch -m "info@domain.com" -n -d pplexbeta.gavillet-cie.com,www.pplexbeta.gavillet-cie.com
+// IMPORTANT: Update domains
+
+sudo certbot certonly --standalone --agree-tos -m "info@domain.com" -n -d pplexbeta.gavillet-cie.com,www.pplexbeta.gavillet-cie.com
 ```
 
 Run containers
 ---
 
-Update certificates path in nginx.conf
+IMPORTANT: Update certificates path in nginx.conf
 
 ```
 sudo chmod -R 777 backend/
