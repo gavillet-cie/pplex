@@ -6,6 +6,10 @@ Backup volume
 ```
 // Stop running container
 
+```
+ssh -i jenisch.pem ubuntu@195.15.240.248
+```
+
 sudo docker-compose -f production.yaml stop cms
 ```
 ```
@@ -24,7 +28,7 @@ Upload
 
 ```
 // Upload config & assets
-scp -r -i jenisch.pem pplex ubuntu@195.15.242.237:/home/ubuntu/pplex
+scp -r -i jenisch.pem pplex ubuntu@195.15.242.251:/home/ubuntu/pplex
 ```
 
 Add DNS record
