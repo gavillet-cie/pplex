@@ -188,6 +188,8 @@ export default {
   &__logo {
     height: 100%;
     flex: 0 0 auto;
+    background-color: white;
+    padding-right: $menu-margin;
 
     img {
       fill: $main-color;
@@ -229,7 +231,6 @@ export default {
     position: relative;
     background-color: $main-color;
     flex: 1 1 auto;
-    margin-left: $menu-margin;
   }
 
   &__burger {

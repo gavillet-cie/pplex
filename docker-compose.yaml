@@ -13,6 +13,8 @@ services:
     ports:
       - 8080:8080
     restart: always
+    volumes:
+      - ./reverse-proxy/services/pictures:/var/www/html/services/pictures
 
   nuxt:
     build:

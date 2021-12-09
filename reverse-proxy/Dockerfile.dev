@@ -1,6 +1,8 @@
 FROM fabiocicerchia/nginx-lua:alpine
 COPY ./nginx-dev.conf /etc/nginx/nginx.conf
 COPY ./bin /bin
+RUN mkdir -p /services/pictures
+COPY ./services/pictures /var/www/html/services/pictures
 RUN chmod +x /bin/purge-cache.sh
 RUN mkdir -p /data/nginx/cache
 
