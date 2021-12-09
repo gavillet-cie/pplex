@@ -2,7 +2,7 @@ export default {
   BASE_URL:
     process.env.VUE_ENV === 'server'
       ? 'http://cms/api'
-      : 'http://192.168.100.22:8080/api',
+      : 'https://www.pplex.gavillet-cie.com/api',
 
-  ROOT_URL: 'http://192.168.100.22:8080',
+  ROOT_URL: 'https://www.pplex.gavillet-cie.com',
 }
