@@ -182,7 +182,7 @@ export default {
   }
 
   &--open {
-    height: 20rem;
+    height: var(--max-menu-height);
   }
 
   &__logo {
