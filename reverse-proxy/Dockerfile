@@ -1,6 +1,6 @@
 FROM fabiocicerchia/nginx-lua:alpine
 
-COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx-ssl.conf /etc/nginx/nginx.conf
 COPY ./bin /bin
 RUN chmod +x /bin/purge-cache.sh
 RUN mkdir -p /data/nginx/cache
