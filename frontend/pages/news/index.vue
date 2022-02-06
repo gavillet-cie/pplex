@@ -14,7 +14,7 @@
       )
         filters.news__filters(
           :placeholder="getLabel('search', labels)"
-          :title="getLabel('searchNews', labels)"
+          :title="getLabel('searchNews', labels, 'Search a news')"
           :filters="filterOptions"
           @input="onFilter($event, (filters) => { newsFilters = filters })"
         )
@@ -42,7 +42,7 @@
       )
         filters.news__filters(
           :placeholder="getLabel('search', labels)"
-          :title="getLabel('searchCase', labels, 'Search a publication')"
+          :title="getLabel('searchPublication', labels, 'Search a publication')"
           :filters="filterOptions"
           @input="onFilter($event, (filters) => { publicationsFilters = filters })"
         )
