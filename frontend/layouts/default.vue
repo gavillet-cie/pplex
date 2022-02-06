@@ -361,7 +361,7 @@ em > strong {
   position: absolute;
   top: 50%;
   right: 0;
-  transform: translate(0, -50%);
+  transform: translate(-50%, -50%);
   width: 0.7em;
   height: 0.7em;
 
