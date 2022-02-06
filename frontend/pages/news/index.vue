@@ -6,8 +6,10 @@
     )
 
     centered-wrapper
-      row.news__sub-title
-        h3 {{ formatRawText(title) }}
+      row.news__sub-title(
+        v-if="newsItems.length > 0"
+      )
+        h3 {{ formatRawText(news.title) }}
 
       .news__list-wrapper(
         v-if="newsItems.length > 0"
@@ -23,6 +25,11 @@
           :items="isFiltering(newsFilters) ? filterItems(newsItems, newsFilters) : limitItems(newsItems)"
         )
 
+      row.news__sub-title(
+        v-if="dealsAndCasesItems.length > 0"
+      )
+        h3 {{ formatRawText(dealsAndCases.title) }}
+
       .news__list-wrapper(
         v-if="dealsAndCasesItems.length > 0"
       )
@@ -36,6 +43,11 @@
         list.news__list(
           :items="isFiltering(deasAndCasesFilters) ? filterItems(dealsAndCasesItems, deasAndCasesFilters) : limitItems(dealsAndCasesItems)"
         )
+
+      row.news__sub-title(
+        v-if="computedPublications.length > 0"
+      )
+        h3 {{ formatRawText(publications.title) }}
 
       .news__list-wrapper(
         v-if="computedPublications.length > 0"
@@ -254,10 +266,6 @@ export default {
           z-index: 20 - $i;
         }
       }
-    }
-
-    & + & {
-      margin-top: $section-margin-bottom;
     }
   }
 
