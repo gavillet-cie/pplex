@@ -9,21 +9,52 @@
       row.news__sub-title
         h3 {{ formatRawText(title) }}
 
-      filters.news__filters(
-        :placeholder="getLabel('search', labels)"
-        :title="getLabel('searchNews', labels)"
-        :filters="filterOptions"
-        @input="onFilter"
+      .news__list-wrapper(
+        v-if="newsItems.length > 0"
       )
+        filters.news__filters(
+          :placeholder="getLabel('search', labels)"
+          :title="getLabel('searchNews', labels)"
+          :filters="filterOptions"
+          @input="onFilter($event, (filters) => { newsFilters = filters })"
+        )
 
-      list.news__list(
-        :items="newsItems"
+        list.news__list(
+          :items="filterItems(newsItems, newsFilters)"
+        )
+
+      .news__list-wrapper(
+        v-if="dealsAndCasesItems.length > 0"
       )
+        filters.news__filters(
+          :placeholder="getLabel('search', labels)"
+          :title="getLabel('searchCase', labels, 'Search a case')"
+          :filters="filterOptions"
+          @input="onFilter($event, (filters) => { deasAndCasesFilters = filters })"
+        )
+
+        list.news__list(
+          :items="filterItems(dealsAndCasesItems, deasAndCasesFilters)"
+        )
+
+      .news__list-wrapper(
+        v-if="computedPublications.length > 0"
+      )
+        filters.news__filters(
+          :placeholder="getLabel('search', labels)"
+          :title="getLabel('searchCase', labels, 'Search a publication')"
+          :filters="filterOptions"
+          @input="onFilter($event, (filters) => { publicationsFilters = filters })"
+        )
+
+        list.news__list(
+          :items="filterItems(computedPublications, publicationsFilters)"
+        )
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-import { get, getUrl } from '@/utils/api'
+import { get, getUrl, getApiUrl } from '@/utils/api'
 import { formatRawText, formatHtmlText } from '@/utils/text'
 import { getLabel } from '@/utils/labels'
 import { getDate } from '@/utils/dates'
@@ -40,16 +71,22 @@ export default {
     try {
       const { language } = params
       store.commit('setBigMenu', true)
-      const [news, practiceAreas] = await Promise.all([
-        get(`/news`, language),
-        get('/our-practice-areas', language),
-      ])
+      const [news, practiceAreas, dealsAndCases, publications] =
+        await Promise.all([
+          get(`/news`, language),
+          get('/our-practice-areas', language),
+          get('/deals-cases', language),
+          get('/publications', language),
+        ])
+
       store.commit('setTitle', news.title)
       store.commit('setPageDescription', news.pageDescription)
 
       return {
-        ...practiceAreas,
-        ...news,
+        ...(practiceAreas || []),
+        news: news || [],
+        dealsAndCases: dealsAndCases || [],
+        publications: publications || [],
       }
     } catch (error) {
       store.commit('setError', error)
@@ -58,43 +95,30 @@ export default {
 
   data() {
     return {
-      filters: {},
+      newsFilters: {},
+      deasAndCasesFilters: {},
+      publicationsFilters: {},
     }
   },
 
   computed: {
     ...mapGetters(['lang', 'labels']),
     newsItems() {
-      const { textInput, datePicker, practiceAreas } = this.filters
+      return this.mapItems(this.news?.posts, 'news')
+    },
 
-      return this.news
-        .filter((news) => {
-          const includesName =
-            news.title.toLowerCase().includes(textInput?.toLowerCase()) ||
-            news.content.toLowerCase().includes(textInput?.toLowerCase())
+    dealsAndCasesItems() {
+      return this.mapItems(this.dealsAndCases?.posts, 'deals-cases')
+    },
 
-          const date = new Date(news.date)
-          const isSameDate =
-            date.getFullYear() === datePicker?.getFullYear() &&
-            date.getMonth() === datePicker?.getMonth() &&
-            date.getDate() === datePicker?.getDate()
-
-          const includesPracticeArea = news.practiceAreas
-            ?.map((it) => it.name)
-            .includes(practiceAreas)
-
-          return (
-            (!textInput || includesName) &&
-            (!datePicker || isSameDate) &&
-            (!practiceAreas || includesPracticeArea)
-          )
-        })
-        .map((it) => ({
-          title: formatRawText(it.title),
-          text: formatHtmlText(it.content),
-          label: getDate(it.date),
-          url: getUrl(`news/${it.name}`, this.lang),
-        }))
+    computedPublications() {
+      return (this.publications?.publications || []).map((it) => ({
+        ...it,
+        label: getDate(it.date, this.lang),
+        text: it.title,
+        url: getApiUrl(it.file.url),
+        external: true,
+      }))
     },
 
     filterOptions() {
@@ -137,15 +161,53 @@ export default {
     getLabel,
     formatRawText,
     formatHtmlText,
-    onFilter(filters) {
+    onFilter(filters, fn) {
       const { datePicker, practiceAreas, textInput } = filters
       const inputValue = textInput?.target?.value
 
-      this.filters = {
-        textInput: inputValue,
-        practiceAreas: practiceAreas?.name,
-        datePicker,
+      if (fn) {
+        fn({
+          textInput: inputValue,
+          practiceAreas: practiceAreas?.name,
+          datePicker,
+        })
       }
+    },
+
+    mapItems(array, urlSegment) {
+      return (array || []).map((it) => ({
+        ...it,
+        title: formatRawText(it.title),
+        text: formatHtmlText(it.content),
+        label: getDate(it.date),
+        url: getUrl(`${urlSegment}/${it.name}`, this.lang),
+      }))
+    },
+
+    filterItems(array, filters) {
+      const { textInput, datePicker, practiceAreas } = filters || {}
+
+      return (array || []).filter((post) => {
+        const includesName =
+          post.title?.toLowerCase().includes(textInput?.toLowerCase()) ||
+          post.content?.toLowerCase().includes(textInput?.toLowerCase())
+
+        const date = new Date(post.date)
+        const isSameDate =
+          date.getFullYear() === datePicker?.getFullYear() &&
+          date.getMonth() === datePicker?.getMonth() &&
+          date.getDate() === datePicker?.getDate()
+
+        const includesPracticeArea = post.practiceAreas
+          ?.map((it) => it.name)
+          .includes(practiceAreas)
+
+        return (
+          (!textInput || includesName) &&
+          (!datePicker || isSameDate) &&
+          (!practiceAreas || includesPracticeArea)
+        )
+      })
     },
   },
 }
@@ -170,11 +232,20 @@ export default {
     border-top: $border;
   }
 
+  &__list-wrapper {
+    border-bottom: $border;
+
+    & + & {
+      margin-top: $section-margin-bottom;
+    }
+  }
+
   &__filters {
     position: sticky;
     top: calc($menu-height - $menu-margin);
     z-index: 10;
     background-color: white;
+    margin-bottom: -$border-width;
   }
 }
 </style>

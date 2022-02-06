@@ -1,5 +1,5 @@
 <template lang="pug">
-  post-page.new(
+  post-page.case(
     :post="post"
   )
 </template>
@@ -15,7 +15,7 @@ export default {
     try {
       const { language, name } = params
       store.commit('setBigMenu', true)
-      const post = await get(`/news/${name}`, language)
+      const post = await get(`/deals-cases/${name}`, language)
       store.commit('setTitle', post.title)
       store.commit('setPageDescription', post.content)
       return { post }

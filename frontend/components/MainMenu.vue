@@ -85,7 +85,6 @@ export default {
         'news',
         'careers',
         'contact',
-        'publications',
       ]
 
       return this.sections.filter((it) => selectedSections.includes(it.name))
