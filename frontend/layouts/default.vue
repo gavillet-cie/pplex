@@ -357,6 +357,36 @@ em > strong {
   color: white !important;
 }
 
+.vdp-datepicker__clear-button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  width: 0.7em;
+  height: 0.7em;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    border-bottom: $border;
+    border-width: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  & > span {
+    display: none;
+  }
+}
+
 .vdp-datepicker > div {
   min-height: $default-font-size * $main-line-height;
 }

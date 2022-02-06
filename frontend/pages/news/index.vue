@@ -140,6 +140,7 @@ export default {
           placeholder: getLabel('date', this.labels),
           width: '20%',
           flex: true,
+          clearButton: true,
         },
         {
           id: 'textInput',
