@@ -2,27 +2,35 @@
   ul.list(
     :class="listCssClasses"
   )
-    row.list__item(
-      v-for="(item, index) in filteredItems"
-      :key="index"
-      :label="formatRawText(item.label)"
-      :noPadding="true"
+    template(
+      v-if="(filteredItems || []).length > 0"
     )
-      li.list__item-inner(
-        v-bind="getItemAttributes(item)"
+      row.list__item(
+        v-for="(item, index) in filteredItems"
+        :key="index"
+        :label="formatRawText(item.label)"
+        :noPadding="true"
       )
-        .list__item-content
-          .list__item-content-text(
-            v-if="item.text"
-            v-html="formatHtmlText(item.text)"
-          )
+        li.list__item-inner(
+          v-bind="getItemAttributes(item)"
+        )
+          .list__item-content
+            .list__item-content-text(
+              v-if="item.text"
+              v-html="formatHtmlText(item.text)"
+            )
 
-        add-icon.list__item-icon
+          add-icon.list__item-icon
+
+    row.list__item(
+      v-else
+    ) {{ getLabel('empty-list', labels, 'Empty list') }}
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import { formatRawText, formatHtmlText } from '@/utils/text'
+import { getLabel } from '@/utils/labels'
 import AddIcon from '@/components/AddIcon'
 import Row from '@/components/Row'
 
@@ -47,7 +55,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['lang']),
+    ...mapGetters(['lang', 'labels']),
     listCssClasses() {
       return {
         'list--hide-add': !this.addIcon,
@@ -63,6 +71,7 @@ export default {
   methods: {
     formatRawText,
     formatHtmlText,
+    getLabel,
     getItemAttributes(item) {
       return {
         is: item?.url ? (item?.external ? 'a' : 'nuxt-link') : 'div',
