@@ -1,8 +1,12 @@
 <template lang="pug">
   footer.main-footer
-    img.main-footer__icon(
-      src="~/static/linkedin-logo.svg"
+    a.main-footer__icon(
+      href="https://www.linkedin.com/company/python-&-peter/"
+      target="_blank"
     )
+      img(
+        src="~/static/linkedin-logo.svg"
+      )
 
     img.main-footer__icon(
       src="~/static/twitter-logo.svg"
@@ -40,6 +44,10 @@ export default {
   display: flex;
   justify-content: center;
   padding: 3rem;
+
+  a {
+    display: block;
+  }
 
   &__icon {
     height: 2rem;
