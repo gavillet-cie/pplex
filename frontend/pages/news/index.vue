@@ -218,6 +218,8 @@ export default {
 @import '../../styles/mixins';
 
 .news {
+  $n: &;
+
   padding-bottom: $footer-height;
 
   &__slider {
@@ -235,6 +237,14 @@ export default {
 
   &__list-wrapper {
     border-bottom: $border;
+
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        #{$n}__filters {
+          z-index: 20 - $i;
+        }
+      }
+    }
 
     & + & {
       margin-top: $section-margin-bottom;
