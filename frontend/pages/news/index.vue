@@ -20,7 +20,7 @@
         )
 
         list.news__list(
-          :items="filterItems(newsItems, newsFilters)"
+          :items="isFiltering(newsFilters) ? filterItems(newsItems, newsFilters) : limitItems(newsItems)"
         )
 
       .news__list-wrapper(
@@ -34,7 +34,7 @@
         )
 
         list.news__list(
-          :items="filterItems(dealsAndCasesItems, deasAndCasesFilters)"
+          :items="isFiltering(deasAndCasesFilters) ? filterItems(dealsAndCasesItems, deasAndCasesFilters) : limitItems(dealsAndCasesItems)"
         )
 
       .news__list-wrapper(
@@ -48,7 +48,7 @@
         )
 
         list.news__list(
-          :items="filterItems(computedPublications, publicationsFilters)"
+          :items="isFiltering(publicationsFilters) ? filterItems(computedPublications, publicationsFilters) : limitItems(computedPublications)"
         )
 </template>
 
@@ -183,6 +183,16 @@ export default {
         label: getDate(it.date),
         url: getUrl(`${urlSegment}/${it.name}`, this.lang),
       }))
+    },
+
+    isFiltering(filters) {
+      const { textInput, datePicker, practiceAreas } = filters || {}
+      return textInput || datePicker || practiceAreas
+    },
+
+    limitItems(array) {
+      const clone = [...(array || [])]
+      return clone.splice(0, 5)
     },
 
     filterItems(array, filters) {
