@@ -187,9 +187,6 @@ export default {
     text-align: center;
     transform: translate(-50%, -50%);
     line-height: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: '';
     transition: filter 1.5s, opacity 1s;
   }
 
