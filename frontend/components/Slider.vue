@@ -175,7 +175,7 @@ export default {
   &__image {
     width: 100%;
     height: 100%;
-    background-size: 100vw cover;
+    background-size: 100vw auto;
     background-position: 50% 50%;
   }
 
