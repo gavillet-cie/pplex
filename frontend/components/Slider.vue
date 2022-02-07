@@ -66,8 +66,11 @@ export default {
     },
 
     getSliderImageCssStyle(image) {
+      const x = image?.focus.left || 50
+      const y = image?.focus.top || 50
       return {
         backgroundImage: `url(${getImageUrl(image?.url)})`,
+        backgroundPosition: `${x}% ${y}%`,
       }
     },
 
