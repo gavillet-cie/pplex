@@ -6,18 +6,22 @@
     )
 
     centered-wrapper
-      row.practice-areas__title
+      row.practice-areas__title(
+        v-animate
+      )
         h3 {{ formatRawText(title) }}
 
       row
         .practice-areas__description(
           v-html="formatHtmlText(description)"
+          v-animate
         )
 
       .practice-areas__grid
         .practice-areas__grid-inner
           nuxt-link.practice-areas__item(
             v-for="(area, index) in practiceAreas"
+            v-animate
             :key="index"
             :to="getUrl(`/our-practice-areas/${area.name}`, lang)"
           )

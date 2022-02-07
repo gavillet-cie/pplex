@@ -6,34 +6,45 @@
     )
 
     centered-wrapper
-      row.about-us__title
+      row.about-us__title(
+        v-animate
+      )
         h3 {{ formatRawText(title) }}
 
       row
         .about-us__description(
+          v-animate
           v-html="formatHtmlText(description)"
         )
 
       template(
         v-for="section in sections"
       )
-        row.about-us__section-title
+        row.about-us__section-title(
+          v-animate
+        )
           span {{ formatRawText(section.title) }}
 
         row
           .about-us__section-content(
+            v-animate
             v-html="formatHtmlText(section.description)"
           )
 
-      row.about-us__section-title
+      row.about-us__section-title(
+        v-animate
+      )
         span {{ getLabel('ourOffices', labels) }}
 
       locations.about-us__locations
 
-      row.about-us__section-title
+      row.about-us__section-title(
+        v-animate
+      )
         span {{ getLabel('rankings', labels) }}
 
       rankings.about-us__rankings(
+        v-animate
         :rankings="rankings"
       )
 </template>

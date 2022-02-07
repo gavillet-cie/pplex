@@ -8,11 +8,13 @@
     centered-wrapper
       row.news__sub-title(
         v-if="newsItems.length > 0"
+        v-animate
       )
         h3 {{ formatRawText(news.title) }}
 
       .news__list-wrapper(
         v-if="newsItems.length > 0"
+        v-animate
       )
         filters.news__filters(
           :placeholder="getLabel('search', labels)"
@@ -27,11 +29,13 @@
 
       row.news__sub-title(
         v-if="dealsAndCasesItems.length > 0"
+        v-animate
       )
         h3 {{ formatRawText(dealsAndCases.title) }}
 
       .news__list-wrapper(
         v-if="dealsAndCasesItems.length > 0"
+        v-animate
       )
         filters.news__filters(
           :placeholder="getLabel('search', labels)"
@@ -46,11 +50,13 @@
 
       row.news__sub-title(
         v-if="computedPublications.length > 0"
+        v-animate
       )
         h3 {{ formatRawText(publications.title) }}
 
       .news__list-wrapper(
         v-if="computedPublications.length > 0"
+        v-animate
       )
         filters.news__filters(
           :placeholder="getLabel('search', labels)"

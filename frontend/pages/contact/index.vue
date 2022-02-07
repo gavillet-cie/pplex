@@ -6,7 +6,9 @@
     )
 
     centered-wrapper
-      row.contact__title
+      row.contact__title(
+        v-animate
+      )
         h3 {{ formatRawText(title) }}
       locations.contact__locations
 </template>

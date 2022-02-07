@@ -11,10 +11,12 @@
       row.lawyer__row
         lawyer-infos(
           v-bind="lawyer"
+          v-animate
         )
 
       row.lawyer__row(
         v-if="description"
+        v-animate
         :label="getLabel('domain', labels)"
         :noPadding="true"
       )
@@ -24,6 +26,7 @@
 
       row.lawyer__row(
         v-if="showEducation"
+        v-animate
         :label="getLabel('education', labels)"
         :noPadding="true"
       )
@@ -31,6 +34,7 @@
           div(
             v-for="item in education"
             v-html="formatHtmlText(item)"
+            v-animate
           )
 
       row.lawyer__row(
@@ -42,6 +46,7 @@
           div(
             v-for="position in positionsHeld"
             v-html="formatHtmlText(position)"
+            v-animate
           )
 
       row.lawyer__row(
@@ -53,6 +58,7 @@
           div(
             v-for="membership in memberships"
             v-html="formatHtmlText(membership)"
+            v-animate
           )
 
       row.lawyer__row(
@@ -64,6 +70,7 @@
           div(
             v-for="publication in selectedPublications"
             v-html="formatHtmlText(publication)"
+            v-animate
           )
 
       row.lawyer__row(
@@ -74,6 +81,7 @@
         .lawyer__list
           .lawyer__ranking(
             v-for="ranking in rankings"
+            v-animate
           )
             span.lawyer__ranking-year {{ ranking.year }}
             .lawyer__ranking-images
@@ -91,6 +99,7 @@
           div(
             v-for="speech in speeches"
             v-html="formatHtmlText(speech)"
+            v-animate
           )
 
       row.lawyer__row(
@@ -102,6 +111,7 @@
           div(
             v-for="caseItem in cases"
             v-html="formatHtmlText(caseItem)"
+            v-animate
           )
 
       .lawyer__testimonials(

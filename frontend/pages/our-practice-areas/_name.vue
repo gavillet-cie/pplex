@@ -6,18 +6,24 @@
     )
 
     centered-wrapper
-      row.practice-area__title
+      row.practice-area__title(
+        v-animate
+      )
         h3 {{ formatRawText(title) }}
 
       row
         .practice-area__description(
           v-html="formatHtmlText(description)"
+          v-animate
         )
 
       template(
         v-if="filteredLawyers.length > 0"
+        v-animate
       )
-        row.practice-area__lawyers-sub-title
+        row.practice-area__lawyers-sub-title(
+          v-animate
+        )
           span {{ formatRawText(lawyerSubTitle) }}
 
         lawyers-grid.practice-area__lawyers(

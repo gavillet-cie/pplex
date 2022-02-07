@@ -7,14 +7,18 @@
 
     centered-wrapper
       row
-        h3.careers__title {{ formatRawText(title) }}
+        h3.careers__title(
+          v-animate
+        ) {{ formatRawText(title) }}
 
       row
         .careers__description(
+          v-animate
           v-html="formatHtmlText(description)"
         )
 
       list.careers__vacancies(
+        v-animate
         :items="vacancyItems"
         :addIcon="false"
         :expand="true"

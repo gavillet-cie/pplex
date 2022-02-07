@@ -3,6 +3,7 @@
     .lawyer-grid__items
       .lawyer-grid__item(
         v-for="(lawyer, index) in lawyers"
+        v-animate
         ref="lawyers"
         :key="lawyer.name"
         :name="lawyer.name"
@@ -115,7 +116,7 @@ export default {
     flex: 0 0 auto;
     width: 25%;
     cursor: pointer;
-    transition: opacity $animation-duration !important;
+    transition: opacity $animation-duration, transform $animation-duration !important;
 
     &-content {
       padding: $menu-margin * 0.5;

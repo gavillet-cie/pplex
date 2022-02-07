@@ -7,6 +7,7 @@
     )
       row.list__item(
         v-for="(item, index) in filteredItems"
+        v-animate
         :key="index"
         :label="formatRawText(item.label)"
         :noPadding="true"

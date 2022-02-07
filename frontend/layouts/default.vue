@@ -318,6 +318,20 @@ em > strong {
   color: $link-color;
 }
 
+.animate {
+  transition: all $animation-duration !important;
+}
+
+.animate-before-enter {
+  opacity: 0;
+  transform: translate3d(0, 100px, 0);
+}
+
+.animate-enter {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
 .vdp-datepicker {
   background-color: white;
 

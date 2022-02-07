@@ -2,6 +2,7 @@
   .rankings
     row.rankings__item(
       v-for="(item, index) in rankings"
+      v-animate
       :key="index"
       :label="item.year"
       :noPadding="true"

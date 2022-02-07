@@ -2,6 +2,7 @@
   .locations
     row.locations__item(
       v-for="(item, index) in locations"
+      v-animate
       :key="index"
       :label="formatRawText(item.city)"
       :noPadding="true"
