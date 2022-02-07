@@ -319,7 +319,7 @@ em > strong {
 }
 
 .animate {
-  transition: all $animation-duration !important;
+  transition: all 0.6s !important;
 }
 
 .animate-before-enter {
