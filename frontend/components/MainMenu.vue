@@ -384,7 +384,7 @@ export default {
     padding-bottom: $menu-margin * 0.5;
 
     &__inner {
-      margin-left: $menu-margin * 0.5;
+      /* margin-left: $menu-margin * 0.5; */
     }
 
     &--open {
