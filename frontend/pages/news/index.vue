@@ -31,7 +31,7 @@
         .news__load-more(
           v-animate
           @click="newsLimit = null"
-        ) Load more
+        ) {{ getLabel('load-more', labels, 'Load More') }}
 
       row.news__sub-title(
         v-if="dealsAndCasesItems.length > 0"
@@ -58,7 +58,7 @@
         .news__load-more(
           v-animate
           @click="dealsAndCasesLimit = null"
-        ) Load more
+        ) {{ getLabel('load-more', labels, 'Load More') }}
 
       row.news__sub-title(
         v-if="computedPublications.length > 0"
@@ -85,7 +85,7 @@
         .news__load-more(
           v-animate
           @click="publicationsLimit = null"
-        ) Load more
+        ) {{ getLabel('load-more', labels, 'Load More') }}
 </template>
 
 <script>
