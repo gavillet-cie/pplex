@@ -383,6 +383,10 @@ export default {
   @media screen and (max-width: 900px) {
     padding-bottom: $menu-margin * 0.5;
 
+    &__logo {
+      padding-right: $menu-margin * 0.5;
+    }
+
     &__inner {
       /* margin-left: $menu-margin * 0.5; */
     }

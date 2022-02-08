@@ -10,9 +10,10 @@
       :key="slideIndex"
     )
       span.slider__title {{ formatRawText(slide.title) }}
-      .slider__image(
-        :style="getSliderImageCssStyle(slide.image)"
-      )
+      .slider__image
+        .slider__image-content(
+          :style="getSliderImageCssStyle(slide.image)"
+        )
 </template>
 
 <script>
@@ -62,7 +63,7 @@ export default {
       clearInterval(this.interval)
       this.interval = setInterval(() => {
         this.nextSlide()
-      }, 7000)
+      }, 5000)
     },
 
     getSliderImageCssStyle(image) {
@@ -108,7 +109,7 @@ export default {
 
   &-enter-active,
   &-leave-active {
-    transition: all 1.5s 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+    transition: all 1.2s 0.2s cubic-bezier(0.65, 0, 0.35, 1);
   }
 
   &-enter-active {
@@ -117,7 +118,7 @@ export default {
     right: 0 !important;
 
     #{$s}__title {
-      transition: filter 1.8s 1s;
+      transition: filter 1.2s 0.8s;
     }
 
     &::before {
@@ -137,6 +138,10 @@ export default {
     #{$s}__title {
       filter: blur(20px);
       opacity: 0;
+    }
+
+    #{$s}__image-content {
+      transform: translate(-50%, -50%) scale(1) !important;
     }
   }
 
@@ -162,6 +167,7 @@ export default {
       content: '';
       display: block;
       position: absolute;
+      z-index: 10;
       top: 0;
       left: 0;
       width: $menu-margin;
@@ -173,10 +179,21 @@ export default {
   }
 
   &__image {
+    position: relative;
     width: 100%;
     height: 100%;
-    background-size: 100vw auto;
+  }
+
+  &__image-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: calc(100vh - 5rem);
+    background-size: cover;
     background-position: 50% 50%;
+    transform: translate(-50%, -50%) scale(1.15);
+    transition: transform 10s linear;
   }
 
   &__title {
@@ -198,7 +215,7 @@ export default {
       color: white;
       font-size: $medium-font-size;
       position: fixed;
-      top: calc(50vh + ((1 - var(--scroll-percent)) * 16.5vh));
+      top: 50vh;
       left: 50%;
       width: 80%;
       text-align: center;
@@ -208,6 +225,14 @@ export default {
 
     &__slide {
       clip: rect(0, 100vw, calc(100vh - var(--menu-height)), 0);
+
+      &::before {
+        width: $menu-margin * 0.5;
+      }
+    }
+
+    &__image-content {
+      height: calc(100vh - var(--menu-height));
     }
   }
 }
