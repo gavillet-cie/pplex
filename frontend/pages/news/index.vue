@@ -15,6 +15,7 @@
       .news__list-wrapper(
         v-if="newsItems.length > 0"
         v-animate
+        :class="getListCssClasses(newsItems, newsLimit, newsFilters)"
       )
         filters.news__filters(
           :placeholder="getLabel('search', labels)"
@@ -24,8 +25,13 @@
         )
 
         list.news__list(
-          :items="isFiltering(newsFilters) ? filterItems(newsItems, newsFilters) : limitItems(newsItems)"
+          :items="getListItems(newsItems, newsFilters, newsLimit)"
         )
+
+        .news__load-more(
+          v-animate
+          @click="newsLimit = null"
+        ) Load more
 
       row.news__sub-title(
         v-if="dealsAndCasesItems.length > 0"
@@ -36,17 +42,23 @@
       .news__list-wrapper(
         v-if="dealsAndCasesItems.length > 0"
         v-animate
+        :class="getListCssClasses(dealsAndCasesItems, dealsAndCasesLimit, dealsAndCasesFilters)"
       )
         filters.news__filters(
           :placeholder="getLabel('search', labels)"
           :title="getLabel('searchCase', labels, 'Search a case')"
           :filters="filterOptions"
-          @input="onFilter($event, (filters) => { deasAndCasesFilters = filters })"
+          @input="onFilter($event, (filters) => { dealsAndCasesFilters = filters })"
         )
 
         list.news__list(
-          :items="isFiltering(deasAndCasesFilters) ? filterItems(dealsAndCasesItems, deasAndCasesFilters) : limitItems(dealsAndCasesItems)"
+          :items="getListItems(dealsAndCasesItems, dealsAndCasesFilters, dealsAndCasesLimit)"
         )
+
+        .news__load-more(
+          v-animate
+          @click="dealsAndCasesLimit = null"
+        ) Load more
 
       row.news__sub-title(
         v-if="computedPublications.length > 0"
@@ -57,6 +69,7 @@
       .news__list-wrapper(
         v-if="computedPublications.length > 0"
         v-animate
+        :class="getListCssClasses(computedPublications, publicationsLimit, publicationsFilters)"
       )
         filters.news__filters(
           :placeholder="getLabel('search', labels)"
@@ -66,8 +79,13 @@
         )
 
         list.news__list(
-          :items="isFiltering(publicationsFilters) ? filterItems(computedPublications, publicationsFilters) : limitItems(computedPublications)"
+          :items="getListItems(computedPublications, publicationsFilters, publicationsLimit)"
         )
+
+        .news__load-more(
+          v-animate
+          @click="publicationsLimit = null"
+        ) Load more
 </template>
 
 <script>
@@ -114,8 +132,11 @@ export default {
   data() {
     return {
       newsFilters: {},
-      deasAndCasesFilters: {},
+      newsLimit: 5,
+      dealsAndCasesFilters: {},
+      dealsAndCasesLimit: 5,
       publicationsFilters: {},
+      publicationsLimit: 5,
     }
   },
 
@@ -134,7 +155,7 @@ export default {
         ...it,
         label: getDate(it.date, this.lang),
         text: it.title,
-        url: getApiUrl(it.file.url),
+        url: it.file?.url ? getApiUrl(it.file?.url) : null,
         external: true,
       }))
     },
@@ -208,9 +229,10 @@ export default {
       return textInput || datePicker || practiceAreas
     },
 
-    limitItems(array) {
+    limitItems(array, limit) {
+      if (!limit) return array
       const clone = [...(array || [])]
-      return clone.splice(0, 5)
+      return clone.splice(0, limit)
     },
 
     filterItems(array, filters) {
@@ -238,6 +260,19 @@ export default {
         )
       })
     },
+
+    getListItems(items, filters, limit) {
+      return this.isFiltering(filters)
+        ? this.filterItems(items, filters)
+        : this.limitItems(items, limit)
+    },
+
+    getListCssClasses(items, limit, filters) {
+      return {
+        'news--limit':
+          !this.isFiltering(filters) && limit && limit < items.length,
+      }
+    },
   },
 }
 </script>
@@ -259,8 +294,27 @@ export default {
   }
 
   &__list {
+    position: relative;
     margin-top: calc(1.35rem * 1.2 + 10px);
     border-top: $border;
+
+    #{$n}--limit & {
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 15rem;
+        background-image: linear-gradient(transparent, white);
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__list-wrapper + &__sub-title {
+    margin-top: 5rem;
   }
 
   &__list-wrapper {
@@ -272,6 +326,18 @@ export default {
           z-index: 20 - $i;
         }
       }
+    }
+  }
+
+  &__load-more {
+    display: none;
+    cursor: pointer;
+    color: $main-color;
+    border-top: $border;
+    padding: $main-padding 0;
+
+    #{$n}--limit & {
+      display: block;
     }
   }
 

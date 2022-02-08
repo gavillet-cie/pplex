@@ -19,7 +19,7 @@ export const getUrl = (
   )
 }
 
-export const getApiUrl = (url) =>
+export const getApiUrl = (url = '') =>
   getUrl(url.replace('/api', ''), '', true, false, config.BASE_URL)
 
 export const getImageUrl = (url) => getUrl(url, '', true, false, ROOT_URL)
