@@ -2,8 +2,8 @@
   transition-group.slider(
     tag="div"
     name="slider"
-
     @click.native="onClick"
+    :class="sliderCssClasses"
   )
     .slider__slide(
       v-for="slide in currentSlides"
@@ -23,6 +23,11 @@ import { formatRawText, formatHtmlText } from '@/utils/text'
 
 export default {
   props: {
+    home: {
+      type: Boolean,
+      default: false,
+    },
+
     slides: {
       type: Array,
       default: () => [],
@@ -45,6 +50,7 @@ export default {
     sliderCssClasses() {
       return {
         'slider--is-sliding': this.isSliding,
+        'slider--home': this.home,
       }
     },
   },
@@ -188,12 +194,18 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100vw;
-    height: calc(100vh - 5rem);
+    width: 100%;
+    height: 100%;
     background-size: cover;
     background-position: 50% 50%;
-    transform: translate(-50%, -50%) scale(1.15);
-    transition: transform 10s linear;
+    transform: translate(-50%, -50%);
+
+    #{$s}--home & {
+      width: 100vw;
+      height: calc(100vh - 5rem);
+      transform: translate(-50%, -50%) scale(1.15);
+      transition: transform 10s linear;
+    }
   }
 
   &__title {

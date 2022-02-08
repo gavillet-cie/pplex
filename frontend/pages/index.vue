@@ -2,6 +2,7 @@
   .home
     slider.home__slider(
       :slides="slides"
+      :home="true"
     )
 
 </template>
