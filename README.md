@@ -11,8 +11,8 @@ On server
 
 ```
 ssh-keygen -t rsa -b 4096
-cd ~/.ssh
-cat ~/id_rsa.pub >> ~/.ssh/authorized_keys
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+cat ~/.ssh/id_rsa
 
 // Copy id_rsa content to .pem file on client computer
 ```
