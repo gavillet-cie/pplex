@@ -43,7 +43,7 @@ scp -r -i jenisch.pem ubuntu@195.15.240.248:/home/ubuntu/backup ./backup
 ```
 // Upload assets
 
-scp -r -i jenisch.pem /home/ubuntu/backup:ubuntu@195.15.240.248 ./backup
+scp -r -i jenisch.pem ./backup ubuntu@195.15.240.248:/home/ubuntu
 ```
 
 Upload
