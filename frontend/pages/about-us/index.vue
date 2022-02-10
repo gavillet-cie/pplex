@@ -3,7 +3,6 @@
     slider.about-us__slider(
       v-if="slideOptions && slideOptions.length > 0"
       :slides="slideOptions"
-      :zoom="true"
     )
 
     centered-wrapper

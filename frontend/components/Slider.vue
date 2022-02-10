@@ -23,11 +23,6 @@ import { formatRawText, formatHtmlText } from '@/utils/text'
 
 export default {
   props: {
-    zoom: {
-      type: Boolean,
-      default: false,
-    },
-
     slides: {
       type: Array,
       default: () => [],
@@ -53,7 +48,6 @@ export default {
       return {
         'slider--mounting': this.isMounting,
         'slider--is-sliding': this.isSliding,
-        'slider--zoom': this.zoom,
       }
     },
   },
@@ -117,7 +111,7 @@ export default {
       this.isSliding = true
       setTimeout(() => {
         this.isSliding = false
-      }, 2000)
+      }, 1000)
     },
 
     onClick() {
@@ -142,49 +136,19 @@ export default {
 
   &-enter-active,
   &-leave-active {
-    transition: all 1.2s 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+    transition: opacity 1.2s 0.2s cubic-bezier(0.65, 0, 0.35, 1);
   }
 
   &-enter-active {
-    position: relative;
-    left: initial !important;
-    right: 0 !important;
-
-    #{$s}__title {
-      transition: filter 1.2s 0.8s;
-    }
-
-    &::before {
-      opacity: 1 !important;
-    }
+    opacity: 1;
   }
 
   &-enter {
-    left: initial !important;
-    right: 0% !important;
-    width: 0% !important;
-
-    &::before {
-      opacity: 1 !important;
-    }
-
-    #{$s}__title {
-      filter: blur(20px);
-      opacity: 0;
-    }
-
-    #{$s}__image-content {
-      transform: translate(-50%, -50%) scale(1) !important;
-    }
+    opacity: 0;
   }
 
   &-leave-to {
-    width: 0% !important;
-
-    #{$s}__title {
-      filter: blur(20px);
-      opacity: 0;
-    }
+    opacity: 0;
   }
 
   &__slide {
@@ -227,14 +191,6 @@ export default {
     background-position: 50% 50%;
     transform: translate(-50%, -50%);
     transition: transform 10s linear;
-
-    #{$s}--zoom & {
-      transform: translate(-50%, -50%) scale(1.15);
-    }
-
-    #{$s}--mounting & {
-      transform: translate(-50%, -50%) scale(1);
-    }
   }
 
   &__title {
