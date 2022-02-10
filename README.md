@@ -94,6 +94,18 @@ sudo lsof -t -i tcp:80 -s tcp:listen | sudo xargs kill
 sudo certbot certonly --standalone --agree-tos -m "info@domain.com" -n -d pplexbeta.gavillet-cie.com,www.pplexbeta.gavillet-cie.com
 ```
 
+Bundle certificates
+---
+
+```
+cat your_domain.crt intermediate.crt root.crt >> ssl-bundle.crt
+
+// Nginx config
+
+ssl_certificate /etc/ssl/ssl-bundle.crt;
+ssl_certificate_key /etc/ssl/ssl.key;
+```
+
 Run containers
 ---
 
