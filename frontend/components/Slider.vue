@@ -23,7 +23,7 @@ import { formatRawText, formatHtmlText } from '@/utils/text'
 
 export default {
   props: {
-    home: {
+    zoom: {
       type: Boolean,
       default: false,
     },
@@ -36,9 +36,11 @@ export default {
 
   data() {
     return {
+      isMounting: true,
       slideIndex: 0,
       isSliding: false,
       interval: null,
+      ratio: null,
     }
   },
 
@@ -49,14 +51,22 @@ export default {
 
     sliderCssClasses() {
       return {
+        'slider--mounting': this.isMounting,
         'slider--is-sliding': this.isSliding,
-        'slider--home': this.home,
+        'slider--zoom': this.zoom,
       }
     },
   },
 
   mounted() {
     this.resetInterval()
+    this.updateRatio()
+    window.addEventListener('resize', this.updateRatio)
+    this.isMounting = false
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.updateRatio)
   },
 
   methods: {
@@ -64,6 +74,10 @@ export default {
     getImageCssStyle,
     formatRawText,
     formatHtmlText,
+
+    updateRatio() {
+      this.ratio = this.$el.clientWidth / this.$el.clientHeight
+    },
 
     resetInterval() {
       clearInterval(this.interval)
@@ -75,9 +89,22 @@ export default {
     getSliderImageCssStyle(image) {
       const x = image?.focus.left || 50
       const y = image?.focus.top || 50
+      const imageRatio = image?.width / image?.height
+
+      let backgroundSize = null
+
+      if (this.ratio) {
+        if (imageRatio > this.ratio) {
+          backgroundSize = 'auto 100%'
+        } else {
+          backgroundSize = '100vw auto'
+        }
+      }
+
       return {
         backgroundImage: `url(${getImageUrl(image?.url)})`,
         backgroundPosition: `${x}% ${y}%`,
+        backgroundSize,
       }
     },
 
@@ -134,7 +161,7 @@ export default {
 
   &-enter {
     left: initial !important;
-    right: 0 !important;
+    right: 0% !important;
     width: 0% !important;
 
     &::before {
@@ -199,12 +226,14 @@ export default {
     background-size: cover;
     background-position: 50% 50%;
     transform: translate(-50%, -50%);
+    transition: transform 10s linear;
 
-    #{$s}--home & {
-      width: 100vw;
-      height: calc(100vh - 5rem);
+    #{$s}--zoom & {
       transform: translate(-50%, -50%) scale(1.15);
-      transition: transform 10s linear;
+    }
+
+    #{$s}--mounting & {
+      transform: translate(-50%, -50%) scale(1);
     }
   }
 
@@ -241,10 +270,6 @@ export default {
       &::before {
         width: $menu-margin * 0.5;
       }
-    }
-
-    &__image-content {
-      height: calc(100vh - var(--menu-height));
     }
   }
 }

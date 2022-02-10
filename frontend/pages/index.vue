@@ -2,7 +2,7 @@
   .home
     slider.home__slider(
       :slides="slides"
-      :home="true"
+      :zoom="true"
     )
 
 </template>
