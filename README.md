@@ -15,6 +15,7 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 cat ~/.ssh/id_rsa
 
 // Copy id_rsa content to .pem file on client computer
+sudo chmod 400 file.pem
 ```
 
 Backup volume
