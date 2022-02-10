@@ -5,6 +5,18 @@ Update certificate in nginx
 
 Ask for domain name
 
+Setup SSH keys
+---
+On server
+
+```
+ssh-keygen -t rsa -b 4096
+cd ~/.ssh
+cat ~/id_rsa.pub >> ~/.ssh/authorized_keys
+
+// Copy id_rsa content to .pem file on client computer
+```
+
 Backup volume
 --- 
 
