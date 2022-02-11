@@ -34,3 +34,20 @@ $this->addHookBefore('Pages::moved', function () {
     $this->message("HTTP request failed: " . $http->getError());
   }
 });
+
+$this->addHookBefore('ProcessPageEdit::buildFormView', function (HookEvent $event) {
+  $event->arguments(0, str_replace('/api', '', $event->arguments[0]));
+});
+
+$this->addHookAfter('ProcessPageListActions::getActions', function (HookEvent $event) {
+  $newReturn = [];
+  foreach ($event->return as $key => $item) {
+    if ($key === 'view') {
+      $item['url'] = str_replace('/api', '', $item['url']);
+    }
+
+    $newReturn[$key] = $item;
+  }
+
+  $event->return = $newReturn;
+});

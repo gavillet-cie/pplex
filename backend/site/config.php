@@ -113,7 +113,7 @@ $config->urls->root = "/api/";
  * Installer: HTTP Hosts Whitelist
  * 
  */
-$config->httpHosts = array('pplex-beta.gavillet-cie.com');
+$config->httpHosts = array('pplex.com');
 
 
 /**
@@ -124,4 +124,4 @@ $config->httpHosts = array('pplex-beta.gavillet-cie.com');
  * Should be true for development sites and false for live/production sites. 
  * 
  */
-$config->debug = true;
+$config->debug = false;
