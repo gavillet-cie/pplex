@@ -13,7 +13,7 @@ services:
       - 443:443
     restart: on-failure
     volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
+      - /etc/ssl:/etc/ssl
 
   nuxt:
     image: ghcr.io/gavillet-cie/pplex-client:main
