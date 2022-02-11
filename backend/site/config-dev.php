@@ -113,7 +113,7 @@ $config->urls->admin = "/";
  * Installer: HTTP Hosts Whitelist
  * 
  */
-$config->httpHosts = array('pplex-beta.gavillet-cie.com');
+$config->httpHosts = array('pplex.ch');
 
 
 /**

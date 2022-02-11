@@ -113,7 +113,7 @@ $config->urls->root = "/api/";
  * Installer: HTTP Hosts Whitelist
  * 
  */
-$config->httpHosts = array('pplex.com');
+$config->httpHosts = array('pplex.ch');
 
 
 /**
