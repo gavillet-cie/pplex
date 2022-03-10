@@ -3,6 +3,7 @@ COPY ./nginx-dev.conf /etc/nginx/nginx.conf
 COPY ./bin /bin
 RUN mkdir -p /services/pictures
 COPY ./services/pictures /var/www/html/services/pictures
+COPY ./google8f85531d1eeeaa63.html /var/www/html/google8f85531d1eeeaa63.html
 RUN chmod +x /bin/purge-cache.sh
 RUN mkdir -p /data/nginx/cache
 

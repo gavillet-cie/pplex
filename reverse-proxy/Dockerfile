@@ -1,6 +1,8 @@
 FROM fabiocicerchia/nginx-lua:alpine
 
 COPY ./nginx-ssl.conf /etc/nginx/nginx.conf
+COPY ./services/pictures /var/www/html/services/pictures
+COPY ./google8f85531d1eeeaa63.html /var/www/html/google8f85531d1eeeaa63.html
 COPY ./bin /bin
 RUN chmod +x /bin/purge-cache.sh
 RUN mkdir -p /data/nginx/cache
