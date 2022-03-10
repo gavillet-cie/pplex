@@ -47,12 +47,16 @@
           @click.stop
         ) {{ email }}
 
-        span.lawyer-infos__phone(
+        a.link.lawyer-infos__phone(
           v-if="phone"
+          :href="`tel:${phone}`"
+          @click.stop
         ) {{ getLabel('phonePrefix', labels, 'T') }} {{ phone }}
 
-        span.lawyer-infos__fax(
+        a.link.lawyer-infos__fax(
           v-if="fax"
+          :href="`tel:${fax}`"
+          @click.stop
         ) F {{ fax }}
 
       .lawyer-infos__section(

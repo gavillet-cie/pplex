@@ -11,17 +11,30 @@
         .locations__address(
           v-html="formatRawText(getAddress(item))"
         )
-        br
-        .locations__phone {{ item.phone }}
+        template(
+          v-if="item.phone"
+        )
+          br
+          a.link.locations__phone(
+            :href="`tel:${item.phone}`"
+          ) {{ item.phone }}
 
-        a.link.locations__email(
-          :href="`mailto:${item.email}`"
-        ) {{ item.email }}
-        br
-        a.link.locations__google(
-          target="_blank"
-          :href="item.googleMap"
-        ) {{ getLabel('lookAtTheMap', labels) }}
+        template(
+          v-if="item.email"
+        )
+          br
+          a.link.locations__email(
+            :href="`mailto:${item.email}`"
+          ) {{ item.email }}
+
+        template(
+          v-if="item.googleMap"
+        )
+          br
+          a.link.locations__google(
+            target="_blank"
+            :href="item.googleMap"
+          ) {{ getLabel('lookAtTheMap', labels) }}
 
       img.locations__icon(
         src="~/static/location-icon.svg"
