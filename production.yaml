@@ -14,6 +14,8 @@ services:
     restart: on-failure
     volumes:
       - /etc/ssl:/etc/ssl
+      - ./reverse-proxy/services/pictures:/var/www/html/services/pictures
+      - ./reverse-proxy/google8f85531d1eeeaa63.html:/var/www/html/google8f85531d1eeeaa63.html
 
   nuxt:
     image: ghcr.io/gavillet-cie/pplex-client:main
