@@ -2,8 +2,6 @@ const redirections = [
   { value: '/attorneys/', target: '/lawyers/' },
   { value: '/fr/avocats/', target: '/fr/lawyers/' },
   { value: '/practice-areas/', target: '/our-practice-areas/' },
-  { value: '/rankings/', target: '/' },
-  { value: '/fr/classements/', target: '/' },
   { value: '/news-and-publications/', target: '/news/' },
   { value: '/publications/', target: '/news/' },
   { value: '/fr/nouvelles-et-publications/', target: '/fr/news/' },
@@ -923,12 +921,22 @@ const redirections = [
   },
 ]
 
+const exceptions = ['/', 'fr', 'about-us']
+
 export default function ({ app, ssrContext, route, params, redirect }) {
-  const redirection = redirections.find((it) =>
-    it.value.includes(route.fullPath)
+  const redirection = redirections.find((it) => {
+    const regex = new RegExp(`/?${route.fullPath}/?`)
+    return it.value.match(regex)
+  })
+
+  const isException = exceptions.find(
+    (it) =>
+      route.fullPath === it ||
+      route.fullPath === `/${it}` ||
+      route.fullPath === `/${it}/`
   )
 
-  if (redirection && route.fullPath && route.fullPath !== '/') {
+  if (redirection && !isException) {
     return redirect(redirection.target)
   }
 }
