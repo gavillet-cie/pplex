@@ -15,6 +15,7 @@ services:
     restart: always
     volumes:
       - ./reverse-proxy/services/pictures:/var/www/html/services/pictures
+      - ./reverse-proxy/nginx-dev.conf:/etc/nginx/nginx.conf
 
   nuxt:
     build:

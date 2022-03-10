@@ -928,7 +928,7 @@ export default function ({ app, ssrContext, route, params, redirect }) {
     it.value.includes(route.fullPath)
   )
 
-  if (redirection) {
+  if (redirection && route.fullPath && route.fullPath !== '/') {
     return redirect(redirection.target)
   }
 }

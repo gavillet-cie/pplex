@@ -1,2 +1,2 @@
 <?php
-$session->redirect('/');
+echo "resource not found";
