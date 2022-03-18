@@ -88,6 +88,8 @@ export default {
       return {
         'lawyer-grid--faded':
           this.activeLawyerIndex > -1 && index !== this.activeLawyerIndex,
+        'lawyer-grid--active':
+          this.activeLawyerIndex > -1 && index === this.activeLawyerIndex,
       }
     },
   },
@@ -100,6 +102,10 @@ export default {
 
   &--faded {
     opacity: 0.5;
+  }
+
+  &--active {
+    z-index: 5;
   }
 
   &__name {
