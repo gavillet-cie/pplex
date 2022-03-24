@@ -133,7 +133,7 @@ sudo chmod +x update-client.sh
 sudo chmod +x update-backend.sh
 ```
 
-Add crontab
+Add crontab for certbot
 ---
 
 Add this container to the docker-compose config
