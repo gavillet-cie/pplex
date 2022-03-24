@@ -132,3 +132,42 @@ sudo chmod +x update-client.sh
 ```
 sudo chmod +x update-backend.sh
 ```
+
+Add crontab
+---
+
+Add this container to the docker-compose config
+
+```
+reverse-proxy:
+    depends_on:
+      - nuxt
+      - cms
+      - adminer
+      - mysql
+    image: ghcr.io/gavillet-cie/jenisch-proxy:main
+    ports:
+      - 80:8080
+      - 443:443
+    restart: on-failure
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt/:ro
+      - /certbot/www:/var/www/certbot/:ro
+      
+certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt/:rw
+      - /certbot/www:/var/www/certbot/:rw
+```
+
+```
+sudo apt install cron
+sudo systemctl enable cron
+
+// If the certificate does not exist yet
+sudo docker-compose -f production.yaml run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d example.org
+
+// Paste this into the crontab file
+0 1 * * * sudo docker-compose -f production.yaml run --rm certbot renew
+```
