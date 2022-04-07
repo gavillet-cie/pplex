@@ -399,7 +399,7 @@ class MarkupSitemap extends WireData implements Module
       }
 
       $languageIsoName = $this->getLanguageIsoName($altLanguage);
-      $url->addExtension(new Link($languageIsoName, str_replace("/api", "", $page->localHttpUrl($altLanguage))));
+      $url->addExtension(new Link($languageIsoName, str_replace("http://pplex.ch/api", "https://pplex.ch", $page->localHttpUrl($altLanguage))));
     }
   }
 
@@ -484,7 +484,7 @@ class MarkupSitemap extends WireData implements Module
             continue;
           }
 
-          $url = new Url(str_replace("/api", "", $page->localHttpUrl($language)));
+          $url = new Url(str_replace("http://pplex.ch/api", "https://pplex.ch", $page->localHttpUrl($language)));
           $url->setLastMod(ParseTimestamp::fromInt($page->modified));
           $this->addLanguages($page, $url);
 
@@ -502,7 +502,7 @@ class MarkupSitemap extends WireData implements Module
       } else {
         // If multi-language support is not enabled, then we only need to
         // add the current URL to a new <loc>, along with images.
-        $url = new Url(str_replace("/api", "", $page->httpUrl));
+        $url = new Url(str_replace("http://pplex.ch/api", "https://pplex.ch", $page->httpUrl));
         $url->setLastMod(ParseTimestamp::fromInt($page->modified));
 
         if ($pageSitemapOptions['priority']) {
