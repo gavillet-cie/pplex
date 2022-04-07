@@ -43,27 +43,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     ['cookie-universal-nuxt', { alias: 'cookiz' }],
-    '@nuxtjs/sitemap',
   ],
-
-  sitemap: {
-    hostname: 'https://www.pplex.ch/',
-    gzip: true,
-    // exclude: [
-    //   '/secret',
-    //   '/admin/**'
-    // ],
-    // routes: [
-    //   '/page/1',
-    //   '/page/2',
-    //   {
-    //     url: '/page/3',
-    //     changefreq: 'daily',
-    //     priority: 1,
-    //     lastmod: '2017-06-30T13:30:00.000Z'
-    //   }
-    // ]
-  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
