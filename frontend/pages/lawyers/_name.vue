@@ -84,7 +84,7 @@
             v-for="ranking in rankings"
             v-animate
           )
-            span.lawyer__ranking-year {{ ranking.year }}
+            span.lawyer__ranking-year {{ formatHtmlText(ranking.year) }}
             .lawyer__ranking-images
               img.lawyer__ranking-image(
                 v-for="image in ranking.images"
