@@ -11,6 +11,7 @@ echo $apiRenderer->renderJSONFromModel([
   "url" => ["field" => "url"],
   "file" => ["field" => "publication_file"],
   "date" => ["field" => "publication_date"],
+  "keyWords" => ["field" => "keywords"],
   "practiceArea" => [
     "field" => "publication_practice_area",
     "type" => "simple-reference"

@@ -60,6 +60,12 @@ export default {
           content: decodeText(this.pageDescription) || '',
         },
         {
+          name: 'keywords',
+          content:
+            this.keyWords ||
+            'pplex, attorneys, attorney, python, lawyers, lawyer',
+        },
+        {
           property: 'og:title',
           content: this.title ? decodeText(`${this.title} - PYTHON`) : 'PYTHON',
         },
@@ -91,6 +97,7 @@ export default {
       'error',
       'title',
       'pageDescription',
+      'keyWords',
     ]),
     appCssStyle() {
       return {

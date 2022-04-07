@@ -9,7 +9,7 @@
 
     centered-wrapper
       row.post-page__title
-        h3 {{ formatRawText(title) }}
+        h1 {{ formatRawText(title) }}
 
       row.post-page__info
         span {{ info }}

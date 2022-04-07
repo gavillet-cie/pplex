@@ -10,7 +10,7 @@
         v-if="newsItems.length > 0"
         v-animate
       )
-        h3 {{ formatRawText(news.title) }}
+        h1 {{ formatRawText(news.title) }}
 
       .news__list-wrapper(
         v-if="newsItems.length > 0"
@@ -117,6 +117,7 @@ export default {
 
       store.commit('setTitle', news.title)
       store.commit('setPageDescription', news.pageDescription)
+      store.commit('setKeyWords', news.keyWords)
 
       return {
         ...(practiceAreas || []),

@@ -7,7 +7,7 @@
 
     centered-wrapper
       row.lawyers__sub-title
-        h3 {{ title }}
+        h1 {{ title }}
 
       filters.lawyers__filters(
         :placeholder="getLabel('search', labels)"
@@ -46,6 +46,7 @@ export default {
       ])
       store.commit('setTitle', lawyers.title)
       store.commit('setPageDescription', lawyers.pageDescription)
+      store.commit('setKeyWords', lawyers.keyWords)
 
       return {
         practiceAreas,

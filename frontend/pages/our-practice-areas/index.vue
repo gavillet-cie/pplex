@@ -9,10 +9,11 @@
       row.practice-areas__title(
         v-animate
       )
-        h3 {{ formatRawText(title) }}
+        h1 {{ formatRawText(title) }}
 
       row
         .practice-areas__description(
+          v-if="description"
           v-html="formatHtmlText(description)"
           v-animate
         )
@@ -48,6 +49,7 @@ export default {
       const res = await get('/our-practice-areas', language)
       store.commit('setTitle', res.title)
       store.commit('setPageDescription', res.description)
+      store.commit('setKeyWords', res.keyWords)
       return res
     } catch (error) {
       store.commit('setError', error)

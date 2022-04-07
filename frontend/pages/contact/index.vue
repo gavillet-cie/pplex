@@ -9,7 +9,7 @@
       row.contact__title(
         v-animate
       )
-        h3 {{ formatRawText(title) }}
+        h1 {{ formatRawText(title) }}
       locations.contact__locations
 </template>
 
@@ -31,6 +31,7 @@ export default {
       const contact = await get('/contact', language)
       store.commit('setTitle', contact.title)
       store.commit('setPageDescription', contact.pageDescription)
+      store.commit('setKeyWords', contact.keyWords)
       return contact
     } catch (error) {
       store.commit('setError', error)

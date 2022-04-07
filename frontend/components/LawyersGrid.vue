@@ -1,5 +1,5 @@
 <template lang="pug">
-  .lawyer-grid
+  main.lawyer-grid
     .lawyer-grid__items
       .lawyer-grid__item(
         v-for="(lawyer, index) in lawyers"
@@ -10,7 +10,7 @@
         :class="getItemCssClasses(lawyer)"
         @click="toggleActiveLawyerIndex(lawyer)"
       )
-        .lawyer-grid__item-content
+        section.lawyer-grid__item-content
           .lawyer-grid__portrait
             img(
               :src="getImageUrl(getPortraitUrl(lawyer))"
@@ -20,7 +20,7 @@
 
           .lawyer-grid__info
             .lawyer-grid__name
-              span {{ lawyer.title }}
+              h3 {{ lawyer.title }}
 
             .lawyer-grid__status
               span {{ lawyer.status }}

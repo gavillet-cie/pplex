@@ -29,6 +29,7 @@ export default {
     const home = await get(`/`, language)
     store.commit('setTitle', null)
     store.commit('setPageDescription', home.pageDescription)
+    store.commit('setKeyWords', home.keyWords)
     store.commit('setBigMenu', true)
   },
 

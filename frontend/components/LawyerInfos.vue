@@ -1,5 +1,7 @@
 <template lang="pug">
-  .lawyer-infos
+  .lawyer-infos(
+    :is="header ? 'header' : 'div'"
+  )
     .lawyer-infos__portrait(
       v-if="showPortrait"
     )
@@ -16,10 +18,12 @@
     .lawyer-infos__sections
       .lawyer-infos__section
         h2.lawyer-infos__name(
+          :is="header ? 'h1' : 'h2'"
           v-if="title"
         ) {{ title }}
 
         h3.lawyer-infos__title(
+          :is="header ? 'h2' : 'h3'"
           v-if="lawyerTitle"
         ) {{ lawyerTitle }}
 
@@ -98,6 +102,11 @@ import { getLabel } from '@/utils/labels'
 
 export default {
   props: {
+    header: {
+      type: Boolean,
+      default: false,
+    },
+
     name: {
       type: String,
       default: '',

@@ -10,6 +10,7 @@
     )
       row.lawyer__row
         lawyer-infos(
+          :header="true"
           v-bind="lawyer"
           v-animate
         )
@@ -166,6 +167,7 @@ export default {
       ])
       store.commit('setTitle', lawyer.title)
       store.commit('setPageDescription', lawyer.description)
+      store.commit('setKeyWords', lawyer.keyWords)
 
       return { lawyer, ...news, ...lawyer }
     } catch (error) {

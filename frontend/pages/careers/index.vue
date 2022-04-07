@@ -7,7 +7,7 @@
 
     centered-wrapper
       row
-        h3.careers__title(
+        h1.careers__title(
           v-animate
         ) {{ formatRawText(title) }}
 
@@ -44,6 +44,7 @@ export default {
       const careers = await get('/careers', language)
       store.commit('setTitle', careers.title)
       store.commit('setPageDescription', careers.description)
+      store.commit('setKeyWords', careers.keyWords)
       return careers
     } catch (error) {
       store.commit('setError', error)

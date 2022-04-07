@@ -18,6 +18,7 @@ export default {
       const post = await get(`/news/${name}`, language)
       store.commit('setTitle', post.title)
       store.commit('setPageDescription', post.content)
+      store.commit('setKeyWords', post.keyWords)
       return { post }
     } catch (error) {
       store.commit('setError', error)

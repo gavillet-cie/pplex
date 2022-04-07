@@ -9,7 +9,7 @@
       row.about-us__title(
         v-animate
       )
-        h3 {{ formatRawText(title) }}
+        h1 {{ formatRawText(title) }}
 
       row
         .about-us__description(
@@ -70,6 +70,7 @@ export default {
       const about = await get('/about-us', language)
       store.commit('setTitle', about.title)
       store.commit('setPageDescription', about.description)
+      store.commit('setKeyWords', about.keyWords)
       return about
     } catch (error) {
       store.commit('setError', error)

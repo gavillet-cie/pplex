@@ -1,9 +1,9 @@
 <template lang="pug">
-  .row(
+  section.row(
     :class="rowCssClasses"
   )
     .row__inner
-      span.row__label(
+      h4.row__label(
         v-if="label"
       ) {{ formatRawText(label) }}
 

@@ -7,6 +7,7 @@ export const state = () => ({
   pageTitle: '',
   error: false,
   pageDescription: '',
+  keyWords: '',
   title: '',
 })
 
@@ -19,6 +20,7 @@ export const getters = {
   pageTitle: (state) => state.pageTitle,
   error: (state) => state.error,
   pageDescription: (state) => state.pageDescription,
+  keyWords: (state) => state.keyWords,
   title: (state) => state.title,
 }
 
@@ -57,5 +59,9 @@ export const mutations = {
 
   setPageDescription: (state, pageDescription) => {
     state.pageDescription = pageDescription
+  },
+
+  setKeyWords: (state, keyWords) => {
+    state.keyWords = keyWords
   },
 }

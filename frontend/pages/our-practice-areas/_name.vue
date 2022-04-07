@@ -54,6 +54,7 @@ export default {
       ])
       store.commit('setTitle', area.title)
       store.commit('setPageDescription', area.description)
+      store.commit('setKeyWords', area.keyWords)
       return {
         ...area,
         lawyers,

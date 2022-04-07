@@ -8,6 +8,7 @@ echo $apiRenderer->renderJSONFromModel([
   "url" => ["field" => "url"],
   "slides" => ["field" => "slides"],
   "description" => ["field" => "career_description"],
+  "keyWords" => ["field" => "keywords"],
   "currentVacancies" => [
     "field" => "career_current_vacancies",
     "type" => "nested",
