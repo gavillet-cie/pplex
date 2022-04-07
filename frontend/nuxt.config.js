@@ -47,12 +47,8 @@ export default {
   ],
 
   sitemap: {
-    // hostname: 'https://www.pplex.ch/',
+    hostname: 'https://www.pplex.ch/',
     gzip: true,
-    routes: (routes) => {
-      // console.log(routes)
-      return ['/hello']
-    },
     // exclude: [
     //   '/secret',
     //   '/admin/**'
