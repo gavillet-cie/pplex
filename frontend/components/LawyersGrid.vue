@@ -15,7 +15,7 @@
             img(
               :src="getImageUrl(getPortraitUrl(lawyer))"
               :style="getImageCssStyle(lawyer.portrait)"
-              :alt="lawyer.description || ''"
+              :alt="lawyer.description || lawyer.title || ''"
             )
 
           .lawyer-grid__info

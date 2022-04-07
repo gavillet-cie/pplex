@@ -11,6 +11,7 @@
         img.rankings__item-image(
           v-for="image in item.images"
           :src="getImageUrl(image.url)"
+          :alt="image.description || item.year || ''"
         )
 </template>
 

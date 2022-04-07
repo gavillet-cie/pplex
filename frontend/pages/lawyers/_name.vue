@@ -89,6 +89,7 @@
               img.lawyer__ranking-image(
                 v-for="image in ranking.images"
                 :src="getImageUrl(image.url)"
+                :alt="image.description || ranking.year || ''"
               )
 
       row.lawyer__row(
