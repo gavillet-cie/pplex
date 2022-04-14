@@ -7,6 +7,7 @@ function getImageFields($image)
     "name" => $resizedImage->name,
     "description" => $resizedImage->description,
     "url" => $resizedImage->webp->url,
+    "original" => $resizedImage->url,
     "width" => $resizedImage->width,
     "height" => $resizedImage->height,
     "extention" => $resizedImage->ext,

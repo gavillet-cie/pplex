@@ -6,6 +6,12 @@ const animateOnScrollObserver = new IntersectionObserver(
       if (entry.isIntersecting) {
         entry.target.classList.remove('animate-before-enter')
         entry.target.classList.add('animate-enter')
+
+        setTimeout(() => {
+          entry.target.classList.remove('animate')
+          entry.target.classList.remove('animate-enter')
+        }, 1500)
+
         animateOnScrollObserver.unobserve(entry.target)
       }
     })

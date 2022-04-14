@@ -10,7 +10,7 @@
         @click.native.stop
       )
         img(
-          :src="getImageUrl(portrait.url)"
+          :src="getImageUrl(portrait.original)"
           :style="getImageCssStyle(portrait)"
           :alt="portrait.description || ''"
         )

@@ -68,7 +68,7 @@ export default {
     getUrl,
     getImageCssStyle,
     getPortraitUrl(lawyer) {
-      return lawyer?.portrait?.url
+      return lawyer?.portrait?.original
     },
     toggleActiveLawyerIndex(lawyer) {
       const index = this.lawyers?.indexOf(lawyer)
