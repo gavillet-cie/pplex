@@ -85,8 +85,6 @@ export default {
       const y = image?.focus.top || 50
       const imageRatio = image?.width / image?.height
 
-      console.log(image)
-
       let backgroundSize = null
 
       if (this.ratio) {
