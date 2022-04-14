@@ -9,11 +9,16 @@
         :to="getUrl(`/lawyers/${name}`, lang)"
         @click.native.stop
       )
-        img(
-          :src="getImageUrl(portrait.original)"
-          :style="getImageCssStyle(portrait)"
-          :alt="portrait.description || ''"
-        )
+        picture
+          source(
+            :srcset="getImageUrl(portrait.url)"
+            type="image/webp"
+          )
+          img(
+            :src="getImageUrl(portrait.original)"
+            :style="getImageCssStyle(portrait)"
+            :alt="portrait.description || ''"
+          )
 
     .lawyer-infos__sections
       .lawyer-infos__section

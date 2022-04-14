@@ -8,11 +8,17 @@
       :noPadding="true"
     )
       .rankings__item-images
-        img.rankings__item-image(
+        picture(
           v-for="image in item.images"
-          :src="getImageUrl(image.original)"
-          :alt="image.description || item.year || ''"
         )
+          source(
+            :srcset="getImageUrl(image.url)"
+            type="image/webp"
+          )
+          img.rankings__item-image(
+            :src="getImageUrl(image.original)"
+            :alt="image.description || item.year || ''"
+          )
 </template>
 
 <script>

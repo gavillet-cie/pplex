@@ -12,11 +12,16 @@
       )
         section.lawyer-grid__item-content
           .lawyer-grid__portrait
-            img(
-              :src="getImageUrl(getPortraitUrl(lawyer))"
-              :style="getImageCssStyle(lawyer.portrait)"
-              :alt="lawyer.description || lawyer.title || ''"
-            )
+            picture
+              source(
+                :srcset="getImageUrl(getPortraitUrl(lawyer, true))"
+                type="image/webp"
+              )
+              img(
+                :src="getImageUrl(getPortraitUrl(lawyer))"
+                :style="getImageCssStyle(lawyer.portrait)"
+                :alt="lawyer.description || lawyer.title || ''"
+              )
 
           .lawyer-grid__info
             .lawyer-grid__name
@@ -67,8 +72,8 @@ export default {
     getImageUrl,
     getUrl,
     getImageCssStyle,
-    getPortraitUrl(lawyer) {
-      return lawyer?.portrait?.original
+    getPortraitUrl(lawyer, loadWebp) {
+      return loadWebp ? lawyer?.portrait?.url : lawyer?.portrait?.original
     },
     toggleActiveLawyerIndex(lawyer) {
       const index = this.lawyers?.indexOf(lawyer)

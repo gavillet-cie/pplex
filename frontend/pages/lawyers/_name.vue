@@ -86,11 +86,17 @@
           )
             span.lawyer__ranking-year {{ formatHtmlText(ranking.year) }}
             .lawyer__ranking-images
-              img.lawyer__ranking-image(
+              picture(
                 v-for="image in ranking.images"
-                :src="getImageUrl(image.original)"
-                :alt="image.description || ranking.year || ''"
               )
+                source(
+                  :srcset="getImageUrl(image.url)"
+                  type="image/webp"
+                )
+                img.lawyer__ranking-image(
+                  :src="getImageUrl(image.original)"
+                  :alt="image.description || ranking.year || ''"
+                )
 
       row.lawyer__row(
         v-if="showSpeeches"
