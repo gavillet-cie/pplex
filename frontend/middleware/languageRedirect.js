@@ -1,10 +1,20 @@
 // import parser from 'accept-language-parser'
 // import { getUrl } from '../utils/api'
 
+const isGoogle = (headers) => {
+  return (
+    (headers || {}).from?.toLowerCase().includes('google') ||
+    (headers || {})['user-agent'].toLowerCase().includes('google')
+  )
+}
+
 export default function ({ app, ssrContext, route, params, redirect }) {
   // const userLang = app.$cookiz.get('lang')
-  console.log(ssrContext?.req)
-  console.log(ssrContext?.req?.headers)
+  if (isGoogle(ssrContext?.req?.headers)) {
+    console.log('Google detected')
+  } else {
+    console.log('normal visitor')
+  }
   // if (!userLang) {
   //   const acceptLanguage = ssrContext?.req?.headers['accept-language']
   //   const languages = parser.parse(acceptLanguage)
