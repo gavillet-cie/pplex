@@ -60,7 +60,7 @@ export default {
   },
 
   router: {
-    // middleware: ['deprecatedRedirect', 'languageRedirect'],
+    middleware: ['deprecatedRedirect'],
     extendRoutes(routes, resolve) {
       const newRoutes = routes.map((route) => ({
         ...route,
