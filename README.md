@@ -165,6 +165,9 @@ certbot:
 sudo apt install cron
 sudo systemctl enable cron
 
+// Edit crontab
+crontab -e
+
 // If the certificate does not exist yet
 sudo docker-compose -f production.yaml run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d example.org
 
