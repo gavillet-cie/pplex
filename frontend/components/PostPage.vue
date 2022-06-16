@@ -54,7 +54,7 @@ export default {
     },
 
     info() {
-      return `${getDate(this.post?.date, this.post?.lang)}, posted by ${
+      return `${getDate(this.post?.date, this.lang)}, ${this.lang === 'fr' ? "publié par" : "posted by"} ${
         this.authors
       }`
     },

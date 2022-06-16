@@ -220,7 +220,7 @@ export default {
         ...it,
         title: formatRawText(it.title),
         text: formatHtmlText(it.content),
-        label: getDate(it.date),
+        label: getDate(it.date, this.lang),
         url: getUrl(`${urlSegment}/${it.name}`, this.lang),
       }))
     },
