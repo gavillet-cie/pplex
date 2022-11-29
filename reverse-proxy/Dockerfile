@@ -1,4 +1,4 @@
-FROM fabiocicerchia/nginx-lua:alpine
+FROM fabiocicerchia/nginx-lua:1-alpine
 
 COPY ./nginx-ssl.conf /etc/nginx/nginx.conf
 COPY ./services/pictures /var/www/html/services/pictures
