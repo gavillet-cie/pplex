@@ -214,6 +214,7 @@ export default {
 .page-leave-active {
   transition: opacity 0.1s;
 }
+
 .page-enter,
 .page-leave-to {
   opacity: 0 !important;
@@ -276,7 +277,7 @@ a {
 }
 
 .link,
-p > a {
+p>a {
   &:hover {
     color: $main-color;
     position: relative;
@@ -315,8 +316,8 @@ em {
   font-family: Rand-Medium-Italic, Helvetica, Arial, sans-serif;
 }
 
-strong > em,
-em > strong {
+strong>em,
+em>strong {
   font-family: Rand-Medium-Italic, Helvetica, Arial, sans-serif;
   color: $main-color;
 }
@@ -331,7 +332,7 @@ em > strong {
 
 .animate-before-enter {
   opacity: 0;
-  transform: translate3d(0, 100px, 0);
+  transform: translate3d(0, 8vh, 0);
 }
 
 .animate-enter {
@@ -364,7 +365,7 @@ em > strong {
   background-color: $main-color !important;
   color: white !important;
 
-  & > * {
+  &>* {
     color: white !important;
     border-color: white;
   }
@@ -403,16 +404,16 @@ em > strong {
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 
-  & > span {
+  &>span {
     display: none;
   }
 }
 
-.vdp-datepicker > div {
+.vdp-datepicker>div {
   min-height: $default-font-size * $main-line-height;
 }
 
-.vdp-datepicker > div > input {
+.vdp-datepicker>div>input {
   padding-top: 0;
   padding-bottom: 0;
   min-height: $default-font-size * $main-line-height;
