@@ -16,6 +16,10 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
+  render: {
+    csp: true,
+  },
+
   styleResources: {
     scss: ['~styles/_variables.scss'],
   },
@@ -60,7 +64,7 @@ export default {
   },
 
   router: {
-    middleware: ['deprecatedRedirect'],
+    middleware: ['deprecatedRedirect', 'setHeaders'],
     extendRoutes(routes, resolve) {
       const newRoutes = routes.map((route) => ({
         ...route,
