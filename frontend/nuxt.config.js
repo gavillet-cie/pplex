@@ -64,7 +64,7 @@ export default {
   },
 
   router: {
-    middleware: ['deprecatedRedirect', 'setHeaders'],
+    middleware: ['setHeaders', "valforRedirects"],
     extendRoutes(routes, resolve) {
       const newRoutes = routes.map((route) => ({
         ...route,
